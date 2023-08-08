@@ -1,11 +1,11 @@
 import { useState } from "react";
 import CountUp from "react-countup";
 import { FaFilm } from "react-icons/fa";
-import mapBg from "../assets/map-bg.png";
-import status_01 from "../assets/status_01.png";
-import status_02 from "../assets/status_02.png";
-import status_03 from "../assets/status_03.png";
-import status_04 from "../assets/status_04.png";
+import mapBg from "../../assets/map-bg.png";
+import status_01 from "../../assets/status_01.png";
+import status_02 from "../../assets/status_02.png";
+import status_03 from "../../assets/status_03.png";
+import status_04 from "../../assets/status_04.png";
 
 const Counter = () => {
   return (
