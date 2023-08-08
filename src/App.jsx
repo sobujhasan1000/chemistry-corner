@@ -3,6 +3,7 @@ import siteLoader from "/ccLoader.gif";
 import "./App.css";
 import { RouterProvider } from "react-router-dom";
 import router from "./Routes/Router";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,7 +26,9 @@ function App() {
         </div>
       ) : (
         <div>
-          <RouterProvider router={router} />
+          <HelmetProvider>
+            <RouterProvider router={router} />
+          </HelmetProvider>
         </div>
       )}
     </>
