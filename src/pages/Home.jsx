@@ -1,5 +1,5 @@
 import React from "react";
-import Counter from "../componentes/counter";
+import Counter from "../components/Home/Counter";
 
 const Home = () => {
   return (
