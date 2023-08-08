@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import logo from "../../../public/ccLogo.png";
+import logo from "/ccLogo.png";
 import { AiOutlineMenu } from "react-icons/ai";
 import { HiOutlineXMark } from "react-icons/hi2";
-import userImage from "../../../public/user.png";
+import userImage from "/user.png";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -88,7 +88,7 @@ const Navbar = () => {
       </div>
       <div
         className={` md:hidden bg-[#ee596b] w-1/2 py-2 text-black text-lg flex flex-col items-start gap-2 absolute duration-300 ${
-          isMenuOpen ? "left-0" : "-left-64"
+          isMenuOpen ? "left-0" : "-left-96"
         }`}
       >
         <ul className=" text-black text-lg flex flex-col items-start gap-2 ml-3">
