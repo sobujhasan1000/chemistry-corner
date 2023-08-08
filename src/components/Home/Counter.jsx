@@ -28,7 +28,7 @@ const Counter = () => {
             Join us for FREE
           </button>
           <button className="px-6 py-2 bg-[#ED0058] hover:bg-[#a33f64] text-white rounded-lg flex items-center">
-            Our TV Commercial{" "}
+            Our TV Commercial
             <span className="ml-1">
               <FaFilm />
             </span>
