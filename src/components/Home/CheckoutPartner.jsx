@@ -5,15 +5,15 @@ const CheckoutPartner = () => {
   const genders = [
     {
       label: "Man",
-      selected: true,
       value: "man",
+      selected: true,
     },
     { label: "Woman", value: "woman" },
     { label: "Non-Binary", value: "non-binary" },
   ];
   const minAges = [
     {
-      label: " 18",
+      label: "18",
       value: 18,
       selected: true,
     },
@@ -51,7 +51,7 @@ const CheckoutPartner = () => {
   return (
     <div className="py-8 md:py-24 rounded-lg w-11/12 mx-auto bg-slate-100 px-3">
       <Container>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 items-end gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 items-end gap-4">
           <div>
             <label className="label">
               <span className="text-lg text-[#656565]">I am</span>
