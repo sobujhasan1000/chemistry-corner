@@ -1,4 +1,3 @@
-import { useState } from "react";
 import CountUp from "react-countup";
 import { FaFilm } from "react-icons/fa";
 import mapBg from "../../assets/map-bg.png";
@@ -33,22 +32,22 @@ const Counter = () => {
           </button>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500">
+          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200">
             <img src={status_01} alt="" />
             <CountUp className="text-3xl" start={-1} end={8} duration={4} />
             <p className="pt-3 text-lg">Members in total</p>
           </div>
-          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 ">
+          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200">
             <img src={status_04} alt="" />
             <CountUp className="text-3xl" start={-1} end={1200} duration={4} />
             <p className="pt-3 text-lg">Men online</p>
           </div>
-          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500">
+          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200">
             <img src={status_03} alt="" />
             <CountUp className="text-3xl" start={-1} end={900} duration={4} />
             <p className="pt-3 text-lg">Women online</p>
           </div>
-          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500">
+          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200">
             <img src={status_02} alt="" />
             <CountUp className="text-3xl" start={-1} end={2100} duration={4} />
             <p className="pt-3 text-lg">Members online</p>
