@@ -1,11 +1,11 @@
 import { useState } from "react";
 import CountUp from "react-countup";
 import { FaFilm } from "react-icons/fa";
-import mapBg from "../assets/map-bg.png";
-import status_01 from "../assets/status_01.png";
-import status_02 from "../assets/status_02.png";
-import status_03 from "../assets/status_03.png";
-import status_04 from "../assets/status_04.png";
+import mapBg from "../../assets/map-bg.png";
+import status_01 from "../../assets/status_01.png";
+import status_02 from "../../assets/status_02.png";
+import status_03 from "../../assets/status_03.png";
+import status_04 from "../../assets/status_04.png";
 
 const Counter = () => {
   return (
@@ -14,8 +14,10 @@ const Counter = () => {
       style={{ backgroundImage: `url(${mapBg})` }}
     >
       <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-4">It all starts with a Date</h1>
-        <p className="my-12">
+        <h1 className="text-3xl text-black font-bold mb-4">
+          It all starts with a Date
+        </h1>
+        <p className="my-12 text-black">
           You find us, finally, and you are already in love. More than 5.000.000
           around the world already shared the same experience and uses our{" "}
           <br />
