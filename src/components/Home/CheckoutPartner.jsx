@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "../shared/Container";
+import { BsSearchHeart } from "react-icons/bs";
 
 const CheckoutPartner = () => {
   const genders = [
@@ -136,7 +137,8 @@ const CheckoutPartner = () => {
               ))}
             </select>
           </div>
-          <button className="text-lg py-3 rounded text-white bg-[#ED0058] hover:bg-[#a33f64]">
+          <button className="text-md font-medium py-3 rounded uppercase text-white bg-[#ED0058] hover:bg-[#a33f64] flex justify-center items-center gap-1">
+            <BsSearchHeart size={25} />
             Find your partner
           </button>
         </div>
