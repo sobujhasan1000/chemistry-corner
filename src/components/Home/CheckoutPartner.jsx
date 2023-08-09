@@ -50,7 +50,7 @@ const CheckoutPartner = () => {
     { label: "France", value: "france" },
   ];
   return (
-    <div className="py-8 md:py-24 rounded-lg w-11/12 mx-auto bg-slate-100 px-3">
+    <div className="py-8 md:py-24 rounded-lg bg-slate-100">
       <Container>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 items-end gap-4">
           <div>
@@ -61,7 +61,7 @@ const CheckoutPartner = () => {
               {genders.map((gender, i) => (
                 <option
                   key={i}
-                  className="text-[20px]"
+                  className="md:text-[20px]"
                   selected={gender?.selected}
                   value={gender.value}
                 >
@@ -78,7 +78,7 @@ const CheckoutPartner = () => {
               {genders.map((gender, i) => (
                 <option
                   key={i}
-                  className="text-[20px]"
+                  className="md:text-[20px]"
                   selected={gender?.selected}
                   value={gender.value}
                 >
@@ -96,7 +96,7 @@ const CheckoutPartner = () => {
                 {minAges.map((item, i) => (
                   <option
                     key={i}
-                    className="text-[20px]"
+                    className="md:text-[20px]"
                     selected={item?.selected}
                     value={item.value}
                   >
@@ -109,7 +109,7 @@ const CheckoutPartner = () => {
                 {maxAges.map((item, i) => (
                   <option
                     key={i}
-                    className="text-[20px]"
+                    className="md:text-[20px]"
                     selected={item?.selected}
                     value={item.value}
                   >
@@ -137,9 +137,9 @@ const CheckoutPartner = () => {
               ))}
             </select>
           </div>
-          <button className="text-md font-medium py-3 rounded uppercase text-white bg-[#ED0058] hover:bg-[#a33f64] flex justify-center items-center gap-1">
+          <button className="text-xl font-medium px-3 col-span-full py-3 rounded uppercase text-white bg-[#ED0058] hover:bg-[#a33f64] flex justify-center items-center gap-2 md:gap-3">
             <BsSearchHeart size={25} />
-            Find your partner
+            <span>Find your partner</span>
           </button>
         </div>
       </Container>
