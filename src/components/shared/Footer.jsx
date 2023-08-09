@@ -12,10 +12,10 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col gap-8 py-10 text-white">
         <div className="flex flex-col items-center gap-5">
           <div className="flex flex-col items-center gap-3">
-            <h1 className="text-2xl text-black font-bold leading-0 m-0">
+            <h1 className="text-2xl text-white font-bold leading-0 m-0">
               Subscribe Newsletter
             </h1>
-            <p className="text-base text-black italic leading-0 m-0">
+            <p className="text-base text-white italic leading-0 m-0">
               Subscribe your email to get latest updates.
             </p>
           </div>
@@ -38,7 +38,7 @@ const Footer = () => {
           </form>
         </div>
         <div>
-          <div className="flex flex-col md:flex-row items-center md:items-start md:justify-evenly gap-5 md:gap-0">
+          <div className="flex flex-col md:flex-row items-center md:items-start md:justify-around gap-5 md:gap-0">
             <div className="flex flex-col items-center md:items-start gap-3">
               <h1 className="text-xl">About Us</h1>
               <div className="flex flex-col items-center md:items-start gap-2">
@@ -105,7 +105,7 @@ const Footer = () => {
         </div>
         <div className="w-2/3 mx-auto">
           <div className="divider m-0"></div>
-          <div className="my-3">
+          <div className="my-3 text-center">
             <h1 className="text-xs">
               Copyright &copy; 2023 Chemistry Corner. An Online Dating Platform{" "}
             </h1>
