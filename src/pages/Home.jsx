@@ -5,6 +5,7 @@ import PremiumMembar from "../components/Home/PremiumMembar";
 import CheckoutPartner from "../components/Home/CheckoutPartner";
 import Location from "../components/Home/Location";
 import Banner from "../components/Home/Banner";
+import Blogs from "../components/Home/Blogs";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <Counter></Counter>
       <PremiumMembar></PremiumMembar>
       <Location></Location>
+      <Blogs />
     </div>
   );
 };
