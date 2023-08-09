@@ -29,7 +29,7 @@ const Banner = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <div className=" h-52 md:h-[50rem] flex items-center justify-center">
+          <div className=" h-52 md:h-[220px] flex items-center justify-center">
             <img src={img1} alt="Slider Image" />
           </div>
         </SwiperSlide>
