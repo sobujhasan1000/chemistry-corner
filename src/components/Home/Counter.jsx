@@ -13,10 +13,10 @@ const Counter = () => {
       style={{ backgroundImage: `url(${mapBg})` }}
     >
       <div className="container mx-auto p-4">
-        <h1 className="text-3xl text-black font-bold mb-4">
+        <h1 className="text-4xl text-[#212121] font-bold mb-4 font-signature">
           It all starts with a Date
         </h1>
-        <p className="my-12 text-black">
+        <p className="my-12 text-[#212121]">
           You find us, finally, and you are already in love. More than 5.000.000
           around the world already shared the same experience and uses our{" "}
           <br />
