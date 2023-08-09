@@ -19,20 +19,20 @@ const Footer = () => {
               Subscribe your email to get latest updates.
             </p>
           </div>
-          <form className="flex md:w-full">
+          <form className="flex items-center justify-center w-1/2 md:w-full">
             <div className="flex justify-center md:w-full">
               <div className="form-control">
                 <input
                   type="email"
                   name="email"
-                  placeholder="Your Email Address"
-                  className="bg-white pl-5 py-3 border border-gray-300 outline-none rounded-s-full md:w-[50rem]"
+                  placeholder="Your Email..."
+                  className="bg-white pl-5 py-3 border-2 border-white outline-none rounded-s-full w-40 md:w-[50rem]"
                 />
               </div>
               <input
                 type="submit"
                 value="Subscribe"
-                className="bg-[#ED0058] text-white px-5 py-3 rounded-e-full cursor-pointer border border-white border-s-0"
+                className="bg-[#ED0058] text-white font-semibold uppercase px-5 py-3 rounded-e-full cursor-pointer border-2 border-white border-s-0"
               />
             </div>
           </form>
@@ -106,7 +106,7 @@ const Footer = () => {
         <div className="w-2/3 mx-auto">
           <div className="divider m-0"></div>
           <div className="my-3">
-            <h1 className="text-xs">
+            <h1 className="text-xs text-center md:text-left">
               Copyright &copy; 2023 Chemistry Corner. An Online Dating Platform{" "}
             </h1>
           </div>

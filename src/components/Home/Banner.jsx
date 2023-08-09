@@ -21,35 +21,35 @@ const Banner = () => {
         pagination={true}
         effect={"fade"}
         loop={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 2500,
+        //   disableOnInteraction: false,
+        // }}
         modules={[Navigation, Pagination, EffectFade, Autoplay]}
         className="mySwiper"
       >
         <SwiperSlide>
-          <div className=" h-52 md:h-[220px] flex items-center justify-center">
-            <img src={img1} alt="Slider Image" />
+          <div className="md:h-[85vh]">
+            <img src={img1} alt="Slider Image" className="h-full w-full" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="h-52 md:h-[50rem] flex items-center justify-center">
-            <img src={img2} alt="Slider Image" />
+          <div className="md:h-[85vh]">
+            <img src={img2} alt="Slider Image" className="h-full w-full" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="h-52 md:h-[50rem] flex items-center justify-center">
-            <img src={img3} alt="Slider Image" />
+          <div className="md:h-[85vh]">
+            <img src={img3} alt="Slider Image" className="h-full w-full" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="h-52 md:h-[50rem] flex items-center justify-center">
-            <img src={img4} alt="Slider Image" />
+          <div className="md:h-[85vh]">
+            <img src={img4} alt="Slider Image" className="h-full w-full" />
           </div>
         </SwiperSlide>
       </Swiper>
-      <div className=" bg-[#ee236e] w-2/3 md:w-96 p-2 absolute top-1 md:top-1/3 left-5 md:left-40 z-20">
+      <div className=" bg-[#ee236e] w-2/3 md:w-96 p-2 absolute top-4 md:top-[25%] left-10 md:left-40 right-0 md:right-0 z-20">
         <div className="bg-[#ED0058] px-2 md:px-4 py-3 md:py-6">
           <h1 className="text-base md:text-xl text-white mb-4">
             Create an Account
