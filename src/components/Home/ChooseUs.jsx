@@ -3,7 +3,7 @@ import choosephoto from '../../assets/choose us2.jpg'
 import { FaBandcamp, FaUser, FaWeixin,  } from 'react-icons/fa';
 const ChooseUs = () => {
     return (
-        <div className='lg:flex '>
+        <div className='lg:flex my-4'>
             <div className='lg:w-2/3'>
                 <div className='my-8 text-center'>
                 <h1 className='text-4xl mb-4 font-semibold'>Why choose chemistry corner</h1>
@@ -25,7 +25,7 @@ const ChooseUs = () => {
                 </div>
             </div>
             <div className='lg:w-1/3'>
-                <img src={choosephoto} alt="" />
+                <img className='rounded-md' src={choosephoto} alt="" />
             </div>
         </div>
     );
