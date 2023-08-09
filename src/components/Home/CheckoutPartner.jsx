@@ -71,8 +71,8 @@ const CheckoutPartner = () => {
             </select>
           </div>
           <div>
-            <label class="label">
-              <span class="text-lg text-[#656565]">Looking for</span>
+            <label className="label">
+              <span className="text-lg text-[#656565]">Looking for</span>
             </label>
             <select className="bg-[#FAFAFA] border-[1px] border-solid border-[#FAFAFA] text-[20px] select w-full">
               {genders.map((gender, i) => (
@@ -88,8 +88,8 @@ const CheckoutPartner = () => {
             </select>
           </div>
           <div>
-            <label class="label">
-              <span class="text-lg text-[#656565]">Age</span>
+            <label className="label">
+              <span className="text-lg text-[#656565]">Age</span>
             </label>
             <div className="flex justify-center items-center gap-1">
               <select className="bg-[#FAFAFA] border-[1px] border-solid border-[#FAFAFA]  py-[3px] text-[20px] select w-full">
@@ -120,8 +120,8 @@ const CheckoutPartner = () => {
             </div>
           </div>
           <div>
-            <label class="label">
-              <span class="text-lg text-[#656565]">Country</span>
+            <label className="label">
+              <span className="text-lg text-[#656565]">Country</span>
             </label>
             <select className="bg-[#FAFAFA] border-[1px] border-solid border-[#FAFAFA] text-[20px] select w-full">
               {countries.map((country, i) => (
