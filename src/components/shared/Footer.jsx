@@ -71,7 +71,7 @@ const Footer = () => {
             </div>
             <div className="flex flex-col items-center md:items-start gap-3">
               <h1 className="text-xl">Navigation</h1>
-              <ul className="flex flex-col items-center md:items-start gap-3">
+              <ul className="flex flex-col items-center md:items-start gap-3 text-sm">
                 <li>
                   <Link to="#">About Us</Link>
                 </li>
@@ -89,7 +89,7 @@ const Footer = () => {
 
             <div className="flex flex-col items-center md:items-start gap-3">
               <h1 className="text-xl">Support</h1>
-              <ul className="flex flex-col items-center md:items-start gap-3">
+              <ul className="flex flex-col items-center md:items-start gap-3 text-sm">
                 <li>
                   <Link to="#">Get in Touch</Link>
                 </li>
