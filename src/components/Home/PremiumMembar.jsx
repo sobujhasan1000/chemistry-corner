@@ -4,7 +4,7 @@ import Container from "../shared/Container";
 const PremiumMembar = () => {
   return (
     <div
-      className="hero h-screen text-white object-top justify-start bg-top"
+      className="hero h-screen text-white object-top justify-start bg-top mb-24"
       style={{ backgroundImage: `url(${premium})`, height: 450 }}
     >
       <Container>
