@@ -49,7 +49,7 @@ const Banner = () => {
           </div>
         </SwiperSlide>
       </Swiper>
-      <div className=" bg-[#ee236e] w-2/3 md:w-96 p-2 absolute top-1 md:top-1/3 left-5 md:left-40 z-50">
+      <div className=" bg-[#ee236e] w-2/3 md:w-96 p-2 absolute top-1 md:top-1/3 left-5 md:left-40 z-20">
         <div className="bg-[#ED0058] px-2 md:px-4 py-3 md:py-6">
           <h1 className="text-base md:text-xl text-white mb-4">
             Create an Account
