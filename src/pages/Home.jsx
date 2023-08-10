@@ -1,13 +1,13 @@
 import React from "react";
 import Counter from "../components/Home/Counter";
 import { Helmet } from "react-helmet-async";
-import PremiumMembar from "../components/Home/PremiumMembar";
 import CheckoutPartner from "../components/Home/CheckoutPartner";
 import ChooseUs from "../components/Home/ChooseUs";
 import Location from "../components/Home/Location";
 import Banner from "../components/Home/Banner";
 import Blogs from "../components/Home/Blogs";
 import LoveStories from "../components/Home/LoveStories";
+import PremiumMember from "../components/Home/PremiumMember";
 
 const Home = () => {
   return (
@@ -15,14 +15,14 @@ const Home = () => {
       <Helmet>
         <title>Home - Chemistry Corner</title>
       </Helmet>
-      <Banner></Banner>
+      <Banner />
       <CheckoutPartner />
-      <Counter></Counter>
-      <PremiumMembar></PremiumMembar>
-      <ChooseUs></ChooseUs>
-      <Location></Location>
+      <Counter />
+      <PremiumMember />
+      <ChooseUs />
+      <Location />
       <Blogs />
-      <LoveStories></LoveStories>
+      <LoveStories />
     </div>
   );
 };

@@ -22,7 +22,7 @@ const Location = () => {
                   href="/"
                   className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
                 >
-                  <p>Form 650$</p>
+                  <p>From 650$</p>
                 </a>
               </div>
             </div>
@@ -42,7 +42,7 @@ const Location = () => {
                   href="/"
                   className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
                 >
-                  <p>Form 500$</p>
+                  <p>From 500$</p>
                 </a>
               </div>
             </div>
@@ -62,7 +62,7 @@ const Location = () => {
                   href="/"
                   className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
                 >
-                  <p>Form 800$</p>
+                  <p>From 800$</p>
                 </a>
               </div>
             </div>
@@ -82,7 +82,7 @@ const Location = () => {
                   href="/"
                   className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
                 >
-                  <p>Form 670$</p>
+                  <p>From 670$</p>
                 </a>
               </div>
             </div>
@@ -104,7 +104,7 @@ const Location = () => {
                   href="/"
                   className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
                 >
-                  <p>Form 350$</p>
+                  <p>From 350$</p>
                 </a>
               </div>
             </div>
