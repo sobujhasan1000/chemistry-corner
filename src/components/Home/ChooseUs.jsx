@@ -17,8 +17,8 @@ const ChooseUs = () => {
           <div className="flex flex-col md:flex-row gap-2 justify-center text-center">
             <div className="py-4">
               <h1 className="text-3xl py-2">
-                <span className="flex items-center justify-center mb-4 text-pink-300 text-4xl">
-                  <FaUser />
+                <span className="flex items-center justify-center mb-4 text-[#ED0058]">
+                  <FaUser size={50} />
                 </span>
                 Simple to Use
               </h1>
@@ -29,8 +29,8 @@ const ChooseUs = () => {
             </div>
             <div className="py-4">
               <h1 className="text-3xl py-2">
-                <span className="flex items-center justify-center mb-4 text-pink-300 text-4xl">
-                  <FaBandcamp />
+                <span className="flex items-center justify-center mb-4 text-[#ED0058]">
+                  <FaBandcamp size={50} />
                 </span>
                 Smart Matching
               </h1>
@@ -42,8 +42,8 @@ const ChooseUs = () => {
             <div className="py-4">
               <h1 className="text-3xl py-2">
                 {" "}
-                <span className="flex items-center justify-center mb-4 text-pink-300 text-4xl">
-                  <FaWeixin />
+                <span className="flex items-center justify-center mb-4 text-[#ED0058]">
+                  <FaWeixin size={50} />
                 </span>
                 Cool Community
               </h1>
