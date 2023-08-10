@@ -7,6 +7,7 @@ import ChooseUs from "../components/Home/ChooseUs";
 import Location from "../components/Home/Location";
 import Banner from "../components/Home/Banner";
 import Blogs from "../components/Home/Blogs";
+import LoveStories from "../components/Home/LoveStories";
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
       <ChooseUs></ChooseUs>
       <Location></Location>
       <Blogs />
+      <LoveStories></LoveStories>
     </div>
   );
 };
