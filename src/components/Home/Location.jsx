@@ -98,7 +98,7 @@ const Location = () => {
                 src="https://ld-wt73.template-help.com/tf/loven/images/destinations-4-363x260.jpg"
                 alt="Person"
               />
-              <p className="absolute top-2 -left-8 transform group-hover:scale-110 text-white opacity-0 group-hover:opacity-60 font-signature w-11/12 text-[150px] duration-200 ease-linear ">
+              <p className="absolute top-2 -left-8 text-center transform group-hover:scale-110 text-white opacity-0 group-hover:opacity-60 font-signature w-11/12 mx-auto text-[50px] duration-200 ease-linear ">
                 New York
               </p>
             </div>
@@ -128,7 +128,7 @@ const Location = () => {
                 src="https://media.istockphoto.com/id/1048467886/photo/street-scene-in-historic-center-of-mexico-city.jpg?s=612x612&w=0&k=20&c=aatvitXYaowQl1mb5ZTBrfq0yFllChMJx-VuMnrubuY="
                 alt="Person"
               />
-              <p className="absolute top-2 -left-8 transform group-hover:scale-110 text-white opacity-0 group-hover:opacity-60 font-signature w-11/12 text-[150px] duration-200 ease-linear ">
+              <p className="absolute top-2 -left-8 transform group-hover:scale-110 text-white opacity-0 group-hover:opacity-60 font-signature w-11/12 mx-auto text-[150px] duration-200 ease-linear ">
                 Mexico
               </p>
             </div>
