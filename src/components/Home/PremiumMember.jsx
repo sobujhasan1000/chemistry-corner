@@ -18,8 +18,12 @@ const PremiumMember = () => {
             great bonuses.
           </p>
           <div className="flex flex-row justify-start items-center gap-2">
-            <button className="btn text-xl capitalize">view all options</button>
-            <h2 className="text-xl">14 days for free</h2>
+            <button className="px-6 py-2 text-xl capitalize bg-[#ED0058] text-white rounded-lg hover:text-white hover:bg-[#a33f64]">
+              view options
+            </button>
+            <h2 className="text-xl border px-6 py-2 rounded-md border-[#a33f64]">
+              14 days for free
+            </h2>
           </div>
         </div>{" "}
       </Container>

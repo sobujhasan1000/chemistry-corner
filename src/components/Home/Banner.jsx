@@ -13,6 +13,7 @@ import img4 from "/slider-4.jpg";
 
 import { FaUser } from "react-icons/fa";
 
+
 const Banner = () => {
   return (
     <div className="relative">
@@ -63,6 +64,7 @@ const Banner = () => {
               <FaUser />
               Sign Up
             </button>
+
           </div>
         </div>
       </div>
