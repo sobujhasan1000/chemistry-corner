@@ -12,6 +12,7 @@ import img3 from "/slider-3.jpg";
 import img4 from "/slider-4.jpg";
 
 import { FaUser } from "react-icons/fa";
+import SocialLogin from "../shared/SocialLogin";
 
 const Banner = () => {
   return (
@@ -63,6 +64,7 @@ const Banner = () => {
               <FaUser />
               Sign Up
             </button>
+            <SocialLogin />
           </div>
         </div>
       </div>
