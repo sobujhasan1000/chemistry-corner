@@ -13,6 +13,7 @@ import img4 from "/slider-4.jpg";
 
 import CreateAnAccount from "../AuthComponent/CreateAnAccount";
 
+
 const Banner = () => {
   return (
     <div className="relative">

@@ -3,11 +3,27 @@ import logo from "/ccLogo.png";
 import { AiOutlineMenu } from "react-icons/ai";
 import { HiOutlineXMark } from "react-icons/hi2";
 import userImage from "/user.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Navbar = () => {
+  const { user, loading, setLoading, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Logout successful");
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setLoading(false);
+      });
+  };
+
   const navItems = (
     <>
       <li>
@@ -30,7 +46,7 @@ const Navbar = () => {
         <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
       <li>
-        <button>LogOut</button>
+        <button onClick={handleLogOut}>Log Out</button>
       </li>
     </>
   );
