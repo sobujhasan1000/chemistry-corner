@@ -62,8 +62,7 @@ const CheckoutPartner = () => {
                 <option
                   key={i}
                   className="md:text-[20px]"
-                  selected={gender?.selected}
-                  value={gender.value}
+                  defaultValue={gender.value}
                 >
                   {gender?.label}
                 </option>
@@ -79,8 +78,7 @@ const CheckoutPartner = () => {
                 <option
                   key={i}
                   className="md:text-[20px]"
-                  selected={gender?.selected}
-                  value={gender.value}
+                  defaultValue={gender.value}
                 >
                   {gender?.label}
                 </option>
@@ -97,8 +95,7 @@ const CheckoutPartner = () => {
                   <option
                     key={i}
                     className="md:text-[20px]"
-                    selected={item?.selected}
-                    value={item.value}
+                    defaultValue={item.value}
                   >
                     {item?.label}
                   </option>
@@ -110,8 +107,7 @@ const CheckoutPartner = () => {
                   <option
                     key={i}
                     className="md:text-[20px]"
-                    selected={item?.selected}
-                    value={item.value}
+                    defaultValue={item.value}
                   >
                     {item?.label}
                   </option>
@@ -129,8 +125,7 @@ const CheckoutPartner = () => {
                   key={i}
                   className={`text-[20px] ${country.hidden && "hidden"}`}
                   disabled={country?.disabled}
-                  selected={country?.selected}
-                  value={country?.value}
+                  defaultValue={country?.value}
                 >
                   {country?.label}
                 </option>

@@ -41,13 +41,13 @@ const Register = () => {
               <TabList className="flex items-center justify-center gap-5">
                 <Tab
                   className="text-black bg-white hover:text-[#ED0058] duration-300 cursor-pointer outline-none p-2"
-                  selectedClassName="text-white font-semibold "
+                  selectedClassName="font-semibold "
                 >
                   Register
                 </Tab>
                 <Tab
                   className="text-black bg-white hover:text-[#ED0058] duration-300 cursor-pointer outline-none px-4 py-2"
-                  selectedClassName="text-white font-semibold "
+                  selectedClassName="font-semibold "
                 >
                   Login
                 </Tab>
