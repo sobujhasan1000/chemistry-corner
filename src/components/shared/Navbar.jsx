@@ -17,6 +17,7 @@ const Navbar = () => {
       .then(() => {
         toast.success("Logout successful");
         setLoading(false);
+        setIsUserMenuOpen(false);
       })
       .catch((error) => {
         console.log(error.message);
@@ -87,33 +88,22 @@ const Navbar = () => {
             </div>
             {isMenuOpen ? (
               <div>
-                {user ? (
+                {user && (
                   <img
-                    src={user.photoURL}
-                    alt="User Image"
-                    className="w-10 h-10 rounded-full"
-                  />
-                ) : (
-                  <img
-                    src={userImage}
+                    src={user.photoURL ? user.photoURL : userImage}
                     alt="User Image"
                     className="w-10 h-10 rounded-full"
                   />
                 )}
               </div>
             ) : (
-              <div onClick={handleUserMenuToggle}>
-                {user ? (
+              <div>
+                {user && (
                   <img
                     src={user.photoURL}
                     alt="User Image"
-                    className="w-10 h-10 cursor-pointer  rounded-full"
-                  />
-                ) : (
-                  <img
-                    src={userImage}
-                    alt="User Image"
-                    className="w-10 h-10 cursor-pointer  rounded-full"
+                    className="w-10 h-10 cursor-pointer rounded-full"
+                    onClick={handleUserMenuToggle}
                   />
                 )}
               </div>
@@ -142,15 +132,19 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div
-        className={` bg-[#ED0058] w-1/2 md:w-80 py-2 absolute duration-300 z-50 ${
-          isUserMenuOpen ? "right-0 top-12 md:top-[6.2rem]" : "right-0 -top-80"
-        }`}
-      >
-        <ul className="text-white text-lg flex flex-col items-start gap-2 ml-3">
-          {userMenuItems}
-        </ul>
-      </div>
+      {user && (
+        <div
+          className={` bg-[#ED0058] w-1/2 md:w-80 py-2 absolute duration-300 z-50 ${
+            isUserMenuOpen
+              ? "right-0 top-12 md:top-[6.2rem]"
+              : "right-0 -top-80"
+          }`}
+        >
+          <ul className="text-white text-lg flex flex-col items-start gap-2 ml-3">
+            {userMenuItems}
+          </ul>
+        </div>
+      )}
       <div
         className={` md:hidden bg-[#ED0058] w-1/2 h-fit py-2 text-white text-lg flex flex-col items-start gap-2 absolute duration-300 z-50 ${
           isMenuOpen ? "top-12 left-0" : "top-12 -left-96"
