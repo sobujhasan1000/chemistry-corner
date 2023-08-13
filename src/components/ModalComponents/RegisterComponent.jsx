@@ -93,7 +93,7 @@ const RegisterComponent = () => {
               name="name"
               {...register("name", { required: true })}
               placeholder="Your Name"
-              className="bg-white p-1"
+              className="bg-white p-1 outline-none"
             />
             {errors.name && (
               <span className="text-white">Name field is required</span>
@@ -101,18 +101,36 @@ const RegisterComponent = () => {
           </div>
           <div className="form-control">
             <label htmlFor="photoURL" className="text-white">
-              Photo *
+              Photo : *
             </label>
             <input
               type="file"
               name="photo"
               {...register("photo", { required: true })}
               placeholder="Your Photo URL"
-              className="bg-white p-1"
+              className="bg-white p-1 outline-none"
               accept="image/*"
             />
             {errors.photoURL && (
               <span className="text-white">This field is required</span>
+            )}
+          </div>
+          <div className="form-control">
+            <label htmlFor="gender" className="text-white">
+              Gender : *
+            </label>
+            <select
+              name="gender"
+              {...register("gender", { required: true })}
+              className="bg-white p-1 outline-none"
+            >
+              <option value="">Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Non-Binary">Non-Binary</option>
+            </select>
+            {errors.gender && (
+              <span className="text-white">Gender field is required</span>
             )}
           </div>
           <div className="form-control">
@@ -124,7 +142,7 @@ const RegisterComponent = () => {
               name="email"
               {...register("email", { required: true })}
               placeholder="Your Email"
-              className="bg-white p-1"
+              className="bg-white p-1 outline-none"
             />
             {errors.email && (
               <span className="text-white">Email field is required</span>
@@ -144,7 +162,7 @@ const RegisterComponent = () => {
                   pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                 })}
                 placeholder="Password"
-                className=" w-full bg-white focus:outline-none"
+                className=" w-full bg-white outline-none"
               />
               <div
                 className="cursor-pointer"
@@ -178,7 +196,7 @@ const RegisterComponent = () => {
                     value === watch("password") || "Password do not match",
                 })}
                 placeholder="Confirm Password"
-                className="w-full bg-white focus:outline-none"
+                className="w-full bg-white outline-none"
               />
               <div
                 className="cursor-pointer"
