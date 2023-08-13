@@ -50,6 +50,9 @@ const RegisterComponent = () => {
                   name: data.name,
                   email: data.email,
                   image: imageUrl,
+                  gender: data.gender,
+                  age: "",
+                  profession: "",
                 };
                 saveUser(userInfo).then((data) => {
                   if (data.insertedId) {
@@ -124,10 +127,10 @@ const RegisterComponent = () => {
               {...register("gender", { required: true })}
               className="bg-white p-1 outline-none"
             >
-              <option value="">Select</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Non-Binary">Non-Binary</option>
+              <option disabled>Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="non-binary">Non-Binary</option>
             </select>
             {errors.gender && (
               <span className="text-white">Gender field is required</span>

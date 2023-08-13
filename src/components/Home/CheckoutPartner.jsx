@@ -5,11 +5,11 @@ import { BsSearchHeart } from "react-icons/bs";
 const CheckoutPartner = () => {
   const genders = [
     {
-      label: "Man",
-      value: "man",
+      label: "Male",
+      value: "male",
       selected: true,
     },
-    { label: "Woman", value: "woman" },
+    { label: "Female", value: "female" },
     { label: "Non-Binary", value: "non-binary" },
   ];
   const minAges = [
