@@ -13,9 +13,10 @@ const SocialLogin = () => {
     googleSignIn()
       .then((result) => {
         const loggedUser = result.user;
+        console.log("from google", loggedUser);
         setUser(loggedUser);
         const userInfo = {
-          name: loggedUser.name,
+          name: loggedUser.displayName,
           email: loggedUser.email,
           image: loggedUser.photoURL,
           gender: "",
@@ -24,7 +25,6 @@ const SocialLogin = () => {
         };
         saveUser(userInfo).then((data) => {
           if (data.insertedId) {
-            console.log("from google", loggedUser);
             toast.success(
               `${
                 loggedUser?.displayName || "Unknown user"
