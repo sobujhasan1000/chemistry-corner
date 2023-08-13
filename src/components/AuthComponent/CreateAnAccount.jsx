@@ -57,7 +57,7 @@ const Register = () => {
               </TabList>
 
               <TabPanel>
-                <RegisterComponent close={close}></RegisterComponent>
+                <RegisterComponent></RegisterComponent>
               </TabPanel>
               <TabPanel>
                 <LoginComponent close={close}></LoginComponent>

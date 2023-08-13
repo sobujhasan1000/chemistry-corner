@@ -5,15 +5,19 @@ import SocialLogin from "../shared/SocialLogin";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
-const RegisterComponent = ({ close }) => {
-  const { createUser, updateUserProfile, loading, setLoading, setUser } =
+import { saveUser } from "../../api/auth";
+const RegisterComponent = () => {
+  const { createUser, updateUserProfile, loading, setLoading, setUser, user } =
     useContext(AuthContext);
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
@@ -36,16 +40,24 @@ const RegisterComponent = ({ close }) => {
         createUser(data.email, data.password)
           .then(() => {
             updateUserProfile(data.name, imageUrl)
-              .then((result) => {
-                const user = result?.user;
+              .then(() => {
                 setUser({
                   ...user,
                   displayName: data.name,
                   photoURL: imageUrl,
                 });
-                setLoading(false);
-                toast.success(`account created successfully`);
-                window.my_modal_3.close();
+                const userInfo = {
+                  name: data.name,
+                  email: data.email,
+                  image: imageUrl,
+                };
+                saveUser(userInfo).then((data) => {
+                  if (data.insertedId) {
+                    setLoading(false);
+                    toast.success(`account created successfully`);
+                    reset();
+                  }
+                });
               })
               .catch((error) => {
                 console.log(error.message);
@@ -97,6 +109,7 @@ const RegisterComponent = ({ close }) => {
               {...register("photo", { required: true })}
               placeholder="Your Photo URL"
               className="bg-white p-1 outline-none"
+              accept="image/*"
             />
             {errors.photoURL && (
               <span className="text-white">This field is required</span>
