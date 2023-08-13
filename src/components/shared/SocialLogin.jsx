@@ -41,30 +41,28 @@ const SocialLogin = () => {
       });
   };
   return (
-    <div>
+    <div className="flex flex-row items-center justify-center">
       <div
         onClick={handleGoogleSignIn}
-        className="flex justify-center items-center btn btn-ghost gap-1"
+        className="flex justify-center items-center btn btn-ghost"
       >
         {loading ? (
           <TbFidgetSpinner className="m-auto animate-spin" size={24} />
         ) : (
           <>
-            <FcGoogle className="text-4xl" />
-            <span>Google Login</span>
+            <FcGoogle className="text-4xl  bg-white rounded " />
           </>
         )}
       </div>
       <div
         onClick={handleFacebookSignIn}
-        className="flex justify-center items-center btn btn-ghost gap-1"
+        className="flex justify-center items-center btn btn-ghost"
       >
         {loading ? (
           <TbFidgetSpinner className="m-auto animate-spin" size={24} />
         ) : (
           <>
-            <FaFacebookSquare className="text-4xl" />
-            <span>Facebook Login</span>
+            <FaFacebookSquare className="text-4xl text-blue-700 bg-white rounded " />
           </>
         )}
       </div>
