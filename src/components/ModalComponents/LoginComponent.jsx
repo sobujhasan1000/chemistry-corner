@@ -5,6 +5,7 @@ import SocialLogin from "../shared/SocialLogin";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 const LoginComponent = ({ close }) => {
   const { loading, setLoading, signIn } = useContext(AuthContext);
@@ -87,6 +88,14 @@ const LoginComponent = ({ close }) => {
                   "Password field is required"}
               </span>
             )}
+          </div>
+          <div>
+            <p className="text-white">
+              Forgot Password? Please{" "}
+              <Link to="#" className="text-blue-300 underline">
+                Reset.
+              </Link>{" "}
+            </p>
           </div>
         </div>
         <div className="flex items-center justify-start">

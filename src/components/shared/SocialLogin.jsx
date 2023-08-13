@@ -15,7 +15,7 @@ const SocialLogin = () => {
         const loggedUser = result.user;
         setUser(loggedUser);
         const userInfo = {
-          name: loggedUser.name,
+          name: loggedUser.displayName,
           email: loggedUser.email,
           image: loggedUser.photoURL,
           gender: "",
