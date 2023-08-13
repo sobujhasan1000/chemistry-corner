@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import loveBg from '../../assets/loveBg.jpg'
+import loveBg from "../../assets/loveBg.jpg";
 import { FreeMode, Pagination } from "swiper/modules";
 import Container from "../shared/Container";
 import Heading from "../shared/Heading";
@@ -10,14 +10,13 @@ import Heading from "../shared/Heading";
 const LoveStories = () => {
   return (
     <div style={{ backgroundImage: `url(${loveBg})` }}>
-        <Heading
-            title={"Chemistry Corner's Love Stories"}
-            subTitle={
-              "We’re incredibly happy & proud to have sparked thousands of encounters & beautiful love stories. So please share your story with us! We need our a daily love fix."
-            }
-          />
+      <Heading
+        title={"Chemistry Corner's Love Stories"}
+        subTitle={
+          "We’re incredibly happy & proud to have sparked thousands of encounters & beautiful love stories. So please share your story with us! We need our a daily love fix."
+        }
+      />
       <Container>
-      
         <Swiper
           slidesPerView={1}
           spaceBetween={50}
