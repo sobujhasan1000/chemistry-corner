@@ -13,9 +13,8 @@ const LoveStories = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/loveStories")
-      .then((response) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/loveStories`)
+      .then(response => {
         setData(response.data);
       })
       .catch((error) => {
