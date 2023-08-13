@@ -12,9 +12,11 @@ import img3 from "/slider-3.jpg";
 import img4 from "/slider-4.jpg";
 
 import CreateAnAccount from "../AuthComponent/CreateAnAccount";
-
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Banner = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div className="relative">
       <Swiper
@@ -50,7 +52,7 @@ const Banner = () => {
           </div>
         </SwiperSlide>
       </Swiper>
-      <CreateAnAccount></CreateAnAccount>
+      {!user && <CreateAnAccount></CreateAnAccount>}
     </div>
   );
 };

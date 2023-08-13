@@ -30,6 +30,18 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
+        <NavLink to="/members">Members</NavLink>
+      </li>
+      <li>
+        <NavLink to="/countries">Countries</NavLink>
+      </li>
+      <li>
+        <NavLink to="/all-world">All World</NavLink>
+      </li>
+      <li>
+        <NavLink to="/blog">Blog</NavLink>
+      </li>
+      <li>
         <NavLink to="/about">About Us</NavLink>
       </li>
       <li>
@@ -75,15 +87,35 @@ const Navbar = () => {
             </div>
             {isMenuOpen ? (
               <div>
-                <img src={userImage} alt="User Demo Image" className="w-10" />
+                {user ? (
+                  <img
+                    src={user.photoURL}
+                    alt="User Image"
+                    className="w-10 h-10 rounded-full"
+                  />
+                ) : (
+                  <img
+                    src={userImage}
+                    alt="User Image"
+                    className="w-10 h-10 rounded-full"
+                  />
+                )}
               </div>
             ) : (
               <div onClick={handleUserMenuToggle}>
-                <img
-                  src={userImage}
-                  alt="User Demo Image"
-                  className="w-10 cursor-pointer"
-                />
+                {user ? (
+                  <img
+                    src={user.photoURL}
+                    alt="User Image"
+                    className="w-10 h-10 cursor-pointer  rounded-full"
+                  />
+                ) : (
+                  <img
+                    src={userImage}
+                    alt="User Image"
+                    className="w-10 h-10 cursor-pointer  rounded-full"
+                  />
+                )}
               </div>
             )}
 
