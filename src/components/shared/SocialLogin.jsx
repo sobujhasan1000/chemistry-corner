@@ -4,6 +4,7 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
+import { saveUser } from "../../api/auth";
 
 const SocialLogin = () => {
   const { setUser, facebookSignIn, googleSignIn, setLoading, loading } =
@@ -13,10 +14,25 @@ const SocialLogin = () => {
       .then((result) => {
         const loggedUser = result.user;
         setUser(loggedUser);
-        console.log("from google", loggedUser);
-        toast.success(
-          `${loggedUser?.displayName || "Unknown user"} logged in successfully`
-        );
+        const userInfo = {
+          name: loggedUser.name,
+          email: loggedUser.email,
+          image: loggedUser.photoURL,
+          gender: "",
+          age: "",
+          profession: "",
+        };
+        saveUser(userInfo).then((data) => {
+          if (data.insertedId) {
+            console.log("from google", loggedUser);
+            toast.success(
+              `${
+                loggedUser?.displayName || "Unknown user"
+              } logged in successfully`
+            );
+            setLoading(false);
+          }
+        });
       })
       .catch((error) => {
         console.log(error.message);
