@@ -70,7 +70,6 @@ const LoginComponent = ({ close }) => {
                 {...register("password", {
                   required: true,
                   minLength: 6,
-                  pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                 })}
                 placeholder="Password"
                 className=" w-full bg-white focus:outline-none"
@@ -86,10 +85,6 @@ const LoginComponent = ({ close }) => {
               <span className="text-white">
                 {errors.password.type === "required" &&
                   "Password field is required"}
-                {errors.password.type === "minLength" &&
-                  "Password must be at least 6 characters long"}
-                {errors.password.type === "pattern" &&
-                  "Password must contain at least one uppercase, one lowercase letter, one number and one special character"}
               </span>
             )}
           </div>

@@ -8,11 +8,14 @@ const Register = () => {
     <div className=" bg-[#ee236e] w-2/3 md:w-96 p-2 absolute top-4 md:top-[25%] left-10 md:left-40 right-0 md:right-0 z-20">
       <div className="bg-[#ED0058] px-2 md:px-4 py-3 md:py-6">
         <h1 className="text-base md:text-xl text-white mb-4">
-          Create an Account
+          Create an Account / Login
         </h1>
         <p className="text-xs md:text-sm text-white mb-3">
-          Please Register to visit all features of Chemistry Corner. Just Click
-          the Sign Up button to open Sign up modal.
+          Please Register / Log In to visit all features of Chemistry Corner.{" "}
+          <span className="italic">
+            Just Click the Sign Up button to open{" "}
+            <strong className="underline">Sign up and Login</strong> modal.
+          </span>
         </p>
 
         <div>
