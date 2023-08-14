@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Container from "../shared/Container";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -9,31 +9,37 @@ const Members = () => {
   const [males, setMales] = useState([]);
   const [females, setFemales] = useState([]);
   const [binaries, setBinaries] = useState([]);
+  const searchRef = useRef(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/male")
+    fetch(`http://localhost:5000/male?search=${search}`)
       .then((res) => res.json())
       .then((result) => {
         setMales(result);
       });
-  }, []);
+  }, [search]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/female")
+    fetch(`http://localhost:5000/female?search=${search}`)
       .then((res) => res.json())
       .then((result) => {
         setFemales(result);
       });
-  }, []);
+    }, [search]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/non-binary")
+    fetch(`http://localhost:5000/non-binary?search=${search}`)
       .then((res) => res.json())
       .then((result) => {
         setBinaries(result);
       });
-  }, []);
+    }, [search]);
 
+  const handleSearch = () => {
+    console.log(searchRef.current.value);
+    setSearch(searchRef.current.value);
+}
   return (
     <div style={{ backgroundImage: `url(${membersBg})` }}>
       <Container>
@@ -57,15 +63,16 @@ const Members = () => {
                   />
                 </svg>
                 <input
+                  ref={searchRef}
                   className="bg-gray-100 outline-none"
                   type="text"
                   placeholder="Search by name ..."
                 />
               </div>
 
-              <div className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
-                <span>Search</span>
-              </div>
+              <button onClick={handleSearch} className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
+                Search
+              </button>
             </div>
           </div>
         </div>
