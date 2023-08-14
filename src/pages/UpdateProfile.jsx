@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../providers/AuthProvider";
+import { useContext } from "react";
 import { FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
-const Profile = () => {
+const UpdateProfile = () => {
   const { user } = useContext(AuthContext);
-
   return (
     <div className="bg-gray-100 min-h-screen py-10">
       <div className="container mx-auto px-4 md:px-0">
@@ -18,6 +16,12 @@ const Profile = () => {
                   src={user.photoURL}
                   alt=""
                 />
+                <div className="my-3">
+                  <label htmlFor="photoURL" className="text-black">
+                    Upload Photo
+                  </label>
+                  <input type="file" name="photoURL" className="mt-1" />
+                </div>
               </div>
               <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
                 {user.displayName}
@@ -45,75 +49,81 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="md:w-9/12 p-4 relative">
+          <div className="md:w-9/12 p-4 ">
             <div className="bg-white p-3 shadow-sm rounded-sm w-full">
               <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                 <FaUser />
-                <span className="tracking-wide">About</span>
+                <span className="tracking-wide">Update Profile</span>
               </div>
               <div className="text-gray-700">
-                <div className="grid md:grid-cols-2 text-sm">
+                <div className="grid md:grid-cols-2 text-sm gap-2">
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Name</div>
-                    <div className="px-4 py-2">Jane</div>
+                    <input
+                      type="text"
+                      name="name"
+                      className="px-3 py-1 bg-white border border-[#ee236e]"
+                    />
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Gender</div>
-                    <div className="px-4 py-2">Female</div>
+                    <select
+                      name="gender"
+                      className="px-3 py-1 bg-white border border-[#ee236e]"
+                    >
+                      <option value="" disabled>
+                        Select
+                      </option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="non-binary">Non-Binary</option>
+                    </select>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Contact No.</div>
-                    <div className="px-4 py-2">+11 998001001</div>
+                    <input
+                      type="text"
+                      name="contact"
+                      className="px-3 py-1 bg-white border border-[#ee236e]"
+                    />
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">
                       Current Address
                     </div>
-                    <div className="px-4 py-2">
-                      Beech Creek, PA, Pennsylvania
-                    </div>
+                    <input
+                      type="text"
+                      className="px-3 py-1 bg-white border border-[#ee236e]"
+                    />
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">
                       Permanent Address
                     </div>
-                    <div className="px-4 py-2">
-                      Arlington Heights, IL, Illinois
-                    </div>
+                    <input
+                      type="text"
+                      className="px-3 py-1 bg-white border border-[#ee236e]"
+                    />
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Email</div>
-                    <div className="px-4 py-2">
-                      <a
-                        className="text-blue-800"
-                        href="mailto:jane@example.com"
-                      >
-                        shipan@example.com
-                      </a>
-                    </div>
+                    <input
+                      type="text"
+                      className="px-3 py-1 bg-white border border-[#ee236e]"
+                    />
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Birthday</div>
-                    <div className="px-4 py-2">Feb 06, 1998</div>
+                    <input
+                      type="text"
+                      className="px-3 py-1 bg-white border border-[#ee236e]"
+                    />
                   </div>
                 </div>
               </div>
-              <Link to="/update-profile">
-                <button className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-                  Edit Profile
-                </button>
-              </Link>
-            </div>
-
-            <div className="invisible bg-white absolute inset-0 my-4 w-full h-96 flex flex-col items-center justify-center gap-5 bg-opacity-90 backdrop-blur-sm">
-              <h1 className="text-black text-xl font-semibold">
-                Please Edit your profile to see your details.
-              </h1>
-              <Link to="/update-profile">
-                <button className="bg-[#ee236e] text-white px-5 py-2">
-                  Edit Profile
-                </button>
-              </Link>
+              <button className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                Update Profile
+              </button>
             </div>
           </div>
         </div>
@@ -122,4 +132,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default UpdateProfile;
