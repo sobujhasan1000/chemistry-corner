@@ -27,7 +27,7 @@ function App() {
       ) : (
         <div>
           <HelmetProvider>
-            <RouterProvider router={router} />
+          <RouterProvider router={router} />
           </HelmetProvider>
         </div>
       )}
