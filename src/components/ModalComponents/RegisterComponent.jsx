@@ -6,12 +6,18 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { saveUser } from "../../api/auth";
+import { Link } from "react-router-dom";
 const RegisterComponent = () => {
   const { createUser, updateUserProfile, loading, setLoading, setUser, user } =
     useContext(AuthContext);
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   const {
     register,
@@ -217,8 +223,26 @@ const RegisterComponent = () => {
               </span>
             )}
           </div>
+          <div>
+            <input
+              type="checkbox"
+              name="checked"
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+            />
+            <span className="ml-3 text-white">
+              I Accept{" "}
+              <Link to="#" className="text-blue-300 underline">
+                Terms & Conditions.
+              </Link>{" "}
+            </span>
+          </div>
         </div>
-        <div className="flex items-center justify-start">
+        <div
+          className={`flex items-center justify-start ${
+            !isChecked ? "blur-sm" : ""
+          }`}
+        >
           <div className="flex items-center gap-2 bg-[#e84681]  text-white px-3 md:px-5 py-2 cursor-pointer mt-5">
             {loading ? (
               <TbFidgetSpinner className="m-auto animate-spin" size={24} />
@@ -229,6 +253,7 @@ const RegisterComponent = () => {
                   type="submit"
                   value="Sign Up"
                   className="cursor-pointer"
+                  disabled={!isChecked}
                 />
               </>
             )}
