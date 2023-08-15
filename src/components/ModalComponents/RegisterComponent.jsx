@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { saveUser } from "../../api/auth";
 import { Link } from "react-router-dom";
+import { imageUpload } from "../../api/utils";
 const RegisterComponent = () => {
   const { createUser, updateUserProfile, loading, setLoading, setUser, user } =
     useContext(AuthContext);
@@ -31,55 +32,45 @@ const RegisterComponent = () => {
     setLoading(true);
     // photo upload
     const image = data.photo[0];
-    const formData = new FormData();
-    formData.append("image", image);
-    const url = `https://api.imgbb.com/1/upload?key=${
-      import.meta.env.VITE_IMGBB_KEY
-    }`;
-    fetch(url, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((imageData) => {
-        const imageUrl = imageData?.data?.display_url;
-        createUser(data.email, data.password)
-          .then(() => {
-            updateUserProfile(data.name, imageUrl)
-              .then(() => {
-                setUser({
-                  ...user,
-                  displayName: data.name,
-                  photoURL: imageUrl,
-                });
-                const userInfo = {
-                  name: data.name,
-                  email: data.email,
-                  image: imageUrl,
-                  gender: data.gender,
-                  age: "",
-                  profession: "",
-                };
-                saveUser(userInfo).then((data) => {
-                  if (data.insertedId) {
-                    setLoading(false);
-                    toast.success(`account created successfully`);
-                    reset();
-                  }
-                });
-              })
-              .catch((error) => {
-                console.log(error.message);
-                toast.error(error.message);
-                setLoading(false);
+    imageUpload(image).then((imageData) => {
+      const imageUrl = imageData?.data?.display_url;
+      createUser(data.email, data.password)
+        .then(() => {
+          updateUserProfile(data.name, imageUrl)
+            .then(() => {
+              setUser({
+                ...user,
+                displayName: data.name,
+                photoURL: imageUrl,
               });
-          })
-          .catch((error) => {
-            console.log(error.message);
-            toast.error(error.message);
-            setLoading(false);
-          });
-      });
+              const userInfo = {
+                name: data.name,
+                email: data.email,
+                image: imageUrl,
+                gender: data.gender,
+                age: "",
+                profession: "",
+              };
+              saveUser(userInfo).then((data) => {
+                if (data.insertedId) {
+                  setLoading(false);
+                  toast.success(`account created successfully`);
+                  reset();
+                }
+              });
+            })
+            .catch((error) => {
+              console.log(error.message);
+              toast.error(error.message);
+              setLoading(false);
+            });
+        })
+        .catch((error) => {
+          console.log(error.message);
+          toast.error(error.message);
+          setLoading(false);
+        });
+    });
   };
 
   const togglePasswordVisibility = () => {
