@@ -3,6 +3,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useSingleUser, { userReducer } from "../Hooks/useSingleUser";
+import siteLoader from "/ccLoader.gif";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -12,10 +13,12 @@ const Profile = () => {
   const { image, name, gender, email } = singleUser;
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="w-full h-screen flex items-center justify-center">
+        <img src={siteLoader} alt="Website Loader" />
+      </div>
+    );
   }
-
-  console.log("first", singleUser);
 
   const isProfileIncomplete = !image || !name || !gender || !email;
 
