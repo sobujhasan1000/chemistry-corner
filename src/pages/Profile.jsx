@@ -2,9 +2,22 @@ import React, { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useSingleUser, { userReducer } from "../Hooks/useSingleUser";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
+
+  const [singleUser, loading] = useSingleUser(user?.email);
+
+  const { image, name, gender, email } = singleUser;
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  console.log("first", singleUser);
+
+  const isProfileIncomplete = !image || !name || !gender || !email;
 
   return (
     <div className="bg-gray-100 min-h-screen py-10">
@@ -13,14 +26,10 @@ const Profile = () => {
           <div className="bg-gray-100 md:w-3/12 p-4">
             <div className="bg-white p-3 border-t-4 border-green-400 rounded shadow-sm">
               <div className="overflow-hidden">
-                <img
-                  className="h-auto w-full mx-auto"
-                  src={user.photoURL}
-                  alt=""
-                />
+                <img className="h-auto w-full mx-auto" src={image} alt="" />
               </div>
               <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
-                {user.displayName}
+                {name}
               </h1>
               <h1 className="text-gray-900 leading-8 text-base my-1">Bio</h1>
               <p className="text-sm text-gray-500 hover:text-gray-600 leading-6">
@@ -45,7 +54,7 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="md:w-9/12 p-4 relative">
+          <div className="md:w-9/12 md:p-4 relative">
             <div className="bg-white p-3 shadow-sm rounded-sm w-full">
               <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                 <FaUser />
@@ -55,11 +64,11 @@ const Profile = () => {
                 <div className="grid md:grid-cols-2 text-sm">
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Name</div>
-                    <div className="px-4 py-2">Jane</div>
+                    <div className="px-4 py-2">{name}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Gender</div>
-                    <div className="px-4 py-2">Female</div>
+                    <div className="px-4 py-2">{gender}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Contact No.</div>
@@ -84,16 +93,13 @@ const Profile = () => {
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Email</div>
                     <div className="px-4 py-2">
-                      <a
-                        className="text-blue-800"
-                        href="mailto:jane@example.com"
-                      >
-                        shipan@example.com
+                      <a className="text-blue-800" href={`mailto:${email}`}>
+                        {email}
                       </a>
                     </div>
                   </div>
                   <div className="grid grid-cols-2">
-                    <div className="px-4 py-2 font-semibold">Birthday</div>
+                    <div className="px-4 py-2 font-semibold">Date of Birth</div>
                     <div className="px-4 py-2">Feb 06, 1998</div>
                   </div>
                 </div>
@@ -104,17 +110,18 @@ const Profile = () => {
                 </button>
               </Link>
             </div>
-
-            <div className="invisible bg-white absolute inset-0 my-4 w-full h-96 flex flex-col items-center justify-center gap-5 bg-opacity-90 backdrop-blur-sm">
-              <h1 className="text-black text-xl font-semibold">
-                Please Edit your profile to see your details.
-              </h1>
-              <Link to="/update-profile">
-                <button className="bg-[#ee236e] text-white px-5 py-2">
-                  Edit Profile
-                </button>
-              </Link>
-            </div>
+            {isProfileIncomplete && (
+              <div className=" bg-white absolute inset-0 my-4 w-full h-96 flex flex-col items-center justify-center gap-5 bg-opacity-90 backdrop-blur-sm">
+                <h1 className="text-black text-xl font-semibold text-center md:text-left">
+                  Please Edit your profile to see your details.
+                </h1>
+                <Link to="/update-profile">
+                  <button className="bg-[#ee236e] text-white px-5 py-2">
+                    Edit Profile
+                  </button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
