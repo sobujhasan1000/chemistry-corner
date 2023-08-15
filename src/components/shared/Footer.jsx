@@ -43,9 +43,11 @@ const Footer = () => {
               <h1 className="text-xl">About Us</h1>
               <div className="flex flex-col items-center md:items-start gap-2">
                 <p className="text-sm max-w-xs text-center md:text-start">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Nisi, quasi ut! Dicta, amet perferendis! Cupiditate labore
-                  nemo cum eligendi explicabo.
+                  At Chemistry Corner, we believe that meaningful connections
+                  are the cornerstone of a fulfilling life. Our platform is more
+                  than just another online dating website – it's a community
+                  dedicated to helping individuals discover genuine
+                  relationships that resonate on a deeper level.
                 </p>
                 <p className="flex items-center gap-2">
                   <HiOutlineMail /> info@chemistrycorner.com
@@ -73,7 +75,7 @@ const Footer = () => {
               <h1 className="text-xl">Navigation</h1>
               <ul className="flex flex-col items-center md:items-start gap-3 text-sm">
                 <li>
-                  <Link to="#">About Us</Link>
+                  <Link to="/about-us">About Us</Link>
                 </li>
                 <li>
                   <Link to="#">Our Team</Link>
