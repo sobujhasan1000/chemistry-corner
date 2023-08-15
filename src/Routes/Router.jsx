@@ -5,6 +5,8 @@ import MemberShip from "../pages/membership/MemberShip";
 import Members from "../components/Members/Members";
 import Profile from "../pages/Profile";
 import UpdateProfile from "../pages/UpdateProfile";
+import AboutUs from "../pages/AboutUs";
+import ContactUs from "../pages/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -17,11 +19,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/membership",
-        element: <MemberShip></MemberShip>
+        element: <MemberShip></MemberShip>,
       },
-       { path: "/members",
-        element: <Members></Members>,
-      },
+      { path: "/members", element: <Members></Members> },
       {
         path: "/profile",
         element: <Profile></Profile>,
@@ -29,6 +29,14 @@ const router = createBrowserRouter([
       {
         path: "/update-profile",
         element: <UpdateProfile></UpdateProfile>,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs></ContactUs>,
       },
     ],
   },
