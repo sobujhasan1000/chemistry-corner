@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
+import Container from '../../components/shared/Container';
 
 const MemberShip = () => {
     const packages=[
@@ -29,8 +30,8 @@ const MemberShip = () => {
         }
       ]
     return (
-        <div className='my-10 bg-[#f1f7fe]'>
-            <div className='text-center bg-[#f1f7fe] my-6'>
+        <Container className='my-10 bg-[#bbd2ec] text-black'>
+            <div className='text-center bg-[#f1f7fe] py-6'>
                 <h1 className='text-[40px] font-bold'>Membership Levels</h1>
             <p>Our dating platform is like a breath of fresh air. Clean and trendy design with ready <br /> to use features we are sure you will love.</p>
             </div>
@@ -51,7 +52,7 @@ const MemberShip = () => {
                     </div>
                 ))}
             </div>
-        </div>
+        </Container>
     );
 };
 
