@@ -26,7 +26,7 @@ const Members = () => {
       .then((result) => {
         setFemales(result);
       });
-    }, [search]);
+  }, [search]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/non-binary?search=${search}`)
@@ -34,12 +34,12 @@ const Members = () => {
       .then((result) => {
         setBinaries(result);
       });
-    }, [search]);
+  }, [search]);
 
   const handleSearch = () => {
     console.log(searchRef.current.value);
     setSearch(searchRef.current.value);
-}
+  };
   return (
     <div style={{ backgroundImage: `url(${membersBg})` }}>
       <Container>
@@ -70,7 +70,10 @@ const Members = () => {
                 />
               </div>
 
-              <button onClick={handleSearch} className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
+              <button
+                onClick={handleSearch}
+                className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer"
+              >
                 Search
               </button>
             </div>
@@ -97,52 +100,11 @@ const Members = () => {
                     className="card w-96 rounded-3xl shadow-xl flex justify-center items-center mx-auto my-16 "
                     key={male._id}
                   >
-                    <div
-                      className="
-                      p-1
-                      rounded-3xl
-            transform-gpu
-            transition-all
-            selection:bg-sky-100
-            h-full
-            grid
-            place-items-center
-            bg-gradient-to-tl
-            to-[#FFD3A5]
-            from-[#FD6585]
-            dark:selection:bg-white/10
-        "
-                    >
-                      <div
-                        className="
-                bg-white
-                px-12
-                pt-16
-                pb-14
-                shadow-2xl shadow-black/[0.2]
-                rounded-3xl
-                text-center
-                flex flex-col
-                justify-center
-                max-w-md
-                transition-colors
-                dark:bg-neutral-800
-            "
-                      >
+                    <div className="p-1 rounded-3xl transform-gpu transition-all selection:bg-sky-100 h-full grid place-items-center bg-gradient-to-tl to-[#FFD3A5] from-[#FD6585] dark:selection:bg-white/10">
+                      <div className=" bg-white px-12 pt-16 pb-14 shadow-2xl shadow-black/[0.2] rounded-3xl text-center flex flex-col justify-center max-w-md transition-colors dark:bg-neutral-800">
                         <div className="select-none">
                           <img
                             src={male.photo}
-                            className="
-                        shadow-2xl shadow-black/[0.2]
-                        rounded-3xl
-                        h-60
-                        w-60
-                        mx-auto
-                        -mt-40
-                        transform-gpu
-                        transition-all
-                        hover:scale-125
-                    "
                             style={{ userSelect: "none" }}
                             alt="avatar"
                           />
@@ -183,52 +145,12 @@ const Members = () => {
                     className="card w-96 rounded-3xl shadow-xl flex justify-center items-center mx-auto my-16 "
                     key={female._id}
                   >
-                    <div
-                      className="
-                      p-1
-                      rounded-3xl
-            transform-gpu
-            transition-all
-            selection:bg-sky-100
-            h-full
-            grid
-            place-items-center
-            bg-gradient-to-tl
-            to-[#FFD3A5]
-            from-[#FD6585]
-            dark:selection:bg-white/10
-        "
-                    >
-                      <div
-                        className="
-                bg-white
-                px-12
-                pt-16
-                pb-14
-                shadow-2xl shadow-black/[0.2]
-                rounded-3xl
-                text-center
-                flex flex-col
-                justify-center
-                max-w-md
-                transition-colors
-                dark:bg-neutral-800
-            "
-                      >
+                    <div className="p-1 rounded-3xl transform-gpu transition-all selection:bg-sky-100 h-full grid place-items-center bg-gradient-to-tl to-[#FFD3A5] from-[#FD6585] dark:selection:bg-white/10">
+                      <div className="bg-white px-12 pt-16 pb-14 shadow-2xl shadow-black/[0.2] rounded-3xl text-center flex flex-col justify-center max-w-md transition-colors dark:bg-neutral-800">
                         <div className="select-none">
                           <img
                             src={female.photo}
-                            className="
-                        shadow-2xl shadow-black/[0.2]
-                        rounded-3xl
-                        h-60
-                        w-60
-                        mx-auto
-                        -mt-40
-                        transform-gpu
-                        transition-all
-                        hover:scale-125
-                    "
+                            className="shadow-2xl shadow-black/[0.2] rounded-3xl h-60 w-60 mx-auto -mt-40 transform-gpu transition-all hover:scale-125"
                             style={{ userSelect: "none" }}
                             alt="avatar"
                           />
@@ -269,52 +191,12 @@ const Members = () => {
                     className="card w-96 rounded-3xl shadow-xl flex justify-center items-center mx-auto my-16 "
                     key={binary._id}
                   >
-                    <div
-                      className="
-                      p-1
-                      rounded-3xl
-            transform-gpu
-            transition-all
-            selection:bg-sky-100
-            h-full
-            grid
-            place-items-center
-            bg-gradient-to-tl
-            to-[#FFD3A5]
-            from-[#FD6585]
-            dark:selection:bg-white/10
-        "
-                    >
-                      <div
-                        className="
-                bg-white
-                px-12
-                pt-16
-                pb-14
-                shadow-2xl shadow-black/[0.2]
-                rounded-3xl
-                text-center
-                flex flex-col
-                justify-center
-                max-w-md
-                transition-colors
-                dark:bg-neutral-800
-            "
-                      >
+                    <div className="p-1 rounded-3xl transform-gpu transition-all selection:bg-sky-100 h-full grid place-items-center bg-gradient-to-tl to-[#FFD3A5] from-[#FD6585] dark:selection:bg-white/10">
+                      <div className="bg-white px-12 pt-16 pb-14 shadow-2xl shadow-black/[0.2] rounded-3xl text-center flex flex-col justify-center max-w-md transition-colors dark:bg-neutral-800">
                         <div className="select-none">
                           <img
                             src={binary.photo}
-                            className="
-                        shadow-2xl shadow-black/[0.2]
-                        rounded-3xl
-                        h-60
-                        w-60
-                        mx-auto
-                        -mt-40
-                        transform-gpu
-                        transition-all
-                        hover:scale-125
-                    "
+                            className=" shadow-2xl shadow-black/[0.2] rounded-3xl h-60 w-60 mx-auto -mt-40 transform-gpu transition-all hover:scale-125"
                             style={{ userSelect: "none" }}
                             alt="avatar"
                           />

@@ -8,7 +8,8 @@ import { TbFidgetSpinner } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 const LoginComponent = ({ close }) => {
-  const { loading, setLoading, signIn } = useContext(AuthContext);
+  const { loading, setLoading, signIn, resetPassword } =
+    useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,

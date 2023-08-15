@@ -13,7 +13,7 @@ const UpdateProfile = () => {
               <div className="overflow-hidden">
                 <img
                   className="h-auto w-full mx-auto"
-                  src={user.photoURL}
+                  src={user?.photoURL}
                   alt=""
                 />
                 <div className="my-3">
@@ -24,7 +24,7 @@ const UpdateProfile = () => {
                 </div>
               </div>
               <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
-                {user.displayName}
+                {user?.displayName}
               </h1>
               <h1 className="text-gray-900 leading-8 text-base my-1">Bio</h1>
               <p className="text-sm text-gray-500 hover:text-gray-600 leading-6">
