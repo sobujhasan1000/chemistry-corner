@@ -1,31 +1,47 @@
 import { useContext } from "react";
 import { FaUser } from "react-icons/fa";
 import { AuthContext } from "../providers/AuthProvider";
+import { useForm } from "react-hook-form";
+import useSingleUser from "../Hooks/useSingleUser";
 
 const UpdateProfile = () => {
   const { user } = useContext(AuthContext);
+  const [singleUser, loading] = useSingleUser(user?.email);
+  const { image, name, gender, email } = singleUser;
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="bg-gray-100 min-h-screen py-10">
         <div className="container mx-auto px-4 md:px-0">
           <div className="flex flex-col md:flex-row gap-6 md:gap-20">
             <div className="bg-gray-100 md:w-3/12 p-4">
               <div className="bg-white p-3 border-t-4 border-green-400 rounded shadow-sm">
                 <div className="overflow-hidden">
-                  <img
-                    className="h-auto w-full mx-auto"
-                    src={user?.photoURL}
-                    alt=""
-                  />
+                  <img className="h-auto w-full mx-auto" src={image} alt="" />
                   <div className="my-3">
                     <label htmlFor="photoURL" className="text-black">
                       Upload Photo
                     </label>
-                    <input type="file" name="photoURL" className="mt-1" />
+                    <input
+                      type="file"
+                      name="photo"
+                      {...register("photo")}
+                      className="mt-1"
+                    />
                   </div>
                 </div>
                 <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
-                  {user?.displayName}
+                  {name}
                 </h1>
                 <h1 className="text-gray-900 leading-8 text-base my-1">Bio</h1>
                 <p className="text-sm text-gray-500 hover:text-gray-600 leading-6">
@@ -63,6 +79,8 @@ const UpdateProfile = () => {
                       <input
                         type="text"
                         name="name"
+                        defaultValue={name}
+                        {...register("name")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                       />
                     </div>
@@ -70,6 +88,8 @@ const UpdateProfile = () => {
                       <div className="px-4 py-2 font-semibold">Gender</div>
                       <select
                         name="gender"
+                        defaultValue={gender}
+                        {...register("gender")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                       >
                         <option value="" disabled>
@@ -109,8 +129,12 @@ const UpdateProfile = () => {
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">Email</div>
                       <input
-                        type="text"
-                        className="px-3 py-1 bg-white border border-[#ee236e]"
+                        type="email"
+                        name="email"
+                        defaultValue={email}
+                        disabled
+                        className="px-3 py-1 bg-white border border-[#ee236e] cursor-not-allowed"
+                        title="Don't Need to update email"
                       />
                     </div>
                     <div className="grid grid-cols-2">
@@ -122,9 +146,11 @@ const UpdateProfile = () => {
                     </div>
                   </div>
                 </div>
-                <button className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-                  Update Profile
-                </button>
+                <input
+                  type="submit"
+                  className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 cursor-pointer"
+                  value="Update Profile"
+                />
               </div>
             </div>
           </div>
