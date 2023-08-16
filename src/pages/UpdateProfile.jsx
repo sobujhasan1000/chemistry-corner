@@ -44,11 +44,14 @@ const UpdateProfile = () => {
                   {name}
                 </h1>
                 <h1 className="text-gray-900 leading-8 text-base my-1">Bio</h1>
-                <p className="text-sm text-gray-500 hover:text-gray-600 leading-6">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Reprehenderit, eligendi dolorum sequi illum qui unde
-                  aspernatur non deserunt
-                </p>
+                <textarea
+                  name="bio"
+                  className="bg-white x-3 py-1 border border-[#ee236e]"
+                  cols="35"
+                  rows="5"
+                  {...register("bio")}
+                ></textarea>
+
                 <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                   <li className="flex items-center py-3">
                     <span>Status</span>
@@ -105,24 +108,61 @@ const UpdateProfile = () => {
                       <input
                         type="text"
                         name="contact"
+                        {...register("contact")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                       />
                     </div>
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">
-                        Current Address
-                      </div>
+                      <div className="px-4 py-2 font-semibold">Age</div>
                       <input
                         type="text"
+                        name="age"
+                        {...register("age")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                       />
                     </div>
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">
-                        Permanent Address
-                      </div>
+                      <div className="px-4 py-2 font-semibold">Height (cm)</div>
+                      <input
+                        type="number"
+                        name="height"
+                        {...register("height")}
+                        className="px-3 py-1 bg-white border border-[#ee236e]"
+                      />
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">Weight (kg)</div>
+                      <input
+                        type="number"
+                        name="weight"
+                        {...register("weight")}
+                        className="px-3 py-1 bg-white border border-[#ee236e]"
+                      />
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">Address</div>
                       <input
                         type="text"
+                        name="address"
+                        {...register("address")}
+                        className="px-3 py-1 bg-white border border-[#ee236e]"
+                      />
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">City</div>
+                      <input
+                        type="text"
+                        name="city"
+                        {...register("city")}
+                        className="px-3 py-1 bg-white border border-[#ee236e]"
+                      />
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">Country</div>
+                      <input
+                        type="text"
+                        name="country"
+                        {...register("country")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                       />
                     </div>
@@ -132,17 +172,46 @@ const UpdateProfile = () => {
                         type="email"
                         name="email"
                         defaultValue={email}
-                        disabled
-                        className="px-3 py-1 bg-white border border-[#ee236e] cursor-not-allowed"
-                        title="Don't Need to update email"
+                        {...register("email")}
+                        className="px-3 py-1 bg-white border border-[#ee236e]"
                       />
                     </div>
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Birthday</div>
+                      <div className="px-4 py-2 font-semibold">Education</div>
                       <input
                         type="text"
+                        name="education"
+                        {...register("education")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                       />
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">
+                        Date of Birth
+                      </div>
+                      <input
+                        type="text"
+                        name="dob"
+                        {...register("dob")}
+                        className="px-3 py-1 bg-white border border-[#ee236e]"
+                      />
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">
+                        Marital Status
+                      </div>
+                      <select
+                        name="maritalStatus"
+                        {...register("maritalStatus")}
+                        className="px-3 py-1 bg-white border border-[#ee236e]"
+                      >
+                        <option value="" disabled>
+                          Select
+                        </option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorce">Divorce</option>
+                      </select>
                     </div>
                   </div>
                 </div>
