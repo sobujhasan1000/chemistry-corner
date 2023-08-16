@@ -4,6 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useSingleUser from "../Hooks/useSingleUser";
 import siteLoader from "/ccLoader.gif";
+import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -49,6 +50,9 @@ const Profile = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen py-10">
+      <Helmet>
+        <title>My Profile - Chemistry Corner</title>
+      </Helmet>
       <div className="container mx-auto px-4 md:px-0">
         <div className="flex flex-col md:flex-row gap-6 md:gap-20">
           <div className="bg-gray-100 md:w-3/12 p-4">
@@ -155,7 +159,7 @@ const Profile = () => {
               </Link>
             </div>
             {isProfileIncomplete && (
-              <div className=" invisible bg-white absolute inset-0 my-4 w-full h-96 flex flex-col items-center justify-center gap-5 bg-opacity-90 backdrop-blur-sm">
+              <div className=" bg-white absolute inset-0 my-4 w-full h-96 flex flex-col items-center justify-center gap-5 bg-opacity-90 backdrop-blur-sm">
                 <h1 className="text-black text-xl font-semibold text-center md:text-left">
                   Please Edit your profile to see your details.
                 </h1>
