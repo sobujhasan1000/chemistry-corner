@@ -4,6 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useSingleUser, { userReducer } from "../Hooks/useSingleUser";
 import siteLoader from "/ccLoader.gif";
+import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -24,6 +25,9 @@ const Profile = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen py-10">
+      <Helmet>
+        <title>My Profile - Chemistry Corner</title>
+      </Helmet>
       <div className="container mx-auto px-4 md:px-0">
         <div className="flex flex-col md:flex-row gap-6 md:gap-20">
           <div className="bg-gray-100 md:w-3/12 p-4">
