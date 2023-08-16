@@ -78,20 +78,30 @@ const Profile = () => {
                     <div className="px-4 py-2">+11 998001001</div>
                   </div>
                   <div className="grid grid-cols-2">
-                    <div className="px-4 py-2 font-semibold">
-                      Current Address
-                    </div>
+                    <div className="px-4 py-2 font-semibold">Age</div>
+                    <div className="px-4 py-2">28 years</div>
+                  </div>
+                  <div className="grid grid-cols-2">
+                    <div className="px-4 py-2 font-semibold">Height (cm)</div>
+                    <div className="px-4 py-2">162</div>
+                  </div>
+                  <div className="grid grid-cols-2">
+                    <div className="px-4 py-2 font-semibold">Weight (kg)</div>
+                    <div className="px-4 py-2">45</div>
+                  </div>
+                  <div className="grid grid-cols-2">
+                    <div className="px-4 py-2 font-semibold">Address</div>
                     <div className="px-4 py-2">
                       Beech Creek, PA, Pennsylvania
                     </div>
                   </div>
                   <div className="grid grid-cols-2">
-                    <div className="px-4 py-2 font-semibold">
-                      Permanent Address
-                    </div>
-                    <div className="px-4 py-2">
-                      Arlington Heights, IL, Illinois
-                    </div>
+                    <div className="px-4 py-2 font-semibold">City</div>
+                    <div className="px-4 py-2">Dhaka</div>
+                  </div>
+                  <div className="grid grid-cols-2">
+                    <div className="px-4 py-2 font-semibold">Country</div>
+                    <div className="px-4 py-2">Bangladesh</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Email</div>
@@ -102,8 +112,18 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="grid grid-cols-2">
+                    <div className="px-4 py-2 font-semibold">Education</div>
+                    <div className="px-4 py-2">Graduate</div>
+                  </div>
+                  <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Date of Birth</div>
                     <div className="px-4 py-2">Feb 06, 1998</div>
+                  </div>
+                  <div className="grid grid-cols-2">
+                    <div className="px-4 py-2 font-semibold">
+                      Marital Status
+                    </div>
+                    <div className="px-4 py-2">Single</div>
                   </div>
                 </div>
               </div>
@@ -114,7 +134,7 @@ const Profile = () => {
               </Link>
             </div>
             {isProfileIncomplete && (
-              <div className=" bg-white absolute inset-0 my-4 w-full h-96 flex flex-col items-center justify-center gap-5 bg-opacity-90 backdrop-blur-sm">
+              <div className=" invisible bg-white absolute inset-0 my-4 w-full h-96 flex flex-col items-center justify-center gap-5 bg-opacity-90 backdrop-blur-sm">
                 <h1 className="text-black text-xl font-semibold text-center md:text-left">
                   Please Edit your profile to see your details.
                 </h1>
