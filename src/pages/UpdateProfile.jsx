@@ -126,6 +126,7 @@ const UpdateProfile = () => {
                         defaultValue={name}
                         {...register("name")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
+                        required
                       />
                     </div>
                     <div className="grid grid-cols-2">
@@ -135,6 +136,7 @@ const UpdateProfile = () => {
                         defaultValue={gender}
                         {...register("gender")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
+                        required
                       >
                         <option value="" disabled>
                           Select
@@ -151,6 +153,7 @@ const UpdateProfile = () => {
                         name="contact"
                         {...register("contact")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
+                        required
                       />
                     </div>
                     <div className="grid grid-cols-2">
@@ -160,6 +163,7 @@ const UpdateProfile = () => {
                         name="age"
                         {...register("age")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
+                        required
                       />
                     </div>
                     <div className="grid grid-cols-2">
@@ -187,6 +191,7 @@ const UpdateProfile = () => {
                         name="address"
                         {...register("address")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
+                        required
                       />
                     </div>
                     <div className="grid grid-cols-2">
@@ -196,6 +201,7 @@ const UpdateProfile = () => {
                         name="city"
                         {...register("city")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
+                        required
                       />
                     </div>
                     <div className="grid grid-cols-2">
@@ -205,6 +211,7 @@ const UpdateProfile = () => {
                         name="country"
                         {...register("country")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
+                        required
                       />
                     </div>
                     <div className="grid grid-cols-2">
@@ -225,6 +232,7 @@ const UpdateProfile = () => {
                         name="education"
                         {...register("education")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
+                        required
                       />
                     </div>
                     <div className="grid grid-cols-2">
@@ -236,6 +244,7 @@ const UpdateProfile = () => {
                         name="dob"
                         {...register("dob")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
+                        required
                       />
                     </div>
                     <div className="grid grid-cols-2">
@@ -246,6 +255,7 @@ const UpdateProfile = () => {
                         name="maritalStatus"
                         {...register("maritalStatus")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
+                        required
                       >
                         <option value="" disabled>
                           Select
@@ -262,6 +272,7 @@ const UpdateProfile = () => {
                         name="profession"
                         {...register("profession")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
+                        required
                       />
                     </div>
                   </div>
