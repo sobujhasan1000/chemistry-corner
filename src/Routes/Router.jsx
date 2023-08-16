@@ -6,6 +6,8 @@ import Members from "../components/Members/Members";
 import Profile from "../pages/Profile";
 import UpdateProfile from "../pages/UpdateProfile";
 import Countries from "../pages/Countries/Countries";
+import AboutUs from "../pages/AboutUs";
+import ContactUs from "../pages/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,7 @@ const router = createBrowserRouter([
         path: "/members",
         element: <Members></Members>,
       },
+      { path: "/members", element: <Members></Members> },
       {
         path: "/countries",
         element: <Countries></Countries>,
@@ -35,6 +38,14 @@ const router = createBrowserRouter([
       {
         path: "/update-profile",
         element: <UpdateProfile></UpdateProfile>,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs></ContactUs>,
       },
     ],
   },
