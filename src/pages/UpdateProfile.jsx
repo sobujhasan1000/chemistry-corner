@@ -85,7 +85,7 @@ const UpdateProfile = () => {
                 <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
                   {name}
                 </h1>
-                <h1 className="text-gray-900 leading-8 text-base my-1">Bio</h1>
+                <h1 className="text-gray-900 leading-8 text-base my-1">Bio:</h1>
                 <textarea
                   name="bio"
                   className="bg-white x-3 py-1 border border-[#ee236e]"
