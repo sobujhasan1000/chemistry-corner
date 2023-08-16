@@ -1,4 +1,5 @@
 import React from 'react';
+import { FcBusinessman, FcLike, FcMms, FcOvertime } from 'react-icons/fc';
 import Container from '../components/shared/Container';
 
 const Blog = () => {
@@ -78,16 +79,19 @@ const Blog = () => {
       ]
     return (
         <Container>
-          <div className='my-4'>
+          <div className='my-4 text-black text-center'>
           {blogs.map((blog,i)=>(
-                <div key={i} className='lg:flex my-8'>
-            <div>
-                <img className='h-[500px]' src={blog.image_url} alt="" />
+                <div key={i} className='lg:flex my-8 gap-4 hover:shadow-xl hover:translate-x-2'>
+            <div className='p-6'>
+                <img className='h-[500px] rounded-md' src={blog.image_url} alt="" />
             </div>
-            <div>
-                <h1>{blog.blog_heading}</h1>
-                <p></p>
-                <p>{blog.description}</p>
+            <div className='flex items-center justify-center p-4'>
+                <div>
+                <h1 className='text-4xl p-2'>{blog.blog_heading}</h1>
+                <p className='flex gap-3 items-center justify-center'><FcBusinessman/>{blog.author_name}<FcOvertime/>{blog.blog_time} <FcLike/>{blog.total_likes} <FcMms/>{blog.comments.length}</p>
+                <p className='p-4'>{blog.description}</p>
+                <button className='btn bg-red-400'>read more</button>
+                </div>
             </div>
            </div>
             ))}
