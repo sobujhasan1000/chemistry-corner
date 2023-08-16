@@ -8,3 +8,7 @@ body {
   background: #ffff;
   font-family: "Manrope", sans-serif;
 }
+
+.page-header-bg {
+  background-image: url('/page-info-bg.jpg');
+}
