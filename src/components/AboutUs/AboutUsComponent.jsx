@@ -3,14 +3,16 @@ import aboutImg from "/pimg.png";
 
 const AboutUsComponent = () => {
   return (
-    <div className="flex items-center justify-center gap-10 container mx-auto mt-20">
-      <div className="flex flex-col gap-7">
-        <h1 className="text-black text-3xl font-signature">About Us</h1>
-        <h4 className="text-gray-500 text-xl font-signature max-w-md">
+    <div className="flex flex-col md:flex-row items-center justify-center gap-5 md:gap-10 container mx-auto mt-10 md:mt-20">
+      <div className="flex flex-col gap-3 md:gap-7 w-80 md:w-full">
+        <h1 className="text-black text-xl md:text-3xl font-signature">
+          About Us
+        </h1>
+        <h4 className="text-gray-500 text-base md:text-xl font-signature max-w-xs md:max-w-md">
           We are here to build emotions, connect people and create happy
           stories.
         </h4>
-        <p className="text-black text-sm max-w-md">
+        <p className="text-black text-xs md:text-sm max-w-xs md:max-w-md">
           At Chemistry Corner, we believe that meaningful connections are the
           cornerstone of a fulfilling life. Our platform is more than just
           another online dating website – it's a community dedicated to helping
@@ -25,7 +27,11 @@ const AboutUsComponent = () => {
         </div>
       </div>
       <div>
-        <img src={aboutImg} alt="About Us section Image" className="w-96" />
+        <img
+          src={aboutImg}
+          alt="About Us section Image"
+          className="w-72 md:w-full"
+        />
       </div>
     </div>
   );
