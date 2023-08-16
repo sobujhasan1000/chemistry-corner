@@ -13,7 +13,24 @@ const UpdateProfile = () => {
   const [loading, setLoading] = useState(false);
   const { user, updateUserProfile, setUser } = useContext(AuthContext);
   const [singleUser] = useSingleUser(user?.email);
-  const { image, name, gender, email } = singleUser;
+  const {
+    image,
+    name,
+    gender,
+    email,
+    city,
+    address,
+    age,
+    bio,
+    contact,
+    country,
+    maritalStatus,
+    height,
+    weight,
+    education,
+    dob,
+    profession,
+  } = singleUser;
   const {
     register,
     handleSubmit,
@@ -89,6 +106,7 @@ const UpdateProfile = () => {
                 <h1 className="text-gray-900 leading-8 text-base my-1">Bio</h1>
                 <textarea
                   name="bio"
+                  defaultValue={bio}
                   className="bg-white x-3 py-1 border border-[#ee236e]"
                   cols="35"
                   rows="5"
@@ -151,6 +169,7 @@ const UpdateProfile = () => {
                       <input
                         type="text"
                         name="contact"
+                        defaultValue={contact}
                         {...register("contact")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                         required
@@ -161,6 +180,7 @@ const UpdateProfile = () => {
                       <input
                         type="text"
                         name="age"
+                        defaultValue={age}
                         {...register("age")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                         required
@@ -171,6 +191,7 @@ const UpdateProfile = () => {
                       <input
                         type="number"
                         name="height"
+                        defaultValue={height}
                         {...register("height")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                       />
@@ -180,6 +201,7 @@ const UpdateProfile = () => {
                       <input
                         type="number"
                         name="weight"
+                        defaultValue={weight}
                         {...register("weight")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                       />
@@ -189,6 +211,7 @@ const UpdateProfile = () => {
                       <input
                         type="text"
                         name="address"
+                        defaultValue={address}
                         {...register("address")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                       />
@@ -198,6 +221,7 @@ const UpdateProfile = () => {
                       <input
                         type="text"
                         name="city"
+                        defaultValue={city}
                         {...register("city")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                         required
@@ -208,6 +232,7 @@ const UpdateProfile = () => {
                       <input
                         type="text"
                         name="country"
+                        defaultValue={country}
                         {...register("country")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                         required
@@ -229,6 +254,7 @@ const UpdateProfile = () => {
                       <input
                         type="text"
                         name="education"
+                        defaultValue={education}
                         {...register("education")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                         required
@@ -242,6 +268,7 @@ const UpdateProfile = () => {
                         type="text"
                         name="dob"
                         {...register("dob")}
+                        defaultValue={dob}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                         required
                       />
@@ -252,6 +279,7 @@ const UpdateProfile = () => {
                       </div>
                       <select
                         name="maritalStatus"
+                        defaultValue={maritalStatus}
                         {...register("maritalStatus")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                         required
@@ -269,6 +297,7 @@ const UpdateProfile = () => {
                       <input
                         type="text"
                         name="profession"
+                        defaultValue={profession}
                         {...register("profession")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                         required
@@ -283,7 +312,7 @@ const UpdateProfile = () => {
                 <>
                   <input
                     type="submit"
-                    className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 cursor-pointer"
+                    className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 cursor-pointer "
                     value="Update Profile"
                   />
                 </>

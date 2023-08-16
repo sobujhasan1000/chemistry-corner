@@ -27,6 +27,7 @@ const Profile = () => {
     weight,
     education,
     dob,
+    profession,
   } = singleUser;
 
   if (loading) {
@@ -42,11 +43,18 @@ const Profile = () => {
     !name ||
     !gender ||
     !email ||
+    !city ||
+    !address ||
     !education ||
     !age ||
+    !bio ||
+    !contact ||
     !dob ||
     !country ||
-    !maritalStatus;
+    !maritalStatus ||
+    !height ||
+    !weight ||
+    !profession;
 
   return (
     <div className="bg-gray-100 min-h-screen py-10">
@@ -149,6 +157,10 @@ const Profile = () => {
                       Marital Status
                     </div>
                     <div className="px-4 py-2 capitalize">{maritalStatus}</div>
+                  </div>
+                  <div className="grid grid-cols-2">
+                    <div className="px-4 py-2 font-semibold">Profession</div>
+                    <div className="px-4 py-2 capitalize">{profession}</div>
                   </div>
                 </div>
               </div>
