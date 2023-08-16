@@ -6,6 +6,7 @@ import useSingleUser from "../Hooks/useSingleUser";
 import { imageUpload } from "../api/utils";
 import { modifyUser } from "../api/auth";
 import { TbFidgetSpinner } from "react-icons/tb";
+import { toast } from "react-hot-toast";
 
 const UpdateProfile = () => {
   const [loading, setLoading] = useState(false);
