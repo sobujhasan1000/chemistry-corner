@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import useSingleUser, { userReducer } from "../Hooks/useSingleUser";
+import useSingleUser from "../Hooks/useSingleUser";
 import siteLoader from "/ccLoader.gif";
 
 const Profile = () => {
