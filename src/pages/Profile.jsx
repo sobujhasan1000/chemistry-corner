@@ -10,7 +10,23 @@ const Profile = () => {
 
   const [singleUser, loading] = useSingleUser(user?.email);
 
-  const { image, name, gender, email } = singleUser;
+  const {
+    image,
+    name,
+    gender,
+    email,
+    city,
+    address,
+    age,
+    bio,
+    contact,
+    country,
+    maritalStatus,
+    height,
+    weight,
+    education,
+    dob,
+  } = singleUser;
 
   if (loading) {
     return (
@@ -20,7 +36,16 @@ const Profile = () => {
     );
   }
 
-  const isProfileIncomplete = !image || !name || !gender || !email;
+  const isProfileIncomplete =
+    !image ||
+    !name ||
+    !gender ||
+    !email ||
+    !education ||
+    !age ||
+    !dob ||
+    !country ||
+    !maritalStatus;
 
   return (
     <div className="bg-gray-100 min-h-screen py-10">
@@ -36,9 +61,7 @@ const Profile = () => {
               </h1>
               <h1 className="text-gray-900 leading-8 text-base my-1">Bio</h1>
               <p className="text-sm text-gray-500 hover:text-gray-600 leading-6">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur
-                non deserunt
+                {bio}
               </p>
               <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                 <li className="flex items-center py-3">
@@ -71,37 +94,35 @@ const Profile = () => {
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Gender</div>
-                    <div className="px-4 py-2">{gender}</div>
+                    <div className="px-4 py-2 capitalize">{gender}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Contact No.</div>
-                    <div className="px-4 py-2">+11 998001001</div>
+                    <div className="px-4 py-2">{contact}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Age</div>
-                    <div className="px-4 py-2">28 years</div>
+                    <div className="px-4 py-2">{age} years</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Height (cm)</div>
-                    <div className="px-4 py-2">162</div>
+                    <div className="px-4 py-2">{height} cm</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Weight (kg)</div>
-                    <div className="px-4 py-2">45</div>
+                    <div className="px-4 py-2">{weight} kg</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Address</div>
-                    <div className="px-4 py-2">
-                      Beech Creek, PA, Pennsylvania
-                    </div>
+                    <div className="px-4 py-2">{address}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">City</div>
-                    <div className="px-4 py-2">Dhaka</div>
+                    <div className="px-4 py-2 capitalize">{city}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Country</div>
-                    <div className="px-4 py-2">Bangladesh</div>
+                    <div className="px-4 py-2 capitalize">{country}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Email</div>
@@ -113,17 +134,17 @@ const Profile = () => {
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Education</div>
-                    <div className="px-4 py-2">Graduate</div>
+                    <div className="px-4 py-2">{education}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Date of Birth</div>
-                    <div className="px-4 py-2">Feb 06, 1998</div>
+                    <div className="px-4 py-2">{dob}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">
                       Marital Status
                     </div>
-                    <div className="px-4 py-2">Single</div>
+                    <div className="px-4 py-2 capitalize">{maritalStatus}</div>
                   </div>
                 </div>
               </div>
