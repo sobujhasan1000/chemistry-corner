@@ -1,12 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { AuthContext } from "../providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import useSingleUser from "../Hooks/useSingleUser";
+import { imageUpload } from "../api/utils";
+import { modifyUser } from "../api/auth";
+import { TbFidgetSpinner } from "react-icons/tb";
 
 const UpdateProfile = () => {
-  const { user } = useContext(AuthContext);
-  const [singleUser, loading] = useSingleUser(user?.email);
+  const [loading, setLoading] = useState(false);
+  const { user, updateUserProfile, setUser } = useContext(AuthContext);
+  const [singleUser] = useSingleUser(user?.email);
   const { image, name, gender, email } = singleUser;
   const {
     register,
@@ -17,7 +21,44 @@ const UpdateProfile = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
+    setLoading(true);
+    const image = data.photo[0];
+    imageUpload(image).then((imageData) => {
+      const imageUrl = imageData?.data?.display_url;
+      updateUserProfile(data.name, imageUrl).then(() => {
+        setUser({
+          ...user,
+          displayName: data.name,
+          photoURL: imageUrl,
+        });
+        const userInfo = {
+          name: data.name,
+          email: data.email,
+          image: imageUrl,
+          gender: data.gender,
+          age: parseInt(data.age),
+          profession: data.profession,
+          bio: data.bio,
+          contact: data.contact,
+          height: parseFloat(data.height),
+          weight: parseFloat(data.weight),
+          address: data.address,
+          city: data.city,
+          country: data.country,
+          education: data.education,
+          dob: data.dob,
+          maritalStatus: data.maritalStatus,
+        };
+        modifyUser(userInfo, user.email).then((modifiedData) => {
+          if (modifiedData.modifiedCount > 0) {
+            setLoading(false);
+            toast.success(`Users information updated successfully`);
+            reset();
+          }
+        });
+      });
+    });
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -172,6 +213,7 @@ const UpdateProfile = () => {
                         type="email"
                         name="email"
                         defaultValue={email}
+                        readOnly
                         {...register("email")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
                       />
@@ -190,7 +232,7 @@ const UpdateProfile = () => {
                         Date of Birth
                       </div>
                       <input
-                        type="text"
+                        type="date"
                         name="dob"
                         {...register("dob")}
                         className="px-3 py-1 bg-white border border-[#ee236e]"
@@ -213,13 +255,28 @@ const UpdateProfile = () => {
                         <option value="divorce">Divorce</option>
                       </select>
                     </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">Profession</div>
+                      <input
+                        type="text"
+                        name="profession"
+                        {...register("profession")}
+                        className="px-3 py-1 bg-white border border-[#ee236e]"
+                      />
+                    </div>
                   </div>
                 </div>
-                <input
-                  type="submit"
-                  className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 cursor-pointer"
-                  value="Update Profile"
-                />
+                {loading ? (
+                  <TbFidgetSpinner className="m-auto animate-spin" size={24} />
+                ) : (
+                  <>
+                    <input
+                      type="submit"
+                      className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 cursor-pointer"
+                      value="Update Profile"
+                    />
+                  </>
+                )}
               </div>
             </div>
           </div>
