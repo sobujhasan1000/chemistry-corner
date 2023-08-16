@@ -5,6 +5,7 @@ import MemberShip from "../pages/membership/MemberShip";
 import Members from "../components/Members/Members";
 import Profile from "../pages/Profile";
 import UpdateProfile from "../pages/UpdateProfile";
+import Countries from "../pages/Countries/Countries";
 
 const router = createBrowserRouter([
   {
@@ -17,10 +18,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/membership",
-        element: <MemberShip></MemberShip>
+        element: <MemberShip></MemberShip>,
       },
-       { path: "/members",
+      {
+        path: "/members",
         element: <Members></Members>,
+      },
+      {
+        path: "/countries",
+        element: <Countries></Countries>,
       },
       {
         path: "/profile",
