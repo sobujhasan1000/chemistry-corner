@@ -188,11 +188,11 @@ const Countries = () => {
                 id="location"
                 {...register("location")}
               >
-                <option value="Amsterdam">Amsterdam</option>
-                <option value="London">London</option>
-                <option value="Barcelona">Barcelona</option>
-                <option value="New York">New York</option>
-                <option value="Mexico">Mexico</option>
+                <option value="amsterdam">Amsterdam</option>
+                <option value="london">London</option>
+                <option value="barcelona">Barcelona</option>
+                <option value="new-york">New York</option>
+                <option value="mexico">Mexico</option>
               </select>
             </div>
             <button
