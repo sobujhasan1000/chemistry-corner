@@ -4,7 +4,7 @@ const ContactInfo = () => {
   return (
     <div className="bg-blue-950 py-20">
       <div className="flex flex-col md:flex-row items-center justify-center gap-10">
-        <div className="flex flex-col items-center justify-center gap-2 md:w-96 w-full py-10 bg-white hover:scale-110 duration-300">
+        <div className="flex flex-col items-center justify-center gap-2 md:w-96 w-4/5 py-10 bg-white hover:scale-110 duration-300">
           <div className="bg-[#ED0058] hover:bg-yellow-500 duration-300 w-16 h-16 flex items-center justify-center rounded-full">
             <FaMapMarkerAlt className="text-2xl text-white" />
           </div>
@@ -15,7 +15,7 @@ const ContactInfo = () => {
             P.O. Box 152 Lakewood, NJ 08701 New York
           </p>
         </div>
-        <div className="flex flex-col items-center justify-center gap-2 md:w-96 w-full py-10 bg-white hover:scale-110 duration-300">
+        <div className="flex flex-col items-center justify-center gap-2 md:w-96 w-4/5 py-10 bg-white hover:scale-110 duration-300">
           <div className="bg-[#ED0058] hover:bg-yellow-500 duration-300 w-16 h-16 flex items-center justify-center rounded-full">
             <FiMail className="text-2xl text-white" />
           </div>
@@ -26,7 +26,7 @@ const ContactInfo = () => {
             chemistry-corner@support.com
           </p>
         </div>
-        <div className="flex flex-col items-center justify-center gap-2 md:w-96 w-full py-10 bg-white hover:scale-110 duration-300">
+        <div className="flex flex-col items-center justify-center gap-2 md:w-96 w-4/5 py-10 bg-white hover:scale-110 duration-300">
           <div className="bg-[#ED0058] hover:bg-yellow-500 duration-300 w-16 h-16 flex items-center justify-center rounded-full">
             <FaPhone className="text-2xl text-white" />
           </div>
