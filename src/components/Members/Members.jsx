@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import membersBg from "../../assets/membersBg.jpg";
+import { Helmet } from "react-helmet-async";
 
 const Members = () => {
   const [males, setMales] = useState([]);
@@ -42,6 +43,9 @@ const Members = () => {
   };
   return (
     <div style={{ backgroundImage: `url(${membersBg})` }}>
+      <Helmet>
+        <title>Members - Chemistry Corner</title>
+      </Helmet>
       <Container>
         <div className="py-8 flex justify-center px-20">
           <div>
