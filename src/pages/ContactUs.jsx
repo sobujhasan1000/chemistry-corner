@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import ContactInfo from "../components/ContactUs/ContactInfo";
+import SendANote from "../components/ContactUs/SendANote";
+import MapSection from "../components/ContactUs/MapSection";
 
 const ContactUs = () => {
   return (
@@ -13,6 +15,8 @@ const ContactUs = () => {
         </div>
       </div>
       <ContactInfo></ContactInfo>
+      <SendANote></SendANote>
+      <MapSection></MapSection>
     </div>
   );
 };
