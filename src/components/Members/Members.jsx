@@ -88,52 +88,6 @@ const Members = () => {
                 </Tab>
               ))}
             </TabList>
-            <TabPanel>
-              <div className="grid justify-center items-center gap-2 sm:grid-cols-3 pt-24 pb-4">
-                {members.map((item) => (
-                  <div
-                    className="card w-96 rounded-3xl shadow-xl flex justify-center items-center mx-auto my-16 "
-                    key={item?._id}
-                  >
-                    <div className="p-1 rounded-3xl transform-gpu transition-all selection:bg-sky-100 h-full grid place-items-center bg-gradient-to-tl to-[#FFD3A5] from-[#FD6585] dark:selection:bg-white/10">
-                      <div className="bg-white px-12 pt-16 pb-14 shadow-2xl shadow-black/[0.2] rounded-3xl text-center flex flex-col justify-center max-w-md transition-colors dark:bg-neutral-800">
-                        <div className="select-none">
-                          <img
-                            src={item?.photo}
-                            className="shadow-2xl shadow-black/[0.2] rounded-3xl h-60 w-60 mx-auto -mt-40 transform-gpu transition-all hover:scale-125"
-                            style={{ userSelect: "none" }}
-                            alt="avatar"
-                          />
-                        </div>
-
-                        <h1 className="mt-12 text-3xl font-bold text-slate-800 dark:text-white">
-                          {item?.name}
-                        </h1>
-
-                        <p className="mt-4 text-slate-600 dark:text-white/90">
-                          {item?.bio}
-                        </p>
-                        <p>
-                          <span className="flex justify-center items-center py-3 gap-1 text-sm leading-normal text-[#94A3B8] font-bold uppercase">
-                            <FaMapMarkerAlt />
-                            {item?.location}
-                          </span>
-                        </p>
-
-                        <div className="card-actions">
-                          <a
-                            href={`female/${item._id}`}
-                            className="btn bg-[#FD6585] hover:bg-[#ED0058] w-full"
-                          >
-                            View Details
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </TabPanel>
             {genderLists.map((i) => (
               <TabPanel key={i}>
                 <div className="grid justify-center items-center gap-2 sm:grid-cols-3 pt-24 pb-4">
