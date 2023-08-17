@@ -13,8 +13,9 @@ const LoveStories = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/loveStories`)
-      .then(response => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/loveStories`)
+      .then((response) => {
         setData(response.data);
       })
       .catch((error) => {
@@ -37,6 +38,16 @@ const LoveStories = () => {
           loop={true}
           pagination={{
             clickable: true,
+          }}
+          breakpoints={{
+            // When window width is >= 768px (desktop)
+            768: {
+              slidesPerView: 3,
+            },
+            // When window width is < 768px (mobile)
+            0: {
+              slidesPerView: 1,
+            },
           }}
           modules={[FreeMode, Pagination]}
           className="mySwiper"

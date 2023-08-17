@@ -1,207 +1,103 @@
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/effect-fade";
-import { Autoplay, Pagination, EffectFade } from "swiper/modules";
-import { useForm } from "react-hook-form";
-const Countries = () => {
-  const { register, handleSubmit } = useForm();
+import React, { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
-  const onSubmit = (data) => {
-    console.log(data);
+const Countries = () => {
+  const [countries, setCountries] = useState([]);
+  const searchRef = useRef(null);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/members?search=${search}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setCountries(result);
+      });
+  }, [search]);
+
+  const handleSearch = () => {
+    console.log("handleSearch called");
+    console.log(searchRef.current.value);
+    setSearch(searchRef.current.value);
   };
   return (
     <div>
-      <div className="relative">
-        <Swiper
-          loop={true}
-          effect={"fade"}
-          autoplay={{
-            delay: 3500,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            dynamicBullets: true,
-          }}
-          modules={[Autoplay, Pagination, EffectFade]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <div>
-              <img
-                src="https://momodesigns.in/html/lamour/images/slide_img1.jpg"
-                alt=""
-                className="block max-w-full"
-              />
-              <div className="flex items-center">
-                <div className="w-1/2">
-                  <div className="flex flex-col justify-center space-y-2 text-white p-8 md:py-8 md:px-16 bg-black bg-opacity-60 absolute inset-0">
-                    <h2 className="text-2xl md:text-6xl font-extrabold uppercase leading-tight">
-                      <span className="text-yellow-500">100% Free</span> Online
-                      <br />
-                      Dating
-                    </h2>
-                    <p className="text-lg md:text-3xl pt-3 leading-normal">
-                      Connecting singles across the world to
-                      <br />
-                      their ideal partner
-                    </p>
-                    <div className="pt-3 md:pt-6">
-                      <button class="btn px-4 md:px-8 md:py-2 md:text-lg text-white border-2 bg-[#ED0058] border-[#ED0058] rounded-[70px] hover:bg-transparent hover:border-[#ED0058] hover:text-[#ED0058]">
-                        <a href="/">View More</a>
-                      </button>
-                      <button class="btn btn-outline px-4 md:px-8 py-2 ms-5 md:text-lg text-white border-2 border-white rounded-[70px] hover:bg-[#ED0058] hover:border-[#ED0058]">
-                        <a href="/">Register</a>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <div>
-              <img
-                src="https://momodesigns.in/html/lamour/images/slide_img4.jpg"
-                alt=""
-                className="block max-w-full"
-              />
-              <div className="flex items-center">
-                <div className="w-1/2">
-                  <div className="flex flex-col justify-center space-y-2 text-white p-8 md:py-8 md:px-16 bg-black bg-opacity-60 absolute inset-0">
-                    <h2 className="text-2xl md:text-6xl font-extrabold uppercase leading-tight">
-                      <span className="text-yellow-500">100% Free</span> Online
-                      <br />
-                      Dating
-                    </h2>
-                    <p className="text-lg md:text-3xl pt-3 leading-normal">
-                      Connecting singles across the world to
-                      <br />
-                      their ideal partner
-                    </p>
-                    <div className="pt-3 md:pt-6">
-                      <button class="btn px-4 md:px-8 md:py-2 md:text-lg text-white border-2 bg-[#ED0058] border-[#ED0058] rounded-[70px] hover:bg-transparent hover:border-[#ED0058] hover:text-[#ED0058]">
-                        <a href="/">View More</a>
-                      </button>
-                      <button class="btn btn-outline px-4 md:px-8 py-2 ms-5 md:text-lg text-white border-2 border-white rounded-[70px] hover:bg-[#ED0058] hover:border-[#ED0058]">
-                        <a href="/">Register</a>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <div>
-              <img
-                src="https://momodesigns.in/html/lamour/images/slide_img5.jpg"
-                alt=""
-                className="block max-w-full"
-              />
-              <div className="flex items-center">
-                <div className="w-1/2">
-                  <div className="flex flex-col justify-center space-y-2 text-white p-8 md:py-8 md:px-16 bg-black bg-opacity-60 absolute inset-0">
-                    <h2 className="text-2xl md:text-6xl font-extrabold uppercase leading-tight">
-                      <span className="text-yellow-500">100% Free</span> Online
-                      <br />
-                      Dating
-                    </h2>
-                    <p className="text-lg md:text-3xl pt-3 leading-normal">
-                      Connecting singles across the world to
-                      <br />
-                      their ideal partner
-                    </p>
-                    <div className="pt-3 md:pt-6">
-                      <button class="btn px-4 md:px-8 md:py-2 md:text-lg text-white border-2 bg-[#ED0058] border-[#ED0058] rounded-[70px] hover:bg-transparent hover:border-[#ED0058] hover:text-[#ED0058]">
-                        <a href="/">View More</a>
-                      </button>
-                      <button class="btn btn-outline px-4 md:px-8 py-2 ms-5 md:text-lg text-white border-2 border-white rounded-[70px] hover:bg-[#ED0058] hover:border-[#ED0058]">
-                        <a href="/">Register</a>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-        </Swiper>
-      </div>
-      <div className="py-10 px-8 bg-[#dbdddd] w-full md:w-96 p-2 md:absolute top-4 md:top-[25%] left-10 md:right-40 right-0 md:left-[48rem] z-20 border-8 border-gray-500 rounded-[20px]">
-        <h1 className="text-xl md:text-3xl font-medium text-center">
-          Introducing Lamour
-        </h1>
-        <p className="text-lg md:text-xl text-center py-4">
-          Connecting singles across the world to their ideal partner
-        </p>
-        <div>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <label htmlFor="gender">I am a :</label>
-              <select
-                className="select select-bordered w-full max-w-xs my-2"
-                id="gender"
-                {...register("gender")}
+      <Helmet>
+        <title>Countries - Chemistry Corner</title>
+      </Helmet>
+      <div className="page-header-bg w-full h-64 bg-no-repeat bg-cover bg-center">
+        <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex flex-col items-center justify-center">
+          <h1 className="text-white text-3xl font-bold pb-2">
+            Find Your Partner with Location.
+          </h1>
+          <div className="flex items-center p-2 space-x-4 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
+            <div className="flex bg-gray-100 p-2 w-45 space-x-2 rounded-lg">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 opacity-30"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <option disabled selected>
-                  Choose your preferences
-                </option>
-                <option value="man">Man</option>
-                <option value="woman">Woman</option>
-                <option value="binary">Binary</option>
-              </select>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+              <input
+                ref={searchRef}
+                className="bg-gray-100 outline-none"
+                type="text"
+                placeholder="Search by Location ..."
+              />
             </div>
-            <div>
-              <label htmlFor="ageFrom">Between Age :</label>
-              <div className="flex gap-5">
-                <select
-                  className="select select-bordered w-full max-w-xs my-2"
-                  id="ageFrom"
-                  {...register("ageFrom")}
-                >
-                  <option value="18">18</option>
-                  <option value="19">19</option>
-                  <option value="20">20</option>
-                  <option value="21">21</option>
-                  <option value="22">22</option>
-                </select>
-                <select
-                  className="select select-bordered w-full max-w-xs my-2"
-                  id="ageTo"
-                  {...register("ageTo")}
-                >
-                  <option value="23">23</option>
-                  <option value="24">24</option>
-                  <option value="25">25</option>
-                  <option value="26">26</option>
-                  <option value="27">27</option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <label htmlFor="location">Location:</label>
-              <select
-                className="select select-bordered w-full max-w-xs my-2"
-                id="location"
-                {...register("location")}
-              >
-                <option value="amsterdam">Amsterdam</option>
-                <option value="london">London</option>
-                <option value="barcelona">Barcelona</option>
-                <option value="new-york">New York</option>
-                <option value="mexico">Mexico</option>
-              </select>
-            </div>
+
             <button
-              className="mt-4 font-medium text-xl text-center px-20 py-3 bg-[#ED0058] hover:bg-transparent text-white hover:text-[#ED0058] rounded-[70px] border-2 hover:border-[#ED0058]"
-              type="submit"
+              onClick={handleSearch}
+              className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer"
             >
-              Take a change
+              Search
             </button>
-          </form>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-12">
+          <div className="mx-auto mb-10 lg:max-w-xl sm:text-center">
+            <p className="inline-block px-3 py-px mb-4 text-3xl font-semibold tracking-wider text-gray-900 uppercase rounded-full bg-teal-accent-400">
+              Welcome our new members.
+            </p>
+          </div>
+          <div className="grid gap-10 mx-auto lg:grid-cols-2 lg:max-w-screen-lg">
+            {countries.map((country) => (
+              <div
+                className="grid sm:grid-cols-3 md:border-4 shadow-2xl shadow-black/[0.2] rounded-3xl md:bg-gray-100"
+                key={country._id}
+              >
+                <div className="relative w-full h-48 max-h-full rounded shadow sm:h-auto">
+                  <img
+                    className="absolute md:object-cover md:w-full h-full rounded"
+                    src={country.photo}
+                    alt="Person"
+                  />
+                </div>
+                <div className="flex flex-col justify-center mt-5 sm:mt-0 sm:p-5 sm:col-span-2">
+                  <p className="text-lg font-bold">{country.name}</p>
+                  <p className="mb-4 text-sm tracking-wide text-gray-800">
+                    {country.bio}
+                  </p>
+                  <p>
+                    <span className="flex items-center py-3 gap-1 text-sm leading-normal text-[#6d7683] font-bold uppercase">
+                      <FaMapMarkerAlt />
+                      {country.location}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
