@@ -1,4 +1,4 @@
 export const fetchUserByEmail = async (email) => {
-  const res = await fetch(`https://chemistry-corner-server.vercel.app/users/${email}`);
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/users/${email}`);
   return res.json();
 };
