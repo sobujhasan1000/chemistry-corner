@@ -1,24 +1,18 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { getAllMembers, membersSearchByLocation } from "../../api/fetch";
 
 const Countries = () => {
-  const [countries, setCountries] = useState([]);
-  const searchRef = useRef(null);
+  const [members, setMembers] = useState([]);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/members?search=${search}`)
-      .then((res) => res.json())
-      .then((result) => {
-        setCountries(result);
-      });
-  }, [search]);
+    getAllMembers().then((data) => setMembers(data));
+  }, []);
 
   const handleSearch = () => {
-    console.log("handleSearch called");
-    console.log(searchRef.current.value);
-    setSearch(searchRef.current.value);
+    membersSearchByLocation(search).then((data) => setMembers(data));
   };
   return (
     <div>
@@ -47,7 +41,7 @@ const Countries = () => {
                 />
               </svg>
               <input
-                ref={searchRef}
+                onChange={(e) => setSearch(e.target.value)}
                 className="bg-gray-100 outline-none"
                 type="text"
                 placeholder="Search by Location ..."
@@ -71,27 +65,27 @@ const Countries = () => {
             </p>
           </div>
           <div className="grid gap-10 mx-auto lg:grid-cols-2 lg:max-w-screen-lg">
-            {countries.map((country) => (
+            {members.map((member) => (
               <div
                 className="grid sm:grid-cols-3 md:border-4 shadow-2xl shadow-black/[0.2] rounded-3xl md:bg-gray-100"
-                key={country._id}
+                key={member?._id}
               >
-                <div className="relative w-full h-48 max-h-full rounded shadow sm:h-auto">
+                <div className="relative w-full h-48 max-h-full rounded-2xl shadow sm:h-auto">
                   <img
-                    className="absolute md:object-cover md:w-full h-full rounded"
-                    src={country.photo}
+                    className="absolute md:object-cover md:w-full h-full rounded-2xl"
+                    src={member?.photo}
                     alt="Person"
                   />
                 </div>
                 <div className="flex flex-col justify-center mt-5 sm:mt-0 sm:p-5 sm:col-span-2">
-                  <p className="text-lg font-bold">{country.name}</p>
+                  <p className="text-lg font-bold">{member?.name}</p>
                   <p className="mb-4 text-sm tracking-wide text-gray-800">
-                    {country.bio}
+                    {member?.bio}
                   </p>
                   <p>
                     <span className="flex items-center py-3 gap-1 text-sm leading-normal text-[#6d7683] font-bold uppercase">
                       <FaMapMarkerAlt />
-                      {country.location}
+                      {member?.location}
                     </span>
                   </p>
                 </div>

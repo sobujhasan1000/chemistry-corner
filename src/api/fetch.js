@@ -24,3 +24,12 @@ export const membersSearch = async (text) => {
   const data = res.json();
   return data;
 };
+
+// ============search members by their location===========
+export const membersSearchByLocation = async (text) => {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/membersSearchByLocation/${text}`
+  );
+  const data = res.json();
+  return data;
+};
