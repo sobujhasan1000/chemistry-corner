@@ -72,7 +72,10 @@ const Countries = () => {
           </div>
           <div className="grid gap-10 mx-auto lg:grid-cols-2 lg:max-w-screen-lg">
             {countries.map((country) => (
-              <div className="grid sm:grid-cols-3 md:border-4 shadow-2xl shadow-black/[0.2] rounded-3xl md:bg-gray-100" key={country._id}>
+              <div
+                className="grid sm:grid-cols-3 md:border-4 shadow-2xl shadow-black/[0.2] rounded-3xl md:bg-gray-100"
+                key={country._id}
+              >
                 <div className="relative w-full h-48 max-h-full rounded shadow sm:h-auto">
                   <img
                     className="absolute md:object-cover md:w-full h-full rounded"
@@ -86,11 +89,11 @@ const Countries = () => {
                     {country.bio}
                   </p>
                   <p>
-                          <span className="flex items-center py-3 gap-1 text-sm leading-normal text-[#6d7683] font-bold uppercase">
-                            <FaMapMarkerAlt />
-                            {country.location}
-                          </span>
-                        </p>
+                    <span className="flex items-center py-3 gap-1 text-sm leading-normal text-[#6d7683] font-bold uppercase">
+                      <FaMapMarkerAlt />
+                      {country.location}
+                    </span>
+                  </p>
                 </div>
               </div>
             ))}
