@@ -1,26 +1,37 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../shared/Container";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import membersBg from "../../assets/membersBg.jpg";
 import { Helmet } from "react-helmet-async";
+import {
+  getAllMembers,
+  getGenderWiseMembers,
+  membersSearch,
+} from "../../api/fetch";
 
 const Members = () => {
   const [members, setMembers] = useState([]);
-  const searchRef = useRef(null);
   const [search, setSearch] = useState("");
 
+  useEffect(() => {
+    getAllMembers().then((data) => setMembers(data));
+  }, []);
+
   const handleMembers = (gender) => {
-    console.log("search", search);
-    getGenderWiseMembers(gender, search).then((data) => setMembers(data));
+    getGenderWiseMembers(gender).then((data) => setMembers(data));
   };
 
-  const genderLists = ["male", "female", "non-binary"];
+  const genderLists = [
+    { label: "all", value: "" },
+    { label: "male", value: "male" },
+    { label: "female", value: "female" },
+    { label: "non-binary", value: "non-binary" },
+  ];
 
   const handleSearch = () => {
-    // console.log(searchRef.current.value);
-    setSearch(searchRef.current.value);
+    membersSearch(search).then((member) => setMembers(member));
   };
   return (
     <div style={{ backgroundImage: `url(${membersBg})` }}>
@@ -48,7 +59,7 @@ const Members = () => {
                   />
                 </svg>
                 <input
-                  ref={searchRef}
+                  onChange={(e) => setSearch(e.target.value)}
                   className="bg-gray-100 outline-none"
                   type="text"
                   placeholder="Search by name ..."
@@ -70,10 +81,10 @@ const Members = () => {
               {genderLists.map((item, i) => (
                 <Tab
                   key={i}
-                  onClick={() => handleMembers(item)}
+                  onClick={() => handleMembers(item?.value)}
                   className="bg-[#ED0058] hover:bg-[#ed0057b0] text-white capitalize font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl"
                 >
-                  {item}
+                  {item?.label}
                 </Tab>
               ))}
             </TabList>
@@ -112,7 +123,7 @@ const Members = () => {
 
                           <div className="card-actions">
                             <a
-                              href={`female/${female._id}`}
+                              href={`female/${item._id}`}
                               className="btn bg-[#FD6585] hover:bg-[#ED0058] w-full"
                             >
                               View Details
