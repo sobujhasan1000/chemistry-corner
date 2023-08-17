@@ -1,4 +1,4 @@
 export const fetchUserByEmail = async (email) => {
-  const res = await fetch(`http://localhost:5000/users/${email}`);
+  const res = await fetch(`https://chemistry-corner-server.vercel.app/users/${email}`);
   return res.json();
 };
