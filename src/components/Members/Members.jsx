@@ -39,7 +39,7 @@ const Members = () => {
         <title>Members - Chemistry Corner</title>
       </Helmet>
       <Container>
-        <div className="py-8 flex justify-center px-20">
+        <div className="py-7 flex justify-center px-20">
           <div>
             <h1 className="text-center mb-4 text-4xl font-bold">Search</h1>
             <div className="flex items-center p-2 space-x-4 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
