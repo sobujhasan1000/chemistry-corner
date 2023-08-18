@@ -3,7 +3,7 @@ import logo from "/ccLogo.png";
 import { AiOutlineMenu } from "react-icons/ai";
 import { HiOutlineXMark } from "react-icons/hi2";
 import userImage from "/user.png";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
 
@@ -11,6 +11,8 @@ const Navbar = () => {
   const { user, loading, setLoading, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+
+  const userMenuRef = useRef(null);
 
   const handleLogOut = () => {
     logOut()
@@ -70,8 +72,31 @@ const Navbar = () => {
   const handleUserMenuToggle = () => {
     setIsUserMenuOpen(!isUserMenuOpen);
   };
+
+  const handleOutsideClick = () => {
+    setIsUserMenuOpen(false);
+  };
+  const handleUserImageClick = (event) => {
+    event.stopPropagation(); // Prevent click event from propagating
+    handleUserMenuToggle(); // Toggle the user menu
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+        setIsUserMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+
   return (
-    <>
+    <div onClick={handleOutsideClick}>
       <div className="bg-[#ED0058]">
         <div className="flex items-center justify-between container mx-auto">
           <div>
@@ -99,12 +124,17 @@ const Navbar = () => {
             ) : (
               <div>
                 {user && (
-                  <img
-                    src={user.photoURL}
-                    alt="User Image"
+                  <div
+                    ref={userMenuRef}
                     className="w-10 h-10 cursor-pointer rounded-full"
-                    onClick={handleUserMenuToggle}
-                  />
+                    onClick={handleUserImageClick}
+                  >
+                    <img
+                      src={user.photoURL}
+                      alt="User Image"
+                      className="w-full h-full rounded-full"
+                    />
+                  </div>
                 )}
               </div>
             )}
@@ -154,7 +184,7 @@ const Navbar = () => {
           {navItems}
         </ul>
       </div>
-    </>
+    </div>
   );
 };
 
