@@ -265,7 +265,7 @@ const UpdateProfile = () => {
                         Date of Birth
                       </div>
                       <input
-                        type="text"
+                        type="date"
                         name="dob"
                         {...register("dob")}
                         defaultValue={dob}
