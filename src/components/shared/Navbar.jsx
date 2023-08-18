@@ -54,13 +54,13 @@ const Navbar = () => {
   );
   const userMenuItems = (
     <>
-      <li>
+      <li className="user-menu-item">
         <NavLink to="/profile">My Profile</NavLink>
       </li>
-      <li>
+      <li className="user-menu-item">
         <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
-      <li>
+      <li className="user-menu-item">
         <button onClick={handleLogOut}>Log Out</button>
       </li>
     </>
@@ -83,7 +83,11 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+      if (
+        userMenuRef.current &&
+        !userMenuRef.current.contains(event.target) &&
+        !event.target.closest(".user-menu-item") // Add this condition to exclude menu items
+      ) {
         setIsUserMenuOpen(false);
       }
     };
