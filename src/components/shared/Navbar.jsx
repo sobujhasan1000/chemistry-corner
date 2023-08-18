@@ -36,9 +36,9 @@ const Navbar = () => {
       <li>
         <NavLink to="/countries">Countries</NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink to="/all-world">All World</NavLink>
-      </li>
+      </li> */}
       <li>
         <NavLink to="/blog">Blog</NavLink>
       </li>
