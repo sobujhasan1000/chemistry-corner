@@ -33,3 +33,16 @@ export const membersSearchByLocation = async (text) => {
   const data = res.json();
   return data;
 };
+
+// ==========post notes in db=============
+export const sendNotes = async (contactInfo) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/contact-us`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(contactInfo),
+  });
+  const data = response.json();
+  return data;
+};
