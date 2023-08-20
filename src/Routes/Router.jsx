@@ -9,6 +9,7 @@ import Countries from "../pages/Countries/Countries";
 import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 import Blog from "../pages/Blog";
+import FindPartner from "../pages/FindPartner/FindPartner";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
         path: "/contact-us",
         element: <ContactUs></ContactUs>,
       },
+      {
+        path: '/find-partner',
+        element: <FindPartner></FindPartner>
+      }
     ],
   },
 ]);
