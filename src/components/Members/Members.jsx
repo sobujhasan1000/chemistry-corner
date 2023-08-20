@@ -10,6 +10,7 @@ import {
   getGenderWiseMembers,
   membersSearch,
 } from "../../api/fetch";
+import { Link } from "react-router-dom";
 
 const Members = () => {
   const [members, setMembers] = useState([]);
@@ -122,11 +123,12 @@ const Members = () => {
                           </p>
 
                           <div className="card-actions">
-                            <a
+                            <Link
+                              to="/view-profile"
                               className="btn bg-[#FD6585] hover:bg-[#ED0058] w-full"
                             >
                               View Details
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </div>

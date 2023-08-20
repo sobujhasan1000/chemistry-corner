@@ -9,6 +9,7 @@ import Countries from "../pages/Countries/Countries";
 import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 import Blog from "../pages/Blog";
+import SingleUserProfile from "../pages/SingleUserProfile";
 
 const router = createBrowserRouter([
   {
@@ -23,9 +24,7 @@ const router = createBrowserRouter([
         path: "/membership",
         element: <MemberShip></MemberShip>,
       },
-      { path: "/members", 
-      element: <Members></Members>
-     },
+      { path: "/members", element: <Members></Members> },
       {
         path: "/members",
         element: <Members></Members>,
@@ -40,12 +39,16 @@ const router = createBrowserRouter([
         element: <Profile></Profile>,
       },
       {
+        path: "/view-profile",
+        element: <SingleUserProfile></SingleUserProfile>,
+      },
+      {
         path: "/update-profile",
         element: <UpdateProfile></UpdateProfile>,
       },
       {
         path: "/blog",
-        element: <Blog></Blog>
+        element: <Blog></Blog>,
       },
       {
         path: "/about-us",

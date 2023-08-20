@@ -171,7 +171,7 @@ const Profile = () => {
               </Link>
             </div>
             {isProfileIncomplete && (
-              <div className=" bg-white absolute inset-0 my-4 w-full h-96 flex flex-col items-center justify-center gap-5 bg-opacity-90 backdrop-blur-sm">
+              <div className=" bg-white absolute inset-0 my-4 w-full h-full flex flex-col items-center justify-center gap-5 bg-opacity-90 backdrop-blur-sm">
                 <h1 className="text-black text-xl font-semibold text-center md:text-left">
                   Please Edit your profile to see your details.
                 </h1>
