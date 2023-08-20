@@ -53,8 +53,8 @@ const LoveStories = () => {
           className="mySwiper"
         >
           {data.map((stories) => (
-            <SwiperSlide className="pb-12">
-              <div className="text-center" key={stories._id}>
+            <SwiperSlide key={stories._id} className="pb-12">
+              <div className="text-center">
                 <img
                   src={stories.image}
                   alt=""
