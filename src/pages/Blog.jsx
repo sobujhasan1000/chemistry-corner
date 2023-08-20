@@ -92,44 +92,58 @@ const Blog = () => {
     },
   ];
   return (
-    <>
-      <Helmet>
-        <title>Blog - Chemistry Corner</title>
-      </Helmet>
+    <div>
+      <div>
+        <img src="https://i.ibb.co/k9WQLfS/blog-background.jpg" alt="Background Image" style={{ height: "350px", maxWidth: "100%" }} />
+      </div>
       <Container>
-        <div className="my-4 text-black text-center">
-          {blogs.map((blog, i) => (
-            <div
-              key={i}
-              className="lg:flex my-8 gap-4 hover:shadow-xl hover:translate-x-2"
-            >
-              <div className="p-6">
-                <img
-                  className="h-[500px] rounded-md"
-                  src={blog.image_url}
-                  alt=""
-                />
-              </div>
-              <div className="flex items-center justify-center p-4">
-                <div>
-                  <h1 className="text-4xl p-2">{blog.blog_heading}</h1>
-                  <p className="flex gap-3 items-center justify-center">
-                    <FcBusinessman />
-                    {blog.author_name}
-                    <FcOvertime />
-                    {blog.blog_time} <FcLike />
-                    {blog.total_likes} <FcMms />
-                    {blog.comments.length}
-                  </p>
-                  <p className="p-4">{blog.description}</p>
-                  <button className="btn bg-red-400">read more</button>
-                </div>
-              </div>
-            </div>
-          ))}
+       <div className="lg:flex">
+       <div className="my-4 text-black text-center grid lg:grid-cols-2 lg:w-2/3">
+    
+    {blogs.map((blog, i) => (
+      <div
+        key={i}
+        className="my-8 gap-4 hover:shadow-2xl"
+      >
+        <div className="p-6">
+          <img
+            className="rounded-md"
+            src={blog.image_url}
+            alt=""
+          />
         </div>
+        <div className="flex items-center justify-center p-4">
+          <div>
+            <h1 className="lg:text-2xl p-2">{blog.blog_heading}</h1>
+            <p className="flex gap-3 items-center justify-center">
+              <FcBusinessman />
+              {blog.author_name}
+              <FcOvertime />
+              {blog.blog_time} <FcLike />
+              {blog.total_likes} <FcMms />
+              {blog.comments.length}
+            </p>
+            <p className="p-4">{blog.description}</p>
+            <button className="btn bg-red-400">read more</button>
+          </div>
+        </div>
+      </div>
+    ))}
+  
+  </div>
+  <div className="lg:w-1/3">
+    <h1 className="text-center lg:pt-20">Categories</h1>
+    <div className="ml-4 pl-2">
+    <h2>News</h2>
+    <h2>Dating Tips</h2>
+    <h2>Men</h2>
+    <h2>Women</h2>
+    <h2>Non-binary</h2>
+    </div>
+    </div>
+       </div>
       </Container>
-    </>
+    </div>
   );
 };
 
