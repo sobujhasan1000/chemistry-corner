@@ -2,6 +2,7 @@ import React from "react";
 import Container from "../shared/Container";
 import { BsSearchHeart } from "react-icons/bs";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const CheckoutPartner = () => {
   const genders = [
@@ -168,11 +169,14 @@ const CheckoutPartner = () => {
               ))}
             </select>
           </div>
-          <div className="text-xl font-medium px-3 col-span-full md:col-span-1 py-3 rounded uppercase text-white bg-[#ED0058] hover:bg-[#a33f64] flex justify-center items-center gap-2 md:gap-3 cursor-pointer">
+          <Link
+            to="find-partner"
+            className="text-xl font-medium px-3 col-span-full md:col-span-1 py-3 rounded uppercase text-white bg-[#ED0058] hover:bg-[#a33f64] flex justify-center items-center gap-2 md:gap-3 cursor-pointer"
+          >
             <BsSearchHeart size={25} />
 
             <input type="submit" value="Find your partner" />
-          </div>
+          </Link>
         </form>
       </Container>
     </div>
