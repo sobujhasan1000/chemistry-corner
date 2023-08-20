@@ -1,6 +1,7 @@
 import React from "react";
 import { FcBusinessman, FcLike, FcMms, FcOvertime } from "react-icons/fc";
 import Container from "../components/shared/Container";
+import { Helmet } from "react-helmet-async";
 
 const Blog = () => {
   const blogs = [
