@@ -1,7 +1,9 @@
 import React from "react";
 import { FcBusinessman, FcLike, FcMms, FcOvertime } from "react-icons/fc";
-import Container from "../components/shared/Container";
+import Container from "../../components/shared/Container";
 import { Helmet } from "react-helmet-async";
+import BlogCategories from "./BlogCategories";
+import NewblogPosts from "./NewblogPosts";
 
 const Blog = () => {
   const blogs = [
@@ -98,8 +100,8 @@ const Blog = () => {
       </div>
       <Container>
        <div className="lg:flex">
+
        <div className="my-4 text-black text-center grid lg:grid-cols-2 lg:w-2/3">
-    
     {blogs.map((blog, i) => (
       <div
         key={i}
@@ -115,7 +117,7 @@ const Blog = () => {
         <div className="flex items-center justify-center p-4">
           <div>
             <h1 className="lg:text-2xl p-2">{blog.blog_heading}</h1>
-            <p className="flex gap-3 items-center justify-center">
+            <p className="flex gap-2 items-center justify-center text-sm">
               <FcBusinessman />
               {blog.author_name}
               <FcOvertime />
@@ -129,18 +131,13 @@ const Blog = () => {
         </div>
       </div>
     ))}
-  
   </div>
+
+  {/* ============== categories secton================= */}
   <div className="lg:w-1/3">
-    <h1 className="text-center lg:pt-20">Categories</h1>
-    <div className="ml-4 pl-2">
-    <h2>News</h2>
-    <h2>Dating Tips</h2>
-    <h2>Men</h2>
-    <h2>Women</h2>
-    <h2>Non-binary</h2>
-    </div>
-    </div>
+  <BlogCategories></BlogCategories>
+  <NewblogPosts></NewblogPosts>
+  </div>
        </div>
       </Container>
     </div>
