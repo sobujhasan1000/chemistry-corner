@@ -60,7 +60,6 @@ const CheckoutPartner = () => {
     const maxAge = form.maxAge.value;
     const country = form.country.value;
     navigate("find-partner", {
-      replace: true,
       state: {
         gender: gender,
         minAge: minAge,
