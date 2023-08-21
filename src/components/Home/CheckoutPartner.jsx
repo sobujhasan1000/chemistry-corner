@@ -74,11 +74,7 @@ const CheckoutPartner = () => {
             <label className="label">
               <span className="text-lg text-[#656565]">I am</span>
             </label>
-            <select
-              name="gender"
-              {...register("gender")}
-              className="bg-[#FAFAFA] border-[1px] border-solid border-[#FAFAFA] text-[20px] select w-full"
-            >
+            <select className="bg-[#FAFAFA] border-[1px] border-solid border-[#FAFAFA] text-[20px] select w-full">
               {genders.map((gender, i) => (
                 <option
                   key={i}
