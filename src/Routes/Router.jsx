@@ -8,9 +8,9 @@ import UpdateProfile from "../pages/UpdateProfile";
 import Countries from "../pages/Countries/Countries";
 import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
-import Blog from "../pages/Blog";
 import SingleUserProfile from "../pages/SingleUserProfile";
 import FindPartner from "../pages/FindPartner/FindPartner";
+import Blog from "../pages/blogs/Blog";
 
 const router = createBrowserRouter([
   {
