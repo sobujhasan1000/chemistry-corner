@@ -56,3 +56,9 @@ export const getComplexSearch = async (gender, minAge, maxAge, country) => {
   const data = response.json();
   return data;
 };
+
+export const fetchMemberById = async (id) => {
+  const res = await fetch(`http://localhost:5000/member/${id}`);
+  const data = res.json();
+  return data;
+};

@@ -10,6 +10,7 @@ const Profile = () => {
   const { user } = useContext(AuthContext);
 
   const [singleUser, loading] = useSingleUser(user?.email);
+  console.log("first 2", singleUser);
 
   const {
     image,

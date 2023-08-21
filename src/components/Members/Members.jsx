@@ -124,7 +124,7 @@ const Members = () => {
 
                           <div className="card-actions">
                             <Link
-                              to="/view-profile"
+                              to={`/view-profile/${item._id}`}
                               className="btn bg-[#FD6585] hover:bg-[#ED0058] w-full"
                             >
                               View Details
