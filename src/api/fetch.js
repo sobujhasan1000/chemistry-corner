@@ -46,3 +46,13 @@ export const sendNotes = async (contactInfo) => {
   const data = response.json();
   return data;
 };
+
+export const getComplexSearch = async (gender, minAge, maxAge, country) => {
+  const response = await fetch(
+    `${
+      import.meta.env.VITE_API_URL
+    }/find-your-partner?gender=${gender}&&minAge=${minAge}&&maxAge=${maxAge}&&location=${country}`
+  );
+  const data = response.json();
+  return data;
+};

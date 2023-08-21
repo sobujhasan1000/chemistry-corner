@@ -1,42 +1,41 @@
-import React from "react";
 import Container from "../shared/Container";
 import { BsSearchHeart } from "react-icons/bs";
-import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutPartner = () => {
+  const navigate = useNavigate();
+
   const genders = [
     {
       label: "Male",
       value: "male",
-      selected: true,
     },
-    { label: "Female", value: "female" },
+    { label: "Female", value: "female", selected: true },
     { label: "Non-Binary", value: "non-binary" },
   ];
   const minAges = [
     {
-      label: "18",
-      value: 18,
+      label: "22",
+      value: 22,
       selected: true,
     },
-    { label: "19", value: 19 },
-    { label: "20", value: 20 },
-    { label: "21", value: 21 },
-    { label: "22", value: 22 },
     { label: "23", value: 23 },
+    { label: "24", value: 24 },
+    { label: "25", value: 25 },
+    { label: "26", value: 26 },
+    { label: "27", value: 27 },
   ];
   const maxAges = [
     {
-      label: "30",
-      value: 30,
+      label: "28",
+      value: 28,
       selected: true,
     },
+    { label: "29", value: 29 },
+    { label: "30", value: 30 },
     { label: "31", value: 31 },
     { label: "32", value: 32 },
     { label: "33", value: 33 },
-    { label: "34", value: 34 },
-    { label: "35", value: 35 },
   ];
   const countries = [
     {
@@ -45,29 +44,37 @@ const CheckoutPartner = () => {
       selected: true,
       hidden: true,
     },
-    { label: "USA", value: "usa" },
-    { label: "UK", value: "uk" },
-    { label: "Canada", value: "canada" },
-    { label: "Ireland", value: "ireland" },
-    { label: "France", value: "france" },
+    { label: "Miami", value: "miami" },
+    { label: "New York", value: "new-york" },
+    { label: "Los Angeles", value: "los-angeles" },
+    { label: "Chicago", value: "chicago" },
+    { label: "San Francisco", value: "san-francisco" },
+    { label: "Seattle", value: "seattle" },
   ];
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = (data) => {
-    console.log(data);
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const gender = form.gender.value;
+    const minAge = form.minAge.value;
+    const maxAge = form.maxAge.value;
+    const country = form.country.value;
+    navigate("find-partner", {
+      replace: true,
+      state: {
+        gender: gender,
+        minAge: minAge,
+        maxAge: maxAge,
+        country: country,
+      },
+    });
   };
+
   return (
     <div className="py-8 md:py-24 rounded-lg bg-slate-100">
       <Container>
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleFormSubmit}
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 items-end gap-4"
         >
           <div>
@@ -76,11 +83,7 @@ const CheckoutPartner = () => {
             </label>
             <select className="bg-[#FAFAFA] border-[1px] border-solid border-[#FAFAFA] text-[20px] select w-full">
               {genders.map((gender, i) => (
-                <option
-                  key={i}
-                  className="md:text-[20px]"
-                  defaultValue={gender.value}
-                >
+                <option key={i} className="md:text-[20px]">
                   {gender?.label}
                 </option>
               ))}
@@ -92,14 +95,14 @@ const CheckoutPartner = () => {
             </label>
             <select
               name="gender"
-              {...register("gender")}
               className="bg-[#FAFAFA] border-[1px] border-solid border-[#FAFAFA] text-[20px] select w-full"
             >
               {genders.map((gender, i) => (
                 <option
                   key={i}
                   className="md:text-[20px]"
-                  defaultValue={gender.value}
+                  value={gender.value}
+                  selected={gender.selected}
                 >
                   {gender?.label}
                 </option>
@@ -113,14 +116,14 @@ const CheckoutPartner = () => {
             <div className="flex justify-center items-center gap-1">
               <select
                 name="minAge"
-                {...register("minAge")}
                 className="bg-[#FAFAFA] border-[1px] border-solid border-[#FAFAFA]  py-[3px] text-[20px] select w-full"
               >
                 {minAges.map((item, i) => (
                   <option
                     key={i}
                     className="md:text-[20px]"
-                    defaultValue={item.value}
+                    value={item.value}
+                    selected={item.selected}
                   >
                     {item?.label}
                   </option>
@@ -129,14 +132,14 @@ const CheckoutPartner = () => {
               <span className="text-4xl text-[#656565]">-</span>
               <select
                 name="maxAge"
-                {...register("maxAge")}
                 className="bg-[#FAFAFA] border-[1px] border-solid border-[#FAFAFA] py-[3px] text-[20px] select w-full"
               >
                 {maxAges.map((item, i) => (
                   <option
                     key={i}
                     className="md:text-[20px]"
-                    defaultValue={item.value}
+                    value={item.value}
+                    selected={item.selected}
                   >
                     {item?.label}
                   </option>
@@ -150,7 +153,6 @@ const CheckoutPartner = () => {
             </label>
             <select
               name="country"
-              {...register("country")}
               className="bg-[#FAFAFA] border-[1px] border-solid border-[#FAFAFA] text-[20px] select w-full"
             >
               {countries.map((country, i) => (
@@ -158,21 +160,18 @@ const CheckoutPartner = () => {
                   key={i}
                   className={`text-[20px] ${country.hidden && "hidden"}`}
                   disabled={country?.disabled}
-                  defaultValue={country?.value}
+                  value={country?.value}
+                  selected={country.selected}
                 >
                   {country?.label}
                 </option>
               ))}
             </select>
           </div>
-          <Link
-            to="find-partner"
-            className="text-xl font-medium px-3 col-span-full md:col-span-1 py-3 rounded uppercase text-white bg-[#ED0058] hover:bg-[#a33f64] flex justify-center items-center gap-2 md:gap-3 cursor-pointer"
-          >
+          <div className="text-xl font-medium px-3 col-span-full md:col-span-1 py-3 rounded uppercase text-white bg-[#ED0058] hover:bg-[#a33f64] flex justify-center items-center gap-2 md:gap-3 cursor-pointer">
             <BsSearchHeart size={25} />
-
             <input type="submit" value="Find your partner" />
-          </Link>
+          </div>
         </form>
       </Container>
     </div>

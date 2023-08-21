@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { getAllMembers, membersSearchByLocation } from "../../api/fetch";
+import {
+  getAllMembers,
+  getComplexSearch,
+  membersSearchByLocation,
+} from "../../api/fetch";
+import { useLocation } from "react-router-dom";
 
 const FindPartner = () => {
   const [members, setMembers] = useState([]);
-  const [search, setSearch] = useState("");
-
+  console.log(members);
+  const location = useLocation();
+  const { gender, minAge, maxAge, country } = location?.state;
+  console.log(gender, minAge, maxAge, country);
   useEffect(() => {
-    getAllMembers().then((data) => setMembers(data));
-  }, []);
+    getComplexSearch(gender, minAge, maxAge, country).then((data) =>
+      setMembers(data)
+    );
+  }, [gender, minAge, maxAge, country]);
 
   const handleSearch = () => {
-    membersSearchByLocation(search).then((data) => setMembers(data));
+    // membersSearchByLocation(search).then((data) => setMembers(data));
   };
   return (
     <div>
@@ -34,9 +43,9 @@ const FindPartner = () => {
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
