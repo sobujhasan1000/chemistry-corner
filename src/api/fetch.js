@@ -58,7 +58,7 @@ export const getComplexSearch = async (gender, minAge, maxAge, country) => {
 };
 
 export const fetchMemberById = async (id) => {
-  const res = await fetch(`http://localhost:5000/member/${id}`);
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/member/${id}`);
   const data = res.json();
   return data;
 };
