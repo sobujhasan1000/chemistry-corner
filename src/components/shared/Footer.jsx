@@ -5,8 +5,38 @@ import {
   AiOutlineTwitter,
   AiOutlineInstagram,
 } from "react-icons/ai";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Footer = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    fetch("http://localhost:5000/newsletter", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your newsletter subscription has been saved.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          reset();
+        }
+      });
+  };
   return (
     <div className="bg-[#ED0058]">
       <div className="container mx-auto flex flex-col gap-8 py-10 text-white">
@@ -19,14 +49,18 @@ const Footer = () => {
               Subscribe your email to get latest updates.
             </p>
           </div>
-          <form className="flex items-center justify-center w-1/2 md:w-full">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex items-center justify-center w-1/2 md:w-full"
+          >
             <div className="flex justify-center md:w-full">
               <div className="form-control">
                 <input
                   type="email"
                   name="email"
+                  {...register("email")}
                   placeholder="Your Email..."
-                  className="bg-white pl-5 py-3 border-2 border-white outline-none rounded-s-full w-40 md:w-[50rem]"
+                  className="bg-white pl-5 py-3 border-2 border-white outline-none rounded-s-full w-40 md:w-[50rem] text-black"
                 />
               </div>
               <input
@@ -84,7 +118,7 @@ const Footer = () => {
                   <Link to="#">Testimonials</Link>
                 </li>
                 <li>
-                  <Link to="#">Blog</Link>
+                  <Link to="/blog">Blog</Link>
                 </li>
               </ul>
             </div>
