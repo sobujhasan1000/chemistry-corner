@@ -1,6 +1,6 @@
 import premium from "../../assets/premium.jpg";
 import Container from "../shared/Container";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const PremiumMember = () => {
   return (
@@ -19,9 +19,11 @@ const PremiumMember = () => {
             great bonuses.
           </p>
           <div className="flex flex-row justify-start items-center gap-2">
-            <Link to={'/membership'}><button className="px-6 py-2 text-xl capitalize bg-[#ED0058] text-white rounded-lg hover:text-white hover:bg-[#a33f64]">
-              view options
-            </button></Link>
+            <Link to={"/membership"}>
+              <button className="px-6 py-2 text-xl capitalize bg-[#ED0058] text-white rounded-lg hover:text-white hover:bg-[#a33f64]">
+                view options
+              </button>
+            </Link>
             <h2 className="text-xl border px-6 py-2 rounded-md border-[#a33f64]">
               14 days for free
             </h2>

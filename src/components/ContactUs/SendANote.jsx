@@ -41,7 +41,7 @@ const SendANote = () => {
               {...register("name")}
               required
               placeholder="Enter Your Full Name"
-              className="p-2 bg-white border border-gray-300 focus:border-yellow-400 focus:outline-none"
+              className="p-2 bg-white border border-gray-300 focus:border-yellow-400 focus:outline-none text-black"
             />
           </div>
           <div className="form-control">
@@ -51,7 +51,7 @@ const SendANote = () => {
               {...register("phone")}
               required
               placeholder="Enter Your Phone Number"
-              className="p-2 bg-white border border-gray-300 focus:border-yellow-400 focus:outline-none"
+              className="p-2 bg-white border border-gray-300 focus:border-yellow-400 focus:outline-none text-black"
             />
           </div>
           <div className="form-control md:col-span-2">
@@ -61,7 +61,7 @@ const SendANote = () => {
               {...register("email")}
               required
               placeholder="Enter Your Email"
-              className="p-2 bg-white border border-gray-300 focus:border-yellow-400 focus:outline-none"
+              className="p-2 bg-white border border-gray-300 focus:border-yellow-400 focus:outline-none text-black"
             />
           </div>
           <div className="form-control md:col-span-2">
@@ -72,7 +72,7 @@ const SendANote = () => {
               cols="30"
               rows="10"
               placeholder="Enter you message..."
-              className="p-2 bg-white border border-gray-300 focus:border-yellow-400 focus:outline-none"
+              className="p-2 bg-white border border-gray-300 focus:border-yellow-400 focus:outline-none text-black"
             ></textarea>
           </div>
           <div className="md:col-span-2 flex justify-center">
