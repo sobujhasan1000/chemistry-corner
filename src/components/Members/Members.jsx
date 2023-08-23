@@ -15,13 +15,43 @@ import { Link } from "react-router-dom";
 const Members = () => {
   const [members, setMembers] = useState([]);
   const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     getAllMembers().then((data) => setMembers(data));
   }, []);
 
   const handleMembers = (gender) => {
+    setCurrentPage(1);
     getGenderWiseMembers(gender).then((data) => setMembers(data));
+  };
+
+  const handleSearch = () => {
+    membersSearch(search).then((member) => setMembers(member));
+  };
+
+  const membersPerPage = 6;
+  const indexOfLastMember = currentPage * membersPerPage;
+  const indexOfFirstMember = indexOfLastMember - membersPerPage;
+  const currentMembers = members.slice(indexOfFirstMember, indexOfLastMember);
+  const totalPages = Math.ceil(members.length / membersPerPage);
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <button
+          key={i}
+          onClick={() => setCurrentPage(i)}
+          className={`px-3 py-1 rounded-md ${
+            currentPage === i ? "bg-pink-500 text-white" : "bg-pink-300 text-gray-700"
+          }`}
+        >
+          {i}
+        </button>
+      );
+    }
+    return pageNumbers;
   };
 
   const genderLists = [
@@ -31,9 +61,6 @@ const Members = () => {
     { label: "non-binary", value: "non-binary" },
   ];
 
-  const handleSearch = () => {
-    membersSearch(search).then((member) => setMembers(member));
-  };
   return (
     <div style={{ backgroundImage: `url(${membersBg})` }}>
       <Helmet>
@@ -89,12 +116,12 @@ const Members = () => {
                 </Tab>
               ))}
             </TabList>
-            {genderLists.map((i) => (
-              <TabPanel key={i}>
-                <div className="grid justify-center items-center gap-2 sm:grid-cols-3 pt-24 pb-4">
-                  {members.map((item) => (
+            {genderLists.map((i, index) => (
+              <TabPanel key={index}>
+                <div className="grid justify-center items-center gap-2 sm:grid-cols-3 pt-24">
+                  {currentMembers.map((item) => (
                     <div
-                      className="card w-96 rounded-3xl shadow-xl flex justify-center items-center mx-auto my-16 "
+                      className="card w-96 rounded-3xl shadow-xl flex justify-center items-center mx-auto mt-16 mb-12"
                       key={item._id}
                     >
                       <div className="p-1 rounded-3xl transform-gpu transition-all selection:bg-sky-100 h-full grid place-items-center bg-gradient-to-tl to-[#FFD3A5] from-[#FD6585] dark:selection:bg-white/10">
@@ -134,6 +161,23 @@ const Members = () => {
                       </div>
                     </div>
                   ))}
+                </div>
+                <div className="flex justify-center pb-8 items-center space-x-2">
+                  <button
+                    onClick={() => setCurrentPage(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="px-3 py-1 rounded-md bg-pink-200 hover:bg-pink-400"
+                  >
+                    Previous
+                  </button>
+                  {renderPageNumbers()}
+                  <button
+                    onClick={() => setCurrentPage(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="px-3 py-1 rounded-md bg-pink-200 hover:bg-pink-400"
+                  >
+                    Next
+                  </button>
                 </div>
               </TabPanel>
             ))}

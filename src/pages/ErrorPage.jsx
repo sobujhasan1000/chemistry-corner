@@ -5,15 +5,15 @@ import { useEffect, useState } from "react";
 const ErrorPage = () => {
   const { error, status } = useRouteError();
   const [animationDimensions, setAnimationDimensions] = useState({
-    width: 500,
-    height: 500,
+    width: 400,
+    height: 400,
   });
 
   const updateDimensions = () => {
     if (window.innerWidth < 768) {
       setAnimationDimensions({ width: 250, height: 250 });
     } else {
-      setAnimationDimensions({ width: 500, height: 500 });
+      setAnimationDimensions({ width: 400, height: 400 });
     }
   };
 
