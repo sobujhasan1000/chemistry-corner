@@ -112,10 +112,10 @@ const Footer = () => {
                   <Link to="/about-us">About Us</Link>
                 </li>
                 <li>
-                  <Link to="#">Our Team</Link>
+                  <Link to="/our-team">Our Team</Link>
                 </li>
                 <li>
-                  <Link to="#">Testimonials</Link>
+                  <Link to="/testimonials">Testimonials</Link>
                 </li>
                 <li>
                   <Link to="/blog">Blog</Link>
@@ -127,13 +127,13 @@ const Footer = () => {
               <h1 className="text-xl">Support</h1>
               <ul className="flex flex-col items-center md:items-start gap-3 text-sm">
                 <li>
-                  <Link to="#">Get in Touch</Link>
+                  <Link to="/contact-us">Get in Touch</Link>
                 </li>
                 <li>
-                  <Link to="#">FAQ</Link>
+                  <Link to="/faq">FAQ</Link>
                 </li>
                 <li>
-                  <Link to="#">Community Guidelines</Link>
+                  <Link to="/community-guidelines">Community Guidelines</Link>
                 </li>
               </ul>
             </div>
