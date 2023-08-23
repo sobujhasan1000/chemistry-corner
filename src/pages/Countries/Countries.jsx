@@ -6,6 +6,8 @@ import { getAllMembers, membersSearchByLocation } from "../../api/fetch";
 const Countries = () => {
   const [members, setMembers] = useState([]);
   const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(6);
 
   useEffect(() => {
     getAllMembers().then((data) => setMembers(data));
@@ -14,6 +16,48 @@ const Countries = () => {
   const handleSearch = () => {
     membersSearchByLocation(search).then((data) => setMembers(data));
   };
+
+  const totalMembers = members.length;
+  const totalPages = Math.ceil(totalMembers / itemsPerPage);
+
+  const indexOfLastMember = currentPage * itemsPerPage;
+  const indexOfFirstMember = indexOfLastMember - itemsPerPage;
+  const currentMembers = members.slice(indexOfFirstMember, indexOfLastMember);
+
+  const goToPage = (pageNumber) => {
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      setCurrentPage(pageNumber);
+    }
+  };
+
+  const goToPreviousPage = () => {
+    goToPage(currentPage - 1);
+  };
+
+  const goToNextPage = () => {
+    goToPage(currentPage + 1);
+  };
+
+  const renderPageButtons = () => {
+    const pageButtons = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageButtons.push(
+        <button
+          key={i}
+          onClick={() => goToPage(i)}
+          className={`px-3 py-1 rounded-md ${
+            currentPage === i
+              ? "bg-pink-500 text-white"
+              : "bg-pink-300 text-gray-700"
+          }`}
+        >
+          {i}
+        </button>
+      );
+    }
+    return pageButtons;
+  };
+
   return (
     <div>
       <Helmet>
@@ -65,7 +109,7 @@ const Countries = () => {
             </p>
           </div>
           <div className="grid gap-10 mx-auto lg:grid-cols-2 lg:max-w-screen-lg">
-            {members.map((member) => (
+            {currentMembers.map((member) => (
               <div
                 className="grid sm:grid-cols-3 md:border-4 shadow-2xl shadow-black/[0.2] rounded-3xl md:bg-gray-100"
                 key={member?._id}
@@ -91,6 +135,21 @@ const Countries = () => {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="flex items-center justify-center mt-12 space-x-2">
+            <button
+              onClick={goToPreviousPage}
+              className="px-3 py-1 rounded-md bg-pink-200 hover:bg-pink-400"
+            >
+              Previous
+            </button>
+            {renderPageButtons()}
+            <button
+              onClick={goToNextPage}
+              className="px-3 py-1 rounded-md bg-pink-200 hover:bg-pink-400"
+            >
+              Next
+            </button>
           </div>
         </div>
       </div>
