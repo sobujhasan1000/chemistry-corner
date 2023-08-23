@@ -11,11 +11,13 @@ import ContactUs from "../pages/ContactUs";
 import SingleUserProfile from "../pages/SingleUserProfile";
 import FindPartner from "../pages/FindPartner/FindPartner";
 import Blog from "../pages/blogs/Blog";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
