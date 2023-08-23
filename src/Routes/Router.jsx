@@ -12,6 +12,10 @@ import SingleUserProfile from "../pages/SingleUserProfile";
 import FindPartner from "../pages/FindPartner/FindPartner";
 import Blog from "../pages/blogs/Blog";
 import ErrorPage from "../pages/ErrorPage";
+import OurTeam from "../pages/OurTeam";
+import Testimonials from "../pages/Testimonials";
+import FAQ from "../pages/FAQ";
+import CommunityGuidelines from "../pages/CommunityGuidelines";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +68,22 @@ const router = createBrowserRouter([
       {
         path: "/find-partner",
         element: <FindPartner></FindPartner>,
+      },
+      {
+        path: "/our-team",
+        element: <OurTeam></OurTeam>,
+      },
+      {
+        path: "/testimonials",
+        element: <Testimonials></Testimonials>,
+      },
+      {
+        path: "/faq",
+        element: <FAQ></FAQ>,
+      },
+      {
+        path: "/community-guidelines",
+        element: <CommunityGuidelines></CommunityGuidelines>,
       },
     ],
   },
