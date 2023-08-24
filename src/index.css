@@ -12,3 +12,11 @@ body {
 .page-header-bg {
   background-image: url('/page-info-bg.jpg');
 }
+
+.navClasses {
+  @apply hover:underline hover:underline-offset-4 transition-all ease-in duration-500
+}
+
+.activeNavLink {
+  @apply bg-white text-[#ED0058] px-2 py-1 transition-all ease-in duration-300
+}

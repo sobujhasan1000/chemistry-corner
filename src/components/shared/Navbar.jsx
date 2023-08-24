@@ -30,35 +30,98 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/members">Members</NavLink>
+        <NavLink
+          to="/members"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+          Members
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/countries">Countries</NavLink>
+        <NavLink
+          to="/countries"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+          Countries
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/all-world">All World</NavLink>
+        <NavLink
+          to="/all-world"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+          All World
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/blog">Blog</NavLink>
+        <NavLink
+          to="/blog"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+          Blog
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/about-us">About Us</NavLink>
+        <NavLink
+          to="/about-us"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+          About Us
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/contact-us">Contact Us</NavLink>
+        <NavLink
+          to="/contact-us"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+          Contact Us
+        </NavLink>
       </li>
     </>
   );
   const userMenuItems = (
     <>
       <li className="user-menu-item">
-        <NavLink to="/profile">My Profile</NavLink>
+        <NavLink
+          to="/profile"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+          My Profile
+        </NavLink>
       </li>
       <li className="user-menu-item">
-        <NavLink to="/dashboard">Dashboard</NavLink>
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink " : " navClasses"
+          }
+        >
+          Dashboard
+        </NavLink>
       </li>
       <li className="user-menu-item">
         <button onClick={handleLogOut}>Log Out</button>
