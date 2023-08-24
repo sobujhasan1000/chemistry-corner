@@ -16,6 +16,7 @@ import OurTeam from "../pages/OurTeam";
 import Testimonials from "../pages/Testimonials";
 import FAQ from "../pages/FAQ";
 import CommunityGuidelines from "../pages/CommunityGuidelines";
+import DashboardLayout from "../layOuts/mainLayOut/DashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { path: "/dashboard", element: <DashboardLayout></DashboardLayout> },
 ]);
 
 export default router;
