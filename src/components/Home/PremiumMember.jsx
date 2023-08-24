@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const PremiumMember = () => {
   return (
     <div
-      className="hero h-screen text-white object-top justify-start bg-top mb-24"
+      className="hero h-screen text-white object-top justify-start bg-top mb-24 hover:bg-bottom duration-[4s] ease-in-out"
       style={{ backgroundImage: `url(${premium})`, height: 450 }}
     >
       <Container>
