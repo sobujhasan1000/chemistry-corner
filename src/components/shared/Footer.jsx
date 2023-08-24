@@ -16,7 +16,7 @@ const Footer = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/newsletter", {
+    fetch(`${import.meta.env.VITE_API_URL}/newsletter`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
