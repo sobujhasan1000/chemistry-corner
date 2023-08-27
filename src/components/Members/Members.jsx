@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Container from "../shared/Container";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -44,7 +44,9 @@ const Members = () => {
           key={i}
           onClick={() => setCurrentPage(i)}
           className={`px-3 py-1 rounded-md ${
-            currentPage === i ? "bg-pink-500 text-white" : "bg-pink-300 text-gray-700"
+            currentPage === i
+              ? "bg-pink-500 text-white"
+              : "bg-pink-300 text-gray-700"
           }`}
         >
           {i}
@@ -82,9 +84,9 @@ const Members = () => {
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
@@ -133,24 +135,24 @@ const Members = () => {
                         <div className="bg-white px-12 pt-16 pb-14 shadow-2xl shadow-black/[0.2] rounded-3xl text-center flex flex-col justify-center max-w-md transition-colors dark:bg-neutral-800">
                           <div className="select-none">
                             <img
-                              src={item.photo}
+                              src={item?.image}
                               className="shadow-2xl shadow-black/[0.2] rounded-3xl h-60 w-60 mx-auto -mt-40 transform-gpu transition-all hover:scale-125"
                               style={{ userSelect: "none" }}
                               alt="avatar"
                             />
                           </div>
 
-                          <h1 className="mt-12 text-3xl font-bold text-slate-800 dark:text-white">
-                            {item.name}
+                          <h1 className="mt-12 text-3xl font-bold text-slate-800 dark:text-white capitalize">
+                            {item?.name}
                           </h1>
 
                           <p className="mt-4 text-slate-600 dark:text-white/90">
-                            {item.bio}
+                            {item?.bio}
                           </p>
                           <p>
                             <span className="flex justify-center items-center py-3 gap-1 text-sm leading-normal text-[#94A3B8] font-bold uppercase">
                               <FaMapMarkerAlt />
-                              {item.location}
+                              {item?.country}
                             </span>
                           </p>
 

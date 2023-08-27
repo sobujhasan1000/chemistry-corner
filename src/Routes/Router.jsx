@@ -17,6 +17,7 @@ import Testimonials from "../pages/Testimonials";
 import FAQ from "../pages/FAQ";
 import CommunityGuidelines from "../pages/CommunityGuidelines";
 import DashboardLayout from "../layOuts/mainLayOut/DashboardLayout";
+import MembershipOrder from "../pages/MembershipOrder";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         path: "/membership",
         element: <MemberShip></MemberShip>,
       },
+      {
+        path: "/membership/:id",
+        element: <MembershipOrder />,
+      },
       { path: "/members", element: <Members></Members> },
       {
         path: "/members",
@@ -42,10 +47,10 @@ const router = createBrowserRouter([
         path: "/countries",
         element: <Countries></Countries>,
       },
-      {
-        path: "/profile",
-        element: <Profile></Profile>,
-      },
+      // {
+      //   path: "/profile",
+      //   element: <Profile></Profile>,
+      // },
       {
         path: "/view-profile/:id",
         element: <SingleUserProfile></SingleUserProfile>,
@@ -88,7 +93,16 @@ const router = createBrowserRouter([
       },
     ],
   },
-  { path: "/dashboard", element: <DashboardLayout></DashboardLayout> },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "/dashboard/profile",
+        element: <Profile></Profile>,
+      },
+    ],
+  },
 ]);
 
 export default router;

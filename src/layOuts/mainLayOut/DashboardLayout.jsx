@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Sidebar from "../../components/Dashboard/Sidebar/Sidebar";
+import { Outlet } from "react-router-dom";
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -21,7 +23,7 @@ const DashboardLayout = () => {
       <aside
         className={`fixed left-0 transform transition-transform z-30 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 lg:block lg:relative lg:w-1/4 lg:h-screen bg-[#ED0058] text-white`}
+        } lg:translate-x-0 lg:block lg:relative lg:w-1/5 lg:h-screen bg-[#ED0058] text-white`}
       >
         {/* Close Button for Mobile */}
         <div className="lg:hidden absolute top-0 right-0 p-4">
@@ -34,6 +36,7 @@ const DashboardLayout = () => {
           <h1 className="text-xl font-semibold">Dashboard</h1>
         </div>
         {/* Sidebar content goes here */}
+        <Sidebar />
       </aside>
 
       {/* Main Content */}
@@ -42,6 +45,7 @@ const DashboardLayout = () => {
           Welcome to the Dashboard
         </h2>
         {/* Main content goes here */}
+        <Outlet />
       </main>
     </div>
   );

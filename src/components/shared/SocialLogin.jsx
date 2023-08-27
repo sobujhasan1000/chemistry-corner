@@ -19,9 +19,6 @@ const SocialLogin = () => {
           name: loggedUser.displayName,
           email: loggedUser.email,
           image: loggedUser.photoURL,
-          gender: "",
-          age: "",
-          profession: "",
         };
         saveUser(userInfo).then((data) => {
           if (data.insertedId) {
