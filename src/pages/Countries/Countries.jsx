@@ -78,9 +78,9 @@ const Countries = () => {
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
@@ -117,7 +117,7 @@ const Countries = () => {
                 <div className="relative w-full h-48 max-h-full rounded-2xl shadow sm:h-auto">
                   <img
                     className="absolute md:object-cover md:w-full h-full rounded-2xl"
-                    src={member?.photo}
+                    src={member?.image}
                     alt="Person"
                   />
                 </div>
@@ -129,7 +129,7 @@ const Countries = () => {
                   <p>
                     <span className="flex items-center py-3 gap-1 text-sm leading-normal text-[#6d7683] font-bold uppercase">
                       <FaMapMarkerAlt />
-                      {member?.location}
+                      {member?.country}
                     </span>
                   </p>
                 </div>

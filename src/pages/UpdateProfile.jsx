@@ -51,17 +51,17 @@ const UpdateProfile = () => {
           image: imageUrl,
           gender: data.gender,
           age: parseInt(data.age),
-          profession: data.profession,
+          profession: data.profession.toLowerCase(),
           bio: data.bio,
           contact: data.contact,
           height: parseFloat(data.height),
           weight: parseFloat(data.weight),
           address: data.address,
-          city: data.city,
-          country: data.country,
-          education: data.education,
+          city: data.city.toLowerCase(),
+          country: data.country.toLowerCase(),
+          education: data.education.toLowerCase(),
           dob: data.dob,
-          maritalStatus: data.maritalStatus,
+          maritalStatus: data.maritalStatus.toLowerCase(),
         };
         modifyUser(userInfo, user.email).then((modifiedData) => {
           if (modifiedData.modifiedCount > 0) {
