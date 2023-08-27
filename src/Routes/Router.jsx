@@ -47,10 +47,10 @@ const router = createBrowserRouter([
         path: "/countries",
         element: <Countries></Countries>,
       },
-      {
-        path: "/profile",
-        element: <Profile></Profile>,
-      },
+      // {
+      //   path: "/profile",
+      //   element: <Profile></Profile>,
+      // },
       {
         path: "/view-profile/:id",
         element: <SingleUserProfile></SingleUserProfile>,
@@ -93,7 +93,16 @@ const router = createBrowserRouter([
       },
     ],
   },
-  { path: "/dashboard", element: <DashboardLayout></DashboardLayout> },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "/dashboard/profile",
+        element: <Profile></Profile>,
+      },
+    ],
+  },
 ]);
 
 export default router;
