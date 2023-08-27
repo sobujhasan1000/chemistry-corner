@@ -18,6 +18,7 @@ import FAQ from "../pages/FAQ";
 import CommunityGuidelines from "../pages/CommunityGuidelines";
 import DashboardLayout from "../layOuts/mainLayOut/DashboardLayout";
 import MembershipOrder from "../pages/MembershipOrder";
+import CreateBlog from "../pages/Dashboard/CreateBlog/CreateBlog";
 
 const router = createBrowserRouter([
   {
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "/dashboard/create-blog",
+        element: <CreateBlog></CreateBlog>
       },
     ],
   },
