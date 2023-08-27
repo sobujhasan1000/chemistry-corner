@@ -44,12 +44,12 @@ const CheckoutPartner = () => {
       selected: true,
       hidden: true,
     },
-    { label: "Miami", value: "miami" },
-    { label: "New York", value: "new-york" },
-    { label: "Los Angeles", value: "los-angeles" },
-    { label: "Chicago", value: "chicago" },
-    { label: "San Francisco", value: "san-francisco" },
-    { label: "Seattle", value: "seattle" },
+    { label: "Bangladesh", value: "bangladesh" },
+    { label: "India", value: "india" },
+    { label: "Nepal", value: "nepal" },
+    { label: "USA", value: "usa" },
+    { label: "UK", value: "uk" },
+    { label: "Canada", value: "canada" },
   ];
 
   const handleFormSubmit = (e) => {

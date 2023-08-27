@@ -1,8 +1,6 @@
-import axios from "axios";
-
 // ===========Get All Members===============
 export const getAllMembers = async () => {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/members`);
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/users`);
   const data = res.json();
   return data;
 };
@@ -10,7 +8,7 @@ export const getAllMembers = async () => {
 // ==========Get Category Members=============
 export const getGenderWiseMembers = async (gender) => {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/members?gender=${gender}`
+    `${import.meta.env.VITE_API_URL}/users?gender=${gender}`
   );
   const data = res.json();
   return data;
@@ -19,7 +17,7 @@ export const getGenderWiseMembers = async (gender) => {
 // ============search members by their name===========
 export const membersSearch = async (text) => {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/membersSearchByName/${text}`
+    `${import.meta.env.VITE_API_URL}/usersSearchByName/${text}`
   );
   const data = res.json();
   return data;
@@ -28,7 +26,7 @@ export const membersSearch = async (text) => {
 // ============search members by their location===========
 export const membersSearchByLocation = async (text) => {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/membersSearchByLocation/${text}`
+    `${import.meta.env.VITE_API_URL}/usersSearchByLocation/${text}`
   );
   const data = res.json();
   return data;
@@ -51,7 +49,7 @@ export const getComplexSearch = async (gender, minAge, maxAge, country) => {
   const response = await fetch(
     `${
       import.meta.env.VITE_API_URL
-    }/find-your-partner?gender=${gender}&&minAge=${minAge}&&maxAge=${maxAge}&&location=${country}`
+    }/find-your-partner?gender=${gender}&&minAge=${minAge}&&maxAge=${maxAge}&&country=${country}`
   );
   const data = response.json();
   return data;
