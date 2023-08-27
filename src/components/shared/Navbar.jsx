@@ -8,7 +8,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
 
 const Navbar = () => {
-  const { user, loading, setLoading, logOut } = useContext(AuthContext);
+  const { user, setLoading, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 

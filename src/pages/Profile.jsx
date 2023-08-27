@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useSingleUser from "../Hooks/useSingleUser";
 import siteLoader from "/ccLoader.gif";
 import { Helmet } from "react-helmet-async";
+import { useContext } from "react";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);

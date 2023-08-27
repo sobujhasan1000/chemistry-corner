@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Sidebar from "../../components/Dashboard/Sidebar/Sidebar";
 import { Outlet } from "react-router-dom";

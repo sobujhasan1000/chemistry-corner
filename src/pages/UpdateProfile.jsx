@@ -31,13 +31,7 @@ const UpdateProfile = () => {
     dob,
     profession,
   } = singleUser;
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
     // console.log(data);
