@@ -45,7 +45,6 @@ const Profile = () => {
     !gender ||
     !email ||
     !city ||
-    !address ||
     !education ||
     !age ||
     !bio ||
@@ -58,12 +57,12 @@ const Profile = () => {
     !profession;
 
   return (
-    <div className="bg-gray-100 min-h-screen py-10">
+    <div className="bg-gray-100 max-h-screen py-10">
       <Helmet>
         <title>My Profile - Chemistry Corner</title>
       </Helmet>
       <div className="container mx-auto px-4 md:px-0">
-        <div className="flex flex-col md:flex-row gap-6 md:gap-20">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-10">
           <div className="bg-gray-100 md:w-3/12 p-4">
             <div className="bg-white p-3 border-t-4 border-green-400 rounded shadow-sm">
               <div className="overflow-hidden">
@@ -140,9 +139,7 @@ const Profile = () => {
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Email</div>
                     <div className="px-4 py-2">
-                      <a className="text-blue-800" href={`mailto:${email}`}>
-                        {email}
-                      </a>
+                      <a className="text-blue-800">{email}</a>
                     </div>
                   </div>
                   <div className="grid grid-cols-2">

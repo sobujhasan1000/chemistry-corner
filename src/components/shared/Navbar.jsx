@@ -103,7 +103,7 @@ const Navbar = () => {
   );
   const userMenuItems = (
     <>
-      <li className="user-menu-item">
+      {/* <li className="user-menu-item">
         <NavLink
           to="/profile"
           className={({ isActive }) =>
@@ -112,10 +112,10 @@ const Navbar = () => {
         >
           My Profile
         </NavLink>
-      </li>
+      </li> */}
       <li className="user-menu-item">
         <NavLink
-          to="/dashboard"
+          to="/dashboard/profile"
           className={({ isActive }) =>
             isActive ? "activeNavLink " : " navClasses"
           }

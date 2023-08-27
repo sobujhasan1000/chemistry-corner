@@ -161,6 +161,7 @@ const UpdateProfile = () => {
                           defaultValue={gender}
                           {...register("gender")}
                           className="px-3 py-1 bg-white border border-[#ee236e]"
+                          required
                         >
                           <option value="" disabled>
                             Select
@@ -204,6 +205,7 @@ const UpdateProfile = () => {
                           defaultValue={height}
                           {...register("height")}
                           className="px-3 py-1 bg-white border border-[#ee236e]"
+                          required
                         />
                       </div>
                       <div className="grid grid-cols-2">
@@ -216,6 +218,7 @@ const UpdateProfile = () => {
                           defaultValue={weight}
                           {...register("weight")}
                           className="px-3 py-1 bg-white border border-[#ee236e]"
+                          required
                         />
                       </div>
                       <div className="grid grid-cols-2">
