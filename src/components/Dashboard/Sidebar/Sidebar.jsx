@@ -1,4 +1,3 @@
-import React from "react";
 import { FaHome, FaPowerOff, FaRegStar, FaSearch } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { BiMessageRounded } from "react-icons/bi";

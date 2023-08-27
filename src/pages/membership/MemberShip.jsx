@@ -1,4 +1,3 @@
-import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import Container from "../../components/shared/Container";
 import { Link } from "react-router-dom";

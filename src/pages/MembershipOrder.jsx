@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import packages from "../assets/packages.json";
 import { FaCheckCircle } from "react-icons/fa";
@@ -16,13 +16,7 @@ const MembershipOrder = () => {
   const packageId = parseInt(id, 10);
   const selectedPackage = packages[packageId];
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
