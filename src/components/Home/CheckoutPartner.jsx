@@ -51,7 +51,6 @@ const CheckoutPartner = () => {
     { label: "San Francisco", value: "san-francisco" },
     { label: "Seattle", value: "seattle" },
   ];
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
