@@ -41,7 +41,7 @@ const DashboardLayout = () => {
 
       {/* Main Content */}
       <main className="flex-grow p-4 lg:p-8">
-        <h2 className="text-2xl font-semibold mb-4">
+        <h2 className="text-2xl font-semibold mb-4 text-black">
           Welcome to the Dashboard
         </h2>
         {/* Main content goes here */}
