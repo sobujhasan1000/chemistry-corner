@@ -8,6 +8,7 @@ import { imageUpload } from "../api/utils";
 import { modifyUser } from "../api/auth";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { toast } from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const UpdateProfile = () => {
   const [loading, setLoading] = useState(false);
@@ -32,6 +33,10 @@ const UpdateProfile = () => {
     profession,
   } = singleUser;
   const { register, handleSubmit, reset } = useForm();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/dashboard/profile";
 
   const onSubmit = (data) => {
     // console.log(data);
@@ -67,6 +72,7 @@ const UpdateProfile = () => {
           if (modifiedData.modifiedCount > 0) {
             setLoading(false);
             toast.success(`Users information updated successfully`);
+            navigate(from, { replace: true });
             reset();
           }
         });

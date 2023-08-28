@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import Container from "../shared/Container";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import {
+  FaMapMarkerAlt,
+  FaRegHeart,
+  FaRegStar,
+  FaRegComment,
+} from "react-icons/fa";
 import membersBg from "../../assets/membersBg.jpg";
 import { Helmet } from "react-helmet-async";
 import {
@@ -69,47 +74,46 @@ const Members = () => {
         <title>Members - Chemistry Corner</title>
       </Helmet>
       <div>
-      <div className="page-header-bg w-full h-64 bg-no-repeat bg-cover bg-center">
-        <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex flex-col items-center justify-center">
-          <h1 className="text-white text-3xl font-bold pb-2">
-            Find Your Partner with Name.
-          </h1>
-          <div className="flex items-center p-2 space-x-4 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
-            <div className="flex bg-gray-100 p-2 w-45 space-x-2 rounded-lg">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 opacity-30"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        <div className="page-header-bg w-full h-64 bg-no-repeat bg-cover bg-center">
+          <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex flex-col items-center justify-center">
+            <h1 className="text-white text-3xl font-bold pb-2">
+              Find Your Partner with Name.
+            </h1>
+            <div className="flex items-center p-2 space-x-4 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
+              <div className="flex bg-gray-100 p-2 w-45 space-x-2 rounded-lg">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 opacity-30"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+                <input
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="bg-gray-100 outline-none"
+                  type="text"
+                  placeholder="Search by Name ..."
                 />
-              </svg>
-              <input
-                onChange={(e) => setSearch(e.target.value)}
-                className="bg-gray-100 outline-none"
-                type="text"
-                placeholder="Search by Name ..."
-              />
-            </div>
+              </div>
 
-            <button
-              onClick={handleSearch}
-              className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer"
-            >
-              Search
-            </button>
+              <button
+                onClick={handleSearch}
+                className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer"
+              >
+                Search
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      </div>
       <Container>
-      
         <div className="text-center">
           <Tabs>
             <TabList className="text-center flex items-center justify-center gap-3 py-3">
@@ -136,10 +140,15 @@ const Members = () => {
                           <div className="select-none">
                             <img
                               src={item?.image}
-                              className="shadow-2xl shadow-black/[0.2] rounded-3xl h-60 w-60 mx-auto -mt-40 transform-gpu transition-all hover:scale-125"
+                              className="shadow-2xl shadow-black/[0.2] rounded-3xl h-60 w-60 mx-auto -mt-40 transform-gpu transition-all hover:scale-105"
                               style={{ userSelect: "none" }}
                               alt="avatar"
                             />
+                            <div className="flex flex-row items-center justify-center gap-5 mt-5">
+                              <FaRegStar className="text-2xl text-white hover:text-[#ED0058] duration-300" />
+                              <FaRegHeart className="text-2xl text-white hover:text-[#ED0058] duration-300" />
+                              <FaRegComment className="text-2xl text-white hover:text-[#ED0058] duration-300" />
+                            </div>
                           </div>
 
                           <h1 className="mt-12 text-3xl font-bold text-slate-800 dark:text-white capitalize">
@@ -147,7 +156,7 @@ const Members = () => {
                           </h1>
 
                           <p className="mt-4 text-slate-600 dark:text-white/90">
-                            {item?.bio}
+                            {item?.bio?.slice(0, 70)}...
                           </p>
                           <p>
                             <span className="flex justify-center items-center py-3 gap-1 text-sm leading-normal text-[#94A3B8] font-bold uppercase">
@@ -159,7 +168,7 @@ const Members = () => {
                           <div className="card-actions">
                             <Link
                               to={`/view-profile/${item._id}`}
-                              className="btn bg-[#FD6585] hover:bg-[#ED0058] w-full"
+                              className="btn bg-[#FD6585] hover:bg-[#ED0058] w-full text-white"
                             >
                               View Details
                             </Link>
