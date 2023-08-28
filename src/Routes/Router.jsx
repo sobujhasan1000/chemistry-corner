@@ -21,6 +21,7 @@ import MembershipOrder from "../pages/MembershipOrder";
 import PaymentSuccess from "../pages/Home/PaymentSuccess/PaymentSuccess";
 import PaymentFail from "../pages/Home/PaymentFail/PaymentFail";
 import PaymentCancel from "../pages/Home/PaymentCancel/PaymentCancel";
+import CreateBlog from "../pages/Dashboard/CreateBlog/CreateBlog";
 
 const router = createBrowserRouter([
   {
@@ -109,6 +110,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "/dashboard/create-blog",
+        element: <CreateBlog></CreateBlog>,
       },
     ],
   },

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import  { useEffect, useState } from "react";
+=======
+import { useEffect, useState } from "react";
+>>>>>>> 44a7826f1abbbe664723ad0e5ddb3e052448eef8
 import { Helmet } from "react-helmet-async";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { getAllMembers, membersSearchByLocation } from "../../api/fetch";

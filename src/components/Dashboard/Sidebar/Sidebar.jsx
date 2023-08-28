@@ -1,4 +1,4 @@
-import { FaHome, FaPowerOff, FaRegStar, FaSearch } from "react-icons/fa";
+import { FaHome, FaPowerOff, FaRegStar, FaSearch, FaBlog } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { BiMessageRounded } from "react-icons/bi";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -11,6 +11,7 @@ const Sidebar = () => {
     { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
     { label: "Likes", icon: AiOutlineHeart, path: "/dashboard/likes" },
     { label: "Favorite", icon: FaRegStar, path: "/dashboard/favorite" },
+    { label: "Create a Blog", icon: FaBlog, path: "/dashboard/create-blog" },
     { label: "Log out", icon: FaPowerOff, path: "/dashboard/logout" },
   ];
   const sidebarCommonItems = [{ label: "Home", icon: FaHome, path: "/" }];
