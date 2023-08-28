@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import packages from "../assets/packages.json";
 import { FaCheckCircle } from "react-icons/fa";
@@ -7,8 +7,12 @@ import { AuthContext } from "../providers/AuthProvider";
 import useSingleUser from "../Hooks/useSingleUser";
 import siteLoader from "/ccLoader.gif";
 import { Helmet } from "react-helmet-async";
+import { postOrder } from "../api/fetch";
+import { toast } from "react-hot-toast";
+import { TbFidgetSpinner } from "react-icons/tb";
 
 const MembershipOrder = () => {
+  const [paymentLoading, setPaymentLoading] = useState(false);
   const { user } = useContext(AuthContext);
   const [singleUser, loading] = useSingleUser(user?.email);
   const { name, email } = singleUser;
@@ -16,10 +20,31 @@ const MembershipOrder = () => {
   const packageId = parseInt(id, 10);
   const selectedPackage = packages[packageId];
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
+    setPaymentLoading(true);
     console.log(data);
+    const orderInfo = {
+      ...data,
+      price: selectedPackage.price,
+      package: selectedPackage.packageName,
+    };
+    console.log(orderInfo);
+    postOrder(orderInfo)
+      .then((result) => {
+        window.location.replace(result.url);
+        // if (result.insertedId) {
+        //   toast.success("Payment successful");
+        //   setPaymentLoading(false);
+        //   reset();
+        // }
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error(error.message);
+        setPaymentLoading(false);
+      });
   };
 
   if (loading) {
@@ -130,11 +155,17 @@ const MembershipOrder = () => {
               />
             </div>
             <div className="form-control">
-              <input
-                type="submit"
-                value="pay"
-                className="p-2 bg-white text-black capitalize border border-yellow-500 outline-none cursor-pointer"
-              />
+              {paymentLoading ? (
+                <TbFidgetSpinner className="m-auto animate-spin" size={24} />
+              ) : (
+                <>
+                  <input
+                    type="submit"
+                    value="pay"
+                    className="p-2 bg-white text-black capitalize border border-yellow-500 outline-none cursor-pointer"
+                  />
+                </>
+              )}
             </div>
           </form>
         </div>

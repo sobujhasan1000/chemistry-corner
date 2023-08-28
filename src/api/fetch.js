@@ -55,8 +55,20 @@ export const getComplexSearch = async (gender, minAge, maxAge, country) => {
   return data;
 };
 
+// =========get a member=========
 export const fetchMemberById = async (id) => {
   const res = await fetch(`${import.meta.env.VITE_API_URL}/member/${id}`);
+  const data = res.json();
+  return data;
+};
+
+// ==========post an order==========
+export const postOrder = async (orderInfo) => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/orders`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(orderInfo),
+  });
   const data = res.json();
   return data;
 };
