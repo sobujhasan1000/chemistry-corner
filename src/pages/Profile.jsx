@@ -162,7 +162,7 @@ const Profile = () => {
                   </div>
                 </div>
               </div>
-              <Link to="/update-profile">
+              <Link to="/dashboard/update-profile">
                 <button className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
                   Edit Profile
                 </button>
@@ -173,7 +173,7 @@ const Profile = () => {
                 <h1 className="text-black text-xl font-semibold text-center md:text-left">
                   Please Edit your profile to see your details.
                 </h1>
-                <Link to="/update-profile">
+                <Link to="/dashboard/update-profile">
                   <button className="bg-[#ee236e] text-white px-5 py-2">
                     Edit Profile
                   </button>

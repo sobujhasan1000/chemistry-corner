@@ -34,11 +34,11 @@ const MembershipOrder = () => {
     postOrder(orderInfo)
       .then((result) => {
         window.location.replace(result.url);
-        // if (result.insertedId) {
-        //   toast.success("Payment successful");
-        //   setPaymentLoading(false);
-        //   reset();
-        // }
+        if (result.insertedId) {
+          toast.success("Payment successful");
+          setPaymentLoading(false);
+          reset();
+        }
       })
       .catch((error) => {
         console.log(error.message);

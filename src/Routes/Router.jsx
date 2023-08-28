@@ -66,10 +66,6 @@ const router = createBrowserRouter([
         element: <SingleUserProfile></SingleUserProfile>,
       },
       {
-        path: "/update-profile",
-        element: <UpdateProfile></UpdateProfile>,
-      },
-      {
         path: "/blog",
         element: <Blog></Blog>,
       },
@@ -110,6 +106,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "/dashboard/update-profile",
+        element: <UpdateProfile></UpdateProfile>,
       },
       {
         path: "/dashboard/create-blog",
