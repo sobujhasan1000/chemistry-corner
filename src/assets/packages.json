@@ -1,0 +1,22 @@
+
+[
+    {
+      "packageName": "7 Days Free Trial",
+      "packInfo": "$15.00 Now And Then $30.00 Per Month..",
+      "price": 0,
+      "packInclude": ["Feature X", "Feature Y", "Feature R"]
+    },
+    {
+      "packageName": "Gold",
+      "packInfo": "$15.00 Now And Then $50.00 Per Month.",
+      "price": 14.99,
+      "packInclude": ["Feature P", "Feature Q", "Feature R"]
+    },
+    {
+      "packageName": "Platinum",
+      "packInfo": "$15.00 Now And Then $60.00 Per Month..",
+      "price": 29.99,
+      "packInclude": ["Feature Alpha", "Feature Beta", "Feature R"]
+    }
+  ]
+  

@@ -8,7 +8,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
 
 const Navbar = () => {
-  const { user, loading, setLoading, logOut } = useContext(AuthContext);
+  const { user, setLoading, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
@@ -103,7 +103,7 @@ const Navbar = () => {
   );
   const userMenuItems = (
     <>
-      <li className="user-menu-item">
+      {/* <li className="user-menu-item">
         <NavLink
           to="/profile"
           className={({ isActive }) =>
@@ -112,10 +112,10 @@ const Navbar = () => {
         >
           My Profile
         </NavLink>
-      </li>
+      </li> */}
       <li className="user-menu-item">
         <NavLink
-          to="/dashboard"
+          to="/dashboard/profile"
           className={({ isActive }) =>
             isActive ? "activeNavLink " : " navClasses"
           }

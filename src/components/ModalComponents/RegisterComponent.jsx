@@ -48,8 +48,6 @@ const RegisterComponent = () => {
                 email: data.email,
                 image: imageUrl,
                 gender: data.gender,
-                age: "",
-                profession: "",
               };
               saveUser(userInfo).then((data) => {
                 if (data.insertedId) {

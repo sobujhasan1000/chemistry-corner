@@ -17,6 +17,11 @@ import Testimonials from "../pages/Testimonials";
 import FAQ from "../pages/FAQ";
 import CommunityGuidelines from "../pages/CommunityGuidelines";
 import DashboardLayout from "../layOuts/mainLayOut/DashboardLayout";
+import MembershipOrder from "../pages/MembershipOrder";
+import PaymentSuccess from "../pages/Home/PaymentSuccess/PaymentSuccess";
+import PaymentFail from "../pages/Home/PaymentFail/PaymentFail";
+import PaymentCancel from "../pages/Home/PaymentCancel/PaymentCancel";
+import CreateBlog from "../pages/Dashboard/CreateBlog/CreateBlog";
 
 const router = createBrowserRouter([
   {
@@ -32,19 +37,29 @@ const router = createBrowserRouter([
         path: "/membership",
         element: <MemberShip></MemberShip>,
       },
-      { path: "/members", element: <Members></Members> },
+      {
+        path: "/membership/:id",
+        element: <MembershipOrder />,
+      },
       {
         path: "/members",
         element: <Members></Members>,
       },
-      { path: "/members", element: <Members></Members> },
       {
         path: "/countries",
         element: <Countries></Countries>,
       },
       {
-        path: "/profile",
-        element: <Profile></Profile>,
+        path: "/payment/success/:tranId",
+        element: <PaymentSuccess></PaymentSuccess>,
+      },
+      {
+        path: "/payment/fail/:tranId",
+        element: <PaymentFail></PaymentFail>,
+      },
+      {
+        path: "/payment/cancel/:tranId",
+        element: <PaymentCancel></PaymentCancel>,
       },
       {
         path: "/view-profile/:id",
@@ -88,7 +103,20 @@ const router = createBrowserRouter([
       },
     ],
   },
-  { path: "/dashboard", element: <DashboardLayout></DashboardLayout> },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "/dashboard/profile",
+        element: <Profile></Profile>,
+      },
+      {
+        path: "/dashboard/create-blog",
+        element: <CreateBlog></CreateBlog>,
+      },
+    ],
+  },
 ]);
 
 export default router;

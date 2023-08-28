@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import {
-  getAllMembers,
-  getComplexSearch,
-  membersSearchByLocation,
-} from "../../api/fetch";
+import { getComplexSearch } from "../../api/fetch";
 import { useLocation } from "react-router-dom";
 const FindPartner = () => {
   const [members, setMembers] = useState([]);
   console.log(members);
   const location = useLocation();
-  const { gender, minAge, maxAge, country } = location?.state;
+  const { gender, minAge, maxAge, country } = location.state;
   console.log(gender, minAge, maxAge, country);
   useEffect(() => {
     getComplexSearch(gender, minAge, maxAge, country).then((data) =>
@@ -19,9 +15,6 @@ const FindPartner = () => {
     );
   }, [gender, minAge, maxAge, country]);
 
-  const handleSearch = () => {
-    // membersSearchByLocation(search).then((data) => setMembers(data));
-  };
   return (
     <div>
       <Helmet>
@@ -49,17 +42,13 @@ const FindPartner = () => {
                 />
               </svg>
               <input
-                onChange={(e) => setSearch(e.target.value)}
                 className="bg-gray-100 outline-none"
                 type="text"
                 placeholder="Search by Location ..."
               />
             </div>
 
-            <button
-              onClick={handleSearch}
-              className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer"
-            >
+            <button className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
               Search
             </button>
           </div>
@@ -74,12 +63,15 @@ const FindPartner = () => {
           </div>
           <div className="grid gap-10 mx-auto lg:grid-cols-2 lg:max-w-screen-lg overflow-hidden">
             {members.map((member) => (
-              <div className="mx-auto p-4 md:py-20 px-0 md:p-8 md:px-0 antialiased">
+              <div
+                key={member._id}
+                className="mx-auto p-4 md:py-20 px-0 md:p-8 md:px-0 antialiased"
+              >
                 <div className="md:w-[800px] grid lg:grid-cols-2 2xl:grid-cols-3 grid-cols-1 gap-5 rounded-xl">
                   <article
                     className="mx-auto max-w-sm shadow-xl bg-cover bg-center transform duration-500 hover:-translate-y-2 cursor-pointer group rounded-xl"
                     style={{
-                      backgroundImage: `url(${member?.photo})`,
+                      backgroundImage: `url(${member?.image})`,
                     }}
                   >
                     <div className="bg-black bg-opacity-20 flex flex-wrap flex-col pt-96 hover:bg-opacity-75 transform duration-300 rounded-xl px-12 pb-8">
@@ -89,7 +81,7 @@ const FindPartner = () => {
                       <p>
                         <span className="flex items-center pb-3 gap-1 text-sm leading-normal text-[#adc4e4] font-bold uppercase">
                           <FaMapMarkerAlt />
-                          {member?.location}
+                          {member?.country}
                         </span>
                       </p>
                       <div className="w-16 h-2 bg-yellow-500 mb-8 transform translate-y-8 group-hover:translate-y-0 duration-300"></div>
