@@ -22,6 +22,8 @@ import PaymentSuccess from "../pages/Home/PaymentSuccess/PaymentSuccess";
 import PaymentFail from "../pages/Home/PaymentFail/PaymentFail";
 import PaymentCancel from "../pages/Home/PaymentCancel/PaymentCancel";
 import CreateBlog from "../pages/Dashboard/CreateBlog/CreateBlog";
+import UsersFeedback from "../pages/Dashboard/UsersFeedback/UsersFeedback";
+import UsersInpuiries from "../pages/Dashboard/UsersInquiries/UsersInpuiries";
 
 const router = createBrowserRouter([
   {
@@ -114,6 +116,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/create-blog",
         element: <CreateBlog></CreateBlog>,
+      },
+      {
+        path: "/dashboard/users-feedbacks",
+        element: <UsersFeedback></UsersFeedback>,
+      },
+      {
+        path: "/dashboard/users-inquiries",
+        element: <UsersInpuiries></UsersInpuiries>,
       },
     ],
   },
