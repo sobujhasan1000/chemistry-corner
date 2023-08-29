@@ -74,3 +74,32 @@ export const postOrder = async (orderInfo) => {
   const data = res.json();
   return data;
 };
+
+// ===========add to favorite==============
+export const addToFavorite = async (favInfo) => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/favorites`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(favInfo),
+  });
+  const data = res.json();
+  return data;
+};
+
+export const removeFromFavorite = async (id) => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/favorites/${id}`, {
+    method: "DELETE",
+  });
+  const data = res.json();
+  return data;
+};
+
+export const getFavoriteByEmail = async (email) => {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/favorites?email=${email}`
+  );
+  const data = res.json();
+  return data;
+};
