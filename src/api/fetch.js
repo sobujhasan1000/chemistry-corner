@@ -66,7 +66,9 @@ export const fetchMemberById = async (id) => {
 export const postOrder = async (orderInfo) => {
   const res = await fetch(`${import.meta.env.VITE_API_URL}/orders`, {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: {
+      "content-type": "application/json",
+    },
     body: JSON.stringify(orderInfo),
   });
   const data = res.json();
