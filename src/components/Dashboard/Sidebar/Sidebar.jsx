@@ -24,6 +24,11 @@ const Sidebar = () => {
       path: "/dashboard/users-feedbacks",
     },
     {
+      label: "Give a Feedback",
+      icon: BsPen,
+      path: "/dashboard/give-a-feedback",
+    },
+    {
       label: "Users Inquiries",
       icon: BsQuestionCircle,
       path: "/dashboard/users-inquiries",

@@ -24,6 +24,7 @@ import PaymentCancel from "../pages/Home/PaymentCancel/PaymentCancel";
 import CreateBlog from "../pages/Dashboard/CreateBlog/CreateBlog";
 import UsersFeedback from "../pages/Dashboard/UsersFeedback/UsersFeedback";
 import UsersInpuiries from "../pages/Dashboard/UsersInquiries/UsersInpuiries";
+import GiveAFeedback from "../pages/Dashboard/GiveAFeedback/GiveAFeedback";
 
 const router = createBrowserRouter([
   {
@@ -124,6 +125,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/users-inquiries",
         element: <UsersInpuiries></UsersInpuiries>,
+      },
+      {
+        path: "/dashboard/give-a-feedback",
+        element: <GiveAFeedback></GiveAFeedback>,
       },
     ],
   },

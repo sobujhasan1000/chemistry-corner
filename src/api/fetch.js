@@ -116,3 +116,10 @@ export const addBlog = async (blogData) => {
   const data = response.json();
   return data;
 };
+
+// ===========Get All feedbacks===============
+export const getAllFeedbacks = async () => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/feedbacks`);
+  const data = res.json();
+  return data;
+};
