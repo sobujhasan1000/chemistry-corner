@@ -103,3 +103,16 @@ export const getFavoriteByEmail = async (email) => {
   const data = res.json();
   return data;
 };
+
+//
+export const addBlog = async (blogData) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/blogs`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(blogData),
+  });
+  const data = response.json();
+  return data;
+};

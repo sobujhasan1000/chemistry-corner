@@ -4,18 +4,18 @@ import "react-quill/dist/quill.snow.css";
 import { imageUpload } from "../../../api/utils";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { addBlog } from "../../../api/fetch";
+import { toast } from "react-hot-toast";
 
 const CreateBlog = () => {
   const { user } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
-    try {
-      const image = data.image[0];
-      // Using await here to wait for the imageUpload promise to resolve
-      const imageData = await imageUpload(image);
+    const image = data.image[0];
+    // Using await here to wait for the imageUpload promise to resolve
+    imageUpload(image).then((imageData) => {
       const imageUrl = imageData?.data?.display_url;
-
       const blogData = {
         blog_heading: data.blog_heading,
         summary: data.summary,
@@ -27,22 +27,16 @@ const CreateBlog = () => {
         blog_time: new Date().toISOString(),
       };
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/blogs`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(blogData),
-      });
-
-      if (response.ok) {
-        console.log("Blog posted successfully");
-      } else {
-        console.error("Error posting blog");
-      }
-    } catch (error) {
-      console.error("Error uploading image or posting blog", error);
-    }
+      addBlog(blogData)
+        .then((result) => {
+          if (result.insertedId) {
+            toast.success("Blog Added");
+          }
+        })
+        .catch((error) => {
+          toast.error(error.message);
+        });
+    });
   };
 
   return (
