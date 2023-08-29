@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { imageUpload } from "../../../api/utils";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { addBlog } from "../../../api/fetch";
 import { toast } from "react-hot-toast";
@@ -10,33 +10,41 @@ import { toast } from "react-hot-toast";
 const CreateBlog = () => {
   const { user } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
+  const [value, setValue] = useState("");
+  // const [description, setDescription] = useState("");
+  // const handleDescriptionChange = (content) => {
+  //   setDescription(content);
+  //   setValue("description", content);
+  // };
 
   const onSubmit = async (data) => {
     const image = data.image[0];
     // Using await here to wait for the imageUpload promise to resolve
-    imageUpload(image).then((imageData) => {
-      const imageUrl = imageData?.data?.display_url;
-      const blogData = {
-        blog_heading: data.blog_heading,
-        summary: data.summary,
-        category: data.category,
-        description: data.description,
-        imageUrl: imageUrl,
-        author_name: user.displayName,
-        author_img: user.photoURL,
-        blog_time: new Date().toISOString(),
-      };
-
-      addBlog(blogData)
-        .then((result) => {
-          if (result.insertedId) {
-            toast.success("Blog Added");
-          }
-        })
-        .catch((error) => {
-          toast.error(error.message);
-        });
-    });
+    imageUpload(image)
+      .then((imageData) => {
+        const imageUrl = imageData?.data?.display_url;
+        const blogData = {
+          blog_heading: data.blog_heading,
+          summary: data.summary,
+          category: data.category,
+          description: value,
+          imageUrl: imageUrl,
+          author_name: user.displayName,
+          author_img: user.photoURL,
+          blog_time: new Date(),
+        };
+        addBlog(blogData)
+          .then((result) => {
+            if (result.insertedId) {
+              toast.success("Blog Added");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            toast.error(error.message);
+          });
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -75,7 +83,7 @@ const CreateBlog = () => {
           />
         </div>
         <div>
-          <ReactQuill theme="snow" />
+          <ReactQuill theme="snow" value={value} onChange={setValue} />
         </div>
         <button
           type="submit"
