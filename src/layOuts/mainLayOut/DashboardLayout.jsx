@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Sidebar from "../../components/Dashboard/Sidebar/Sidebar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const location = useLocation();
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
+
+  const renderDashboardHeading = location.pathname === "/dashboard" && (
+    <h2 className="text-2xl font-semibold mb-4 text-black">
+      Welcome to the Dashboard
+    </h2>
+  );
 
   return (
     <div className="flex min-h-screen">
@@ -41,9 +48,7 @@ const DashboardLayout = () => {
 
       {/* Main Content */}
       <main className="flex-grow p-4 lg:p-8">
-        <h2 className="text-2xl font-semibold mb-4 text-black">
-          Welcome to the Dashboard
-        </h2>
+        {renderDashboardHeading}
         {/* Main content goes here */}
         <Outlet />
       </main>
