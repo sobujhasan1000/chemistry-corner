@@ -12,7 +12,7 @@ const UsersFeedback = () => {
         </div>
       </div>
 
-      <div className="my-20 overflow-x-auto border ">
+      <div className="my-20 overflow-x-auto md:max-w-7xl mx-auto ">
         <div className="">
           <div className="text-black grid grid-cols-1 md:grid-cols-6">
             <div className="border border-black p-3 text-center">#</div>
@@ -40,8 +40,8 @@ const UsersFeedback = () => {
               Shipan Mallik
             </div>
             <div className="border border-black md:border-l-0 p-3 border-t-0 text-center md:text-left">
-              Positive Feedback, Suggestion, Bug Report,Complaint,Feature
-              Request,General Feedback, Other
+              {/* Positive Feedback, Suggestion, Bug Report,Complaint,Feature
+              Request,General Feedback, Other */}
             </div>
             <div className="border border-black md:border-l-0 p-3 border-t-0 text-center md:text-left">
               5 stars

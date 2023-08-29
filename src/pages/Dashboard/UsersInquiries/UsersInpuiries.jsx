@@ -12,7 +12,7 @@ const UsersInpuiries = () => {
         </div>
       </div>
 
-      <div className="my-20 overflow-x-auto border ">
+      <div className="my-20 overflow-x-auto md:max-w-7xl mx-auto ">
         <div className="">
           <div className="text-black grid grid-cols-1 md:grid-cols-6">
             <div className="border border-black p-3 text-center">#</div>
