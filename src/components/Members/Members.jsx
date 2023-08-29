@@ -136,7 +136,7 @@ const Members = () => {
                       key={item._id}
                     >
                       <div className="p-1 rounded-3xl transform-gpu transition-all selection:bg-sky-100 h-full grid place-items-center bg-gradient-to-tl to-[#FFD3A5] from-[#FD6585] dark:selection:bg-white/10">
-                        <div className="bg-white px-12 pt-16 pb-14 shadow-2xl shadow-black/[0.2] rounded-3xl text-center flex flex-col justify-center max-w-md transition-colors dark:bg-neutral-800">
+                        <div className="bg-white px-12 pt-16 pb-14 shadow-2xl shadow-black/[0.2] rounded-3xl text-center flex flex-col justify-center max-w-md transition-colors">
                           <div className="select-none">
                             <img
                               src={item?.image}
@@ -145,17 +145,17 @@ const Members = () => {
                               alt="avatar"
                             />
                             <div className="flex flex-row items-center justify-center gap-5 mt-5">
-                              <FaRegStar className="text-2xl text-white hover:text-[#ED0058] duration-300" />
-                              <FaRegHeart className="text-2xl text-white hover:text-[#ED0058] duration-300" />
-                              <FaRegComment className="text-2xl text-white hover:text-[#ED0058] duration-300" />
+                              <FaRegStar className="text-2xl text-black hover:text-[#ED0058] duration-300" />
+                              <FaRegHeart className="text-2xl text-black hover:text-[#ED0058] duration-300" />
+                              <FaRegComment className="text-2xl text-black hover:text-[#ED0058] duration-300" />
                             </div>
                           </div>
 
-                          <h1 className="mt-12 text-3xl font-bold text-slate-800 dark:text-white capitalize">
+                          <h1 className="mt-12 text-3xl font-bold text-slate-800 capitalize">
                             {item?.name}
                           </h1>
 
-                          <p className="mt-4 text-slate-600 dark:text-white/90">
+                          <p className="mt-4 text-slate-600">
                             {item?.bio?.slice(0, 70)}...
                           </p>
                           <p>
@@ -168,7 +168,7 @@ const Members = () => {
                           <div className="card-actions">
                             <Link
                               to={`/view-profile/${item._id}`}
-                              className="btn bg-[#FD6585] hover:bg-[#ED0058] w-full text-white"
+                              className="btn bg-[#FD6585] hover:bg-[#ED0058] w-full text-white border-0"
                             >
                               View Details
                             </Link>
