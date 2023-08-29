@@ -1,21 +1,35 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Container from "../shared/Container";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import {
+  FaMapMarkerAlt,
+  FaRegHeart,
+  FaRegStar,
+  FaRegComment,
+  FaStar,
+} from "react-icons/fa";
 import membersBg from "../../assets/membersBg.jpg";
 import { Helmet } from "react-helmet-async";
 import {
+  addToFavorite,
   getAllMembers,
+  getFavoriteByEmail,
   getGenderWiseMembers,
   membersSearch,
+  removeFromFavorite,
 } from "../../api/fetch";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Members = () => {
+  const { user } = useContext(AuthContext);
   const [members, setMembers] = useState([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [favorite, setFavorite] = useState([]);
+  console.log(favorite);
 
   useEffect(() => {
     getAllMembers().then((data) => setMembers(data));
@@ -29,6 +43,51 @@ const Members = () => {
   const handleSearch = () => {
     membersSearch(search).then((member) => setMembers(member));
   };
+
+  const handleFavorite = (id) => {
+    const favInfo = {
+      name: user?.displayName,
+      email: user?.email,
+      userId: id,
+    };
+    addToFavorite(favInfo)
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success(`Added to favorite`);
+          setFavorite(id);
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error(error.message);
+      });
+  };
+
+  const handleRemoveFromFavorite = (id) => {
+    removeFromFavorite(id)
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          toast.success(`Removed from favorite`);
+          const filteredId = favorite.forEach((favId) => favId !== id);
+          setFavorite(filteredId);
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error(error.message);
+      });
+  };
+
+  useEffect(() => {
+    getFavoriteByEmail(user?.email)
+      .then((data) => {
+        setFavorite(data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error(error.message);
+      });
+  }, [user?.email]);
 
   const membersPerPage = 6;
   const indexOfLastMember = currentPage * membersPerPage;
@@ -69,47 +128,46 @@ const Members = () => {
         <title>Members - Chemistry Corner</title>
       </Helmet>
       <div>
-      <div className="page-header-bg w-full h-64 bg-no-repeat bg-cover bg-center">
-        <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex flex-col items-center justify-center">
-          <h1 className="text-white text-3xl font-bold pb-2">
-            Find Your Partner with Name.
-          </h1>
-          <div className="flex items-center p-2 space-x-4 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
-            <div className="flex bg-gray-100 p-2 w-45 space-x-2 rounded-lg">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 opacity-30"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        <div className="page-header-bg w-full h-64 bg-no-repeat bg-cover bg-center">
+          <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex flex-col items-center justify-center">
+            <h1 className="text-white text-3xl font-bold pb-2">
+              Find Your Partner with Name.
+            </h1>
+            <div className="flex items-center p-2 space-x-4 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
+              <div className="flex bg-gray-100 p-2 w-45 space-x-2 rounded-lg">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 opacity-30"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+                <input
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="bg-gray-100 outline-none"
+                  type="text"
+                  placeholder="Search by Name ..."
                 />
-              </svg>
-              <input
-                onChange={(e) => setSearch(e.target.value)}
-                className="bg-gray-100 outline-none"
-                type="text"
-                placeholder="Search by Name ..."
-              />
-            </div>
+              </div>
 
-            <button
-              onClick={handleSearch}
-              className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer"
-            >
-              Search
-            </button>
+              <button
+                onClick={handleSearch}
+                className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer"
+              >
+                Search
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      </div>
       <Container>
-      
         <div className="text-center">
           <Tabs>
             <TabList className="text-center flex items-center justify-center gap-3 py-3">
@@ -132,22 +190,43 @@ const Members = () => {
                       key={item._id}
                     >
                       <div className="p-1 rounded-3xl transform-gpu transition-all selection:bg-sky-100 h-full grid place-items-center bg-gradient-to-tl to-[#FFD3A5] from-[#FD6585] dark:selection:bg-white/10">
-                        <div className="bg-white px-12 pt-16 pb-14 shadow-2xl shadow-black/[0.2] rounded-3xl text-center flex flex-col justify-center max-w-md transition-colors dark:bg-neutral-800">
+                        <div className="bg-white px-12 pt-16 pb-14 shadow-2xl shadow-black/[0.2] rounded-3xl text-center flex flex-col justify-center max-w-md transition-colors">
                           <div className="select-none">
                             <img
                               src={item?.image}
-                              className="shadow-2xl shadow-black/[0.2] rounded-3xl h-60 w-60 mx-auto -mt-40 transform-gpu transition-all hover:scale-125"
+                              className="shadow-2xl shadow-black/[0.2] rounded-3xl h-60 w-60 mx-auto -mt-40 transform-gpu transition-all hover:scale-105"
                               style={{ userSelect: "none" }}
                               alt="avatar"
                             />
+                            <div className="flex flex-row items-center justify-center gap-5 mt-5">
+                              <FaRegHeart className="text-2xl text-black hover:text-[#ED0058] duration-300" />
+                              {favorite &&
+                              favorite.map(
+                                (member) => member.userId === item._id
+                              ) ? (
+                                <FaStar
+                                  onClick={() =>
+                                    handleRemoveFromFavorite(item._id)
+                                  }
+                                  className="text-2xl text-[#ED0058] duration-300"
+                                ></FaStar>
+                              ) : (
+                                <FaRegStar
+                                  onClick={() => handleFavorite(item._id)}
+                                  className="text-2xl text-black hover:text-[#ED0058] duration-300"
+                                />
+                              )}
+
+                              <FaRegComment className="text-2xl text-black hover:text-[#ED0058] duration-300" />
+                            </div>
                           </div>
 
-                          <h1 className="mt-12 text-3xl font-bold text-slate-800 dark:text-white capitalize">
+                          <h1 className="mt-12 text-3xl font-bold text-slate-800 capitalize">
                             {item?.name}
                           </h1>
 
-                          <p className="mt-4 text-slate-600 dark:text-white/90">
-                            {item?.bio}
+                          <p className="mt-4 text-slate-600">
+                            {item?.bio?.slice(0, 70)}...
                           </p>
                           <p>
                             <span className="flex justify-center items-center py-3 gap-1 text-sm leading-normal text-[#94A3B8] font-bold uppercase">
@@ -159,7 +238,7 @@ const Members = () => {
                           <div className="card-actions">
                             <Link
                               to={`/view-profile/${item._id}`}
-                              className="btn bg-[#FD6585] hover:bg-[#ED0058] w-full"
+                              className="btn bg-[#FD6585] hover:bg-[#ED0058] w-full text-white border-0"
                             >
                               View Details
                             </Link>

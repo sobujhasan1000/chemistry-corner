@@ -115,7 +115,7 @@ const Navbar = () => {
       </li> */}
       <li className="user-menu-item">
         <NavLink
-          to="/dashboard/profile"
+          to="/dashboard"
           className={({ isActive }) =>
             isActive ? "activeNavLink " : " navClasses"
           }
