@@ -8,6 +8,7 @@ import {
   FaRegStar,
   FaRegComment,
   FaStar,
+  FaHeart,
 } from "react-icons/fa";
 import membersBg from "../../assets/membersBg.jpg";
 import { Helmet } from "react-helmet-async";
@@ -16,20 +17,22 @@ import {
   getAllMembers,
   getFavoriteByEmail,
   getGenderWiseMembers,
+  getLikesByEmail,
+  giveLike,
   membersSearch,
   removeFromFavorite,
+  removeLike,
 } from "../../api/fetch";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
+import { useQuery } from "@tanstack/react-query";
 
 const Members = () => {
   const { user } = useContext(AuthContext);
   const [members, setMembers] = useState([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [favorite, setFavorite] = useState([]);
-  console.log(favorite);
 
   useEffect(() => {
     getAllMembers().then((data) => setMembers(data));
@@ -44,6 +47,14 @@ const Members = () => {
     membersSearch(search).then((member) => setMembers(member));
   };
 
+  const { data: favorites = [], refetch: favRefetch } = useQuery({
+    queryKey: ["favorite", user?.email],
+    queryFn: async () => {
+      const data = await getFavoriteByEmail(user?.email);
+      return data;
+    },
+  });
+
   const handleFavorite = (id) => {
     const favInfo = {
       name: user?.displayName,
@@ -54,7 +65,7 @@ const Members = () => {
       .then((data) => {
         if (data.insertedId) {
           toast.success(`Added to favorite`);
-          setFavorite([...favorite, favInfo]);
+          favRefetch();
         }
       })
       .catch((error) => {
@@ -69,8 +80,7 @@ const Members = () => {
       .then((data) => {
         if (data.deletedCount > 0) {
           toast.success(`Removed from favorite`);
-          const filteredFavorites = favorite.filter((fav) => fav.userId !== id);
-          setFavorite(filteredFavorites);
+          favRefetch();
         }
       })
       .catch((error) => {
@@ -79,16 +89,39 @@ const Members = () => {
       });
   };
 
-  useEffect(() => {
-    getFavoriteByEmail(user?.email)
-      .then((data) => {
-        setFavorite(data);
+  const { data: likes = [], refetch: likeRefetch } = useQuery({
+    queryKey: ["like", user?.email],
+    queryFn: async () => {
+      const data = await getLikesByEmail(user?.email);
+      return data;
+    },
+  });
+
+  const handleAddLike = (id) => {
+    const userInfo = {
+      name: user?.displayName,
+      email: user?.email,
+      userId: id,
+    };
+    giveLike(id, userInfo)
+      .then(() => {
+        likeRefetch();
       })
       .catch((error) => {
         console.log(error.message);
         toast.error(error.message);
       });
-  }, [user?.email]);
+  };
+  const handleRemoveLike = (id) => {
+    removeLike(id)
+      .then(() => {
+        likeRefetch();
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error(error.message);
+      });
+  };
 
   const membersPerPage = 6;
   const indexOfLastMember = currentPage * membersPerPage;
@@ -200,8 +233,21 @@ const Members = () => {
                               alt="avatar"
                             />
                             <div className="flex flex-row items-center justify-center gap-5 mt-5">
-                              <FaRegHeart className="text-2xl text-black hover:text-[#ED0058] duration-300" />
-                              {favorite.some(
+                              {likes.some(
+                                (member) => member.userId === item._id
+                              ) ? (
+                                <FaHeart
+                                  onClick={() => handleRemoveLike(item._id)}
+                                  className="text-2xl text-[#ED0058] duration-300"
+                                />
+                              ) : (
+                                <FaRegHeart
+                                  onClick={() => handleAddLike(item._id)}
+                                  className="text-2xl text-black hover:text-[#ED0058] duration-300"
+                                />
+                              )}
+
+                              {favorites.some(
                                 (member) => member.userId === item._id
                               ) ? (
                                 <FaStar
