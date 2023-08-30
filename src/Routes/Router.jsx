@@ -24,12 +24,8 @@ import PaymentCancel from "../pages/Home/PaymentCancel/PaymentCancel";
 import CreateBlog from "../pages/Dashboard/CreateBlog/CreateBlog";
 import UsersFeedback from "../pages/Dashboard/UsersFeedback/UsersFeedback";
 import UsersInpuiries from "../pages/Dashboard/UsersInquiries/UsersInpuiries";
-<<<<<<< HEAD
-import UserProfile from "../pages/Dashboard/userProfile/userProfile";
-=======
 import GiveAFeedback from "../pages/Dashboard/GiveAFeedback/GiveAFeedback";
 import Favorites from "../pages/Dashboard/Favorites/Favorites";
->>>>>>> b786b2e3df52e39b11be0fc611b33a16ef6a0a08
 
 const router = createBrowserRouter([
   {
@@ -115,10 +111,6 @@ const router = createBrowserRouter([
         path: "/dashboard/profile",
         element: <Profile></Profile>,
       },
-      // {
-      //   path: "/",
-      //   element: <UserProfile></UserProfile>,
-      // },
       {
         path: "/dashboard/update-profile",
         element: <UpdateProfile></UpdateProfile>,
