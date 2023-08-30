@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import siteLoader from "/ccLoader.gif";
 import Container from "../shared/Container";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -15,9 +16,7 @@ import { Helmet } from "react-helmet-async";
 import {
   addToFavorite,
   getAllMembers,
-  getFavoriteByEmail,
   getGenderWiseMembers,
-  getLikesByEmail,
   giveLike,
   membersSearch,
   removeFromFavorite,
@@ -26,13 +25,16 @@ import {
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
-import { useQuery } from "@tanstack/react-query";
+import useGetLikes from "../../Hooks/useGetLikes";
+import useGetFavorite from "../../Hooks/useGetFavorite";
 
 const Members = () => {
   const { user } = useContext(AuthContext);
   const [members, setMembers] = useState([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [likes, likeRefetch, likesLoading] = useGetLikes();
+  const [favorites, favRefetch, favLoading] = useGetFavorite();
 
   useEffect(() => {
     getAllMembers().then((data) => setMembers(data));
@@ -46,14 +48,6 @@ const Members = () => {
   const handleSearch = () => {
     membersSearch(search).then((member) => setMembers(member));
   };
-
-  const { data: favorites = [], refetch: favRefetch } = useQuery({
-    queryKey: ["favorite", user?.email],
-    queryFn: async () => {
-      const data = await getFavoriteByEmail(user?.email);
-      return data;
-    },
-  });
 
   const handleFavorite = (id) => {
     const favInfo = {
@@ -88,14 +82,6 @@ const Members = () => {
         toast.error(error.message);
       });
   };
-
-  const { data: likes = [], refetch: likeRefetch } = useQuery({
-    queryKey: ["like", user?.email],
-    queryFn: async () => {
-      const data = await getLikesByEmail(user?.email);
-      return data;
-    },
-  });
 
   const handleAddLike = (id) => {
     const userInfo = {
@@ -155,6 +141,14 @@ const Members = () => {
     { label: "female", value: "female" },
     { label: "non-binary", value: "non-binary" },
   ];
+
+  if (likesLoading && favLoading) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center">
+        <img src={siteLoader} alt="Website Loader" />
+      </div>
+    );
+  }
 
   return (
     <div style={{ backgroundImage: `url(${membersBg})` }}>
