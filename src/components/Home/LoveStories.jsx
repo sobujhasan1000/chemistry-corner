@@ -8,15 +8,21 @@ import Container from "../shared/Container";
 import Heading from "../shared/Heading";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const LoveStories = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/loveStories`)
+      .get(`${import.meta.env.VITE_API_URL}/feedbacks`)
       .then((response) => {
-        setData(response.data);
+        const updatedData = response.data.map((story) => ({
+          ...story,
+          feedbackRating: parseInt(story.feedbackRating, 10),
+        }));
+        setData(updatedData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -54,19 +60,22 @@ const LoveStories = () => {
         >
           {data.map((stories) => (
             <SwiperSlide key={stories._id} className="pb-12">
-              <div className="text-center">
+              <div className="text-center flex flex-col items-center">
                 <img
                   src={stories.image}
                   alt=""
                   className="w-32 rounded-full mx-auto"
                 />
-                <p className="text-lg pt-4">{stories.comment}</p>
+                <p className="text-lg pt-4">{stories.feedbackDetails}</p>
                 <h2 className="text-xl md:text-3xl font-bold py-4">
                   {stories.name}
                 </h2>
-                <h5 className="uppercase font-bold">
-                  {stories.position}, {stories.company}
-                </h5>
+
+                <Rating
+                  style={{ maxWidth: 100 }}
+                  value={stories.feedbackRating}
+                  readOnly
+                />
               </div>
             </SwiperSlide>
           ))}
