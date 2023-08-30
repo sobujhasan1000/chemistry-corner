@@ -18,7 +18,7 @@ const Sidebar = () => {
     { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
     { label: "Likes", icon: AiOutlineHeart, path: "/dashboard/likes" },
     {
-      label: "Users Feedbacks",
+      label: "Users Feedback",
       icon: BsPen,
       path: "/dashboard/users-feedbacks",
     },
