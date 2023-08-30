@@ -24,6 +24,7 @@ import PaymentCancel from "../pages/Home/PaymentCancel/PaymentCancel";
 import CreateBlog from "../pages/Dashboard/CreateBlog/CreateBlog";
 import UsersFeedback from "../pages/Dashboard/UsersFeedback/UsersFeedback";
 import UsersInpuiries from "../pages/Dashboard/UsersInquiries/UsersInpuiries";
+import UserProfile from "../pages/Dashboard/userProfile/userProfile";
 
 const router = createBrowserRouter([
   {
@@ -109,6 +110,10 @@ const router = createBrowserRouter([
         path: "/dashboard/profile",
         element: <Profile></Profile>,
       },
+      // {
+      //   path: "/",
+      //   element: <UserProfile></UserProfile>,
+      // },
       {
         path: "/dashboard/update-profile",
         element: <UpdateProfile></UpdateProfile>,

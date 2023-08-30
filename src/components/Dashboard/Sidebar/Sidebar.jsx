@@ -18,19 +18,12 @@ const Sidebar = () => {
     { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
     { label: "Likes", icon: AiOutlineHeart, path: "/dashboard/likes" },
     { label: "Favorite", icon: FaRegStar, path: "/dashboard/favorite" },
-    {
-      label: "Users Feedbacks",
-      icon: BsPen,
-      path: "/dashboard/users-feedbacks",
-    },
-    {
-      label: "Users Inquiries",
-      icon: BsQuestionCircle,
-      path: "/dashboard/users-inquiries",
-    },
+    {label: "Users Feedbacks", icon: BsPen,path: "/dashboard/users-feedbacks",},
+    {label: "Users Inquiries",icon: BsQuestionCircle,path: "/dashboard/users-inquiries",},
     { label: "Create a Blog", icon: FaBlog, path: "/dashboard/create-blog" },
     { label: "Log out", icon: FaPowerOff, path: "/dashboard/logout" },
   ];
+  
   const sidebarCommonItems = [{ label: "Home", icon: FaHome, path: "/" }];
   return (
     <div className="flex flex-col gap-3">
