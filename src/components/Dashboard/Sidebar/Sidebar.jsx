@@ -17,25 +17,24 @@ const Sidebar = () => {
     { label: "Search", icon: FaSearch, path: "/dashboard/search" },
     { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
     { label: "Likes", icon: AiOutlineHeart, path: "/dashboard/likes" },
-    { label: "Favorite", icon: FaRegStar, path: "/dashboard/favorite" },
-    {label: "Users Feedbacks", icon: BsPen,path: "/dashboard/users-feedbacks",},
-    {label: "Users Inquiries",icon: BsQuestionCircle,path: "/dashboard/users-inquiries",},
-    { label: "Favorites", icon: FaRegStar, path: "/dashboard/favorite" },
     {
       label: "Users Feedbacks",
       icon: BsPen,
       path: "/dashboard/users-feedbacks",
     },
     {
-      label: "Give a Feedback",
-      icon: BsPen,
-      path: "/dashboard/give-a-feedback",
-    },
-    {
       label: "Users Inquiries",
       icon: BsQuestionCircle,
       path: "/dashboard/users-inquiries",
     },
+    { label: "Favorites", icon: FaRegStar, path: "/dashboard/favorite" },
+
+    {
+      label: "Give a Feedback",
+      icon: BsPen,
+      path: "/dashboard/give-a-feedback",
+    },
+
     { label: "Create a Blog", icon: FaBlog, path: "/dashboard/create-blog" },
     { label: "Log out", icon: FaPowerOff, path: "/dashboard/logout" },
   ];

@@ -24,6 +24,7 @@ import PaymentCancel from "../pages/Home/PaymentCancel/PaymentCancel";
 import CreateBlog from "../pages/Dashboard/CreateBlog/CreateBlog";
 import UsersFeedback from "../pages/Dashboard/UsersFeedback/UsersFeedback";
 import UsersInpuiries from "../pages/Dashboard/UsersInquiries/UsersInpuiries";
+// import UserProfile from "../pages/Dashboard/userProfile/userProfile";
 import GiveAFeedback from "../pages/Dashboard/GiveAFeedback/GiveAFeedback";
 import Favorites from "../pages/Dashboard/Favorites/Favorites";
 
