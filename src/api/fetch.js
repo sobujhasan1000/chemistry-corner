@@ -109,7 +109,7 @@ export const addBlog = async (blogData) => {
   const response = await fetch(`${import.meta.env.VITE_API_URL}/blogs`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "content-type": "application/json",
     },
     body: JSON.stringify(blogData),
   });
@@ -120,6 +120,40 @@ export const addBlog = async (blogData) => {
 // ===========Get All feedbacks===============
 export const getAllFeedbacks = async () => {
   const res = await fetch(`${import.meta.env.VITE_API_URL}/feedbacks`);
+  const data = res.json();
+  return data;
+};
+
+// ========add like==========
+export const giveLike = async (id, userInfo) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/updateLikes/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    }
+  );
+  const data = response.json();
+  return data;
+};
+
+// ========remove like=========
+export const removeLike = async (id) => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/removeLikes/${id}`, {
+    method: "PATCH",
+  });
+  const data = res.json();
+  return data;
+};
+
+// =========get likes by email==========
+export const getLikesByEmail = async (email) => {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/likes?email=${email}`
+  );
   const data = res.json();
   return data;
 };

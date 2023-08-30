@@ -51,7 +51,6 @@ const CheckoutPartner = () => {
     { label: "UK", value: "uk" },
     { label: "Canada", value: "canada" },
   ];
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const form = e.target;

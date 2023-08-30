@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet-async";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { getComplexSearch } from "../../api/fetch";
 import { useLocation } from "react-router-dom";
-
 const FindPartner = () => {
   const [members, setMembers] = useState([]);
   console.log(members);
