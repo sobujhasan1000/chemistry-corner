@@ -54,7 +54,7 @@ const Members = () => {
       .then((data) => {
         if (data.insertedId) {
           toast.success(`Added to favorite`);
-          setFavorite(id);
+          setFavorite([...favorite, favInfo]);
         }
       })
       .catch((error) => {
@@ -63,13 +63,14 @@ const Members = () => {
       });
   };
 
+  // When removing from favorites
   const handleRemoveFromFavorite = (id) => {
     removeFromFavorite(id)
       .then((data) => {
         if (data.deletedCount > 0) {
           toast.success(`Removed from favorite`);
-          const filteredId = favorite.forEach((favId) => favId !== id);
-          setFavorite(filteredId);
+          const filteredFavorites = favorite.filter((fav) => fav.userId !== id);
+          setFavorite(filteredFavorites);
         }
       })
       .catch((error) => {
@@ -200,8 +201,7 @@ const Members = () => {
                             />
                             <div className="flex flex-row items-center justify-center gap-5 mt-5">
                               <FaRegHeart className="text-2xl text-black hover:text-[#ED0058] duration-300" />
-                              {favorite &&
-                              favorite.map(
+                              {favorite.some(
                                 (member) => member.userId === item._id
                               ) ? (
                                 <FaStar
