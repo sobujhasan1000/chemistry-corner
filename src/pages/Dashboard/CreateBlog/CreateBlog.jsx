@@ -12,11 +12,6 @@ const CreateBlog = () => {
   const { user } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
   const [value, setValue] = useState("");
-  // const [description, setDescription] = useState("");
-  // const handleDescriptionChange = (content) => {
-  //   setDescription(content);
-  //   setValue("description", content);
-  // };
 
   const onSubmit = async (data) => {
     const image = data.image[0];

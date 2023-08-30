@@ -17,7 +17,7 @@ const Sidebar = () => {
     { label: "Search", icon: FaSearch, path: "/dashboard/search" },
     { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
     { label: "Likes", icon: AiOutlineHeart, path: "/dashboard/likes" },
-    { label: "Favorite", icon: FaRegStar, path: "/dashboard/favorite" },
+    { label: "Favorites", icon: FaRegStar, path: "/dashboard/favorite" },
     {
       label: "Users Feedbacks",
       icon: BsPen,

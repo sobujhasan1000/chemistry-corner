@@ -25,6 +25,7 @@ import CreateBlog from "../pages/Dashboard/CreateBlog/CreateBlog";
 import UsersFeedback from "../pages/Dashboard/UsersFeedback/UsersFeedback";
 import UsersInpuiries from "../pages/Dashboard/UsersInquiries/UsersInpuiries";
 import GiveAFeedback from "../pages/Dashboard/GiveAFeedback/GiveAFeedback";
+import Favorites from "../pages/Dashboard/Favorites/Favorites";
 
 const router = createBrowserRouter([
   {
@@ -113,6 +114,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/update-profile",
         element: <UpdateProfile></UpdateProfile>,
+      },
+      {
+        path: "/dashboard/favorite",
+        element: <Favorites></Favorites>,
       },
       {
         path: "/dashboard/create-blog",
