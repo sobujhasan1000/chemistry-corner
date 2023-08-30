@@ -1,21 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { getFavoriteByEmail } from "../../../api/fetch";
 import { AuthContext } from "../../../providers/AuthProvider";
-import { toast } from "react-hot-toast";
+
+import { useQuery } from "@tanstack/react-query";
 
 const Favorites = () => {
   const { user } = useContext(AuthContext);
-  const [favorites, setFavorites] = useState([]);
-  useEffect(() => {
-    getFavoriteByEmail(user.email)
-      .then((data) => {
-        setFavorites(data);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(error.message);
-      });
-  }, [user?.email]);
+
+  const { data: favorites = [], isLoading: loading } = useQuery({
+    queryKey: ["favorite", user.email],
+    queryFn: async () => {
+      const data = await getFavoriteByEmail(user.email);
+      return data;
+    },
+  });
   return <div>From Fav {favorites.length}</div>;
 };
 
