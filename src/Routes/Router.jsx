@@ -112,10 +112,6 @@ const router = createBrowserRouter([
         path: "/dashboard/profile",
         element: <Profile></Profile>,
       },
-      // {
-      //   path: "/",
-      //   element: <UserProfile></UserProfile>,
-      // },
       {
         path: "/dashboard/update-profile",
         element: <UpdateProfile></UpdateProfile>,
