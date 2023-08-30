@@ -6,16 +6,12 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { addBlog } from "../../../api/fetch";
 import { toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const CreateBlog = () => {
   const { user } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
   const [value, setValue] = useState("");
-  // const [description, setDescription] = useState("");
-  // const handleDescriptionChange = (content) => {
-  //   setDescription(content);
-  //   setValue("description", content);
-  // };
 
   const onSubmit = async (data) => {
     const image = data.image[0];
@@ -49,23 +45,36 @@ const CreateBlog = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)} className="grid gap-5 mx-20">
+      <Helmet>
+        <title>Create a Blog - Chemistry Corner</title>
+      </Helmet>
+      <div className="page-header-bg w-full h-48 md:h-64 bg-no-repeat bg-cover bg-center">
+        <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex items-center justify-center">
+          <h1 className="text-white text-3xl font-bold">Create a Blog</h1>
+        </div>
+      </div>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="grid grid-cols-1 gap-5 my-20"
+      >
         <div>
           <input
             {...register("blog_heading", { required: true })}
-            className="input input-bordered input-warning w-full"
+            className="input input-bordered input-warning w-full bg-white text-black"
+            placeholder="Blog Title..."
           />
         </div>
         <div>
           <input
             {...register("summary", { required: true })}
-            className="input input-bordered input-warning w-full"
+            className="input input-bordered input-warning w-full bg-white text-black"
+            placeholder="Blog Summary..."
           />
         </div>
         <div>
           <select
             {...register("category", { required: true })}
-            className="input input-bordered input-warning w-full"
+            className="input input-bordered input-warning w-full bg-white text-black"
           >
             <option>Choose a category</option>
             <option value="news">News</option>
@@ -87,7 +96,7 @@ const CreateBlog = () => {
         </div>
         <button
           type="submit"
-          className="btn bg-[#FD6585] hover:bg-[#ED0058] my-16 md:my-8"
+          className="btn bg-[#FD6585] hover:bg-[#ED0058] my-16 md:my-8 border-0 text-white"
         >
           Submit
         </button>
