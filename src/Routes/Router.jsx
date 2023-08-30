@@ -26,7 +26,7 @@ import UsersFeedback from "../pages/Dashboard/UsersFeedback/UsersFeedback";
 import UsersInpuiries from "../pages/Dashboard/UsersInquiries/UsersInpuiries";
 // import UserProfile from "../pages/Dashboard/userProfile/userProfile";
 import GiveAFeedback from "../pages/Dashboard/GiveAFeedback/GiveAFeedback";
-import Favorites from "../pages/Dashboard/Favorites/Favorites";
+import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
 
 const router = createBrowserRouter([
   {
@@ -136,6 +136,10 @@ const router = createBrowserRouter([
         path: "/dashboard/give-a-feedback",
         element: <GiveAFeedback></GiveAFeedback>,
       },
+      {
+        path: "/dashboard/admin-home",
+        element: <AdminHome></AdminHome>,
+      }
     ],
   },
 ]);
