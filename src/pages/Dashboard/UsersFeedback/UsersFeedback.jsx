@@ -29,10 +29,9 @@ const UsersFeedback = () => {
         </th>
         <th>Photo & Name</th>
         <th>Feedback Type</th>
-        <th>Favorite Color</th>
         <th>Feedback Rating</th>
         <th>Feedback Text</th>
-        <th>Actions</th>
+       
       </tr>
     </thead>
     <tbody>
