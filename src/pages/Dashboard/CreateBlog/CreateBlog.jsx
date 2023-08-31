@@ -24,7 +24,7 @@ const CreateBlog = () => {
           summary: data.summary,
           category: data.category,
           description: value,
-          imageUrl: imageUrl,
+          image_url: imageUrl,
           author_name: user.displayName,
           author_img: user.photoURL,
           blog_time: new Date(),
