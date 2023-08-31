@@ -59,7 +59,7 @@ const Navbar = () => {
           Countries
         </NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink
           to="/all-world"
           className={({ isActive }) =>
@@ -68,7 +68,7 @@ const Navbar = () => {
         >
           All World
         </NavLink>
-      </li>
+      </li> */}
       <li>
         <NavLink
           to="/blog"
