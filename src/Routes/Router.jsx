@@ -27,6 +27,7 @@ import UsersInpuiries from "../pages/Dashboard/UsersInquiries/UsersInpuiries";
 // import UserProfile from "../pages/Dashboard/userProfile/userProfile";
 import GiveAFeedback from "../pages/Dashboard/GiveAFeedback/GiveAFeedback";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
+import Favorites from "../pages/Dashboard/Favorites/Favorites";
 
 const router = createBrowserRouter([
   {
