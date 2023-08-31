@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { getComplexSearch } from "../../api/fetch";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 const FindPartner = () => {
   const [members, setMembers] = useState([]);
   console.log(members);
@@ -67,29 +67,91 @@ const FindPartner = () => {
                 key={member._id}
                 className="mx-auto p-4 md:py-20 px-0 md:p-8 md:px-0 antialiased"
               >
-                <div className="md:w-[800px] grid lg:grid-cols-2 2xl:grid-cols-3 grid-cols-1 gap-5 rounded-xl">
-                  <article
-                    className="mx-auto max-w-sm shadow-xl bg-cover bg-center transform duration-500 hover:-translate-y-2 cursor-pointer group rounded-xl"
-                    style={{
-                      backgroundImage: `url(${member?.image})`,
-                    }}
-                  >
-                    <div className="bg-black bg-opacity-20 flex flex-wrap flex-col pt-96 hover:bg-opacity-75 transform duration-300 rounded-xl px-12 pb-8">
-                      <h1 className="text-white text-3xl mb-5 transform translate-y-20 group-hover:translate-y-0 duration-300">
-                        {member?.name}
-                      </h1>
-                      <p>
-                        <span className="flex items-center pb-3 gap-1 text-sm leading-normal text-[#adc4e4] font-bold uppercase">
-                          <FaMapMarkerAlt />
-                          {member?.country}
-                        </span>
-                      </p>
-                      <div className="w-16 h-2 bg-yellow-500 mb-8 transform translate-y-8 group-hover:translate-y-0 duration-300"></div>
-                      <p className="opacity-0 text-white text-xl group-hover:opacity-80  transform duration-500">
-                        {member?.bio}
-                      </p>
+                <div className="max-w-[405px] order-first">
+                  <div className="relative after:bg-pink-200 after:w-full after:bottom-0 after:left-0 after:content[''] after:h-[75%] after:absolute after:rounded-xl">
+                    <div className="text-center pb-6 relative z-10 sm:px-4 lg:px-11">
+                      <div className="pb-5">
+                        <img
+                          className="md:w-[250px] md:h-[250px] lg:w-[290px] lg:h-[290px] rounded-full mx-auto border border-pink-400 p-1"
+                          src={member?.image}
+                          alt=""
+                        />
+                      </div>
+                      <h4 className="text-primary text-2xl capitalize font-bold">{member?.name}</h4>
+                      <span>{member?.bio}</span>
                     </div>
-                  </article>
+
+                    <div className="border-t border-pink-400 py-6 px-12 z-10 relative">
+                      <div className="flex items-center gap-2">
+                        <span className="border border-pink-400 text-accent1 w-9 h-9 rounded-full flex items-center justify-center">
+                          <FaMapMarkerAlt />
+                        </span>
+                        <span className="ltr:pl-4 rtl:pr-4 text-[18px]">
+                          <a
+                            className="hover:text-accent1"
+                            href="tel:+01215656855"
+                          >
+                            +01215656855
+                          </a>
+                        </span>
+                      </div>
+
+                      <div className="flex items-center mt-5 gap-2">
+                        <span className="border border-pink-400 text-accent1 w-9 h-9 rounded-full flex items-center justify-center">
+                          <svg
+                            className="max-w-5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="28"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                          </svg>
+                        </span>
+                        <span className="ltr:pl-4 rtl:pr-4 text-[18px]">
+                          <a
+                            className="hover:text-accent1"
+                            href="mailto:exampal@gmail.com"
+                          >
+                            {member?.country}
+                          </a>
+                        </span>
+                      </div>
+
+                      <div className="flex items-center mt-5 gap-2">
+                        <span className="border border-pink-400 text-accent1 w-9 h-9 rounded-full flex items-center justify-center">
+                          <svg
+                            className="max-w-5"
+                            width="16"
+                            height="34"
+                            fill="currentColor"
+                            stroke="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 384 512"
+                          >
+                            <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z"></path>
+                          </svg>
+                        </span>
+                        <span className="ltr:pl-4 rtl:pr-4 text-[18px]">
+                          fulbariFranciso,4200.
+                        </span>
+                      </div>
+                      <div className="card-actions mt-4">
+                        <Link
+                          to={`/view-profile/${member._id}`}
+                          className="btn bg-[#FD6585] hover:bg-[#ED0058] w-full text-white border-0"
+                        >
+                          View Details
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
