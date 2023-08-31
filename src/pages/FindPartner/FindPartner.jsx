@@ -18,7 +18,7 @@ const FindPartner = () => {
   return (
     <div>
       <Helmet>
-        <title>Countries - Chemistry Corner</title>
+        <title>Find Partner - Chemistry Corner</title>
       </Helmet>
       <div className="page-header-bg w-full h-64 bg-no-repeat bg-cover bg-center overflow-hidden">
         <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex flex-col items-center justify-center">
