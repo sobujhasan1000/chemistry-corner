@@ -82,7 +82,7 @@ const SingleUserProfile = () => {
                   <p className="text-black">Country</p>
                   <p
                     className={`text-black ${
-                      singleMember?.country && "capitalize"
+                      singleMember?.country && "uppercase"
                     }`}
                   >
                     {singleMember?.country
@@ -94,7 +94,7 @@ const SingleUserProfile = () => {
                   <p className="text-black">City</p>
                   <p
                     className={`text-black ${
-                      singleMember?.city && "capitalize"
+                      singleMember?.city && "uppercase"
                     }`}
                   >
                     {singleMember?.city
