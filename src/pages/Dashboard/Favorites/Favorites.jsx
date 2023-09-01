@@ -46,7 +46,7 @@ const Favorites = () => {
                 <br />
                 <p>{favorite.email}</p>
                 <br />
-                <p className="mt-auto">{favorite.city}</p>
+                <p className="mt-auto uppercase">{favorite.country}</p>
 
                 <Link
                   to={`/view-profile/${favorite._id}`}
