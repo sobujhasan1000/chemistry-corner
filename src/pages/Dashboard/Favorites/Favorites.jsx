@@ -5,6 +5,7 @@ import siteLoader from "/ccLoader.gif";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { MdLocationPin } from "react-icons/md";
+import { Helmet } from "react-helmet-async";
 
 const Favorites = () => {
   const { user } = useContext(AuthContext);
@@ -25,6 +26,9 @@ const Favorites = () => {
   }
   return (
     <div>
+      <Helmet>
+        <title>My Favorite - Chemistry Corner</title>
+      </Helmet>
       <h1 className="text-3xl font-bold">My Favorites Person.</h1>
       <div>
         <div className="grid gap-6 my-8 lg:grid-cols-4 sm:grid-cols-2">
