@@ -95,10 +95,19 @@ export const removeFromFavorite = async (id) => {
   const data = res.json();
   return data;
 };
-
+// ===========get favorite by email========
 export const getFavoriteByEmail = async (email) => {
   const res = await fetch(
     `${import.meta.env.VITE_API_URL}/favorites?email=${email}`
+  );
+  const data = res.json();
+  return data;
+};
+
+// ===========get favoriteList by email===========
+export const getFavoriteListByEmail = async (email) => {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/favoriteList/${email}`
   );
   const data = res.json();
   return data;

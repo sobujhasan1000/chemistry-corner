@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { getFavoriteByEmail } from "../../../api/fetch";
+import { getFavoriteListByEmail } from "../../../api/fetch";
 import { AuthContext } from "../../../providers/AuthProvider";
 import siteLoader from "/ccLoader.gif";
 import { useQuery } from "@tanstack/react-query";
@@ -9,9 +9,9 @@ const Favorites = () => {
   const { user } = useContext(AuthContext);
 
   const { data: favorites = [], isLoading: loading } = useQuery({
-    queryKey: ["favorite", user?.email],
+    queryKey: ["favoriteList", user?.email],
     queryFn: async () => {
-      const data = await getFavoriteByEmail(user?.email);
+      const data = await getFavoriteListByEmail(user?.email);
       return data;
     },
   });
