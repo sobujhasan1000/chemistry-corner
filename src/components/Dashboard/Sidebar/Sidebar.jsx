@@ -37,7 +37,7 @@ const Sidebar = () => {
 
     { label: "Create a Blog", icon: FaBlog, path: "/dashboard/create-blog" },
     { label: "Log out", icon: FaPowerOff, path: "/dashboard/logout" },
-    { label: "Admin", icon: FaPowerOff, path: "/dashboard/admin-home" },
+    // { label: "Admin", icon: FaPowerOff, path: "/dashboard/admin-home" },
   ];
 
   const sidebarCommonItems = [{ label: "Home", icon: FaHome, path: "/" }];
