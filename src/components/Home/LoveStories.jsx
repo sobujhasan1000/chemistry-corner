@@ -66,9 +66,18 @@ const LoveStories = () => {
                   alt=""
                   className="w-32 rounded-full mx-auto"
                 />
-                            <h2 className="text-xl md:text-3xl font-bold py-4">{stories.name.toUpperCase()}</h2>
-<Rating style={{ maxWidth: 100 }} value={stories.feedbackRating} readOnly/>
-                <p className="text-lg pt-4">{stories.feedbackDetails}</p>
+                <h2 className="text-xl md:text-3xl font-bold py-4">
+                  {stories.name.toUpperCase()}
+                </h2>
+                <Rating
+                  style={{ maxWidth: 100 }}
+                  value={stories.feedbackRating}
+                  readOnly
+                />
+                <p className="text-lg pt-4">
+                  {" "}
+                  {stories.feedbackDetails.slice(0, 150)}...
+                </p>
               </div>
             </SwiperSlide>
           ))}
