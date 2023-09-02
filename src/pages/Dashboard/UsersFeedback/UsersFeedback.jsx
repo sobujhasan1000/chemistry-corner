@@ -20,13 +20,11 @@ const UsersFeedback = () => {
         </div>
       </div>
       <div className="overflow-x-auto mt-12 px-8 text-black">
-  <table className="table table-zebra ">
+  <table className="table table-zebra">
     {/* head */}
     <thead className="text-xl">
       <tr>
-        <th>
-          Si No
-        </th>
+        <th>Si No </th>
         <th>Photo & Name</th>
         <th>Feedback Type</th>
         <th>Feedback Rating</th>
