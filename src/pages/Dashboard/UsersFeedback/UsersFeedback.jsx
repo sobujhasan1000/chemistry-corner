@@ -24,9 +24,7 @@ const UsersFeedback = () => {
     {/* head */}
     <thead className="text-xl">
       <tr>
-        <th>
-          Si No
-        </th>
+        <th>Si No </th>
         <th>Photo & Name</th>
         <th>Feedback Type</th>
         <th>Feedback Rating</th>
