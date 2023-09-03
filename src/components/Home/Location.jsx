@@ -2,6 +2,7 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import Container from "../shared/Container";
 import Heading from "../shared/Heading";
+import { Link } from "react-router-dom";
 
 const Location = () => {
   return (
@@ -29,7 +30,7 @@ const Location = () => {
                   href="/"
                   className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
                 >
-                  <p>From 650$</p>
+                  {/* <p>From 650$</p> */}
                 </a>
               </div>
             </div>
@@ -57,7 +58,7 @@ const Location = () => {
                   href="/"
                   className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
                 >
-                  <p>From 500$</p>
+                  {/* <p>From 500$</p> */}
                 </a>
               </div>
             </div>
@@ -85,7 +86,7 @@ const Location = () => {
                   href="/"
                   className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
                 >
-                  <p>From 800$</p>
+                  {/* <p>From 800$</p> */}
                 </a>
               </div>
             </div>
@@ -113,7 +114,7 @@ const Location = () => {
                   href="/"
                   className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
                 >
-                  <p>From 670$</p>
+                  {/* <p>From 670$</p> */}
                 </a>
               </div>
             </div>
@@ -143,7 +144,7 @@ const Location = () => {
                   href="/"
                   className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
                 >
-                  <p>From 350$</p>
+                  {/* <p>From 350$</p> */}
                 </a>
               </div>
             </div>
@@ -156,9 +157,9 @@ const Location = () => {
               "If you want to meet local singles for dating, companionship, friendship, or even more, you have come to the right place."
             }
           />
-          <button  className="bg-[#ED0058] hover:bg-[#a33f64] text-white p-4 md:px-6 md:py-4 md:text-2xl capitalize rounded flex items-center">
+          <button className="bg-[#ED0058] hover:bg-[#a33f64] text-white p-4 md:px-6 md:py-4 md:text-2xl capitalize rounded flex items-center">
             <FaSearch className="mr-2" />
-            <span>Find your partner</span>
+            <Link to="/countries"><span>Find your partner</span></Link>
           </button>
         </div>
       </div>
