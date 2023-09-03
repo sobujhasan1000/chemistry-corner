@@ -156,7 +156,7 @@ const Location = () => {
               "If you want to meet local singles for dating, companionship, friendship, or even more, you have come to the right place."
             }
           />
-          <button className="bg-[#ED0058] hover:bg-[#a33f64] text-white p-4 md:px-6 md:py-4 md:text-2xl capitalize rounded flex items-center">
+          <button  className="bg-[#ED0058] hover:bg-[#a33f64] text-white p-4 md:px-6 md:py-4 md:text-2xl capitalize rounded flex items-center">
             <FaSearch className="mr-2" />
             <span>Find your partner</span>
           </button>

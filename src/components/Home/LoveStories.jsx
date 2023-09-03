@@ -32,7 +32,7 @@ const LoveStories = () => {
   return (
     <div className="p-1" style={{ backgroundImage: `url(${loveBg})` }}>
       <Heading
-        title={"Chemistry Corner's Love Stories"}
+        title={"Chemistry Corner's users feedback"}
         subTitle={
           "We’re incredibly happy & proud to have sparked thousands of encounters & beautiful love stories. So please share your story with us! We need our a daily love fix."
         }
