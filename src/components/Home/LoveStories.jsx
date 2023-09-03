@@ -1,9 +1,9 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import loveBg from "../../assets/loveBg.jpg";
-import { FreeMode, Pagination } from "swiper/modules";
+import { FreeMode, Pagination,Autoplay, Navigation} from "swiper/modules";
 import Container from "../shared/Container";
 import Heading from "../shared/Heading";
 import { useEffect, useState } from "react";
@@ -41,9 +41,12 @@ const LoveStories = () => {
         <Swiper
           slidesPerView={3}
           spaceBetween={50}
-          loop={true}
-          pagination={{
-            clickable: true,
+          loop={false}
+          pagination={true}
+          navigation={false}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
           }}
           breakpoints={{
             // When window width is >= 768px (desktop)
@@ -55,7 +58,7 @@ const LoveStories = () => {
               slidesPerView: 1,
             },
           }}
-          modules={[FreeMode, Pagination]}
+          modules={[FreeMode, Pagination,Autoplay,Navigation]}
           className="mySwiper"
         >
           {data.map((stories) => (
