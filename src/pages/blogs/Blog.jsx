@@ -5,6 +5,7 @@ import BlogCategories from "./BlogCategories";
 import NewblogPosts from "./NewblogPosts";
 import { useEffect, useState } from "react";
 import { getAllBlogs } from "../../api/fetch";
+import { Link } from "react-router-dom";
 
 function convertHtmlToPlainText(html) {
   const tempElement = document.createElement("div");
@@ -145,9 +146,12 @@ const Blog = () => {
                       {convertHtmlToPlainText(blog.description).slice(0, 100)}
                       ...
                     </p>
-                    <button className="btn bg-red-400 text-white border-0">
+                    <Link
+                      to={`/view-blog/${blog._id}`}
+                      className="btn bg-red-400 text-white border-0"
+                    >
                       read more
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
