@@ -63,8 +63,8 @@ const Blog = () => {
         </div>
       </div>
       <Container>
-        <div className="lg:flex">
-          <div className="my-4 text-black text-center grid lg:grid-cols-3 w-full justify-items-center lg:w-2/3 gap-2 ">
+        <div className="lg:flex gap-8">
+          <div className="my-4 text-black text-center grid lg:grid-cols-2 w-full justify-items-center lg:w-2/3 gap-2 ">
             {currentBlogs.map((blog, i) => (
               <div
                 key={i}
