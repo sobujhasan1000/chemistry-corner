@@ -23,10 +23,12 @@ import PaymentFail from "../pages/Home/PaymentFail/PaymentFail";
 import PaymentCancel from "../pages/Home/PaymentCancel/PaymentCancel";
 import CreateBlog from "../pages/Dashboard/CreateBlog/CreateBlog";
 import UsersFeedback from "../pages/Dashboard/UsersFeedback/UsersFeedback";
-import UsersInpuiries from "../pages/Dashboard/UsersInquiries/UsersInpuiries";
 import GiveAFeedback from "../pages/Dashboard/GiveAFeedback/GiveAFeedback";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
 import Favorites from "../pages/Dashboard/Favorites/Favorites";
+import ViewSingleBlog from "../pages/blogs/ViewSingleBlog";
+import Likes from "../pages/Dashboard/Likes/Likes";
+import UsersInquiries from "../pages/Dashboard/UsersInquiries/UsersInquiries";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +77,10 @@ const router = createBrowserRouter([
         element: <Blog></Blog>,
       },
       {
+        path: "/view-blog/:id",
+        element: <ViewSingleBlog></ViewSingleBlog>,
+      },
+      {
         path: "/about-us",
         element: <AboutUs></AboutUs>,
       },
@@ -121,6 +127,10 @@ const router = createBrowserRouter([
         element: <Favorites></Favorites>,
       },
       {
+        path: "/dashboard/likes",
+        element: <Likes></Likes>,
+      },
+      {
         path: "/dashboard/create-blog",
         element: <CreateBlog></CreateBlog>,
       },
@@ -130,7 +140,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/users-inquiries",
-        element: <UsersInpuiries></UsersInpuiries>,
+        element: <UsersInquiries></UsersInquiries>,
       },
       {
         path: "/dashboard/give-a-feedback",
@@ -139,7 +149,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/admin-home",
         element: <AdminHome></AdminHome>,
-      }
+      },
     ],
   },
 ]);

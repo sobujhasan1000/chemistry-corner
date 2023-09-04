@@ -219,7 +219,7 @@ const Countries = () => {
         <div className="page-header-bg w-full h-64 bg-no-repeat bg-cover bg-center">
           <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex flex-col items-center justify-center">
             <h1 className="text-white text-3xl font-bold pb-2 mb-4">
-              Find Your Partner with Name.
+              Find Your Partner with Countries.
             </h1>
             <div className="flex items-center p-2 space-x-4 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
               <div className="flex bg-gray-100 p-2 w-45 space-x-2 rounded-lg">
