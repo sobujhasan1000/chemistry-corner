@@ -173,6 +173,15 @@ export const getLikesByEmail = async (email) => {
   return data;
 };
 
+// ===========get likesList by email===========
+export const getLikesListByEmail = async (email) => {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/likesList/${email}`
+  );
+  const data = res.json();
+  return data;
+};
+
 // =========get single blog=========
 export const getSigleBlog = async (id) => {
   const res = await fetch(`${import.meta.env.VITE_API_URL}/blog/${id}`);
