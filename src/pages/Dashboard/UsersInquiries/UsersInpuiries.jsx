@@ -1,6 +1,15 @@
 import { Helmet } from "react-helmet-async";
+import { BiTrash } from "react-icons/bi";
+import { FaRegEye } from "react-icons/fa";
 
 const UsersInpuiries = () => {
+  const inquries=[{
+    name:"sobuj",
+    email:"sobuj@gmail.com",
+    subject:"help us user",
+    message:"I have a question about your website...",
+  }]
+
   return (
     <div>
       <Helmet>
@@ -12,53 +21,66 @@ const UsersInpuiries = () => {
         </div>
       </div>
 
-      <div className="my-20 overflow-x-auto md:max-w-7xl mx-auto ">
-        <div className="">
-          <div className="text-black grid grid-cols-1 md:grid-cols-6">
-            <div className="border border-black p-3 text-center">#</div>
-            <div className="border border-black border-t-0 md:border-t md:border-l-0 p-3 font-bold text-center md:text-left">
-              UserName
-            </div>
-            <div className="border border-black border-t-0 md:border-t md:border-l-0 p-3 font-bold text-center md:text-left">
-              Email
-            </div>
-            <div className="border border-black border-t-0 md:border-t md:border-l-0 p-3 font-bold text-center md:text-left">
-              Subject
-            </div>
-            <div className=" border border-black border-t-0 md:border-t md:border-l-0 p-3 font-bold text-center md:text-left">
-              Message
-            </div>
-            <div className="border border-black border-t-0 md:border-t md:border-l-0 p-3 text-center font-bold md:text-left">
-              Actions
-            </div>
-          </div>
-          <div className="text-black grid grid-cols-1 md:grid-cols-6">
-            <div className="border border-black p-3 border-t-0  text-center">
-              1
-            </div>
-            <div className="border border-black md:border-l-0 p-3 border-t-0 text-center md:text-left">
-              Shipan Mallik
-            </div>
-            <div className="border border-black md:border-l-0 p-3 border-t-0 text-center md:text-left">
-              mshipan657@gmail.com
-            </div>
-            <div className="border border-black md:border-l-0 p-3 border-t-0 text-center md:text-left">
-              Question about product
-            </div>
-            <div className=" border border-black md:border-l-0 p-3 border-t-0 text-center md:text-left">
-              I have a question about your product...
-            </div>
-            <div className="border border-black md:border-l-0 p-3 text-center border-t-0 flex items-center justify-center gap-5">
-              <button className="bg-[#ED0058] hover:bg-white px-3 py-1 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300">
-                Resolve
-              </button>
-              <button className="hover:bg-[#ED0058] bg-white px-3 py-1 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300">
-                Delete
-              </button>
+      <div className="overflow-x-auto mt-12 px-8 text-black">
+  <table className="table table-zebra">
+    {/* head */}
+    <thead className="text-xl">
+      <tr>
+        <th>Si No </th>
+        <th>Name</th>
+        <th>email</th>
+        <th>subject</th>
+        <th>message</th>
+        <th>Action</th>
+       </tr>
+    </thead>
+
+    <tbody>
+     
+        {inquries.map((inqurie,index)=>(
+          <tr key={12}>
+            <td>
+          {index+1}
+        </td>
+        <td>
+          <div className="flex items-center space-x-3">
+            {/* <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src={inqurie?.image} alt="Avatar Tailwind CSS Component" />
+              </div>
+            </div> */}
+            <div>
+              <div className="font-bold">{inqurie.name}</div>
             </div>
           </div>
-        </div>
-      </div>
+        </td>
+        <td>
+        {inqurie.email}
+        </td>
+        <td>
+          {inqurie.subject} 
+        stars</td>
+        <td>
+          {inqurie.message?.slice(0, 20)}...
+        </td>
+        <th>
+          <button title="View" className="rounded-md bg-[#ED0058] hover:bg-white p-2 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300"><FaRegEye /></button>
+        </th>
+        <td>
+        <button
+                  title="Delete"
+                  className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+                >
+                  <BiTrash />
+                </button>
+        </td>
+      </tr>
+        ))}
+        
+    </tbody>
+  </table>
+</div>
+
     </div>
   );
 };

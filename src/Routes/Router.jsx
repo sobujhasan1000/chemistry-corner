@@ -27,6 +27,7 @@ import UsersInpuiries from "../pages/Dashboard/UsersInquiries/UsersInpuiries";
 import GiveAFeedback from "../pages/Dashboard/GiveAFeedback/GiveAFeedback";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
 import Favorites from "../pages/Dashboard/Favorites/Favorites";
+import ViewSingleBlog from "../pages/blogs/ViewSingleBlog";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "/view-blog/:id",
+        element: <ViewSingleBlog></ViewSingleBlog>,
       },
       {
         path: "/about-us",
@@ -139,7 +144,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/admin-home",
         element: <AdminHome></AdminHome>,
-      }
+      },
     ],
   },
 ]);
