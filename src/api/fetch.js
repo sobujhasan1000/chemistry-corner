@@ -175,9 +175,7 @@ export const getLikesByEmail = async (email) => {
 
 // ===========get likesList by email===========
 export const getLikesListByEmail = async (email) => {
-  const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/likesList/${email}`
-  );
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/likesList/${email}`);
   const data = res.json();
   return data;
 };
