@@ -90,7 +90,7 @@ const Blog = () => {
                     </p>
                     <Link
                       to={`/view-blog/${blog._id}`}
-                      className="btn bg-red-400 hover:bg-red-700 text-white border-0"
+                      className="btn bg-[#FD6585] hover:bg-[#ED0058] text-white border-0"
                     >
                       read more
                     </Link>
