@@ -90,7 +90,7 @@ const Blog = () => {
                     </p>
                     <Link
                       to={`/view-blog/${blog._id}`}
-                      className="btn bg-red-400 text-white border-0"
+                      className="btn bg-red-400 hover:bg-red-700 text-white border-0"
                     >
                       read more
                     </Link>
@@ -103,7 +103,7 @@ const Blog = () => {
           {/* ============== categories secton================= */}
           <div className="lg:w-1/3">
             <BlogCategories></BlogCategories>
-            <NewblogPosts></NewblogPosts>
+            <NewblogPosts blogs={blogs}></NewblogPosts>
           </div>
         </div>
         <div className="flex justify-center pb-8 items-center space-x-2">
