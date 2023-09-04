@@ -71,7 +71,7 @@ const Blog = () => {
                 className="my-8 gap-4 hover:shadow-2xl duration-300 border border-gray-200"
               >
                 <div className="p-6">
-                  <img className="rounded-md" src={blog.image_url} alt="" />
+                  <img className="rounded-md w-80 h-60 object-contain object-center" src={blog.image_url} alt="" />
                 </div>
                 <div className="flex items-center justify-center p-4">
                   <div>
