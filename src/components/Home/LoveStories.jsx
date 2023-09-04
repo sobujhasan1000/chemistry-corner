@@ -1,9 +1,9 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import loveBg from "../../assets/loveBg.jpg";
-import { FreeMode, Pagination } from "swiper/modules";
+import { FreeMode, Pagination,Autoplay, Navigation} from "swiper/modules";
 import Container from "../shared/Container";
 import Heading from "../shared/Heading";
 import { useEffect, useState } from "react";
@@ -32,7 +32,7 @@ const LoveStories = () => {
   return (
     <div className="p-1" style={{ backgroundImage: `url(${loveBg})` }}>
       <Heading
-        title={"Chemistry Corner's Love Stories"}
+        title={"Chemistry Corner's users feedback"}
         subTitle={
           "We’re incredibly happy & proud to have sparked thousands of encounters & beautiful love stories. So please share your story with us! We need our a daily love fix."
         }
@@ -41,9 +41,12 @@ const LoveStories = () => {
         <Swiper
           slidesPerView={3}
           spaceBetween={50}
-          loop={true}
-          pagination={{
-            clickable: true,
+          loop={false}
+          pagination={true}
+          navigation={false}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
           }}
           breakpoints={{
             // When window width is >= 768px (desktop)
@@ -55,7 +58,7 @@ const LoveStories = () => {
               slidesPerView: 1,
             },
           }}
-          modules={[FreeMode, Pagination]}
+          modules={[FreeMode, Pagination,Autoplay,Navigation]}
           className="mySwiper"
         >
           {data.map((stories) => (
@@ -66,9 +69,18 @@ const LoveStories = () => {
                   alt=""
                   className="w-32 rounded-full mx-auto"
                 />
-                            <h2 className="text-xl md:text-3xl font-bold py-4">{stories.name.toUpperCase()}</h2>
-<Rating style={{ maxWidth: 100 }} value={stories.feedbackRating} readOnly/>
-                <p className="text-lg pt-4">{stories.feedbackDetails}</p>
+                <h2 className="text-xl md:text-3xl font-bold py-4">
+                  {stories.name.toUpperCase()}
+                </h2>
+                <Rating
+                  style={{ maxWidth: 100 }}
+                  value={stories.feedbackRating}
+                  readOnly
+                />
+                <p className="text-lg pt-4">
+                  {" "}
+                  {stories.feedbackDetails.slice(0, 150)}...
+                </p>
               </div>
             </SwiperSlide>
           ))}

@@ -5,6 +5,18 @@ import BlogCategories from "./BlogCategories";
 import NewblogPosts from "./NewblogPosts";
 import { useEffect, useState } from "react";
 import { getAllBlogs } from "../../api/fetch";
+import { Link } from "react-router-dom";
+
+function convertHtmlToPlainText(html) {
+  const tempElement = document.createElement("div");
+  tempElement.innerHTML = html;
+  return tempElement.textContent || tempElement.innerText || "";
+}
+
+function formatDate(dateString) {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return new Date(dateString).toLocaleDateString(undefined, options);
+}
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -110,9 +122,12 @@ const Blog = () => {
       </div>
       <Container>
         <div className="lg:flex">
-          <div className="my-4 text-black text-center grid lg:grid-cols-2 lg:w-2/3">
+          <div className="my-4 text-black text-center grid lg:grid-cols-2 w-full justify-items-center lg:w-2/3 gap-2 ">
             {blogs.map((blog, i) => (
-              <div key={i} className="my-8 gap-4 hover:shadow-2xl">
+              <div
+                key={i}
+                className="my-8 gap-4 hover:shadow-2xl duration-300 border border-gray-200"
+              >
                 <div className="p-6">
                   <img className="rounded-md" src={blog.image_url} alt="" />
                 </div>
@@ -123,12 +138,20 @@ const Blog = () => {
                       <FcBusinessman />
                       {blog.author_name}
                       <FcOvertime />
-                      {blog.blog_time} <FcLike />
+                      {formatDate(blog.blog_time)} <FcLike />
                       {blog.total_likes} <FcMms />
                       {blog.comments?.length}
                     </p>
-                    <p className="p-4">{blog.description}</p>
-                    <button className="btn bg-red-400">read more</button>
+                    <p className="p-4">
+                      {convertHtmlToPlainText(blog.description).slice(0, 100)}
+                      ...
+                    </p>
+                    <Link
+                      to={`/view-blog/${blog._id}`}
+                      className="btn bg-red-400 text-white border-0"
+                    >
+                      read more
+                    </Link>
                   </div>
                 </div>
               </div>
