@@ -26,11 +26,9 @@ const BlogCategories = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-center lg:pt-20 text-2xl text-black font-bold">
-        Categories
-      </h1>
-      <div className="ml-4 lg:ml-20 pl-2 pt-6">
+    <div className=" w-2/3 ">
+      <h1 className=" text-2xl text-black font-bold mb-5">Categories</h1>
+      <div>
         {categoriesData.map((category) => (
           <h2
             key={category.name}

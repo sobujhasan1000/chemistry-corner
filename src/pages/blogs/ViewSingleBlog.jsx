@@ -23,6 +23,7 @@ function formatDate(dateString) {
 const ViewSingleBlog = () => {
   const { id } = useParams();
   const [singleBlog, loading] = useSingleBlog(id);
+  console.log("single blog", singleBlog);
 
   if (loading) {
     return (
@@ -40,7 +41,7 @@ const ViewSingleBlog = () => {
           </h1>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-5 container mx-auto my-20 items-start justify-center">
+        <div className="flex flex-col md:flex-row gap-10 container mx-auto my-20 items-start justify-center">
           <div className="w-full md:w-1/2">
             <img
               src={singleBlog.image_url}
