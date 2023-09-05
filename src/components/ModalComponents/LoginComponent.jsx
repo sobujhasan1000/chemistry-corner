@@ -5,7 +5,7 @@ import SocialLogin from "../shared/SocialLogin";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const LoginComponent = ({ close }) => {
   const { loading, setLoading, signIn, resetPassword } =
@@ -18,6 +18,9 @@ const LoginComponent = ({ close }) => {
     formState: { errors },
     reset,
   } = useForm();
+  const navigate = useNavigate();
+  const location = useLocation()
+  const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
     console.log(data);
     setLoading(true);
@@ -27,9 +30,11 @@ const LoginComponent = ({ close }) => {
         reset();
         toast.success(
           `${loggedUser?.displayName || "Unknown user"} logged in successfully`
-        );
+          
+          );
         setLoading(false);
         window.my_modal_3.close();
+        navigate(from, {replace: true})
       })
       .catch((error) => {
         console.log(error.message);

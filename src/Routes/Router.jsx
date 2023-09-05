@@ -29,6 +29,7 @@ import Favorites from "../pages/Dashboard/Favorites/Favorites";
 import ViewSingleBlog from "../pages/blogs/ViewSingleBlog";
 import Likes from "../pages/Dashboard/Likes/Likes";
 import UsersInquiries from "../pages/Dashboard/UsersInquiries/UsersInquiries";
+import PrivateRoute from "./PrivateRouter/PrivateRouter";
 
 const router = createBrowserRouter([
   {
@@ -46,15 +47,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/membership/:id",
-        element: <MembershipOrder />,
+        element: <PrivateRoute><MembershipOrder /></PrivateRoute>,
       },
       {
         path: "/members",
-        element: <Members></Members>,
+        element: <PrivateRoute><Members></Members></PrivateRoute>,
       },
       {
         path: "/countries",
-        element: <Countries></Countries>,
+        element: <PrivateRoute><Countries></Countries></PrivateRoute>,
       },
       {
         path: "/payment/success/:tranId",
@@ -78,7 +79,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/view-blog/:id",
-        element: <ViewSingleBlog></ViewSingleBlog>,
+        element: <PrivateRoute><ViewSingleBlog></ViewSingleBlog></PrivateRoute>,
       },
       {
         path: "/about-us",
@@ -90,7 +91,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/find-partner",
-        element: <FindPartner></FindPartner>,
+        element: <PrivateRoute><FindPartner></FindPartner></PrivateRoute>,
       },
       {
         path: "/our-team",
@@ -112,7 +113,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children: [
       {
         path: "/dashboard/profile",

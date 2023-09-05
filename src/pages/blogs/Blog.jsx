@@ -26,7 +26,7 @@ const Blog = () => {
     getAllBlogs().then((data) => setBlogs(data));
   }, []);
 
-  const blogsPerPage = 4;
+  const blogsPerPage = 6;
   const indexOfLastBlog = currentBlog * blogsPerPage;
   const indexOfLastblog = indexOfLastBlog - blogsPerPage;
   const currentBlogs = blogs.slice(indexOfLastblog, indexOfLastBlog);
@@ -63,7 +63,7 @@ const Blog = () => {
         </div>
       </div>
       <Container>
-        <div className="lg:flex">
+        <div className="lg:flex gap-8">
           <div className="my-4 text-black text-center grid lg:grid-cols-2 w-full justify-items-center lg:w-2/3 gap-2 ">
             {currentBlogs.map((blog, i) => (
               <div
@@ -71,7 +71,11 @@ const Blog = () => {
                 className="my-8 gap-4 hover:shadow-2xl duration-300 border border-gray-200"
               >
                 <div className="p-6">
-                  <img className="rounded-md w-80 h-60 object-contain object-center" src={blog.image_url} alt="" />
+                  <img
+                    className="rounded-md w-full h-60"
+                    src={blog.image_url}
+                    alt=""
+                  />
                 </div>
                 <div className="flex items-center justify-center p-4">
                   <div>
@@ -101,9 +105,9 @@ const Blog = () => {
           </div>
 
           {/* ============== categories secton================= */}
-          <div className="lg:w-1/3">
+          <div className="lg:w-1/3 my-11">
             <BlogCategories></BlogCategories>
-            <NewblogPosts blogs={blogs}></NewblogPosts>
+            <NewblogPosts></NewblogPosts>
           </div>
         </div>
         <div className="flex justify-center pb-8 items-center space-x-2">
