@@ -30,6 +30,7 @@ const PaymentHistroy = () => {
         <th>Name</th>
         <th>email</th>
         <th>name of package</th>
+        <th>transaction id</th>
         <th>amount</th>
        
       </tr>
@@ -58,6 +59,7 @@ const PaymentHistroy = () => {
         {payment?.email}
         </td>
         <td>{payment?.package} </td>
+        <td>{payment?.transactionId} </td>
         <td>{payment?.price}</td>
         <td>
         <button

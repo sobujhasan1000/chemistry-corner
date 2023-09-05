@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { getAllFeedbacks } from "../../../api/fetch";
 import { FaRegEye } from "react-icons/fa";
 import { BiTrash } from "react-icons/bi";
+import { Rating } from "@smastrom/react-rating";
 
 const UsersFeedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -55,7 +56,9 @@ const UsersFeedback = () => {
         <td>
         {feedback?.feedbackType}
         </td>
-        <td>{feedback?.feedbackRating} stars</td>
+         <td><Rating style={{ maxWidth: 100 }} value={feedback?.feedbackRating}
+                  readOnly
+         /> </td>
         <td>{feedback?.feedbackDetails?.slice(0, 20)}...</td>
         <th>
           <button title="View" className="rounded-md bg-[#ED0058] hover:bg-white p-2 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300"><FaRegEye /></button>
