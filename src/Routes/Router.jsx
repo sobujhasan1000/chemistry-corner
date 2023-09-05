@@ -14,7 +14,7 @@ import Blog from "../pages/blogs/Blog";
 import ErrorPage from "../pages/ErrorPage";
 import OurTeam from "../pages/OurTeam";
 import Testimonials from "../pages/Testimonials";
-import FAQ from "../pages/FAQ";
+import FaqPage from "../pages/FaqPage";
 import CommunityGuidelines from "../pages/CommunityGuidelines";
 import DashboardLayout from "../layOuts/mainLayOut/DashboardLayout";
 import MembershipOrder from "../pages/MembershipOrder";
@@ -47,15 +47,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/membership/:id",
-        element: <PrivateRoute><MembershipOrder /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MembershipOrder />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/members",
-        element: <PrivateRoute><Members></Members></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Members></Members>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/countries",
-        element: <PrivateRoute><Countries></Countries></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Countries></Countries>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/payment/success/:tranId",
@@ -79,7 +91,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/view-blog/:id",
-        element: <PrivateRoute><ViewSingleBlog></ViewSingleBlog></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <ViewSingleBlog></ViewSingleBlog>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/about-us",
@@ -91,7 +107,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/find-partner",
-        element: <PrivateRoute><FindPartner></FindPartner></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <FindPartner></FindPartner>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/our-team",
@@ -103,7 +123,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/faq",
-        element: <FAQ></FAQ>,
+        element: <FaqPage></FaqPage>,
       },
       {
         path: "/community-guidelines",
@@ -113,7 +133,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard/profile",
