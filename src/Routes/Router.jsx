@@ -30,6 +30,7 @@ import ViewSingleBlog from "../pages/blogs/ViewSingleBlog";
 import Likes from "../pages/Dashboard/Likes/Likes";
 import UsersInquiries from "../pages/Dashboard/UsersInquiries/UsersInquiries";
 import PrivateRoute from "./PrivateRouter/PrivateRouter";
+import PaymentHistroy from "../pages/Dashboard/Payment/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -146,6 +147,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/give-a-feedback",
         element: <GiveAFeedback></GiveAFeedback>,
+      },
+      {
+        path: "/dashboard/payment",
+        element: <PaymentHistroy></PaymentHistroy>,
       },
       {
         path: "/dashboard/admin-home",
