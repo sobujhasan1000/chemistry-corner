@@ -11,33 +11,7 @@ const Blogs = () => {
       return data;
     },
   });
-  console.log(data);
-  // const data = [
-  //   {
-  //     image:
-  //       "https://images.unsplash.com/photo-1505765052322-75804bb2e5f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-  //     title: "5 Reasons You’re Still Lonely Even Though You Use Dating Apps",
-  //     date: "April 24, 2023",
-  //   },
-  //   {
-  //     image:
-  //       "https://images.unsplash.com/photo-1505765052322-75804bb2e5f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-  //     title: "Can You Text Your Way into a Successful Relationship?",
-  //     date: "May 12, 2023",
-  //   },
-  //   {
-  //     image:
-  //       "https://images.unsplash.com/photo-1505765052322-75804bb2e5f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-  //     title: "9 Awesome Things Men Can Do to Score Points With Women",
-  //     date: "May 14, 2023",
-  //   },
-  //   {
-  //     image:
-  //       "https://images.unsplash.com/photo-1505765052322-75804bb2e5f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-  //     title: "Topics You Should Avoid Talking About When Trying To Date",
-  //     date: "June 19, 2023",
-  //   },
-  // ];
+  
   return (
     <div className="mt-8 mb-24">
       <Container>
