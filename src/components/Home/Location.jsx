@@ -1,154 +1,61 @@
-import React from "react";
 import { FaSearch } from "react-icons/fa";
 import Container from "../shared/Container";
 import Heading from "../shared/Heading";
 import { Link } from "react-router-dom";
 
 const Location = () => {
+  const countries = [
+    {
+      country: "bangladesh",
+      image: "https://bitly.ws/TVcF",
+    },
+    {
+      country: "india",
+      image: "https://bitly.ws/TVdb",
+    },
+    {
+      country: "nepal",
+      image: "https://bitly.ws/TVdz",
+    },
+    {
+      country: "usa",
+      image: "https://bitly.ws/TVdS",
+    },
+    {
+      country: "uk",
+      image: "https://bitly.ws/TVex",
+    },
+    {
+      country: "canada",
+      image: "https://bitly.ws/TVf2",
+    },
+  ];
   return (
     <Container>
       <div className="flex flex-col-reverse md:flex-row justify-center items-center">
         <div className="md:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-1 md:pt-24 pt-4 pb-8">
-          <div className="md:h-64 relative overflow-hidden group transition duration-300 transform rounded-xl shadow-xl lg:hover:-translate-y-2 hover:shadow-2xl mx-2 my-2">
-            <div className="relative">
-              <img
-                className="object-cover w-full h-56 md:h-64 xl:h-80"
-                src="https://ld-wt73.template-help.com/tf/loven/images/destinations-1-363x260.jpg"
-                alt="Person"
-              />
-              <p className="absolute top-2 -left-8 transform group-hover:scale-110 text-white opacity-0 group-hover:opacity-60 font-signature w-11/12 text-[150px] duration-200 ease-linear ">
-                Amsterdam
-              </p>
-            </div>
-            <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
-              <p className="mb-1 text-xl font-medium font-signature text-gray-100">
-                Amsterdam
-              </p>
-
-              <div className="flex items-center justify-center space-x-3 mb-4">
-                <a
-                  href="/"
-                  className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
-                >
-                  {/* <p>From 650$</p> */}
-                </a>
+          {countries.map(({ country, image }, i) => (
+            <div
+              key={i}
+              className="md:h-64 relative overflow-hidden group transition duration-300 transform rounded-xl shadow-xl lg:hover:-translate-y-2 hover:shadow-2xl mx-2 my-2"
+            >
+              <div className="relative">
+                <img
+                  className="object-cover w-full h-56 md:h-64 xl:h-80"
+                  src={image}
+                  alt="country image"
+                />
+                <p className="uppercase absolute top-2 transform group-hover:scale-110 text-white opacity-0 group-hover:opacity-60 font-signature w-11/12 text-[150px] duration-200 ease-linear text-center">
+                  {country}
+                </p>
+              </div>
+              <div className="uppercase absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+                <p className="mb-1 text-2xl font-medium font-signature text-gray-100">
+                  {country}
+                </p>
               </div>
             </div>
-          </div>
-
-          <div className="md:h-64 relative group overflow-hidden transition duration-300 transform rounded-xl shadow-xl lg:hover:-translate-y-2 hover:shadow-2xl mx-2 my-2">
-            <div className="relative">
-              <img
-                className="object-cover w-full h-56 md:h-64 xl:h-80"
-                src="https://ld-wt73.template-help.com/tf/loven/images/destinations-2-363x260.jpg"
-                alt="Person"
-              />
-              <p className="absolute top-2 -left-8 transform group-hover:scale-110 text-white opacity-0 group-hover:opacity-60 font-signature w-11/12 text-[150px] duration-200 ease-linear ">
-                London
-              </p>
-            </div>
-
-            <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
-              <p className="mb-1 text-xl font-medium font-signature text-gray-100">
-                London
-              </p>
-
-              <div className="flex items-center justify-center space-x-3 mb-4">
-                <a
-                  href="/"
-                  className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
-                >
-                  {/* <p>From 500$</p> */}
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="md:h-64 relative group overflow-hidden transition duration-300 transform rounded-xl shadow-xl lg:hover:-translate-y-2 hover:shadow-2xl mx-2 my-2">
-            <div className="relative">
-              <img
-                className="object-cover w-full h-56 md:h-64 xl:h-80"
-                src="https://ld-wt73.template-help.com/tf/loven/images/destinations-3-363x260.jpg"
-                alt="Person"
-              />
-              <p className="absolute top-2 -left-8 transform group-hover:scale-110 text-white opacity-0 group-hover:opacity-60 font-signature w-11/12 text-[150px] duration-200 ease-linear ">
-                Barcelona
-              </p>
-            </div>
-
-            <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
-              <p className="mb-1 text-xl font-medium font-signature text-gray-100">
-                Barcelona
-              </p>
-
-              <div className="flex items-center justify-center space-x-3 mb-4">
-                <a
-                  href="/"
-                  className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
-                >
-                  {/* <p>From 800$</p> */}
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="md:h-64 relative group overflow-hidden transition duration-300 transform rounded-xl shadow-xl lg:hover:-translate-y-2 hover:shadow-2xl mx-2 my-2">
-            <div className="relative">
-              <img
-                className="object-cover w-full h-56 md:h-64 xl:h-80"
-                src="https://ld-wt73.template-help.com/tf/loven/images/destinations-4-363x260.jpg"
-                alt="Person"
-              />
-              <p className="absolute top-2 -left-8 text-center transform group-hover:scale-110 text-white opacity-0 group-hover:opacity-60 font-signature w-11/12 mx-auto text-[50px] duration-200 ease-linear ">
-                New York
-              </p>
-            </div>
-
-            <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
-              <p className="mb-1 text-xl font-medium font-signature text-gray-100">
-                New York
-              </p>
-
-              <div className="flex items-center justify-center space-x-3 mb-4">
-                <a
-                  href="/"
-                  className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
-                >
-                  {/* <p>From 670$</p> */}
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="md:h-64 relative overflow-hidden transition duration-300 transform rounded-xl  lg:hover:-translate-y-2  mx-2 my-2"></div>
-
-          <div className="md:h-64 group relative overflow-hidden transition duration-300 transform rounded-xl shadow-xl lg:hover:-translate-y-2 hover:shadow-2xl mx-2 my-2">
-            <div className="relative">
-              <img
-                className="object-cover w-full h-56 md:h-64 xl:h-80"
-                src="https://media.istockphoto.com/id/1048467886/photo/street-scene-in-historic-center-of-mexico-city.jpg?s=612x612&w=0&k=20&c=aatvitXYaowQl1mb5ZTBrfq0yFllChMJx-VuMnrubuY="
-                alt="Person"
-              />
-              <p className="absolute top-2 -left-8 transform group-hover:scale-110 text-white opacity-0 group-hover:opacity-60 font-signature w-11/12 mx-auto text-[150px] duration-200 ease-linear ">
-                Mexico
-              </p>
-            </div>
-
-            <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
-              <p className="mb-1 text-xl font-medium font-signature text-gray-100">
-                Mexico
-              </p>
-
-              <div className="flex items-center justify-center space-x-3 mb-4">
-                <a
-                  href="/"
-                  className="text-[#db2777] bg-white transition-colors duration-300 hover:text-teal-accent-400 px-4 py-2 font-bold rounded-lg"
-                >
-                  {/* <p>From 350$</p> */}
-                </a>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
         <div className="md:w-2/5 w-full flex flex-col justify-center items-center">
           <Heading
@@ -159,7 +66,9 @@ const Location = () => {
           />
           <button className="bg-[#ED0058] hover:bg-[#a33f64] text-white p-4 md:px-6 md:py-4 md:text-2xl capitalize rounded flex items-center">
             <FaSearch className="mr-2" />
-            <Link to="/countries"><span>Find your partner</span></Link>
+            <Link to="/countries">
+              <span>Find your partner</span>
+            </Link>
           </button>
         </div>
       </div>
