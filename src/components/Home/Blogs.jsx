@@ -24,7 +24,7 @@ const Blogs = () => {
           }
         />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-4">
-          {data.map((item, i) => (
+          {data.slice(0, 4).map((item, i) => (
             <div className="relative group ease-in-out my-8" key={i}>
               <img
                 className="rounded w-full h-72 z-0 shadow-lg group-hover:scale-105 duration-200"
@@ -46,6 +46,13 @@ const Blogs = () => {
               </div>
             </div>
           ))}
+        </div>
+        <div className="flex items-center justify-center mt-10">
+          <Link to="/blog">
+            <button className="bg-[#ED0058] px-10 py-2 text-white border border-[#ED0058] hover:bg-white hover:text-[#ED0058] transition-all ease-in duration-300">
+              View More
+            </button>
+          </Link>
         </div>
       </Container>
     </div>
