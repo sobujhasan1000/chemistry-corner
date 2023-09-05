@@ -3,6 +3,7 @@ import Container from "../shared/Container";
 import { useQuery } from "@tanstack/react-query";
 import { getBlogs } from "../../api/fetch";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 const Blogs = () => {
   const { data = [] } = useQuery({
@@ -11,7 +12,7 @@ const Blogs = () => {
       return data;
     },
   });
-  
+
   return (
     <div className="mt-8 mb-32">
       <Container>
@@ -31,9 +32,12 @@ const Blogs = () => {
                 alt=""
               />
               <div className="bg-white py-6 px-4 rounded z-10 h-36  w-11/12 mx-auto absolute -bottom-8 left-4 md:left-3 space-y-2 group-hover:scale-105 duration-200 border-2">
-                <h2 className="text-[#212121] font-medium text-[19px] hover:text-[#fe8488] duration-200">
+                <Link
+                  to={`/view-blog/${item._id}`}
+                  className="text-[#212121] font-medium text-[19px] hover:text-[#fe8488] duration-200"
+                >
                   {item?.blog_heading}
-                </h2>
+                </Link>
                 <p className="text-[#fe8488] text-[17px]">
                   {moment(item?.blog_time).format("MMM Do YYYY")}
                 </p>
