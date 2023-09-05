@@ -30,6 +30,7 @@ import ViewSingleBlog from "../pages/blogs/ViewSingleBlog";
 import Likes from "../pages/Dashboard/Likes/Likes";
 import UsersInquiries from "../pages/Dashboard/UsersInquiries/UsersInquiries";
 import PrivateRoute from "./PrivateRouter/PrivateRouter";
+import Search from "../pages/Dashboard/Search/Search";
 
 const router = createBrowserRouter([
   {
@@ -122,6 +123,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/update-profile",
         element: <UpdateProfile></UpdateProfile>,
+      },
+      {
+        path: '/dashboard/search',
+        element: <Search></Search>,
       },
       {
         path: "/dashboard/favorite",

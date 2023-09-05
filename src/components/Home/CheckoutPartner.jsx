@@ -15,10 +15,11 @@ const CheckoutPartner = () => {
   ];
   const minAges = [
     {
-      label: "22",
-      value: 22,
+      label: "21",
+      value: 21,
       selected: true,
     },
+    { label: "22", value: 22 },
     { label: "23", value: 23 },
     { label: "24", value: 24 },
     { label: "25", value: 25 },
@@ -27,10 +28,11 @@ const CheckoutPartner = () => {
   ];
   const maxAges = [
     {
-      label: "28",
-      value: 28,
+      label: "27",
+      value: 27,
       selected: true,
     },
+    { label: "28", value: 28 },
     { label: "29", value: 29 },
     { label: "30", value: 30 },
     { label: "31", value: 31 },
@@ -39,7 +41,7 @@ const CheckoutPartner = () => {
   ];
   const countries = [
     {
-      label: "Choose your country",
+      label: "Choose location",
       disabled: true,
       selected: true,
       hidden: true,
