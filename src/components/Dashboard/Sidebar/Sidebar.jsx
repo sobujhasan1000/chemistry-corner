@@ -4,6 +4,7 @@ import {
   FaRegStar,
   FaSearch,
   FaBlog,
+  FaWallet,
 } from "react-icons/fa";
 import { BsPen, BsQuestionCircle } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
@@ -34,7 +35,7 @@ const Sidebar = () => {
       icon: BsPen,
       path: "/dashboard/give-a-feedback",
     },
-
+    { label: "payment histroy", icon: FaWallet, path: "/dashboard/payment" },
     { label: "Create a Blog", icon: FaBlog, path: "/dashboard/create-blog" },
     { label: "Log out", icon: FaPowerOff, path: "/dashboard/logout" },
     // { label: "Admin", icon: FaPowerOff, path: "/dashboard/admin-home" },
