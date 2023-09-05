@@ -20,7 +20,7 @@ const Home = () => {
       <PremiumMember />
       <ChooseUs />
       <Location />
-      <Blogs />
+      <Blogs/>
       <LoveStories />
     </div>
   );

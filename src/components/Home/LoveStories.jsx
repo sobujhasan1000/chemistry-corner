@@ -67,7 +67,7 @@ const LoveStories = () => {
                 <img
                   src={stories.image}
                   alt=""
-                  className="w-32 rounded-full mx-auto"
+                  className="w-32 h-32 rounded-full mx-auto"
                 />
                 <h2 className="text-xl md:text-3xl font-bold py-4">
                   {stories.name.toUpperCase()}
