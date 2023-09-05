@@ -1,4 +1,3 @@
-import React from "react";
 import Counter from "../components/Home/Counter";
 import { Helmet } from "react-helmet-async";
 import CheckoutPartner from "../components/Home/CheckoutPartner";
