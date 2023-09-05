@@ -3,21 +3,17 @@ import useSingleBlog from "../../Hooks/useSingleBlog";
 import siteLoader from "/ccLoader.gif";
 import Container from "../../components/shared/Container";
 import BlogCategories from "./BlogCategories";
-import NewblogPosts from "./NewblogPosts";
 import { BsCalendarEvent } from "react-icons/bs";
 import { PiUserCircle } from "react-icons/pi";
 import { AiOutlineHeart } from "react-icons/ai";
 import RelatedPost from "./RelatedPost";
+import NewBlogPosts from "./NewBlogPosts";
+import moment from "moment";
 
 function convertHtmlToPlainText(html) {
   const tempElement = document.createElement("div");
   tempElement.innerHTML = html;
   return tempElement.textContent || tempElement.innerText || "";
-}
-
-function formatDate(dateString) {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  return new Date(dateString).toLocaleDateString(undefined, options);
 }
 
 const ViewSingleBlog = () => {
@@ -51,7 +47,7 @@ const ViewSingleBlog = () => {
             <div className="py-4 flex items-center gap-10 border-b border-black">
               <p className="inline-flex items-center gap-1 text-black font-semibold text-sm md:text-base">
                 <BsCalendarEvent className=" text-gray-400" />
-                {formatDate(singleBlog.blog_time)}
+                {moment(singleBlog.blog_time).format("MMM Do YYYY h:m a")}
               </p>
               <p className="inline-flex items-center gap-1 text-black font-semibold text-sm md:text-base">
                 <PiUserCircle className="text-xl text-gray-400" />
@@ -92,7 +88,7 @@ const ViewSingleBlog = () => {
           </div>
           <div className="md:w-1/4 hidden md:block">
             <BlogCategories />
-            <NewblogPosts />
+            <NewBlogPosts />
           </div>
         </div>
       </Container>

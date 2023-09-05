@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllBlogs } from "../../api/fetch";
+import moment from "moment";
 
-const NewblogPosts = () => {
+const NewBlogPosts = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
@@ -29,9 +30,9 @@ const NewblogPosts = () => {
           <img className="rounded-md w-40" src={blog.image_url} alt="" />
           <div className="font-bold pl-2">
             <h1 className="text-black">{blog.blog_heading}</h1>
-            <h2 className="text-red-400">{`${new Date(
-              blog.blog_time
-            ).toLocaleDateString("en-US")}`}</h2>
+            <h2 className="text-red-400">
+              {moment(blog?.blog_time).format("MMM Do YYYY hh:m a")}
+            </h2>
           </div>
         </Link>
       ))}
@@ -39,4 +40,4 @@ const NewblogPosts = () => {
   );
 };
 
-export default NewblogPosts;
+export default NewBlogPosts;

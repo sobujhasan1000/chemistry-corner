@@ -2,20 +2,16 @@ import { FcBusinessman, FcLike, FcMms, FcOvertime } from "react-icons/fc";
 import Container from "../../components/shared/Container";
 import { Helmet } from "react-helmet-async";
 import BlogCategories from "./BlogCategories";
-import NewblogPosts from "./NewblogPosts";
 import { useEffect, useState } from "react";
 import { getAllBlogs } from "../../api/fetch";
 import { Link } from "react-router-dom";
+import moment from "moment";
+import NewBlogPosts from "./NewBlogPosts";
 
 function convertHtmlToPlainText(html) {
   const tempElement = document.createElement("div");
   tempElement.innerHTML = html;
   return tempElement.textContent || tempElement.innerText || "";
-}
-
-function formatDate(dateString) {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  return new Date(dateString).toLocaleDateString(undefined, options);
 }
 
 const Blog = () => {
@@ -28,8 +24,8 @@ const Blog = () => {
 
   const blogsPerPage = 6;
   const indexOfLastBlog = currentBlog * blogsPerPage;
-  const indexOfLastblog = indexOfLastBlog - blogsPerPage;
-  const currentBlogs = blogs.slice(indexOfLastblog, indexOfLastBlog);
+  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
   const totalPages = Math.ceil(blogs.length / blogsPerPage);
 
   const renderPageNumbers = () => {
@@ -84,7 +80,8 @@ const Blog = () => {
                       <FcBusinessman />
                       {blog.author_name}
                       <FcOvertime />
-                      {formatDate(blog.blog_time)} <FcLike />
+                      {moment(blog.blog_time).format("MMM Do YYYY h:m a")}{" "}
+                      <FcLike />
                       {blog.total_likes} <FcMms />
                       {blog.comments?.length}
                     </p>
@@ -104,10 +101,10 @@ const Blog = () => {
             ))}
           </div>
 
-          {/* ============== categories secton================= */}
+          {/* ============== categories section================= */}
           <div className="lg:w-1/3 my-11">
             <BlogCategories></BlogCategories>
-            <NewblogPosts></NewblogPosts>
+            <NewBlogPosts />
           </div>
         </div>
         <div className="flex justify-center pb-8 items-center space-x-2">
