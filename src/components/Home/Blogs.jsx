@@ -48,7 +48,7 @@ const Blogs = () => {
             "Here are some of our latest dating articles written by our staff. We hope these tips will help you get more confident and find what you are looking for."
           }
         />
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-4 ">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-4">
           {data.map((item, i) => (
             <div className="relative group ease-in-out my-8" key={i}>
               <img
@@ -56,13 +56,15 @@ const Blogs = () => {
                 src={item?.image_url}
                 alt=""
               />
-              <div className="bg-white py-6 px-4 rounded z-10 h-36  w-11/12 mx-auto absolute -bottom-8 left-4 md:left-3 space-y-2 group-hover:scale-105 duration-200 border-2">
+              <div className="opacity-80 p-4 bg-white py-6 px-4 rounded z-10 h-36  w-11/12 mx-auto absolute -bottom-8 left-4 md:left-3 space-y-2 group-hover:scale-105 duration-200 border-2">
+                <div>
                 <h2 className="text-[#212121] font-medium text-[19px] hover:text-[#fe8488] duration-200">
                   {item?.blog_heading}
                 </h2>
                 <p className="text-[#fe8488] text-[17px]">
                   {moment(item?.blog_time).format("MMM Do YYYY")}
                 </p>
+                </div>
               </div>
             </div>
           ))}
