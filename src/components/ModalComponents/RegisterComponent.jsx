@@ -221,7 +221,10 @@ const RegisterComponent = () => {
             />
             <span className="ml-3 text-white">
               I Accept{" "}
-              <Link to="#" className="text-blue-300 underline">
+              <Link
+                to="/community-guidelines"
+                className="text-blue-300 underline"
+              >
                 Terms & Conditions.
               </Link>{" "}
             </span>

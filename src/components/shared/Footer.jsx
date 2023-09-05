@@ -7,14 +7,15 @@ import {
 } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { useState } from "react";
+import { useEffect } from "react";
+import { getAllBlogs } from "../../api/fetch";
+import moment from "moment";
 
 const Footer = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const [blogs, setBlogs] = useState([]);
+
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     fetch(`${import.meta.env.VITE_API_URL}/newsletter`, {
       method: "POST",
@@ -37,6 +38,10 @@ const Footer = () => {
         }
       });
   };
+
+  useEffect(() => {
+    getAllBlogs().then((data) => setBlogs(data));
+  }, []);
   return (
     <div className="bg-[#ED0058]">
       <div className="container mx-auto flex flex-col gap-8 py-10 text-white">
@@ -79,8 +84,8 @@ const Footer = () => {
                 <p className="text-sm max-w-xs text-center md:text-start">
                   At Chemistry Corner, we believe that meaningful connections
                   are the cornerstone of a fulfilling life. Our platform is more
-                  than just another online dating website – it's a community
-                  dedicated to helping individuals discover genuine
+                  than just another online dating website – it&apos;s a
+                  community dedicated to helping individuals discover genuine
                   relationships that resonate on a deeper level.
                 </p>
                 <p className="flex items-center gap-2">
@@ -136,6 +141,35 @@ const Footer = () => {
                   <Link to="/community-guidelines">Community Guidelines</Link>
                 </li>
               </ul>
+            </div>
+            <div className="md:flex flex-col items-center md:items-start gap-3 hidden">
+              <h1 className="text-xl">Our Latest Blogs</h1>
+              <div className="">
+                <div className="flex flex-col gap-2">
+                  {blogs.slice(0, 2).map((blog) => (
+                    <Link
+                      to={`/view-blog/${blog._id}`}
+                      className="flex p-1 hover:shadow-2xl group border border-white hover:bg-white duration-300"
+                      key={blog._id}
+                    >
+                      <img className=" w-40 h-24" src={blog.image_url} alt="" />
+                      <div className="font-bold pl-2">
+                        <h1 className="text-black">{blog.blog_heading}</h1>
+                        <h2 className="text-yellow-400 group-hover:text-red-500">
+                          {moment(blog?.blog_time).format(
+                            "Do MMM, YYYY- hh:m a"
+                          )}
+                        </h2>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+                <Link to="/blog">
+                  <button className="text-white mt-2 hover:underline underline-offset-4 duration-300">
+                    Read More...
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
