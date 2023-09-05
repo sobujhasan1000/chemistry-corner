@@ -30,7 +30,7 @@ const Blogs = () => {
     },
   ];
   return (
-    <div className="mt-8 mb-24">
+    <div className="mt-8 mb-32">
       <Container>
         {" "}
         <Heading
@@ -39,7 +39,7 @@ const Blogs = () => {
             "Here are some of our latest dating articles written by our staff. We hope these tips will help you get more confident and find what you are looking for."
           }
         />
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-4 ">
           {data.map((item, i) => (
             <div className="relative group ease-in-out" key={i}>
               <img
@@ -52,6 +52,7 @@ const Blogs = () => {
                   {item?.title}
                 </h2>
                 <p className="text-[#fe8488] text-[17px]">{item?.date}</p>
+                <button className="btn ml-16 mr-auto bg-[#ED0058] hover:bg-[#a33f64]">view deatiels</button>
               </div>
             </div>
           ))}
