@@ -193,3 +193,10 @@ export const getBlogs = async () => {
   const data = res.json();
   return data;
 };
+
+// =========get all payment =============
+export const getAllPayments = async () => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/payments`);
+  const data = res.json();
+  return data;
+};
