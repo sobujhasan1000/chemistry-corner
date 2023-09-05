@@ -154,7 +154,9 @@ const Footer = () => {
                     >
                       <img className=" w-40 h-24" src={blog.image_url} alt="" />
                       <div className="font-bold pl-2">
-                        <h1 className="text-black">{blog.blog_heading}</h1>
+                        <h1 className="text-black">
+                          {blog.blog_heading.slice(0, 25)}...
+                        </h1>
                         <h2 className="text-yellow-400 group-hover:text-red-500">
                           {moment(blog?.blog_time).format(
                             "Do MMM, YYYY- hh:m a"
