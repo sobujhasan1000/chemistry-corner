@@ -232,12 +232,12 @@ const Members = () => {
                               ) ? (
                                 <FaHeart
                                   onClick={() => handleRemoveLike(item._id)}
-                                  className="text-2xl text-[#ED0058] duration-300"
+                                  className="text-2xl text-[#ED0058]"
                                 />
                               ) : (
                                 <FaRegHeart
                                   onClick={() => handleAddLike(item._id)}
-                                  className="text-2xl text-black hover:text-[#ED0058] duration-300"
+                                  className="text-2xl text-black hover:text-[#ED0058]"
                                 />
                               )}
 
@@ -248,16 +248,16 @@ const Members = () => {
                                   onClick={() =>
                                     handleRemoveFromFavorite(item._id)
                                   }
-                                  className="text-2xl text-[#ED0058] duration-300"
+                                  className="text-2xl text-[#ED0058]"
                                 ></FaStar>
                               ) : (
                                 <FaRegStar
                                   onClick={() => handleFavorite(item._id)}
-                                  className="text-2xl text-black hover:text-[#ED0058] duration-300"
+                                  className="text-2xl text-black hover:text-[#ED0058]"
                                 />
                               )}
 
-                              <FaRegComment className="text-2xl text-black hover:text-[#ED0058] duration-300" />
+                              <FaRegComment className="text-2xl text-black hover:text-[#ED0058]" />
                             </div>
                           </div>
 
