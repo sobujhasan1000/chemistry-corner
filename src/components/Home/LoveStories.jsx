@@ -1,9 +1,9 @@
-import { Swiper, SwiperSlide} from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import loveBg from "../../assets/loveBg.jpg";
-import { FreeMode, Pagination,Autoplay, Navigation} from "swiper/modules";
+import { FreeMode, Pagination, Autoplay, Navigation } from "swiper/modules";
 import Container from "../shared/Container";
 import Heading from "../shared/Heading";
 import { useEffect, useState } from "react";
@@ -58,7 +58,7 @@ const LoveStories = () => {
               slidesPerView: 1,
             },
           }}
-          modules={[FreeMode, Pagination,Autoplay,Navigation]}
+          modules={[FreeMode, Pagination, Autoplay, Navigation]}
           className="mySwiper"
         >
           {data.map((stories) => (
@@ -69,8 +69,8 @@ const LoveStories = () => {
                   alt=""
                   className="w-32 h-32 rounded-full mx-auto"
                 />
-                <h2 className="text-xl md:text-3xl font-bold py-4">
-                  {stories.name.toUpperCase()}
+                <h2 className="capitalize text-xl md:text-2xl font-bold py-4">
+                  {stories.name}
                 </h2>
                 <Rating
                   style={{ maxWidth: 100 }}
@@ -78,7 +78,6 @@ const LoveStories = () => {
                   readOnly
                 />
                 <p className="text-lg pt-4">
-                  {" "}
                   {stories.feedbackDetails.slice(0, 150)}...
                 </p>
               </div>

@@ -56,7 +56,7 @@ const GiveAFeedback = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="grid grid-cols-1 gap-5"
         >
-          <div className="form-control">
+          <div className="form-control hidden">
             <input
               type="text"
               name="name"
@@ -67,7 +67,7 @@ const GiveAFeedback = () => {
               className="bg-white border border-yellow-500 p-3 text-black outline-none capitalize"
             />
           </div>
-          <div className="form-control">
+          <div className="form-control hidden">
             <input
               type="text"
               name="image"

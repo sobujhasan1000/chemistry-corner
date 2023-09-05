@@ -31,7 +31,7 @@ const NewBlogPosts = () => {
           <div className="font-bold pl-2">
             <h1 className="text-black">{blog.blog_heading}</h1>
             <h2 className="text-red-400">
-              {moment(blog?.blog_time).format("MMM Do YYYY hh:m a")}
+              {moment(blog?.blog_time).format("Do MMM, YYYY- hh:m a")}
             </h2>
           </div>
         </Link>

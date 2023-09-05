@@ -80,7 +80,7 @@ const Blog = () => {
                       <FcBusinessman />
                       {blog.author_name}
                       <FcOvertime />
-                      {moment(blog.blog_time).format("MMM Do YYYY h:m a")}{" "}
+                      {moment(blog.blog_time).format("Do MMM, YYYY- hh:m a")}
                       <FcLike />
                       {blog.total_likes} <FcMms />
                       {blog.comments?.length}
