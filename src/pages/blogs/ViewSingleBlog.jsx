@@ -47,7 +47,7 @@ const ViewSingleBlog = () => {
             <div className="py-4 flex items-center gap-10 border-b border-black">
               <p className="inline-flex items-center gap-1 text-black font-semibold text-sm md:text-base">
                 <BsCalendarEvent className=" text-gray-400" />
-                {moment(singleBlog.blog_time).format("MMM Do YYYY h:m a")}
+                {moment(singleBlog.blog_time).format("Do MMM, YYYY- hh:m a")}
               </p>
               <p className="inline-flex items-center gap-1 text-black font-semibold text-sm md:text-base">
                 <PiUserCircle className="text-xl text-gray-400" />

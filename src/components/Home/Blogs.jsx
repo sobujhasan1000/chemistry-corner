@@ -40,7 +40,7 @@ const Blogs = () => {
                     {item?.blog_heading}
                   </Link>
                   <p className="text-[#fe8488] text-[17px]">
-                    {moment(item?.blog_time).format("MMM Do YYYY")}
+                    {moment(item?.blog_time).format("Do MMM, YYYY")}
                   </p>
                 </div>
               </div>
