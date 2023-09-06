@@ -1,20 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { BiTrash, BiUserCircle } from "react-icons/bi";
 import { getAllMembers } from "../../../../api/fetch";
 import { FaUserShield } from "react-icons/fa";
 
 import "./ManageUser.css";
+import { updateUserRole } from "../../../../api/auth";
+import { useQuery } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
 
 const ManageUser = () => {
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
   const [perPage, setPerPage] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchName, setSearchName] = useState("");
 
-  useEffect(() => {
-    getAllMembers().then((data) => setUsers(data));
-  }, []);
+  // useEffect(() => {
+  //   getAllMembers().then((data) => setUsers(data));
+  // }, []);
+
+  const { data: users = [], refetch } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const data = await getAllMembers();
+      return data;
+    },
+  });
 
   const startIndex = (currentPage - 1) * perPage;
   const endIndex = startIndex + perPage;
@@ -27,6 +38,15 @@ const ManageUser = () => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+  };
+
+  const handleSetRole = (id, role) => {
+    updateUserRole(id, role).then((result) => {
+      if (result.modifiedCount > 0) {
+        toast.success("Role given");
+        refetch();
+      }
+    });
   };
 
   return (
@@ -81,29 +101,31 @@ const ManageUser = () => {
           </tr>
         </thead>
         <tbody>
-          {paginatedUsers.map((user, i) => (
+          {paginatedUsers.map((item, i) => (
             <tr key={i} className="bg-white">
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 capitalize">
-                {user.name}
+                {item.name}
               </td>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {user.email}
+                {item.email}
               </td>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {!user?.role ? "User" : user?.role}
+                {!item?.role ? "User" : item?.role}
               </td>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <button
+                  onClick={() => handleSetRole(item._id, "admin")}
                   title="Admin"
-                  className="p-2 border border-[#ED0058] bg-white hover:bg-[#ED0058] text-[#ED0058] hover:text-white transition-all ease-in duration-300 mr-3"
-                >
-                  <FaUserShield />
-                </button>
-                <button
-                  title="User"
-                  className="p-2 border border-[#ED0058] hover:bg-white bg-[#ED0058] text-white hover:text-[#ED0058] transition-all ease-in duration-300"
+                  className="p-2 border border-[#ED0058] hover:bg-white bg-[#ED0058] text-white hover:text-[#ED0058] transition-all ease-in duration-300 mr-3"
                 >
                   <BiUserCircle />
+                </button>
+                <button
+                  onClick={() => handleSetRole(item._id, "super-admin")}
+                  title="Super Admin"
+                  className="p-2 border border-[#ED0058] bg-white hover:bg-[#ED0058] text-[#ED0058] hover:text-white transition-all ease-in duration-300"
+                >
+                  <FaUserShield />
                 </button>
               </td>
               <td>

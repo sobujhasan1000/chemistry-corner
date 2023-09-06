@@ -23,3 +23,16 @@ export const modifyUser = async (userInfo, email) => {
   const data = res.json();
   return data;
 };
+
+// =========update user role==========
+export const updateUserRole = async (id, role) => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/user-role/${id}`, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ role }),
+  });
+  const data = res.json();
+  return data;
+};
