@@ -51,6 +51,7 @@ const Sidebar = () => {
     singleUser.role === "admin"
   ) {
     sidebarUserItems = [
+      { label: "Profile", icon: CgProfile, path: "/dashboard/profile" },
       { label: "Admin", icon: FaRegUser, path: "/dashboard/admin-home" },
       {
         label: "Manage Users",
