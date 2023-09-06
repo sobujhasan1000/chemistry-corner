@@ -4,19 +4,19 @@
       "packageName": "7 Days Free Trial",
       "packInfo": "$15.00 Now And Then $30.00 Per Month..",
       "price": 0,
-      "packInclude": ["Feature X", "Feature Y", "Feature R"]
+      "packInclude": ["Free account with limited features", "May include ads", "Basic profile creation and browsing","limited likes","Priority customer support"]
     },
     {
       "packageName": "Gold",
       "packInfo": "$15.00 Now And Then $50.00 Per Month.",
       "price": 14.99,
-      "packInclude": ["Feature P", "Feature Q", "Feature R"]
+      "packInclude": ["Entry-level premium subscription", "Ad-free experience", "Unlimited likes","Ability to see who likes your profile","Enhanced search filters"]
     },
     {
       "packageName": "Platinum",
       "packInfo": "$15.00 Now And Then $60.00 Per Month..",
       "price": 29.99,
-      "packInclude": ["Feature Alpha", "Feature Beta", "Feature R"]
+      "packInclude": ["Includes all features of the Silver package", "communication features like read receipts", "Undo swipes or decisions","Priority customer support","Priority customer support"]
     }
   ]
   
