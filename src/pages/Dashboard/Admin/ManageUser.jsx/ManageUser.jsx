@@ -1,122 +1,176 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import "./ManageUser.css";
-import { BiUserCircle } from "react-icons/bi";
-import { BsTrash, BsEye } from "react-icons/bs";
-import { FaUserShield } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { BiTrash, BiUserCircle } from "react-icons/bi";
 import { getAllMembers } from "../../../../api/fetch";
+import { FaUserShield } from "react-icons/fa";
+
+import "./ManageUser.css";
+import { updateUserRole } from "../../../../api/auth";
+import { useQuery } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
 
 const ManageUser = () => {
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    getAllMembers().then((data) => setUsers(data));
-  }, []);
+  // const [users, setUsers] = useState([]);
+  const [perPage, setPerPage] = useState(5);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchName, setSearchName] = useState("");
+
+  // useEffect(() => {
+  //   getAllMembers().then((data) => setUsers(data));
+  // }, []);
+
+  const { data: users = [], refetch } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const data = await getAllMembers();
+      return data;
+    },
+  });
+
+  const startIndex = (currentPage - 1) * perPage;
+  const endIndex = startIndex + perPage;
+
+  const filteredUsers = users.filter((user) =>
+    user.name.toLowerCase().includes(searchName.toLowerCase())
+  );
+
+  const paginatedUsers = filteredUsers.slice(startIndex, endIndex);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const handleSetRole = (id, role) => {
+    updateUserRole(id, role).then((result) => {
+      if (result.modifiedCount > 0) {
+        toast.success("Role given");
+        refetch();
+      }
+    });
+  };
+
   return (
     <div>
       <Helmet>
         <title>Manage Users - Chemistry Corner</title>
       </Helmet>
-      <div className="page-header-bg w-full h-48 md:h-64 bg-no-repeat bg-cover bg-center">
-        <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex items-center justify-center">
-          <h1 className="text-white text-3xl font-bold"> Manage Users</h1>
+      <div className="flex justify-between items-center mb-4">
+        <div>
+          <label className="mr-2">Rows per page:</label>
+          <select
+            className="border border-gray-300 rounded-md px-2 py-1"
+            value={perPage}
+            onChange={(e) => {
+              setCurrentPage(1);
+              setPerPage(parseInt(e.target.value));
+            }}
+          >
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={15}>15</option>
+            <option value={20}>20</option>
+          </select>
         </div>
+        {/* Search input field */}
+        <input
+          type="text"
+          placeholder="Search by Name"
+          className="border border-gray-300 rounded-md px-2 py-1"
+          value={searchName}
+          onChange={(e) => setSearchName(e.target.value)}
+        />
       </div>
-      {/* Users table */}
-      <div className="flex items-center justify-center mt-10">
-        <div className="container">
-          <table className="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
-            <thead className="text-white">
-              {users.map((user) => (
-                <tr
-                  key={user._id}
-                  className="bg-[#ED0058] flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0"
+      <table className="min-w-full">
+        <thead>
+          <tr>
+            <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
+              Name
+            </th>
+            <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
+              Email
+            </th>
+            <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
+              Role
+            </th>
+            <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
+              Manage Role
+            </th>
+            <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {paginatedUsers.map((item, i) => (
+            <tr key={i} className="bg-white">
+              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 capitalize">
+                {item.name}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                {item.email}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 capitalize">
+                {!item?.role ? "user" : item?.role}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <button
+                  onClick={() => handleSetRole(item._id, "admin")}
+                  title="Admin"
+                  className="p-2 border border-[#ED0058] hover:bg-white bg-[#ED0058] text-white hover:text-[#ED0058] transition-all ease-in duration-300 mr-3"
                 >
-                  <th className="p-3 text-left">Name</th>
-                  <th className="p-3 text-left">Email</th>
-                  <th className="p-3 text-left">Role</th>
-                  <th className="p-3 text-left">Manage Role</th>
-                  <th className="p-3 text-left" width="110px">
-                    Actions
-                  </th>
-                </tr>
-              ))}
-
-              {/* <tr className="bg-[#ED0058] flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                <th className="p-3 text-left">Name</th>
-                <th className="p-3 text-left">Email</th>
-                <th className="p-3 text-left">Role</th>
-                <th className="p-3 text-left">Manage Role</th>
-                <th className="p-3 text-left" width="110px">
-                  Actions
-                </th>
-              </tr> */}
-              {/* <tr className="bg-[#ED0058] flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                <th className="p-3 text-left">Name</th>
-                <th className="p-3 text-left">Email</th>
-                <th className="p-3 text-left">Role</th>
-                <th className="p-3 text-left">Manage Role</th>
-                <th className="p-3 text-left" width="110px">
-                  Actions
-                </th>
-              </tr> */}
-              {/* <tr className="bg-[#ED0058] flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                <th className="p-3 text-left">Name</th>
-                <th className="p-3 text-left">Email</th>
-                <th className="p-3 text-left">Role</th>
-                <th className="p-3 text-left">Manage Role</th>
-                <th className="p-3 text-left" width="110px">
-                  Actions
-                </th>
-              </tr> */}
-            </thead>
-            <tbody className="flex-1 sm:flex-none">
-              {users.map((user) => (
-                <tr
-                  key={user._id}
-                  className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0"
+                  <BiUserCircle />
+                </button>
+                <button
+                  onClick={() => handleSetRole(item._id, "super-admin")}
+                  title="Super Admin"
+                  className="p-2 border border-[#ED0058] bg-white hover:bg-[#ED0058] text-[#ED0058] hover:text-white transition-all ease-in duration-300"
                 >
-                  <td className="border-grey-light border hover:bg-gray-100 p-3 text-black">
-                    {user.name}
-                  </td>
-                  <td className="border-grey-light border hover:bg-gray-100 p-3 truncate  text-black">
-                    {user.email}
-                  </td>
-                  <td className="border-grey-light border hover:bg-gray-100 p-3 truncate  text-black">
-                    user
-                  </td>
-                  <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
-                    <button
-                      title="Admin"
-                      className="p-2 border border-[#ED0058] bg-white hover:bg-[#ED0058] text-[#ED0058] hover:text-white transition-all ease-in duration-300 mr-3"
-                    >
-                      <FaUserShield />
-                    </button>
-                    <button
-                      title="User"
-                      className="p-2 border border-[#ED0058] hover:bg-white bg-[#ED0058] text-white hover:text-[#ED0058] transition-all ease-in duration-300"
-                    >
-                      <BiUserCircle />
-                    </button>
-                  </td>
-                  <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
-                    <button
-                      title="View"
-                      className="p-2 border border-[#ED0058] bg-white hover:bg-[#ED0058] text-[#ED0058]  hover:text-white transition-all ease-in duration-300 mr-3"
-                    >
-                      <BsEye />
-                    </button>
-                    <button
-                      title="Delete"
-                      className="p-2 border border-[#ED0058] hover:bg-white bg-[#ED0058] text-white hover:text-[#ED0058] transition-all ease-in duration-300"
-                    >
-                      <BsTrash />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                  <FaUserShield />
+                </button>
+              </td>
+              <td>
+                <button
+                  title="Delete"
+                  className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+                >
+                  <BiTrash />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="mt-4 flex justify-end">
+        <button
+          className={`mr-2 ${
+            currentPage === 1
+              ? "cursor-not-allowed bg-gray-300"
+              : "hover:bg-gray-200 bg-white"
+          } py-2 px-4 rounded-md border border-gray-300`}
+          onClick={() => {
+            if (currentPage > 1) {
+              handlePageChange(currentPage - 1);
+            }
+          }}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <button
+          className={`${
+            currentPage * perPage >= filteredUsers.length
+              ? "cursor-not-allowed bg-gray-300"
+              : "hover:bg-gray-200 bg-white"
+          } py-2 px-4 rounded-md border border-gray-300`}
+          onClick={() => {
+            if (currentPage * perPage < filteredUsers.length) {
+              handlePageChange(currentPage + 1);
+            }
+          }}
+          disabled={currentPage * perPage >= filteredUsers.length}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

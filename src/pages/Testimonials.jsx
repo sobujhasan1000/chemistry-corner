@@ -6,9 +6,37 @@ import "@smastrom/react-rating/style.css";
 
 const Testimonials = () => {
   const [feedbacks, setFeedbacks] = useState([]);
+  const [currentTestimonial, setCurrentTestimonial] = useState(1);
   useEffect(() => {
     getAllFeedbacks().then((data) => setFeedbacks(data));
   }, []);
+
+  const testimonialsPerPage = 4;
+  const indexOfLastTestimonial = currentTestimonial * testimonialsPerPage;
+  const indexOfFirstTestimonial = indexOfLastTestimonial - testimonialsPerPage;
+  const currentTestimonials = feedbacks.slice(indexOfFirstTestimonial, indexOfLastTestimonial);
+  const totalPages = Math.ceil(feedbacks.length / testimonialsPerPage);
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <button
+          key={i}
+          onClick={() => setCurrentTestimonial(i)}
+          className={`px-3 py-1 rounded-md ${
+            currentTestimonial === i
+              ? "bg-pink-500 text-white"
+              : "bg-pink-300 text-gray-700"
+          }`}
+        >
+          {i}
+        </button>
+      );
+    }
+    return pageNumbers;
+  };
+
   return (
     <div>
       <Helmet>
@@ -19,17 +47,17 @@ const Testimonials = () => {
           <h1 className="text-white text-3xl font-bold"> User Testimonials</h1>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:w-1/2 container mx-auto my-20">
-        {feedbacks.map((feedback) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5  container mx-auto my-20">
+        {currentTestimonials.map((feedback) => (
           <div
             key={feedback._id}
-            className="p-16 shadow-xl shadow-gray-300 w-full"
+            className="px-16 py-12 shadow-lg hover:shadow-xl shadow-gray-300 rounded-lg bg-pink-100 mx-4"
           >
             <div className="mb-5 flex items-center gap-5">
               <img
                 src={feedback.image}
                 alt="Feedback User Image"
-                className="w-14 rounded-full"
+                className="w-14 h-14 rounded-full border border-pink-400 object-center object-cover"
               />
               <h1 className="text-black text-xl font-signature capitalize">
                 {feedback.name}
@@ -48,6 +76,23 @@ const Testimonials = () => {
           </div>
         ))}
       </div>
+      <div className="flex justify-center pb-8 items-center space-x-2">
+          <button
+            onClick={() => setCurrentTestimonial(currentTestimonial - 1)}
+            disabled={currentTestimonial === 1}
+            className="px-3 py-1 rounded-md bg-pink-200 hover:bg-pink-400"
+          >
+            Previous
+          </button>
+          {renderPageNumbers()}
+          <button
+            onClick={() => setCurrentTestimonial(currentTestimonial + 1)}
+            disabled={currentTestimonial === totalPages}
+            className="px-3 py-1 rounded-md bg-pink-200 hover:bg-pink-400"
+          >
+            Next
+          </button>
+        </div>
     </div>
   );
 };
