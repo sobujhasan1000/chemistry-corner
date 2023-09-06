@@ -1,16 +1,23 @@
 import { Helmet } from "react-helmet-async";
 import { BiTrash } from "react-icons/bi";
 import { FaRegEye } from "react-icons/fa";
+import { getContractUs } from "../../../api/fetch";
+import { useEffect, useState } from "react";
 
 const UsersInquiries = () => {
-  const inquiries = [
-    {
-      name: "sobuj",
-      email: "sobuj@gmail.com",
-      subject: "help us user",
-      message: "I have a question about your website...",
-    },
-  ];
+
+  const [inquiries, setInquiries] = useState([]);
+  useEffect(() => {
+    getContractUs().then((data) => setInquiries(data));
+  }, []);
+  // const inquiries = [
+  //   {
+  //     name: "sobuj",
+  //     email: "sobuj@gmail.com",
+  //     subject: "help us user",
+  //     message: "I have a question about your website...",
+  //   },
+  // ];
 
   return (
     <div>
