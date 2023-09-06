@@ -4,6 +4,7 @@ import {
   FaRegStar,
   FaSearch,
   FaFileInvoiceDollar,
+  FaRegUser
 } from "react-icons/fa";
 import { BsQuestionCircle } from "react-icons/bs";
 import { TfiWrite } from "react-icons/tfi";
@@ -50,7 +51,7 @@ const Sidebar = () => {
     singleUser.role === "admin"
   ) {
     sidebarUserItems = [
-      { label: "Admin", icon: FaPowerOff, path: "/dashboard/admin-home" },
+      { label: "Admin", icon: FaRegUser, path: "/dashboard/admin-home" },
       {
         label: "Manage Users",
         icon: MdOutlineManageAccounts,
