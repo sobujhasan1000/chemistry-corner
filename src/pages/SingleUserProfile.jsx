@@ -76,7 +76,9 @@ const SingleUserProfile = () => {
                 </div>
                 <div className="grid grid-cols-2 border-b border-black py-4">
                   <p className="text-black">Looking for a</p>
-                  <p className="text-black">Male / Female (sample data)</p>
+                  <p className="text-black">
+                    {singleMember?.gender === "male" ? "Female" : "Male"}
+                  </p>
                 </div>
                 <div className="grid grid-cols-2 border-b border-black py-4">
                   <p className="text-black">Country</p>
