@@ -4,7 +4,7 @@ import {
   FaRegStar,
   FaSearch,
   FaFileInvoiceDollar,
-  FaRegUser
+  FaRegUser,
 } from "react-icons/fa";
 import { BsQuestionCircle } from "react-icons/bs";
 import { TfiWrite } from "react-icons/tfi";
@@ -82,6 +82,20 @@ const Sidebar = () => {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col justify-center items-start gap-3">
+        <div className="flex flex-col items-center justify-center gap-2 w-full">
+          <div className="relative">
+            <img
+              src={singleUser.image}
+              alt="User Image"
+              className="w-20 h-20 rounded-full"
+            />
+            <div className="badge badge-success absolute bottom-1 left-10">
+              default
+            </div>
+          </div>
+
+          <h1 className="capitalize text-xl">{singleUser.name}</h1>
+        </div>
         {sidebarUserItems.map(({ icon: Icon, label, path }, i) => (
           <Link
             to={path}
