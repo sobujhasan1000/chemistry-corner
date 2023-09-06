@@ -11,7 +11,7 @@ const Likes = () => {
   const { user } = useContext(AuthContext);
   const [singleUser, loading] = useSingleUser(user.email);
   const { data: likes = [], isLoading } = useQuery({
-    queryKey: ["likesList"],
+    queryKey: ["likesList", user.email],
     enabled: !loading,
     queryFn: async () => {
       const data = await getLikesListById(singleUser._id);
