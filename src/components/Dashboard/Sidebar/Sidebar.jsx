@@ -3,54 +3,69 @@ import {
   FaPowerOff,
   FaRegStar,
   FaSearch,
-  FaBlog,
-  FaWallet,
+  FaFileInvoiceDollar,
 } from "react-icons/fa";
-import { BsPen, BsQuestionCircle } from "react-icons/bs";
+import { BsQuestionCircle } from "react-icons/bs";
+import { TfiWrite } from "react-icons/tfi";
+import { VscFeedback } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
 import { BiMessageRounded } from "react-icons/bi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { MdOutlineManageAccounts } from "react-icons/md";
+import { MdOutlineManageAccounts, MdOutlineFeedback } from "react-icons/md";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import useSingleUser from "../../../Hooks/useSingleUser";
 
 const Sidebar = () => {
-  const sidebarUserItems = [
+  const { user } = useContext(AuthContext);
+  const [singleUser] = useSingleUser(user.email);
+  let sidebarUserItems = [
     { label: "Profile", icon: CgProfile, path: "/dashboard/profile" },
     { label: "Search", icon: FaSearch, path: "/dashboard/search" },
     { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
     { label: "Likes", icon: AiOutlineHeart, path: "/dashboard/likes" },
-    {
-      label: "Manage Users",
-      icon: MdOutlineManageAccounts,
-      path: "/dashboard/manage-users",
-    },
-    {
-      label: "Users Feedback",
-      icon: BsPen,
-      path: "/dashboard/users-feedbacks",
-    },
-    {
-      label: "Users Inquiries",
-      icon: BsQuestionCircle,
-      path: "/dashboard/users-inquiries",
-    },
     { label: "Favorites", icon: FaRegStar, path: "/dashboard/favorite" },
-
     {
-      label: "Give a Feedback",
-      icon: BsPen,
+      label: "Give Feedback",
+      icon: VscFeedback,
       path: "/dashboard/give-a-feedback",
     },
-    { label: "payment histroy", icon: FaWallet, path: "/dashboard/payment" },
-    { label: "Create a Blog", icon: FaBlog, path: "/dashboard/create-blog" },
-    { label: "Log out", icon: FaPowerOff, path: "/dashboard/logout" },
-    // { label: "Admin", icon: FaPowerOff, path: "/dashboard/admin-home" },
+    { label: "Create a Blog", icon: TfiWrite, path: "/dashboard/create-blog" },
   ];
+  if (singleUser.role && singleUser.role === ("admin" || "super-admin")) {
+    sidebarUserItems = [
+      { label: "Admin", icon: FaPowerOff, path: "/dashboard/admin-home" },
+      {
+        label: "Manage Users",
+        icon: MdOutlineManageAccounts,
+        path: "/dashboard/manage-users",
+      },
+      {
+        label: "Payment History",
+        icon: FaFileInvoiceDollar,
+        path: "/dashboard/payment",
+      },
+      {
+        label: "Users Feedback",
+        icon: MdOutlineFeedback,
+        path: "/dashboard/users-feedbacks",
+      },
+      {
+        label: "Users Inquiries",
+        icon: BsQuestionCircle,
+        path: "/dashboard/users-inquiries",
+      },
+    ];
+  }
 
-  const sidebarCommonItems = [{ label: "Home", icon: FaHome, path: "/" }];
+  const sidebarCommonItems = [
+    { label: "Home", icon: FaHome, path: "/" },
+    { label: "Log out", icon: FaPowerOff, path: "/dashboard/logout" },
+  ];
   return (
     <div className="flex flex-col gap-3">
-      <div className="flex flex-col justify-center items-start gap-2">
+      <div className="flex flex-col justify-center items-start gap-3">
         {sidebarUserItems.map(({ icon: Icon, label, path }, i) => (
           <Link
             to={path}
