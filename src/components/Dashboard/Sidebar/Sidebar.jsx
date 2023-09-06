@@ -16,10 +16,22 @@ import { MdOutlineManageAccounts, MdOutlineFeedback } from "react-icons/md";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useSingleUser from "../../../Hooks/useSingleUser";
+import { toast } from "react-hot-toast";
 
 const Sidebar = () => {
-  const { user } = useContext(AuthContext);
-  const [singleUser] = useSingleUser(user.email);
+  const { user, setLoading, logOut } = useContext(AuthContext);
+  const [singleUser, loading] = useSingleUser(user.email);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Logout successful");
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setLoading(false);
+      });
+  };
   let sidebarUserItems = [
     { label: "Profile", icon: CgProfile, path: "/dashboard/profile" },
     { label: "Search", icon: FaSearch, path: "/dashboard/search" },
@@ -33,7 +45,10 @@ const Sidebar = () => {
     },
     { label: "Create a Blog", icon: TfiWrite, path: "/dashboard/create-blog" },
   ];
-  if (singleUser.role && singleUser.role === ("admin" || "super-admin")) {
+  if (
+    (!loading && singleUser.role && singleUser.role === "super-admin") ||
+    singleUser.role === "admin"
+  ) {
     sidebarUserItems = [
       { label: "Admin", icon: FaPowerOff, path: "/dashboard/admin-home" },
       {
@@ -61,7 +76,7 @@ const Sidebar = () => {
 
   const sidebarCommonItems = [
     { label: "Home", icon: FaHome, path: "/" },
-    { label: "Log out", icon: FaPowerOff, path: "/dashboard/logout" },
+    { label: "Log out", icon: FaPowerOff, onClick: handleLogOut },
   ];
   return (
     <div className="flex flex-col gap-3">
@@ -79,8 +94,9 @@ const Sidebar = () => {
       </div>
       <hr />
       <div className="flex flex-col justify-center items-start gap-2">
-        {sidebarCommonItems.map(({ icon: Icon, label, path }, i) => (
+        {sidebarCommonItems.map(({ icon: Icon, label, path, onClick }, i) => (
           <Link
+            onClick={onClick}
             to={path}
             key={i}
             className="flex justify-center items-center gap-1 px-3 py-1 ml-8 hover:bg-[#ff5492]"
