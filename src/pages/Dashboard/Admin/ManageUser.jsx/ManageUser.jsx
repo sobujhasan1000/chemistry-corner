@@ -112,11 +112,11 @@ const ManageUser = () => {
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 capitalize">
                 {!item?.role ? "user" : item?.role}
               </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 flex justify-center items-center gap-2">
                 <button
                   onClick={() => handleSetRole(item._id, "admin")}
                   title="Admin"
-                  className="p-2 border border-[#ED0058] hover:bg-white bg-[#ED0058] text-white hover:text-[#ED0058] transition-all ease-in duration-300 mr-3"
+                  className="p-2 border border-[#ED0058] hover:bg-white bg-[#ED0058] text-white hover:text-[#ED0058] transition-all ease-in duration-300"
                 >
                   <BiUserCircle />
                 </button>
