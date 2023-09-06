@@ -31,8 +31,8 @@ import Likes from "../pages/Dashboard/Likes/Likes";
 import UsersInquiries from "../pages/Dashboard/UsersInquiries/UsersInquiries";
 import PrivateRoute from "./PrivateRouter/PrivateRouter";
 import Search from "../pages/Dashboard/Search/Search";
-import PaymentHistroy from "../pages/Dashboard/Payment/PaymentHistory";
 import ManageUser from "../pages/Dashboard/Admin/ManageUser.jsx/ManageUser";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -180,7 +180,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/payment",
-        element: <PaymentHistroy></PaymentHistroy>,
+        element: <PaymentHistory></PaymentHistory>,
       },
       {
         path: "/dashboard/admin-home",

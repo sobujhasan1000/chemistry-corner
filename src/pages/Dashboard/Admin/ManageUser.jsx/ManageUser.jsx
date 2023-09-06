@@ -109,8 +109,8 @@ const ManageUser = () => {
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 {item.email}
               </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {!item?.role ? "User" : item?.role}
+              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 capitalize">
+                {!item?.role ? "user" : item?.role}
               </td>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <button
