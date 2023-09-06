@@ -46,7 +46,7 @@ const AdminHome = () => {
             <PieChart />
           </div>
         </div>
-        <div>
+        <div className="w-full md:w-2/5 md:h-2/5">
             <PolarChart></PolarChart>
         </div>
       </div>
