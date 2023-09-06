@@ -107,6 +107,7 @@ const GiveAFeedback = () => {
             <input
               type="number"
               name="feedbackRating"
+              step="0.01"
               {...register("feedbackRating", { min: 0, max: 5 })}
               required
               placeholder="Give a Rating...e.g 5"
