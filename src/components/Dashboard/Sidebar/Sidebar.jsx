@@ -11,6 +11,7 @@ import { CgProfile } from "react-icons/cg";
 import { BiMessageRounded } from "react-icons/bi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { MdOutlineManageAccounts } from "react-icons/md";
 
 const Sidebar = () => {
   const sidebarUserItems = [
@@ -18,6 +19,11 @@ const Sidebar = () => {
     { label: "Search", icon: FaSearch, path: "/dashboard/search" },
     { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
     { label: "Likes", icon: AiOutlineHeart, path: "/dashboard/likes" },
+    {
+      label: "Manage Users",
+      icon: MdOutlineManageAccounts,
+      path: "/dashboard/manage-users",
+    },
     {
       label: "Users Feedback",
       icon: BsPen,

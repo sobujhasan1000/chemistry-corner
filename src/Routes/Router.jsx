@@ -32,6 +32,7 @@ import UsersInquiries from "../pages/Dashboard/UsersInquiries/UsersInquiries";
 import PrivateRoute from "./PrivateRouter/PrivateRouter";
 import Search from "../pages/Dashboard/Search/Search";
 import PaymentHistroy from "../pages/Dashboard/Payment/PaymentHistory";
+import ManageUser from "../pages/Dashboard/Admin/ManageUser.jsx/ManageUser";
 
 const router = createBrowserRouter([
   {
@@ -150,7 +151,7 @@ const router = createBrowserRouter([
         element: <UpdateProfile></UpdateProfile>,
       },
       {
-        path: '/dashboard/search',
+        path: "/dashboard/search",
         element: <Search></Search>,
       },
       {
@@ -184,6 +185,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/admin-home",
         element: <AdminHome></AdminHome>,
+      },
+      {
+        path: "/dashboard/manage-users",
+        element: <ManageUser></ManageUser>,
       },
     ],
   },
