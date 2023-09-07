@@ -88,10 +88,10 @@ const Sidebar = () => {
             <img
               src={singleUser.image}
               alt="User Image"
-              className="w-20 h-20 rounded-full"
+              className="rounded-full w-24 ring ring-primary ring-offset-base-100 ring-offset-2"
             />
-            <div className="badge badge-success absolute bottom-1 left-10">
-              default
+            <div className="badge badge-warning text-white absolute bottom-1 left-14 px-3 py-2">
+              Platinum
             </div>
           </div>
 
