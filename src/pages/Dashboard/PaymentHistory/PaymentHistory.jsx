@@ -14,13 +14,13 @@ const PaymentHistory = () => {
   }, []);
 
   const tableHeadings = [
-    "Si No",
-    "Name",
-    "Email",
-    "Package",
-    "Transaction ID",
-    "Amount",
-    " ",
+    { label: "Si No", style: "rounded-tl-lg" },
+    { label: "Name" },
+    { label: "Email" },
+    { label: "Package" },
+    { label: "Transaction ID" },
+    { label: "Amount" },
+    { label: " ", style: "rounded-tr-lg" },
   ];
 
   const startIndex = (currentPage - 1) * perPage;
@@ -46,7 +46,7 @@ const PaymentHistory = () => {
         <div>
           <label className="mr-2">Rows per page:</label>
           <select
-            className="border border-gray-300 rounded-md px-2 py-1"
+            className="border border-gray-300 rounded-md px-2 py-1 text-[#ED0058]"
             value={perPage}
             onChange={(e) => {
               setCurrentPage(1);
@@ -63,21 +63,18 @@ const PaymentHistory = () => {
         <input
           type="text"
           placeholder="Search by Name"
-          className="border border-gray-300 rounded-md px-2 py-1"
+          className="border rounded-md px-2 py-1 placeholder:text-[#ED0058] focus:outline-pink-800 border-[#ED0058]"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
       <div className="overflow-x-auto">
         <table className="min-w-full">
-          <thead>
+          <thead className="bg-[#ED0058] text-left text-base leading-4 font-medium text-white capitalize tracking-wider rounded-lg">
             <tr>
-              {tableHeadings.map((heading, i) => (
-                <th
-                  key={i}
-                  className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider"
-                >
-                  {heading}
+              {tableHeadings.map(({ label, style }, i) => (
+                <th key={i} className={`px-6 py-3 ${style}`}>
+                  {label}
                 </th>
               ))}
             </tr>

@@ -58,7 +58,7 @@ const ManageUser = () => {
         <div>
           <label className="mr-2">Rows per page:</label>
           <select
-            className="border border-gray-300 rounded-md px-2 py-1"
+            className="border border-gray-300 text-[#ED0058] rounded-md px-2 py-1"
             value={perPage}
             onChange={(e) => {
               setCurrentPage(1);
@@ -75,30 +75,20 @@ const ManageUser = () => {
         <input
           type="text"
           placeholder="Search by Name"
-          className="border border-gray-300 rounded-md px-2 py-1"
+          className="border border-[#ED0058] rounded-md px-2 py-1 placeholder:text-[#ED0058] focus:outline-pink-800"
           value={searchName}
           onChange={(e) => setSearchName(e.target.value)}
         />
       </div>
       <div className="overflow-x-auto">
         <table className="min-w-full">
-          <thead>
+          <thead className="bg-[#ED0058] text-left text-base text-white font-medium capitalize tracking-wider leading-4 rounded-lg">
             <tr>
-              <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
-                Name
-              </th>
-              <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
-                Email
-              </th>
-              <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
-                Role
-              </th>
-              <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
-                Manage Role
-              </th>
-              <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
-                Actions
-              </th>
+              <th className="px-6 py-3 rounded-tl-lg">Name</th>
+              <th className="px-6 py-3">Email</th>
+              <th className="px-6 py-3">Role</th>
+              <th className="px-6 py-3">Manage Role</th>
+              <th className="px-6 py-3 rounded-tr-lg">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -113,7 +103,7 @@ const ManageUser = () => {
                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 capitalize">
                   {!item?.role ? "user" : item?.role}
                 </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 flex justify-center items-center gap-2">
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 flex justify-start items-center gap-2">
                   <button
                     onClick={() => handleSetRole(item._id, "admin")}
                     title="Admin"
@@ -129,7 +119,7 @@ const ManageUser = () => {
                     <FaUserShield />
                   </button>
                 </td>
-                <td>
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                   <button
                     title="Delete"
                     className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
