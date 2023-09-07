@@ -80,66 +80,68 @@ const ManageUser = () => {
           onChange={(e) => setSearchName(e.target.value)}
         />
       </div>
-      <table className="min-w-full">
-        <thead>
-          <tr>
-            <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
-              Name
-            </th>
-            <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
-              Email
-            </th>
-            <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
-              Role
-            </th>
-            <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
-              Manage Role
-            </th>
-            <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {paginatedUsers.map((item, i) => (
-            <tr key={i} className="bg-white">
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 capitalize">
-                {item.name}
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {item.email}
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 capitalize">
-                {!item?.role ? "user" : item?.role}
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 flex justify-center items-center gap-2">
-                <button
-                  onClick={() => handleSetRole(item._id, "admin")}
-                  title="Admin"
-                  className="p-2 border border-[#ED0058] hover:bg-white bg-[#ED0058] text-white hover:text-[#ED0058] transition-all ease-in duration-300"
-                >
-                  <BiUserCircle />
-                </button>
-                <button
-                  onClick={() => handleSetRole(item._id, "super-admin")}
-                  title="Super Admin"
-                  className="p-2 border border-[#ED0058] bg-white hover:bg-[#ED0058] text-[#ED0058] hover:text-white transition-all ease-in duration-300"
-                >
-                  <FaUserShield />
-                </button>
-              </td>
-              <td>
-                <button
-                  title="Delete"
-                  className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
-                >
-                  <BiTrash />
-                </button>
-              </td>
+      <div className="overflow-x-auto">
+        <table className="min-w-full">
+          <thead>
+            <tr>
+              <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
+                Name
+              </th>
+              <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
+                Email
+              </th>
+              <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
+                Role
+              </th>
+              <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
+                Manage Role
+              </th>
+              <th className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider">
+                Actions
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {paginatedUsers.map((item, i) => (
+              <tr key={i} className="bg-white">
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 capitalize">
+                  {item.name}
+                </td>
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  {item.email}
+                </td>
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 capitalize">
+                  {!item?.role ? "user" : item?.role}
+                </td>
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 flex justify-center items-center gap-2">
+                  <button
+                    onClick={() => handleSetRole(item._id, "admin")}
+                    title="Admin"
+                    className="p-2 border border-[#ED0058] hover:bg-white bg-[#ED0058] text-white hover:text-[#ED0058] transition-all ease-in duration-300"
+                  >
+                    <BiUserCircle />
+                  </button>
+                  <button
+                    onClick={() => handleSetRole(item._id, "super-admin")}
+                    title="Super Admin"
+                    className="p-2 border border-[#ED0058] bg-white hover:bg-[#ED0058] text-[#ED0058] hover:text-white transition-all ease-in duration-300"
+                  >
+                    <FaUserShield />
+                  </button>
+                </td>
+                <td>
+                  <button
+                    title="Delete"
+                    className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+                  >
+                    <BiTrash />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <div className="mt-4 flex justify-end">
         <button
           className={`mr-2 ${

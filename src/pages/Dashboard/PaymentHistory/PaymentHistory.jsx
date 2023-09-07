@@ -68,52 +68,54 @@ const PaymentHistory = () => {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
-      <table className="min-w-full">
-        <thead>
-          <tr>
-            {tableHeadings.map((heading, i) => (
-              <th
-                key={i}
-                className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider"
-              >
-                {heading}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {paginatedPayments.map((payment, i) => (
-            <tr key={i} className="bg-white">
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {i + 1 + startIndex}
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {payment?.name}
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {payment?.email}
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {payment?.package}
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {payment?.transactionId}
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                ${payment?.price}
-              </td>
-              <td>
-                <button
-                  title="Delete"
-                  className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+      <div className="overflow-x-auto">
+        <table className="min-w-full">
+          <thead>
+            <tr>
+              {tableHeadings.map((heading, i) => (
+                <th
+                  key={i}
+                  className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider"
                 >
-                  <BiTrash />
-                </button>
-              </td>
+                  {heading}
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {paginatedPayments.map((payment, i) => (
+              <tr key={i} className="bg-white">
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  {i + 1 + startIndex}
+                </td>
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  {payment?.name}
+                </td>
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  {payment?.email}
+                </td>
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  {payment?.package}
+                </td>
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  {payment?.transactionId}
+                </td>
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  ${payment?.price}
+                </td>
+                <td>
+                  <button
+                    title="Delete"
+                    className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+                  >
+                    <BiTrash />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <div className="mt-4 flex justify-end">
         <button
           className={`mr-2 ${

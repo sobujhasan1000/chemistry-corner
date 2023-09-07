@@ -181,7 +181,7 @@ export const getLikesListById = async (id) => {
 };
 
 // =========get single blog=========
-export const getSigleBlog = async (id) => {
+export const getSingleBlog = async (id) => {
   const res = await fetch(`${import.meta.env.VITE_API_URL}/blog/${id}`);
   const data = res.json();
   return data;
