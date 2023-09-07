@@ -18,6 +18,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useSingleUser from "../../../Hooks/useSingleUser";
 import { toast } from "react-hot-toast";
+import { useQuery } from "@tanstack/react-query";
+import { getSinglePayment } from "../../../api/fetch";
 
 const Sidebar = () => {
   const { user, setLoading, logOut } = useContext(AuthContext);
@@ -80,6 +82,15 @@ const Sidebar = () => {
     { label: "Home", icon: FaHome, path: "/" },
     { label: "Log out", icon: FaPowerOff, onClick: handleLogOut },
   ];
+
+  const { data: payment = {} } = useQuery({
+    queryKey: ["order", user?.email],
+    queryFn: async () => {
+      const data = await getSinglePayment(user.email);
+      return data;
+    },
+  });
+  console.log(payment);
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col justify-center items-start gap-3">
@@ -88,11 +99,15 @@ const Sidebar = () => {
             <img
               src={singleUser.image}
               alt="User Image"
-              className="w-20 h-20 rounded-full"
+              className="rounded-full w-24 ring ring-primary ring-offset-base-100 ring-offset-2"
             />
-            <div className="badge badge-success absolute bottom-1 left-10">
-              default
-            </div>
+            {payment && payment.package && (
+              <div className="badge badge-warning text-white absolute bottom-1 left-14 px-3 py-2">
+                {payment.package === "7 Days Free Trial"
+                  ? "Free"
+                  : payment?.package}
+              </div>
+            )}
           </div>
 
           <h1 className="capitalize text-xl">{singleUser.name}</h1>
