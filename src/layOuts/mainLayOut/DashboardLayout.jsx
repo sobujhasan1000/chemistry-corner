@@ -20,7 +20,7 @@ const DashboardLayout = () => {
   return (
     <div className="flex min-h-screen">
       {/* Hamburger Menu */}
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <button onClick={toggleSidebar} className="bg-[#ED0058] text-white p-2">
           {sidebarOpen ? <FaTimes /> : <FaBars />}
         </button>
@@ -47,7 +47,7 @@ const DashboardLayout = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-grow p-4 lg:p-8">
+      <main className="flex-grow p-4 lg:p-8 overflow-x-auto">
         {renderDashboardHeading}
         {/* Main content goes here */}
         <Outlet />

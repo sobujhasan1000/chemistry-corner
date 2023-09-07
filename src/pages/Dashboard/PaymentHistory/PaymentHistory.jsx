@@ -14,13 +14,13 @@ const PaymentHistory = () => {
   }, []);
 
   const tableHeadings = [
-    "Si No",
-    "Name",
-    "Email",
-    "Package",
-    "Transaction ID",
-    "Amount",
-    " ",
+    { label: "Si No", style: "rounded-tl-lg" },
+    { label: "Name" },
+    { label: "Email" },
+    { label: "Package" },
+    { label: "Transaction ID" },
+    { label: "Amount" },
+    { label: " ", style: "rounded-tr-lg" },
   ];
 
   const startIndex = (currentPage - 1) * perPage;
@@ -46,7 +46,7 @@ const PaymentHistory = () => {
         <div>
           <label className="mr-2">Rows per page:</label>
           <select
-            className="border border-gray-300 rounded-md px-2 py-1"
+            className="border border-gray-300 rounded-md px-2 py-1 text-[#ED0058]"
             value={perPage}
             onChange={(e) => {
               setCurrentPage(1);
@@ -63,57 +63,56 @@ const PaymentHistory = () => {
         <input
           type="text"
           placeholder="Search by Name"
-          className="border border-gray-300 rounded-md px-2 py-1"
+          className="border rounded-md px-2 py-1 placeholder:text-[#ED0058] focus:outline-pink-800 border-[#ED0058]"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
-      <table className="min-w-full">
-        <thead>
-          <tr>
-            {tableHeadings.map((heading, i) => (
-              <th
-                key={i}
-                className="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 capitalize tracking-wider"
-              >
-                {heading}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {paginatedPayments.map((payment, i) => (
-            <tr key={i} className="bg-white">
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {i + 1 + startIndex}
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {payment?.name}
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {payment?.email}
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {payment?.package}
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {payment?.transactionId}
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                ${payment?.price}
-              </td>
-              <td>
-                <button
-                  title="Delete"
-                  className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
-                >
-                  <BiTrash />
-                </button>
-              </td>
+      <div className="overflow-x-auto">
+        <table className="min-w-full">
+          <thead className="bg-[#ED0058] text-left text-base leading-4 font-medium text-white capitalize tracking-wider rounded-lg">
+            <tr>
+              {tableHeadings.map(({ label, style }, i) => (
+                <th key={i} className={`px-6 py-3 ${style}`}>
+                  {label}
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {paginatedPayments.map((payment, i) => (
+              <tr key={i} className="bg-white">
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  {i + 1 + startIndex}
+                </td>
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  {payment?.name}
+                </td>
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  {payment?.email}
+                </td>
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  {payment?.package}
+                </td>
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  {payment?.transactionId}
+                </td>
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  ${payment?.price}
+                </td>
+                <td>
+                  <button
+                    title="Delete"
+                    className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+                  >
+                    <BiTrash />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <div className="mt-4 flex justify-end">
         <button
           className={`mr-2 ${

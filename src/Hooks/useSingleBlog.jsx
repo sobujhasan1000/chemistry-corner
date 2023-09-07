@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { useQuery } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
-import { getSigleBlog } from "../api/fetch";
+import { getSingleBlog } from "../api/fetch";
 
 const blogSlice = createSlice({
   name: "blog",
@@ -22,7 +22,7 @@ const useSingleBlog = (id) => {
   const { data: singleBlog = {}, isLoading: loading } = useQuery({
     queryKey: ["singleBlog", id],
     queryFn: async () => {
-      const blogData = await getSigleBlog(id);
+      const blogData = await getSingleBlog(id);
       dispatch(setBlog(blogData));
       return blogData;
     },
