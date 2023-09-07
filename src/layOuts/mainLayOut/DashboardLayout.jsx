@@ -1,21 +1,14 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Sidebar from "../../components/Dashboard/Sidebar/Sidebar";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const location = useLocation();
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
-
-  const renderDashboardHeading = location.pathname === "/dashboard" && (
-    <h2 className="text-2xl font-semibold mb-4 text-black">
-      Welcome to the Dashboard
-    </h2>
-  );
 
   return (
     <div className="flex min-h-screen">
@@ -28,10 +21,12 @@ const DashboardLayout = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed left-0 transform transition-transform z-30 ${
+        className={`${
+          // Apply sticky styles only for lg and larger screens
+          "lg:sticky lg:top-0 lg:h-screen lg:w-1/5"
+        } fixed left-0 transform transition-transform z-30 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 lg:block lg:relative lg:w-1/5 lg:h-screen bg-[#ED0058] text-white`}
-        style={{ position: "sticky", top: 0, height: "100vh" }} // Add sticky styles
+        } lg:translate-x-0 lg:block lg:relative lg:w-1/5 bg-[#ED0058] text-white`}
       >
         {/* Close Button for Mobile */}
         <div className="lg:hidden absolute top-0 right-0 p-4">
@@ -49,7 +44,6 @@ const DashboardLayout = () => {
 
       {/* Main Content */}
       <main className="flex-grow p-4 lg:p-8 overflow-x-auto">
-        {renderDashboardHeading}
         {/* Main content goes here */}
         <Outlet />
       </main>

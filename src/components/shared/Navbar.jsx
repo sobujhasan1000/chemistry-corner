@@ -6,9 +6,11 @@ import userImage from "/user.png";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
+import useSingleUser from "../../Hooks/useSingleUser";
 
 const Navbar = () => {
   const { user, setLoading, logOut } = useContext(AuthContext);
+  const [singleUser] = useSingleUser(user?.email);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
@@ -103,19 +105,14 @@ const Navbar = () => {
   );
   const userMenuItems = (
     <>
-      {/* <li className="user-menu-item">
-        <NavLink
-          to="/profile"
-          className={({ isActive }) =>
-            isActive ? "activeNavLink" : "navClasses"
-          }
-        >
-          My Profile
-        </NavLink>
-      </li> */}
       <li className="user-menu-item">
         <NavLink
-          to="/dashboard"
+          to={
+            singleUser?.role &&
+            (singleUser.role === "admin" || singleUser.role === "super-admin")
+              ? "/dashboard/admin-home"
+              : "/dashboard/profile"
+          }
           className={({ isActive }) =>
             isActive ? "activeNavLink " : " navClasses"
           }

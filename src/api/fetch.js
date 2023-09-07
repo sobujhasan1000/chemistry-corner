@@ -201,6 +201,15 @@ export const getAllPayments = async () => {
   return data;
 };
 
+// ===========get single payment==========
+export const getSinglePayment = async (email) => {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/single-payment/${email}`
+  );
+  const data = res.json();
+  return data;
+};
+
 // ========== contract-us get =============
 export const getContractUs = async () => {
   const res = await fetch(`${import.meta.env.VITE_API_URL}/contract-get`);
