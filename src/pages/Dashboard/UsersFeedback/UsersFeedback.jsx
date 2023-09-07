@@ -47,14 +47,7 @@ const UsersFeedback = () => {
         </div>
       </div>
       <div className="overflow-x-auto mt-12 px-8 text-black">
-        <div className="mb-4">
-          <input
-            type="text"
-            placeholder="Search by Name"
-            value={searchTerm}
-            onChange={handleSearch}
-            className="p-2 border border-gray-300 rounded-md"
-          />
+        <div className="mb-4 flex justify-between items-center">
           <select
             className="ml-4 p-2 border border-gray-300 rounded-md"
             value={feedbacksPerPage}
@@ -65,6 +58,13 @@ const UsersFeedback = () => {
             <option value={15}>15 rows</option>
             <option value={20}>20 rows</option>
           </select>
+          <input
+            type="text"
+            placeholder="Search by Name"
+            value={searchTerm}
+            onChange={handleSearch}
+            className="p-2 border border-gray-300 rounded-md"
+          />
         </div>
         <table className="table table-zebra">
           <thead className="text-xl">
@@ -127,7 +127,7 @@ const UsersFeedback = () => {
               ))}
           </tbody>
         </table>
-        <div className="pagination mt-4">
+        <div className="pagination mt-4 flex flex-row justify-end">
           <button
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}
