@@ -20,7 +20,7 @@ const LoveStories = () => {
       .then((response) => {
         const updatedData = response.data.map((story) => ({
           ...story,
-          feedbackRating: parseInt(story.feedbackRating, 10),
+          feedbackRating: parseFloat(story.feedbackRating),
         }));
         setData(updatedData);
       })

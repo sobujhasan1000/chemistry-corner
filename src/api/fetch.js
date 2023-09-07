@@ -200,3 +200,10 @@ export const getAllPayments = async () => {
   const data = res.json();
   return data;
 };
+
+// ========== contract-us get =============
+export const getContractUs = async () => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/contract-get`);
+  const data = res.json();
+  return data;
+};
