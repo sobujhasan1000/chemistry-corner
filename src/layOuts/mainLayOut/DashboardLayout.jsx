@@ -31,6 +31,7 @@ const DashboardLayout = () => {
         className={`fixed left-0 transform transition-transform z-30 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 lg:block lg:relative lg:w-1/5 lg:h-screen bg-[#ED0058] text-white`}
+        style={{ position: "sticky", top: 0, height: "100vh" }} // Add sticky styles
       >
         {/* Close Button for Mobile */}
         <div className="lg:hidden absolute top-0 right-0 p-4">
