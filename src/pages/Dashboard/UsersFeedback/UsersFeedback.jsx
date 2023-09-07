@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { getAllFeedbacks } from "../../../api/fetch";
 import { FaRegEye } from "react-icons/fa";
