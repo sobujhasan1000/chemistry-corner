@@ -83,13 +83,14 @@ const Sidebar = () => {
     { label: "Log out", icon: FaPowerOff, onClick: handleLogOut },
   ];
 
-  const { data: payment = [] } = useQuery({
+  const { data: payment = {} } = useQuery({
     queryKey: ["order", user?.email],
     queryFn: async () => {
-      const data = await getSinglePayment(user?.email);
+      const data = await getSinglePayment(user.email);
       return data;
     },
   });
+  console.log(payment);
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col justify-center items-start gap-3">
@@ -100,9 +101,9 @@ const Sidebar = () => {
               alt="User Image"
               className="rounded-full w-24 ring ring-primary ring-offset-base-100 ring-offset-2"
             />
-            {payment.length === !0 && (
+            {payment && payment.package && (
               <div className="badge badge-warning text-white absolute bottom-1 left-14 px-3 py-2">
-                {payment?.package === "7 Days Free Trial"
+                {payment.package === "7 Days Free Trial"
                   ? "Free"
                   : payment?.package}
               </div>
