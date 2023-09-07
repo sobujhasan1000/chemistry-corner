@@ -41,11 +41,11 @@ const UsersFeedback = () => {
       <Helmet>
         <title>Users Feedbacks - Chemistry Corner</title>
       </Helmet>
-      <div className="page-header-bg w-full h-48 md:h-64 bg-no-repeat bg-cover bg-center overflow-x-auto">
+      {/* <div className="page-header-bg w-full h-48 md:h-64 bg-no-repeat bg-cover bg-center overflow-x-auto">
         <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex items-center justify-center">
           <h1 className="text-white text-3xl font-bold">Users Feedbacks</h1>
         </div>
-      </div>
+      </div> */}
       <div className="overflow-x-auto mt-12 px-8 text-black">
         <div className="mb-4 flex justify-between items-center">
           <select
