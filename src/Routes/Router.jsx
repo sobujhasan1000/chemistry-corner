@@ -33,6 +33,7 @@ import PrivateRoute from "./PrivateRouter/PrivateRouter";
 import Search from "../pages/Dashboard/Search/Search";
 import ManageUser from "../pages/Dashboard/Admin/ManageUser.jsx/ManageUser";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+import Messages from "../pages/Dashboard/Messages/Messages";
 
 const router = createBrowserRouter([
   {
@@ -153,6 +154,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/search",
         element: <Search></Search>,
+      },
+      {
+        path: "/dashboard/messages",
+        element: <Messages></Messages>,
       },
       {
         path: "/dashboard/favorite",
