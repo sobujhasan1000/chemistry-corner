@@ -100,7 +100,7 @@ const Navbar = () => {
           Contact Us
         </NavLink>
       </li>
-      {user? <li>
+      {/* {user? <li>
         <Notification to="/notification"
           className={({ isActive }) =>
             isActive ? "activeNavLink" : "navClasses"
@@ -108,7 +108,7 @@ const Navbar = () => {
         >
          <AiFillBell className="text-2xl"/>
         </Notification>
-      </li>:<></>}
+      </li>:<></>} */}
     </>
   );
   const userMenuItems = (
