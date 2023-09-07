@@ -27,6 +27,7 @@ const MembershipOrder = () => {
     console.log(data);
     const orderInfo = {
       ...data,
+      orderTime: new Date(),
       price: selectedPackage.price,
       package: selectedPackage.packageName,
     };
