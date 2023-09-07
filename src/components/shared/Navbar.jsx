@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
 import logo from "/ccLogo.png";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineMenu,AiFillBell } from "react-icons/ai";
 import { HiOutlineXMark } from "react-icons/hi2";
 import userImage from "/user.png";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
+import Notification from "../../pages/Notification/Notification";
 
 const Navbar = () => {
   const { user, setLoading, logOut } = useContext(AuthContext);
@@ -99,6 +100,15 @@ const Navbar = () => {
           Contact Us
         </NavLink>
       </li>
+      {user? <li>
+        <Notification to="/notification"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+         <AiFillBell className="text-2xl"/>
+        </Notification>
+      </li>:<></>}
     </>
   );
   const userMenuItems = (
