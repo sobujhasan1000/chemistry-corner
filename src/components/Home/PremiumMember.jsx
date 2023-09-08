@@ -25,7 +25,7 @@ const PremiumMember = () => {
               </button>
             </Link>
             <h2 className="text-xl border px-6 py-2 rounded-md border-[#a33f64]">
-              14 days for free
+              7 days for free
             </h2>
           </div>
         </div>{" "}
