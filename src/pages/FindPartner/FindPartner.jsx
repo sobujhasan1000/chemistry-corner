@@ -5,10 +5,8 @@ import { getComplexSearch } from "../../api/fetch";
 import { Link, useLocation } from "react-router-dom";
 const FindPartner = () => {
   const [members, setMembers] = useState([]);
-  console.log(members);
   const location = useLocation();
   const { gender, minAge, maxAge, country } = location.state;
-  console.log(gender, minAge, maxAge, country);
   useEffect(() => {
     getComplexSearch(gender, minAge, maxAge, country).then((data) =>
       setMembers(data)
@@ -25,33 +23,6 @@ const FindPartner = () => {
           <h1 className="text-white text-3xl font-bold pb-2">
             Search Results.
           </h1>
-          {/* <div className="flex items-center p-2 space-x-4 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
-            <div className="flex bg-gray-100 p-2 w-45 space-x-2 rounded-lg">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 opacity-30"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-              <input
-                className="bg-gray-100 outline-none"
-                type="text"
-                placeholder="Search by Location ..."
-              />
-            </div>
-
-            <button className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
-              Search
-            </button>
-          </div> */}
         </div>
       </div>
       <div>
@@ -93,7 +64,7 @@ const FindPartner = () => {
                             className="hover:text-accent1"
                             href="tel:+01215656855"
                           >
-                            +01215656855
+                            {member?.contact}
                           </a>
                         </span>
                       </div>
@@ -121,7 +92,7 @@ const FindPartner = () => {
                             className="hover:text-accent1"
                             href="mailto:exampal@gmail.com"
                           >
-                            {member?.country}
+                            {member?.email}
                           </a>
                         </span>
                       </div>
@@ -140,8 +111,8 @@ const FindPartner = () => {
                             <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z"></path>
                           </svg>
                         </span>
-                        <span className="ltr:pl-4 rtl:pr-4 text-[18px]">
-                          fulbariFranciso,4200.
+                        <span className="ltr:pl-4 rtl:pr-4 text-[18px] uppercase">
+                          {member?.country}
                         </span>
                       </div>
                       <div className="card-actions mt-4">
