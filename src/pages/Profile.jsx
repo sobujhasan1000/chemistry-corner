@@ -134,7 +134,7 @@ const Profile = () => {
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Country</div>
-                    <div className="px-4 py-2 capitalize">{country}</div>
+                    <div className="px-4 py-2 uppercase">{country}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Email</div>

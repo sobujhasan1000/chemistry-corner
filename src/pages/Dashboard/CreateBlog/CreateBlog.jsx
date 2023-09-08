@@ -49,11 +49,12 @@ const CreateBlog = () => {
       <Helmet>
         <title>Create a Blog - Chemistry Corner</title>
       </Helmet>
-      <div className="page-header-bg w-full h-48 md:h-64 bg-no-repeat bg-cover bg-center">
+      {/* <div className="page-header-bg w-full h-48 md:h-64 bg-no-repeat bg-cover bg-center">
         <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex items-center justify-center">
           <h1 className="text-white text-3xl font-bold">Create a Blog</h1>
         </div>
-      </div>
+      </div> */}
+      <h1 className="text-black text-3xl text-center font-bold">Create a Blog</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="grid grid-cols-1 gap-5 my-20"
