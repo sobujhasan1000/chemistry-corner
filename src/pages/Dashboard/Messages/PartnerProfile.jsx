@@ -26,7 +26,7 @@ const PartnerProfile = () => {
             alt="profile"
             className="rounded-full w-28 h-28 object-cover"
           />
-          <h1 className="text-2xl mt-1">Paul Irish</h1>
+          <h1 className="text-2xl mt-1">Joanna Gonzalez</h1>
           <p className="text-lg text-gray-700">Junior Developer</p>
         </div>
 

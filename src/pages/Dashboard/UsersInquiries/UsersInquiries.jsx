@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
-import { BiTrash } from "react-icons/bi";
-import { FaRegEye } from "react-icons/fa";
+// import { BiTrash } from "react-icons/bi";
+// import { FaRegEye } from "react-icons/fa";
 import { getContractUs } from "../../../api/fetch";
 import { useEffect, useState } from "react";
 
@@ -40,7 +40,7 @@ const UsersInquiries = () => {
               <th>email</th>
               <th>subject</th>
               <th>message</th>
-              <th>Action</th>
+              {/* <th>Action</th> */}
             </tr>
           </thead>
 
@@ -66,22 +66,22 @@ const UsersInquiries = () => {
                   stars
                 </td>
                 <td>{inquiry.message?.slice(0, 20)}...</td>
-                <th>
+                {/* <th>
                   <button
                     title="View"
                     className="rounded-md bg-[#ED0058] hover:bg-white p-2 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300"
                   >
                     <FaRegEye />
                   </button>
-                </th>
-                <td>
+                </th> */}
+                {/* <td>
                   <button
                     title="Delete"
                     className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
                   >
                     <BiTrash />
                   </button>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>

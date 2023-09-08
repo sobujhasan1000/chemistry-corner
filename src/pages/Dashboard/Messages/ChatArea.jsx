@@ -19,7 +19,7 @@ const ChatArea = () => {
               className="rounded-full w-10 h-9 object-cover"
             />
             <div className="text-lg text-slate-700 font-sans mt-2 flex space-x-2">
-              <p>Paul Irish</p>
+              <p>Joanna Gonzalez</p>
               <div className="w-1 h-1 p-1 bg-green-500 rounded-full mt-2"></div>
             </div>
           </div>

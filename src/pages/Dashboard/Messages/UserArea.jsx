@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 const users = [
   {
     image:
-      "https://media.istockphoto.com/photos/headshot-portrait-of-smiling-businessman-talk-on-video-call-picture-id1303206558?k=20&m=1303206558&s=612x612&w=0&h=HuhNfSQ4I12qg8X_94Ea0nQo-d5pe1IuTxPgFwYYcdU=",
-    name: "Brad Forst",
-    message: "Message for brad frost",
+      "https://i.ibb.co/56Rcygk/freestocks-9-UVml-Ib0w-JU-unsplash.jpg",
+    name: "Alice Robertson",
+    message: "Message for Alice Robertson",
     time: "10:46 AM",
     status: "1",
   },
   {
     image:
-      "https://media.istockphoto.com/photos/head-shot-portrait-smiling-businessman-wearing-suit-looking-at-camera-picture-id1308963275?k=20&m=1308963275&s=612x612&w=0&h=TZ2DAbaT0b9_Ts4vjy39FN9OkokQMkJi7WhJQAGNKV0=",
-    name: "Paul Irish",
-    message: "Message for Paul Irish",
+      "https://i.ibb.co/XF1BGvx/tamara-bellis-Brl7bqld05-E-unsplash.jpg",
+    name: "Joanna Gonzalez",
+    message: "Message for Joanna Gonzalez",
     time: "09:06 AM",
     status: <TiTick color="pink" size="0.8rem" />,
   },
@@ -36,9 +36,9 @@ const users = [
   },
   {
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtYklqWX1v2p2Q5z1JfpDjb7_xjFQjJb3If53FxhclZR6RerZlKBas9RPYSqc-jvgBZLg&usqp=CAU",
-    name: "Eric Peterson",
-    message: "Message for Eric Peterson",
+      "https://i.ibb.co/nzCKB6S/lina2.webp",
+    name: "Lina Gomes",
+    message: "Message for Lina Gomes",
     time: "4:08 PM",
     status: "1",
   },
