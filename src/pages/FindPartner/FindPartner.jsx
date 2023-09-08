@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaPhone } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
+import { HiOutlineMail } from "react-icons/hi";
 import { getComplexSearch } from "../../api/fetch";
 import { Link, useLocation } from "react-router-dom";
 const FindPartner = () => {
@@ -57,7 +59,7 @@ const FindPartner = () => {
                     <div className="border-t border-pink-400 py-6 px-12 z-10 relative">
                       <div className="flex items-center gap-2">
                         <span className="border border-pink-400 text-accent1 w-9 h-9 rounded-full flex items-center justify-center">
-                          <FaMapMarkerAlt />
+                          <FaPhone />
                         </span>
                         <span className="ltr:pl-4 rtl:pr-4 text-[18px]">
                           <a
@@ -71,21 +73,7 @@ const FindPartner = () => {
 
                       <div className="flex items-center mt-5 gap-2">
                         <span className="border border-pink-400 text-accent1 w-9 h-9 rounded-full flex items-center justify-center">
-                          <svg
-                            className="max-w-5"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="28"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                          </svg>
+                          <HiOutlineMail />
                         </span>
                         <span className="ltr:pl-4 rtl:pr-4 text-[18px]">
                           <a
@@ -99,17 +87,7 @@ const FindPartner = () => {
 
                       <div className="flex items-center mt-5 gap-2">
                         <span className="border border-pink-400 text-accent1 w-9 h-9 rounded-full flex items-center justify-center">
-                          <svg
-                            className="max-w-5"
-                            width="16"
-                            height="34"
-                            fill="currentColor"
-                            stroke="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 384 512"
-                          >
-                            <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z"></path>
-                          </svg>
+                          <FaLocationDot />
                         </span>
                         <span className="ltr:pl-4 rtl:pr-4 text-[18px] uppercase">
                           {member?.country}
