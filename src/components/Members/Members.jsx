@@ -230,31 +230,33 @@ const Members = () => {
                               {likes.some(
                                 (member) => member.userId === item._id
                               ) ? (
-                                <FaHeart
+                                <button className="p-2"
                                   onClick={() => handleRemoveLike(item._id)}
-                                  className="text-2xl text-[#ED0058]"
-                                />
+                                >
+                                  <FaHeart className="text-2xl text-[#ED0058]" />
+                                </button>
                               ) : (
-                                <FaRegHeart
-                                  onClick={() => handleAddLike(item._id)}
-                                  className="text-2xl text-black hover:text-[#ED0058]"
-                                />
+                                <button className="p-2" onClick={() => handleAddLike(item._id)}>
+                                  <FaRegHeart className="text-2xl text-black hover:text-[#ED0058]" />
+                                </button>
                               )}
 
                               {favorites.some(
                                 (member) => member.userId === item._id
                               ) ? (
-                                <FaStar
+                                <button className="p-2"
                                   onClick={() =>
                                     handleRemoveFromFavorite(item._id)
                                   }
-                                  className="text-2xl text-[#ED0058]"
-                                ></FaStar>
+                                >
+                                  <FaStar className="text-2xl text-[#ED0058]"></FaStar>
+                                </button>
                               ) : (
-                                <FaRegStar
+                                <button className="p-2"
                                   onClick={() => handleFavorite(item._id)}
-                                  className="text-2xl text-black hover:text-[#ED0058]"
-                                />
+                                >
+                                  <FaRegStar className="text-2xl text-black hover:text-[#ED0058]" />
+                                </button>
                               )}
 
                               <FaRegComment className="text-2xl text-black hover:text-[#ED0058]" />
