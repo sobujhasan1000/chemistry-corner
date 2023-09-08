@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import {  FaPhone } from "react-icons/fa";
+import { FaPhone } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
-import { HiOutlineMail} from "react-icons/hi";
+import { HiOutlineMail } from "react-icons/hi";
 import { getComplexSearch } from "../../api/fetch";
 import { Link, useLocation } from "react-router-dom";
 const FindPartner = () => {
   const [members, setMembers] = useState([]);
-  console.log(members);
   const location = useLocation();
   const { gender, minAge, maxAge, country } = location.state;
-  console.log(gender, minAge, maxAge, country);
   useEffect(() => {
     getComplexSearch(gender, minAge, maxAge, country).then((data) =>
       setMembers(data)
@@ -27,33 +25,6 @@ const FindPartner = () => {
           <h1 className="text-white text-3xl font-bold pb-2">
             Search Results.
           </h1>
-          {/* <div className="flex items-center p-2 space-x-4 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
-            <div className="flex bg-gray-100 p-2 w-45 space-x-2 rounded-lg">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 opacity-30"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-              <input
-                className="bg-gray-100 outline-none"
-                type="text"
-                placeholder="Search by Location ..."
-              />
-            </div>
-
-            <button className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
-              Search
-            </button>
-          </div> */}
         </div>
       </div>
       <div>
@@ -95,14 +66,14 @@ const FindPartner = () => {
                             className="hover:text-accent1"
                             href="tel:+01215656855"
                           >
-                            +01215656855
+                            {member?.contact}
                           </a>
                         </span>
                       </div>
 
                       <div className="flex items-center mt-5 gap-2">
                         <span className="border border-pink-400 text-accent1 w-9 h-9 rounded-full flex items-center justify-center">
-                          <HiOutlineMail/>
+                          <HiOutlineMail />
                         </span>
                         <span className="ltr:pl-4 rtl:pr-4 text-[18px]">
                           <a
@@ -116,10 +87,10 @@ const FindPartner = () => {
 
                       <div className="flex items-center mt-5 gap-2">
                         <span className="border border-pink-400 text-accent1 w-9 h-9 rounded-full flex items-center justify-center">
-                        <FaLocationDot/>
+                          <FaLocationDot />
                         </span>
-                        <span className="ltr:pl-4 rtl:pr-4 text-[18px]">
-                        {member?.country}
+                        <span className="ltr:pl-4 rtl:pr-4 text-[18px] uppercase">
+                          {member?.country}
                         </span>
                       </div>
                       <div className="card-actions mt-4">
