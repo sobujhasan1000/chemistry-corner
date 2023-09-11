@@ -39,7 +39,7 @@ const MemberShip = () => {
               </ul>
               <Link
                 to={`/membership/${i}`}
-                className="btn bg-[#ED0058] mb-4 hover:bg-[#eca9c2] shadow-xl uppercase"
+                className="btn text-white hover:text-black bg-[#ED0058] mb-4 hover:bg-[#e76b99] shadow-xl uppercase"
               >
                 select plan
               </Link>
