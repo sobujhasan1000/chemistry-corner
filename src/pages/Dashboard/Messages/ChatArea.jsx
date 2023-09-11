@@ -6,15 +6,17 @@ import { FiPaperclip } from "react-icons/fi";
 import { AiOutlineCamera } from "react-icons/ai";
 import { BsEmojiSmile } from "react-icons/bs";
 import { AiOutlineSend } from "react-icons/ai";
+import { CiMenuKebab } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 const ChatArea = () => {
   return (
     <div>
       <div className="p-4 h-screen">
-        <div className="flex justify-between mb-3">
+        <div className="flex justify-between items-center mb-3">
           <div className="flex space-x-3">
             <img
-              src="https://media.istockphoto.com/photos/head-shot-portrait-smiling-businessman-wearing-suit-looking-at-camera-picture-id1308963275?k=20&m=1308963275&s=612x612&w=0&h=TZ2DAbaT0b9_Ts4vjy39FN9OkokQMkJi7WhJQAGNKV0="
+              src="https://i.ibb.co/XF1BGvx/tamara-bellis-Brl7bqld05-E-unsplash.jpg"
               alt="profile"
               className="rounded-full w-10 h-9 object-cover"
             />
@@ -28,6 +30,11 @@ const ChatArea = () => {
             <AiOutlineHeart className="w-4 h-4 text-gray-500" />
             <AiOutlineBell className="w-4 h-4 text-gray-500" />
           </div>
+          <div className="block md:hidden">
+            <Link>
+              <CiMenuKebab className="font-bold"></CiMenuKebab>
+            </Link>
+          </div>
         </div>
         <hr className="bg-gray-500" />
         <div
@@ -39,7 +46,7 @@ const ChatArea = () => {
             <p className="text-gray-400 text-center text-xs">Tomorrow</p>
             <div className="flex space-x-1 mt-3 items-center">
               <img
-                src="https://media.istockphoto.com/photos/head-shot-portrait-smiling-businessman-wearing-suit-looking-at-camera-picture-id1308963275?k=20&m=1308963275&s=612x612&w=0&h=TZ2DAbaT0b9_Ts4vjy39FN9OkokQMkJi7WhJQAGNKV0="
+                src="https://i.ibb.co/XF1BGvx/tamara-bellis-Brl7bqld05-E-unsplash.jpg"
                 alt="profile"
                 className="rounded-full w-5 h-5 object-cover"
               />

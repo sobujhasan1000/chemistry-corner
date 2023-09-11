@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 
 const PartnerProfile = () => {
   return (
-    <div>
-      <div className="p-4 bg-gray-100" style={{ height: "100vh" }}>
+    <div className="hidden md:block">
+      <div className="p-4 bg-gray-100 h-screen">
         <div className="my-2 py-2">
           <div className="relative flex items-center text-gray-400">
             <FiSearch className="w-5 h-5 absolute ml-3" size="0.8rem" />
@@ -22,7 +22,7 @@ const PartnerProfile = () => {
 
         <div className="grid place-items-center my-3">
           <img
-            src={`https://media.istockphoto.com/photos/head-shot-portrait-smiling-businessman-wearing-suit-looking-at-camera-picture-id1308963275?k=20&m=1308963275&s=612x612&w=0&h=TZ2DAbaT0b9_Ts4vjy39FN9OkokQMkJi7WhJQAGNKV0=`}
+            src={`https://i.ibb.co/XF1BGvx/tamara-bellis-Brl7bqld05-E-unsplash.jpg`}
             alt="profile"
             className="rounded-full w-28 h-28 object-cover"
           />
