@@ -4,11 +4,26 @@
     "packInfo": "$15.00 Now And Then $30.00 Per Month..",
     "price": 0.01,
     "packInclude": [
-      "Free account with limited features",
-      "May include ads",
-      "Basic profile creation and browsing",
-      "limited likes",
-      "Priority customer support"
+      {
+        "feature": "Free account with limited features",
+        "included": true
+      },
+      {
+        "feature": "May include ads",
+        "included": true
+      },
+      {
+        "feature": "Basic profile creation and browsing",
+        "included": true
+      },
+      {
+        "feature": "Unlimited likes",
+        "included": false
+      },
+      {
+        "feature": "Priority customer support",
+        "included": false
+      }
     ]
   },
   {
@@ -16,11 +31,26 @@
     "packInfo": "$15.00 Now And Then $50.00 Per Month.",
     "price": 14.99,
     "packInclude": [
-      "Entry-level premium subscription",
-      "Ad-free experience",
-      "Unlimited likes",
-      "Ability to see who likes your profile",
-      "Enhanced search filters"
+      {
+        "feature": "Entry-level premium subscription",
+        "included": true
+      },
+      {
+        "feature": "Ad-free experience",
+        "included": true
+      },
+      {
+        "feature": "Unlimited likes",
+        "included": false
+      },
+      {
+        "feature": "Ability to see who likes your profile",
+        "included": true
+      },
+      {
+        "feature": "Enhanced search filters",
+        "included": false
+      }
     ]
   },
   {
@@ -28,11 +58,26 @@
     "packInfo": "$15.00 Now And Then $60.00 Per Month..",
     "price": 29.99,
     "packInclude": [
-      "Includes all features of the Silver package",
-      "communication features like read receipts",
-      "Undo swipes or decisions",
-      "Priority customer support",
-      "Priority customer support"
+      {
+        "feature": "Includes all features of the Silver package",
+        "included": true
+      },
+      {
+        "feature": "Communication features like read receipts",
+        "included": true
+      },
+      {
+        "feature": "Undo swipes or decisions",
+        "included": true
+      },
+      {
+        "feature": "Priority customer support",
+        "included": true
+      },
+      {
+        "feature": "Priority customer support",
+        "included": true
+      }
     ]
   }
 ]
