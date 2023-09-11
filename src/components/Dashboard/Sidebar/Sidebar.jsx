@@ -10,7 +10,7 @@ import { BsQuestionCircle } from "react-icons/bs";
 import { TfiWrite } from "react-icons/tfi";
 import { VscFeedback } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
-import { BiMessageRounded } from "react-icons/bi";
+import { BiHomeHeart, BiMessageRounded } from "react-icons/bi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { MdOutlineManageAccounts, MdOutlineFeedback } from "react-icons/md";
@@ -37,6 +37,7 @@ const Sidebar = () => {
   };
   let sidebarUserItems = [
     { label: "Profile", icon: CgProfile, path: "/dashboard/profile" },
+    { label: "Home", icon: BiHomeHeart, path: "/dashboard/user-home" },
     // { label: "Search", icon: FaSearch, path: "/dashboard/search" },
     { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
     { label: "Likes", icon: AiOutlineHeart, path: "/dashboard/likes" },
