@@ -34,6 +34,7 @@ import Search from "../pages/Dashboard/Search/Search";
 import ManageUser from "../pages/Dashboard/Admin/ManageUser.jsx/ManageUser";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import Messages from "../pages/Dashboard/Messages/Messages";
+import UserHome from "../pages/Dashboard/UserHome/UserHome";
 
 const router = createBrowserRouter([
   {
@@ -190,6 +191,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/admin-home",
         element: <AdminHome></AdminHome>,
+      },
+      {
+        path: "/dashboard/user-home",
+        element: <UserHome></UserHome>,
       },
       {
         path: "/dashboard/manage-users",
