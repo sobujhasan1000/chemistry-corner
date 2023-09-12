@@ -34,6 +34,7 @@ import Search from "../pages/Dashboard/Search/Search";
 import ManageUser from "../pages/Dashboard/Admin/ManageUser.jsx/ManageUser";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import Messages from "../pages/Dashboard/Messages/Messages";
+import FaqQuestions from "../pages/FaqQuestions";
 
 const router = createBrowserRouter([
   {
@@ -128,6 +129,10 @@ const router = createBrowserRouter([
       {
         path: "/faq",
         element: <FaqPage></FaqPage>,
+      },
+      {
+        path: "/faq-details",
+        element: <FaqQuestions></FaqQuestions>,
       },
       {
         path: "/community-guidelines",

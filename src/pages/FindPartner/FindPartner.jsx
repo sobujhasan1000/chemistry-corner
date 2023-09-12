@@ -61,6 +61,11 @@ const FindPartner = () => {
               Find Your Partner For Your Relationship.
             </p>
           </div>
+          {members.length === 0 && (
+            <div className="h-screen flex justify-center w-full">
+              <p className="text-[#ED0058] text-2xl">No data Found</p>
+            </div>
+          )}
           <div className="grid gap-10 mx-auto lg:grid-cols-2 lg:max-w-screen-lg overflow-hidden">
             {members.map((member) => (
               <div
