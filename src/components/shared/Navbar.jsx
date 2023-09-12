@@ -1,12 +1,15 @@
 import { NavLink } from "react-router-dom";
 import logo from "/ccLogo.png";
-import { AiOutlineMenu,AiFillBell } from "react-icons/ai";
+import {
+  AiOutlineMenu,
+  // AiFillBell
+} from "react-icons/ai";
 import { HiOutlineXMark } from "react-icons/hi2";
 import userImage from "/user.png";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
-import Notification from "../../pages/Notification/Notification";
+// import Notification from "../../pages/Notification/Notification";
 import useSingleUser from "../../Hooks/useSingleUser";
 
 const Navbar = () => {

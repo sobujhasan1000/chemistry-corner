@@ -168,10 +168,14 @@ const CheckoutPartner = () => {
               ))}
             </select>
           </div>
-          <div className="text-xl font-medium px-3 col-span-full md:col-span-1 py-3 rounded uppercase text-white bg-[#ED0058] hover:bg-[#a33f64] flex justify-center items-center gap-2 md:gap-3 cursor-pointer">
+          <button className="text-xl font-medium px-3 col-span-full md:col-span-1 py-3 rounded uppercase text-white bg-[#ED0058] hover:bg-[#a33f64] flex justify-center items-center gap-2 md:gap-3 cursor-pointer">
             <BsSearchHeart size={25} />
-            <input type="submit" value="Find your partner" />
-          </div>
+            <input
+              type="submit"
+              value="Find your partner"
+              className="cursor-pointer"
+            />
+          </button>
         </form>
       </Container>
     </div>
