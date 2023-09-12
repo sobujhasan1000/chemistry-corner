@@ -1,4 +1,3 @@
-import React from "react";
 import choosePhoto from "../../assets/choose us2.jpg";
 import { FaBandcamp, FaUser, FaWeixin } from "react-icons/fa";
 import Heading from "../shared/Heading";
