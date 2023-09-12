@@ -31,7 +31,7 @@ const Location = () => {
     },
   ];
   return (
-    <Container>
+    // <Container>
       <div className="flex flex-col-reverse md:flex-row justify-center items-center">
         <div className="md:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-1 md:pt-24 pt-4 pb-8">
           {countries.map(({ country, image }, i) => (
@@ -72,7 +72,7 @@ const Location = () => {
           </button>
         </div>
       </div>
-    </Container>
+    // </Container>
   );
 };
 
