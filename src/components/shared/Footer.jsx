@@ -11,8 +11,16 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getAllBlogs } from "../../api/fetch";
 import moment from "moment";
+import { FaArrowUp } from "react-icons/fa";
 
 const Footer = () => {
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Add smooth scrolling behavior
+    });
+  };
   const [blogs, setBlogs] = useState([]);
 
   const { register, handleSubmit, reset } = useForm();
@@ -175,6 +183,11 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        {/*=============== scroll button ======================*/}
+        <div className="text-right lg:-mr-16">
+        <button className="btn"  onClick={scrollToTop}> <span className="text-2xl text-red-500"><FaArrowUp/></span></button>
+        </div>
+
         <div className="w-2/3 mx-auto">
           <div className="divider m-0"></div>
           <div className="my-3">
@@ -183,6 +196,7 @@ const Footer = () => {
                 Copyright &copy; 2023 Chemistry Corner. An Online Dating
                 Platform{" "}
               </h1>
+              
             </div>
           </div>
         </div>
