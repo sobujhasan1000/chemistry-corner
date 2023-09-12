@@ -216,3 +216,23 @@ export const getContractUs = async () => {
   const data = res.json();
   return data;
 };
+
+// =====get messages======
+export const getMessages = async (id) => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/message/${id}`);
+  const data = res.json();
+  return data;
+};
+
+// ========add message=======
+export const addMessage = async (message) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/message`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(message),
+  });
+  const data = response.json();
+  return data;
+};
