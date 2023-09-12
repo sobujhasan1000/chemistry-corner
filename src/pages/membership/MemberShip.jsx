@@ -20,7 +20,7 @@ const MemberShip = () => {
             design with ready <br /> to use features we are sure you will love.
           </p>
         </div>
-        <div className="grid lg:grid-cols-3 gap-4 p-4 bg-[#f1f7fe] py-10">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4 p-4 bg-[#f1f7fe] py-10">
           {packages.map((item, i) => (
             <div
               className="gap-2 bg-gradient-to-r from-lime-200 to-green-400 text-center hover:shadow-2xl rounded-md"
