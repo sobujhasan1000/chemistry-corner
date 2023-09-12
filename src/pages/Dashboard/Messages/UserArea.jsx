@@ -3,18 +3,16 @@ import { TiTick } from "react-icons/ti";
 import { Link } from "react-router-dom";
 const users = [
   {
-    image:
-      "https://media.istockphoto.com/photos/headshot-portrait-of-smiling-businessman-talk-on-video-call-picture-id1303206558?k=20&m=1303206558&s=612x612&w=0&h=HuhNfSQ4I12qg8X_94Ea0nQo-d5pe1IuTxPgFwYYcdU=",
-    name: "Brad Forst",
-    message: "Message for brad frost",
+    image: "https://i.ibb.co/56Rcygk/freestocks-9-UVml-Ib0w-JU-unsplash.jpg",
+    name: "Alice Robertson",
+    message: "Message for Alice Robertson",
     time: "10:46 AM",
     status: "1",
   },
   {
-    image:
-      "https://media.istockphoto.com/photos/head-shot-portrait-smiling-businessman-wearing-suit-looking-at-camera-picture-id1308963275?k=20&m=1308963275&s=612x612&w=0&h=TZ2DAbaT0b9_Ts4vjy39FN9OkokQMkJi7WhJQAGNKV0=",
-    name: "Paul Irish",
-    message: "Message for Paul Irish",
+    image: "https://i.ibb.co/XF1BGvx/tamara-bellis-Brl7bqld05-E-unsplash.jpg",
+    name: "Joanna Gonzalez",
+    message: "Message for Joanna Gonzalez",
     time: "09:06 AM",
     status: <TiTick color="pink" size="0.8rem" />,
   },
@@ -35,10 +33,9 @@ const users = [
     status: <TiTick color="pink" size="0.8rem" />,
   },
   {
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtYklqWX1v2p2Q5z1JfpDjb7_xjFQjJb3If53FxhclZR6RerZlKBas9RPYSqc-jvgBZLg&usqp=CAU",
-    name: "Eric Peterson",
-    message: "Message for Eric Peterson",
+    image: "https://i.ibb.co/nzCKB6S/lina2.webp",
+    name: "Lina Gomes",
+    message: "Message for Lina Gomes",
     time: "4:08 PM",
     status: "1",
   },
@@ -54,9 +51,8 @@ const users = [
 const UserArea = () => {
   return (
     <div>
-      <div className="p-4 bg-gray-100" style={{ height: "100vh" }}>
-
-        <div className="flex justify-between">
+      <div className="md:px-4 py-4 bg-gray-100 md:h-screen">
+        <div className="flex justify-between hidden md:block">
           <div className="flex space-x-4">
             <img
               src={`https://thumbs.dreamstime.com/b/profile-picture-smiling-caucasian-male-employee-close-up-young-businessman-show-leadership-qualities-headshot-portrait-happy-204044575.jpg`}
@@ -68,11 +64,9 @@ const UserArea = () => {
               <h2 className="text-xs text-gray-500">Senior Developer</h2>
             </div>
           </div>
-
         </div>
 
-
-        <div className="my-4 py-2">
+        <div className="md:my-4 md:py-2">
           <div className="relative flex items-center text-gray-400">
             <FiSearch className="w-5 h-5 absolute ml-3" size="0.8rem" />
             <input
@@ -83,45 +77,46 @@ const UserArea = () => {
           </div>
         </div>
 
-
-        {users &&
-          users.map((user) => {
-            return (
-              <Link key={user.name} className="flex space-x-3 my-4">
-                <div>
-                  <img
-                    src={user.image}
-                    alt="profile"
-                    className="rounded-full w-12 h-10 object-cover"
-                  />
-                </div>
-                <div className="flex justify-between w-full">
-                  <div className="">
-                    <h1 className="text-pink-600 text-sm font-bold">
-                      {user.name}
-                    </h1>
-                    <p className="text-gray-500 text-xs">{user.message}</p>
-                  </div>
+        <div className="flex justify-evenly rounded-full object-cover md:block">
+          {users &&
+            users.map((user) => {
+              return (
+                <Link key={user.name} className="flex space-x-3 mt-2 md:my-4">
                   <div>
-                    <p
-                      className="text-gray-500 mt-0.5"
-                      style={{ fontSize: "10px" }}
-                    >
-                      {user.time}
-                    </p>
-                    <p
-                      className={`text-white ${
-                        user.status === "1" ? "bg-pink-700" : "bg-gray-100"
-                      } rounded-full w-4 text-center float-right mt-1`}
-                      style={{ fontSize: "10px" }}
-                    >
-                      {user.status}
-                    </p>
+                    <img
+                      src={user.image}
+                      alt="profile"
+                      className="rounded-full w-10 md:w-12 h-10 md:h-10 object-cover"
+                    />
                   </div>
-                </div>
-              </Link>
-            );
-          })}
+                  <div className="flex justify-between w-full hidden md:block">
+                    <div className="">
+                      <h1 className="text-pink-600 text-sm font-bold">
+                        {user.name}
+                      </h1>
+                      <p className="text-gray-500 text-xs">{user.message}</p>
+                    </div>
+                    <div>
+                      <p
+                        className="text-gray-500 mt-0.5"
+                        style={{ fontSize: "10px" }}
+                      >
+                        {user.time}
+                      </p>
+                      <p
+                        className={`text-white ${
+                          user.status === "1" ? "bg-pink-700" : "bg-gray-100"
+                        } rounded-full w-4 text-center float-right mt-1`}
+                        style={{ fontSize: "10px" }}
+                      >
+                        {user.status}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+        </div>
       </div>
     </div>
   );

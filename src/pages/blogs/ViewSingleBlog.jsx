@@ -38,7 +38,7 @@ const ViewSingleBlog = () => {
         </div>
 
         <div className="flex flex-col md:flex-row gap-10 container mx-auto my-20 items-start justify-center">
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-3/5">
             <img
               src={singleBlog.image_url}
               alt="Blog Photo"
@@ -86,7 +86,7 @@ const ViewSingleBlog = () => {
               <RelatedPost />
             </div>
           </div>
-          <div className="md:w-1/4 hidden md:block">
+          <div className="md:w-2/5 hidden md:block">
             <BlogCategories />
             <NewBlogPosts />
           </div>

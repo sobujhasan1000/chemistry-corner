@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { getAllFeedbacks } from "../../../api/fetch";
-import { FaRegEye } from "react-icons/fa";
-import { BiTrash } from "react-icons/bi";
+// import { FaRegEye } from "react-icons/fa";
+// import { BiTrash } from "react-icons/bi";
 import { Rating } from "@smastrom/react-rating";
 
 const UsersFeedback = () => {
@@ -74,7 +74,7 @@ const UsersFeedback = () => {
               <th>Feedback Type</th>
               <th>Feedback Rating</th>
               <th>Feedback Text</th>
-              <th>Actions</th>
+              {/* <th>Actions</th> */}
             </tr>
           </thead>
           <tbody>
@@ -109,7 +109,7 @@ const UsersFeedback = () => {
                     />
                   </td>
                   <td>{feedback?.feedbackDetails?.slice(0, 20)}...</td>
-                  <td>
+                  {/* <td>
                     <button
                       title="View"
                       className="rounded-md bg-[#ED0058] hover:bg-white p-2 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300"
@@ -122,7 +122,7 @@ const UsersFeedback = () => {
                     >
                       <BiTrash />
                     </button>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
           </tbody>

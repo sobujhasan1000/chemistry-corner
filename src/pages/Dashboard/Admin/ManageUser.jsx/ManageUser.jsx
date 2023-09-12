@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { BiTrash, BiUserCircle } from "react-icons/bi";
+import { BiUserCircle } from "react-icons/bi";
 import { getAllMembers } from "../../../../api/fetch";
 import { FaUserShield } from "react-icons/fa";
-
+import { CiUser } from "react-icons/ci";
 import "./ManageUser.css";
 import { updateUserRole } from "../../../../api/auth";
 import { useQuery } from "@tanstack/react-query";
@@ -87,8 +87,8 @@ const ManageUser = () => {
               <th className="px-6 py-3 rounded-tl-lg">Name</th>
               <th className="px-6 py-3">Email</th>
               <th className="px-6 py-3">Role</th>
-              <th className="px-6 py-3">Manage Role</th>
-              <th className="px-6 py-3 rounded-tr-lg">Actions</th>
+              <th className="px-6 py-3 rounded-tr-lg">Manage Role</th>
+              {/* <th className="px-6 py-3 rounded-tr-lg">Actions</th> */}
             </tr>
           </thead>
           <tbody>
@@ -105,6 +105,13 @@ const ManageUser = () => {
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 flex justify-start items-center gap-2">
                   <button
+                    onClick={() => handleSetRole(item._id, "user")}
+                    title="User"
+                    className="p-2 border border-[#ED0058] bg-white hover:bg-[#ED0058] text-[#ED0058] hover:text-white transition-all ease-in duration-300"
+                  >
+                    <CiUser />
+                  </button>
+                  <button
                     onClick={() => handleSetRole(item._id, "admin")}
                     title="Admin"
                     className="p-2 border border-[#ED0058] hover:bg-white bg-[#ED0058] text-white hover:text-[#ED0058] transition-all ease-in duration-300"
@@ -119,14 +126,14 @@ const ManageUser = () => {
                     <FaUserShield />
                   </button>
                 </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                {/* <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                   <button
                     title="Delete"
                     className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
                   >
                     <BiTrash />
                   </button>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>

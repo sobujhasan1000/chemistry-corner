@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { BiTrash } from "react-icons/bi";
+// import { BiTrash } from "react-icons/bi";
 import { getAllPayments } from "../../../api/fetch";
 
 const PaymentHistory = () => {
@@ -19,8 +19,8 @@ const PaymentHistory = () => {
     { label: "Email" },
     { label: "Package" },
     { label: "Transaction ID" },
-    { label: "Amount" },
-    { label: " ", style: "rounded-tr-lg" },
+    { label: "Amount", style: "rounded-tr-lg"},
+    // { label: " "  },
   ];
 
   const startIndex = (currentPage - 1) * perPage;
@@ -100,14 +100,14 @@ const PaymentHistory = () => {
                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                   ${payment?.price}
                 </td>
-                <td>
+                {/* <td>
                   <button
                     title="Delete"
                     className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
                   >
                     <BiTrash />
                   </button>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>
