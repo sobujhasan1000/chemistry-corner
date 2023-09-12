@@ -1,14 +1,17 @@
-import user1 from "/user1.jpg";
-import user2 from "/user2.jpg";
-import user3 from "/user3.jpg";
+// import user1 from "/user1.jpg";
+// import user2 from "/user2.jpg";
+// import user3 from "/user3.jpg";
+// import user4 from "/user4.jpg";
 
 import { useContext } from "react";
 import useSingleUser from "../../../Hooks/useSingleUser";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { BsPatchCheck } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
-import UserArea from "../Messages/UserArea";
-// import Favorites from "../Favorites/Favorites";
+import Favorite from "./Favorite";
+import Like from "./Like";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { Navigation, Autoplay } from "swiper/modules";
 
 const UserHome = () => {
   const { user } = useContext(AuthContext);
@@ -16,7 +19,7 @@ const UserHome = () => {
   return (
     <div className="bg-pink-100 p-6 rounded overflow-hidden">
       <div className="md:flex gap-5">
-        <div className="w-2/3">
+        <div className="md:w-2/3">
           <div>
             <div className="card lg:card-side bg-gray-100 shadow-xl">
               <figure>
@@ -68,8 +71,8 @@ const UserHome = () => {
             </div>
           </div>
 
-          <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
-            <h1 className="text-3xl font-bold">About</h1>
+          {/* <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
+            <h1 className="text-3xl py-2 font-bold">About</h1>
             <div className="text-gray-700">
               <div className="grid md:grid-cols-2 text-sm">
                 <div className="grid grid-cols-2">
@@ -118,25 +121,57 @@ const UserHome = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
-            <h1 className="text-3xl font-bold">Photos</h1>
-            <div className="flex flex-col md:flex-row items-center py-2 gap-4 mt-5">
-              <img src={user1} alt="" className="w-36 h-28 rounded-xl" />
-              <img src={user2} alt="" className="w-36 h-28 rounded-xl" />
-              <img src={user3} alt="" className="w-36 h-28 rounded-xl" />
+          </div> */}
+          {/* <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
+            <h1 className="text-3xl pt-2 font-bold">Photos</h1>
+            <div className="flex flex-col md:flex-row items-center py-2 gap-4 mt-3">
+              <Swiper
+                slidesPerView={3}
+                spaceBetween={30}
+                autoplay={{
+                  delay: 2500,
+                  disableOnInteraction: false,
+                }}
+                navigation={{
+                  clickable: true,
+                }}
+                modules={[Navigation, Autoplay]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  <img src={user1} alt="" className="w-36 h-28 rounded-xl" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={user2} alt="" className="w-36 h-28 rounded-xl" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={user3} alt="" className="w-36 h-28 rounded-xl" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={user4} alt="" className="w-36 h-28 rounded-xl" />
+                </SwiperSlide>
+              </Swiper>
             </div>
+          </div> */}
+          <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
+            <h1 className="mx-3 text-3xl pt-4 font-bold">
+            People who liked me
+            </h1>
+            <Like></Like>
           </div>
         </div>
-        <div className="w-1/3">
-          <div className="bg-gray-100 shadow-xl md:py-2 rounded-xl">
+        <div className="md:w-1/3">
+          {/* <div className="bg-gray-100 shadow-xl md:py-2 rounded-xl">
             <h1 className="text-3xl font-bold">Message</h1>
             <UserArea></UserArea>
-          </div>
-          {/* <div className="bg-gray-100 shadow-xl md:py-2 rounded-xl">
-            <h1 className="text-3xl font-bold">My Favorites Contacts</h1>
-            <Favorites></Favorites>
           </div> */}
+          <div className="bg-gray-100 shadow-xl md:py-2 rounded-xl">
+            <h1 className="mx-3 text-3xl pt-4 font-bold">
+              My Favorites Contacts
+            </h1>
+            <Favorite></Favorite>
+          </div>
+          
         </div>
       </div>
     </div>
