@@ -108,7 +108,7 @@ const Notification = () => {
             <div className="flex justify-evenly items-center mx-auto rounded-lg">
               <Link
               to="/dashboard/notifications"
-              className="btn bg-red-500 hover:bg-[#ED0058] my-16 md:my-8 border-0 text-white capitalize"
+              className="btn bg-red-500 hover:bg-[#ED0058] my-16 md:my-8 border-0 text-white shadow-xl capitalize"
             >
               See all notification
             </Link>
