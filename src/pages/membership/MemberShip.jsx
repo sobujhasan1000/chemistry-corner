@@ -1,5 +1,5 @@
 import { FaCheckCircle } from "react-icons/fa";
-import { ImCross} from "react-icons/im";
+import { ImCross } from "react-icons/im";
 import Container from "../../components/shared/Container";
 import { Link } from "react-router-dom";
 import membershipjon from "../../assets/membershipjson.json"
@@ -40,6 +40,7 @@ const MemberShip = () => {
                 ))}
 
               </ul>
+
               <Link
                 to={`/membership/${i}`}
                 className="btn text-white hover:text-black bg-[#ED0058] mb-4 hover:bg-[#e76b99] shadow-xl uppercase"

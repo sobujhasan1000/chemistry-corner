@@ -1,9 +1,8 @@
-import React from 'react';
 
 const Notification = () => {
     return (
         <div>
-            
+            <p>Jaman Shadhin</p>
         </div>
     );
 };
