@@ -257,7 +257,7 @@ const Countries = () => {
       </div>
       <Container>
         <div className="text-center">
-          <Tabs>
+          <Tabs className="mt-10">
             <TabList className="text-center flex items-center justify-center gap-3 py-3">
               {genderLists.map((item, i) => (
                 <Tab
