@@ -1,15 +1,43 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
 const BlogCategories = () => {
+  const [categoriesData, setCategoriesData] = useState([]);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/blogs`)
+      .then((response) => response.json())
+      .then((data) => {
+        const categoryCounts = {};
+        data.forEach((blog) => {
+          if (categoryCounts[blog.category]) {
+            categoryCounts[blog.category]++;
+          } else {
+            categoryCounts[blog.category] = 1;
+          }
+        });
+
+        const categoriesArray = Object.keys(categoryCounts).map((category) => ({
+          name: category,
+          count: categoryCounts[category],
+        }));
+
+        setCategoriesData(categoriesArray);
+      });
+  }, []);
+
   return (
-    <div>
-      <h1 className="text-center lg:pt-20 text-xl">Categories</h1>
-      <div className="ml-4 lg:ml-20 pl-2 pt-6">
-        <h2 class="mb-4 flex items-center justify-between">News <span className="inline-block">6</span></h2>
-        <h2 class="mb-4 flex items-center justify-between">Dating Tips <span className="inline-block">6</span></h2>
-        <h2 class="mb-4 flex items-center justify-between">Men <span className="inline-block">6</span></h2>
-        <h2 class="mb-4 flex items-center justify-between">Women <span className="inline-block">6</span></h2>
-        <h2 class="mb-4 flex items-center justify-between">Non-binary <span className="inline-block">6</span></h2>
+    <div className=" w-2/3 ">
+      <h1 className=" text-2xl text-black font-bold mb-5">Categories</h1>
+      <div>
+        {categoriesData.map((category) => (
+          <h2
+            key={category.name}
+            className="mb-4 flex items-center justify-between text-gray-500 capitalize"
+          >
+            {category.name}{" "}
+            <span className="inline-block">{category.count}</span>
+          </h2>
+        ))}
       </div>
     </div>
   );

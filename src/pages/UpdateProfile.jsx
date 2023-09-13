@@ -8,6 +8,7 @@ import { imageUpload } from "../api/utils";
 import { modifyUser } from "../api/auth";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { toast } from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const UpdateProfile = () => {
   const [loading, setLoading] = useState(false);
@@ -31,13 +32,11 @@ const UpdateProfile = () => {
     dob,
     profession,
   } = singleUser;
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/dashboard/profile";
 
   const onSubmit = (data) => {
     // console.log(data);
@@ -57,22 +56,23 @@ const UpdateProfile = () => {
           image: imageUrl,
           gender: data.gender,
           age: parseInt(data.age),
-          profession: data.profession,
+          profession: data.profession.toLowerCase(),
           bio: data.bio,
           contact: data.contact,
           height: parseFloat(data.height),
           weight: parseFloat(data.weight),
           address: data.address,
-          city: data.city,
-          country: data.country,
-          education: data.education,
+          city: data.city.toLowerCase(),
+          country: data.country.toLowerCase(),
+          education: data.education.toLowerCase(),
           dob: data.dob,
-          maritalStatus: data.maritalStatus,
+          maritalStatus: data.maritalStatus.toLowerCase(),
         };
         modifyUser(userInfo, user.email).then((modifiedData) => {
           if (modifiedData.modifiedCount > 0) {
             setLoading(false);
             toast.success(`Users information updated successfully`);
+            navigate(from, { replace: true });
             reset();
           }
         });
@@ -161,6 +161,7 @@ const UpdateProfile = () => {
                           defaultValue={gender}
                           {...register("gender")}
                           className="px-3 py-1 bg-white border border-[#ee236e]"
+                          required
                         >
                           <option value="" disabled>
                             Select
@@ -204,6 +205,7 @@ const UpdateProfile = () => {
                           defaultValue={height}
                           {...register("height")}
                           className="px-3 py-1 bg-white border border-[#ee236e]"
+                          required
                         />
                       </div>
                       <div className="grid grid-cols-2">
@@ -216,6 +218,7 @@ const UpdateProfile = () => {
                           defaultValue={weight}
                           {...register("weight")}
                           className="px-3 py-1 bg-white border border-[#ee236e]"
+                          required
                         />
                       </div>
                       <div className="grid grid-cols-2">

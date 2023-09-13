@@ -15,10 +15,11 @@ const CheckoutPartner = () => {
   ];
   const minAges = [
     {
-      label: "22",
-      value: 22,
+      label: "21",
+      value: 21,
       selected: true,
     },
+    { label: "22", value: 22 },
     { label: "23", value: 23 },
     { label: "24", value: 24 },
     { label: "25", value: 25 },
@@ -27,10 +28,11 @@ const CheckoutPartner = () => {
   ];
   const maxAges = [
     {
-      label: "28",
-      value: 28,
+      label: "27",
+      value: 27,
       selected: true,
     },
+    { label: "28", value: 28 },
     { label: "29", value: 29 },
     { label: "30", value: 30 },
     { label: "31", value: 31 },
@@ -39,19 +41,18 @@ const CheckoutPartner = () => {
   ];
   const countries = [
     {
-      label: "Choose your country",
+      label: "Choose location",
       disabled: true,
       selected: true,
       hidden: true,
     },
-    { label: "Miami", value: "miami" },
-    { label: "New York", value: "new-york" },
-    { label: "Los Angeles", value: "los-angeles" },
-    { label: "Chicago", value: "chicago" },
-    { label: "San Francisco", value: "san-francisco" },
-    { label: "Seattle", value: "seattle" },
+    { label: "Bangladesh", value: "bangladesh" },
+    { label: "India", value: "india" },
+    { label: "Nepal", value: "nepal" },
+    { label: "USA", value: "usa" },
+    { label: "UK", value: "uk" },
+    { label: "Canada", value: "canada" },
   ];
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -167,10 +168,14 @@ const CheckoutPartner = () => {
               ))}
             </select>
           </div>
-          <div className="text-xl font-medium px-3 col-span-full md:col-span-1 py-3 rounded uppercase text-white bg-[#ED0058] hover:bg-[#a33f64] flex justify-center items-center gap-2 md:gap-3 cursor-pointer">
+          <button className="text-xl font-medium px-3 col-span-full md:col-span-1 py-3 rounded uppercase text-white bg-[#ED0058] hover:bg-[#a33f64] flex justify-center items-center gap-2 md:gap-3 cursor-pointer">
             <BsSearchHeart size={25} />
-            <input type="submit" value="Find your partner" />
-          </div>
+            <input
+              type="submit"
+              value="Find your partner"
+              className="cursor-pointer"
+            />
+          </button>
         </form>
       </Container>
     </div>

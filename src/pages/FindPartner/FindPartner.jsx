@@ -1,69 +1,30 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import {
-  getAllMembers,
-  getComplexSearch,
-  membersSearchByLocation,
-} from "../../api/fetch";
-import { useLocation } from "react-router-dom";
-
+import { FaPhone } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
+import { HiOutlineMail } from "react-icons/hi";
+import { getComplexSearch } from "../../api/fetch";
+import { Link, useLocation } from "react-router-dom";
 const FindPartner = () => {
   const [members, setMembers] = useState([]);
-  console.log(members);
   const location = useLocation();
-  const { gender, minAge, maxAge, country } = location?.state;
-  console.log(gender, minAge, maxAge, country);
+  const { gender, minAge, maxAge, country } = location.state;
   useEffect(() => {
     getComplexSearch(gender, minAge, maxAge, country).then((data) =>
       setMembers(data)
     );
   }, [gender, minAge, maxAge, country]);
 
-  const handleSearch = () => {
-    // membersSearchByLocation(search).then((data) => setMembers(data));
-  };
   return (
     <div>
       <Helmet>
-        <title>Countries - Chemistry Corner</title>
+        <title>Find Partner - Chemistry Corner</title>
       </Helmet>
       <div className="page-header-bg w-full h-64 bg-no-repeat bg-cover bg-center overflow-hidden">
         <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex flex-col items-center justify-center">
           <h1 className="text-white text-3xl font-bold pb-2">
-            Find Your Partner with Location.
+            Search Results.
           </h1>
-          <div className="flex items-center p-2 space-x-4 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
-            <div className="flex bg-gray-100 p-2 w-45 space-x-2 rounded-lg">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 opacity-30"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-              <input
-                onChange={(e) => setSearch(e.target.value)}
-                className="bg-gray-100 outline-none"
-                type="text"
-                placeholder="Search by Location ..."
-              />
-            </div>
-
-            <button
-              onClick={handleSearch}
-              className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer"
-            >
-              Search
-            </button>
-          </div>
         </div>
       </div>
       <div>
@@ -73,32 +34,80 @@ const FindPartner = () => {
               Find Your Partner For Your Relationship.
             </p>
           </div>
+          {members.length === 0 && (
+            <div className="h-screen flex justify-center w-full">
+              <p className="text-[#ED0058] text-2xl">No data Found</p>
+            </div>
+          )}
           <div className="grid gap-10 mx-auto lg:grid-cols-2 lg:max-w-screen-lg overflow-hidden">
             {members.map((member) => (
-              <div className="mx-auto p-4 md:py-20 px-0 md:p-8 md:px-0 antialiased">
-                <div className="md:w-[800px] grid lg:grid-cols-2 2xl:grid-cols-3 grid-cols-1 gap-5 rounded-xl">
-                  <article
-                    className="mx-auto max-w-sm shadow-xl bg-cover bg-center transform duration-500 hover:-translate-y-2 cursor-pointer group rounded-xl"
-                    style={{
-                      backgroundImage: `url(${member?.photo})`,
-                    }}
-                  >
-                    <div className="bg-black bg-opacity-20 flex flex-wrap flex-col pt-96 hover:bg-opacity-75 transform duration-300 rounded-xl px-12 pb-8">
-                      <h1 className="text-white text-3xl mb-5 transform translate-y-20 group-hover:translate-y-0 duration-300">
+              <div
+                key={member._id}
+                className="mx-auto p-4 md:py-20 px-0 md:p-8 md:px-0 antialiased"
+              >
+                <div className="max-w-[405px] order-first">
+                  <div className="relative after:bg-pink-200 after:w-full after:bottom-0 after:left-0 after:content[''] after:h-[75%] after:absolute after:rounded-xl">
+                    <div className="text-center pb-6 relative z-10 sm:px-4 lg:px-11">
+                      <div className="pb-5">
+                        <img
+                          className="md:w-[250px] md:h-[250px] lg:w-[290px] lg:h-[290px] rounded-full mx-auto border border-pink-400 p-1"
+                          src={member?.image}
+                          alt=""
+                        />
+                      </div>
+                      <h4 className="text-primary text-2xl capitalize font-bold">
                         {member?.name}
-                      </h1>
-                      <p>
-                        <span className="flex items-center pb-3 gap-1 text-sm leading-normal text-[#adc4e4] font-bold uppercase">
-                          <FaMapMarkerAlt />
-                          {member?.location}
-                        </span>
-                      </p>
-                      <div className="w-16 h-2 bg-yellow-500 mb-8 transform translate-y-8 group-hover:translate-y-0 duration-300"></div>
-                      <p className="opacity-0 text-white text-xl group-hover:opacity-80  transform duration-500">
-                        {member?.bio}
-                      </p>
+                      </h4>
+                      <span>{member?.bio}</span>
                     </div>
-                  </article>
+
+                    <div className="border-t border-pink-400 py-6 px-12 z-10 relative">
+                      <div className="flex items-center gap-2">
+                        <span className="border border-pink-400 text-accent1 w-9 h-9 rounded-full flex items-center justify-center">
+                          <FaPhone />
+                        </span>
+                        <span className="ltr:pl-4 rtl:pr-4 text-[18px]">
+                          <a
+                            className="hover:text-accent1"
+                            href="tel:+01215656855"
+                          >
+                            {member?.contact}
+                          </a>
+                        </span>
+                      </div>
+
+                      <div className="flex items-center mt-5 gap-2">
+                        <span className="border border-pink-400 text-accent1 w-9 h-9 rounded-full flex items-center justify-center">
+                          <HiOutlineMail />
+                        </span>
+                        <span className="ltr:pl-4 rtl:pr-4 text-[18px]">
+                          <a
+                            className="hover:text-accent1"
+                            href="mailto:exampal@gmail.com"
+                          >
+                            {member?.email}
+                          </a>
+                        </span>
+                      </div>
+
+                      <div className="flex items-center mt-5 gap-2">
+                        <span className="border border-pink-400 text-accent1 w-9 h-9 rounded-full flex items-center justify-center">
+                          <FaLocationDot />
+                        </span>
+                        <span className="ltr:pl-4 rtl:pr-4 text-[18px] uppercase">
+                          {member?.country}
+                        </span>
+                      </div>
+                      <div className="card-actions mt-4">
+                        <Link
+                          to={`/view-profile/${member._id}`}
+                          className="btn bg-[#FD6585] hover:bg-[#ED0058] w-full text-white border-0"
+                        >
+                          View Details
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}

@@ -1,14 +1,20 @@
 import { NavLink } from "react-router-dom";
 import logo from "/ccLogo.png";
-import { AiOutlineMenu } from "react-icons/ai";
+import {
+  AiOutlineMenu,
+  // AiFillBell
+} from "react-icons/ai";
 import { HiOutlineXMark } from "react-icons/hi2";
 import userImage from "/user.png";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
+// import Notification from "../../pages/Notification/Notification";
+import useSingleUser from "../../Hooks/useSingleUser";
 
 const Navbar = () => {
-  const { user, loading, setLoading, logOut } = useContext(AuthContext);
+  const { user, setLoading, logOut } = useContext(AuthContext);
+  const [singleUser] = useSingleUser(user?.email);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
@@ -30,35 +36,92 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/members">Members</NavLink>
+        <NavLink
+          to="/members"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+          Members
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/countries">Countries</NavLink>
+        <NavLink
+          to="/countries"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+          Countries
+        </NavLink>
       </li>
       {/* <li>
-        <NavLink to="/all-world">All World</NavLink>
+        <NavLink
+          to="/all-world"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+          All World
+        </NavLink>
       </li> */}
       <li>
-        <NavLink to="/blog">Blog</NavLink>
+        <NavLink
+          to="/blog"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+          Blog
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/about-us">About Us</NavLink>
+        <NavLink
+          to="/about-us"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+          About Us
+        </NavLink>
       </li>
-      <li>
-        <NavLink to="/contact-us">Contact Us</NavLink>
-      </li>
+      {/* {user? <li>
+        <Notification to="/notification"
+          className={({ isActive }) =>
+            isActive ? "activeNavLink" : "navClasses"
+          }
+        >
+         <AiFillBell className="text-2xl"/>
+        </Notification>
+      </li>:<></>} */}
     </>
   );
   const userMenuItems = (
     <>
       <li className="user-menu-item">
-        <NavLink to="/profile">My Profile</NavLink>
-      </li>
-      <li className="user-menu-item">
-        <NavLink to="/dashboard">Dashboard</NavLink>
+        <NavLink
+          to={
+            singleUser?.role &&
+            (singleUser.role === "admin" || singleUser.role === "super-admin")
+              ? "/dashboard/admin-home"
+              : "/dashboard/profile"
+          }
+          className={({ isActive }) =>
+            isActive ? "activeNavLink " : " navClasses"
+          }
+        >
+          Dashboard
+        </NavLink>
       </li>
       <li className="user-menu-item">
         <button onClick={handleLogOut}>Log Out</button>
