@@ -1,10 +1,17 @@
+import user1 from "/user1.jpg";
+import user2 from "/user2.jpg";
+import user3 from "/user3.jpg";
+import user4 from "/user4.jpg";
 import { AuthContext } from "../providers/AuthProvider";
 import { FaUser } from "react-icons/fa";
+import { TfiGallery } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import useSingleUser from "../Hooks/useSingleUser";
 import siteLoader from "/ccLoader.gif";
 import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -57,13 +64,13 @@ const Profile = () => {
     !profession;
 
   return (
-    <div className="bg-gray-100 max-h-screen py-10">
+    <div className="py-4 bg-pink-100 rounded">
       <Helmet>
         <title>My Profile - Chemistry Corner</title>
       </Helmet>
       <div className="container mx-auto px-4 md:px-0">
-        <div className="flex flex-col md:flex-row gap-6 md:gap-10">
-          <div className="bg-gray-100 md:w-3/12 p-4">
+        <div className="flex flex-col md:flex-row gap-6 ms-4">
+          <div className="bg-gray-100 md:w-3/12 p-4 rounded-xl shadow-xl">
             <div className="bg-white p-3 border-t-4 border-green-400 rounded shadow-sm">
               <div className="overflow-hidden">
                 <img className="h-auto w-full mx-auto" src={image} alt="" />
@@ -92,11 +99,11 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="md:w-9/12 md:p-4 relative">
-            <div className="bg-white p-3 shadow-sm rounded-sm w-full">
+          <div className="md:w-9/12 md:px-4 relative">
+            <div className="bg-white p-3 shadow-xl rounded-xl w-full">
               <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                <FaUser />
-                <span className="tracking-wide">About</span>
+                <FaUser className="text-2xl font-bold" />
+                <span className="text-2xl font-bold">About</span>
               </div>
               <div className="text-gray-700">
                 <div className="grid md:grid-cols-2 text-sm">
@@ -168,18 +175,54 @@ const Profile = () => {
                 </button>
               </Link>
             </div>
-            {isProfileIncomplete && (
-              <div className=" bg-white absolute inset-0 my-4 w-full h-full flex flex-col items-center justify-center gap-5 bg-opacity-90 backdrop-blur-sm">
-                <h1 className="text-black text-xl font-semibold text-center md:text-left">
-                  Please Edit your profile to see your details.
-                </h1>
-                <Link to="/dashboard/update-profile">
-                  <button className="bg-[#ee236e] text-white px-5 py-2">
-                    Edit Profile
-                  </button>
-                </Link>
+            <div>
+              {isProfileIncomplete && (
+                <div className=" bg-white absolute inset-0 my-4 w-full h-full flex flex-col items-center justify-center gap-5 bg-opacity-90 backdrop-blur-sm">
+                  <h1 className="text-black text-xl font-semibold text-center md:text-left">
+                    Please Edit your profile to see your details.
+                  </h1>
+                  <Link to="/dashboard/update-profile">
+                    <button className="bg-[#ee236e] text-white px-5 py-2">
+                      Edit Profile
+                    </button>
+                  </Link>
+                </div>
+              )}
+            </div>
+            <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
+            <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                <TfiGallery className="text-2xl font-bold" />
+                <span className="text-2xl font-bold">Photos</span>
               </div>
-            )}
+              <div className="flex flex-col md:flex-row items-center py-2 gap-4 mt-3">
+                <Swiper
+                  slidesPerView={3}
+                  spaceBetween={30}
+                  autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                  }}
+                  navigation={{
+                    clickable: true,
+                  }}
+                  modules={[Navigation, Autoplay]}
+                  className="mySwiper"
+                >
+                  <SwiperSlide>
+                    <img src={user1} alt="" className="w-36 h-28 rounded-xl" />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={user2} alt="" className="w-36 h-28 rounded-xl" />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={user3} alt="" className="w-36 h-28 rounded-xl" />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={user4} alt="" className="w-36 h-28 rounded-xl" />
+                  </SwiperSlide>
+                </Swiper>
+              </div>
+            </div>
           </div>
         </div>
       </div>

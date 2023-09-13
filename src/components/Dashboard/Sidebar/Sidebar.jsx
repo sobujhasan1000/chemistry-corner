@@ -56,6 +56,7 @@ const Sidebar = () => {
     sidebarUserItems = [
       { label: "Profile", icon: CgProfile, path: "/dashboard/profile" },
       { label: "Admin", icon: FaRegUser, path: "/dashboard/admin-home" },
+      { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
       {
         label: "Messages",
         icon: BiMessageRounded,

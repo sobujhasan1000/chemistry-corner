@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
-import packages from "../assets/packages.json";
+import packages from "../assets/membershipjson.json";
 import { FaCheckCircle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../providers/AuthProvider";
