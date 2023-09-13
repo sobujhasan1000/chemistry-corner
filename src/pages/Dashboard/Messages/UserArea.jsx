@@ -16,9 +16,10 @@ const UserArea = ({ userChats, setCurrentChat, userId, checkOnlineStatus }) => {
           </div>
         </div>
         {userChats &&
-          userChats.map((user) => (
+          userChats.map((user, i) => (
             <div key={user.name} onClick={() => setCurrentChat(user)}>
               <Conversation
+                key={i}
                 user={user}
                 currentUserId={userId}
                 online={checkOnlineStatus(user)}

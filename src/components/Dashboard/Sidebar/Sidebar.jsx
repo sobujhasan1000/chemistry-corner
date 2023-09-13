@@ -58,6 +58,11 @@ const Sidebar = () => {
       { label: "Admin", icon: FaRegUser, path: "/dashboard/admin-home" },
       { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
       {
+        label: "Messages",
+        icon: BiMessageRounded,
+        path: "/dashboard/messages",
+      },
+      {
         label: "Manage Users",
         icon: MdOutlineManageAccounts,
         path: "/dashboard/manage-users",
