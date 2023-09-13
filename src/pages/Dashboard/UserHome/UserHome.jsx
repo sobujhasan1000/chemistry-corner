@@ -1,7 +1,4 @@
-// import user1 from "/user1.jpg";
-// import user2 from "/user2.jpg";
-// import user3 from "/user3.jpg";
-// import user4 from "/user4.jpg";
+
 
 import { useContext } from "react";
 import useSingleUser from "../../../Hooks/useSingleUser";
@@ -10,8 +7,7 @@ import { BsPatchCheck } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
 import Favorite from "./Favorite";
 import Like from "./Like";
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import { Navigation, Autoplay } from "swiper/modules";
+
 
 const UserHome = () => {
   const { user } = useContext(AuthContext);
@@ -71,7 +67,7 @@ const UserHome = () => {
             </div>
           </div>
 
-          {/* <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
+          <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
             <h1 className="text-3xl py-2 font-bold">About</h1>
             <div className="text-gray-700">
               <div className="grid md:grid-cols-2 text-sm">
@@ -121,38 +117,8 @@ const UserHome = () => {
                 </div>
               </div>
             </div>
-          </div> */}
-          {/* <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
-            <h1 className="text-3xl pt-2 font-bold">Photos</h1>
-            <div className="flex flex-col md:flex-row items-center py-2 gap-4 mt-3">
-              <Swiper
-                slidesPerView={3}
-                spaceBetween={30}
-                autoplay={{
-                  delay: 2500,
-                  disableOnInteraction: false,
-                }}
-                navigation={{
-                  clickable: true,
-                }}
-                modules={[Navigation, Autoplay]}
-                className="mySwiper"
-              >
-                <SwiperSlide>
-                  <img src={user1} alt="" className="w-36 h-28 rounded-xl" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={user2} alt="" className="w-36 h-28 rounded-xl" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={user3} alt="" className="w-36 h-28 rounded-xl" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={user4} alt="" className="w-36 h-28 rounded-xl" />
-                </SwiperSlide>
-              </Swiper>
-            </div>
-          </div> */}
+          </div>
+          
           <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
             <h1 className="mx-3 text-3xl pt-4 font-bold">
             People who liked me
