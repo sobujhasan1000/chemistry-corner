@@ -36,6 +36,7 @@ import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import Messages from "../pages/Dashboard/Messages/Messages";
 import FaqQuestions from "../pages/FaqQuestions";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import Notifications from "../pages/Dashboard/Notifications/Notifications";
 
 const router = createBrowserRouter([
   {
@@ -156,6 +157,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/update-profile",
         element: <UpdateProfile></UpdateProfile>,
+      },
+      {
+        path: "/dashboard/notifications",
+        element: <Notifications></Notifications>,
       },
       {
         path: "/dashboard/search",
