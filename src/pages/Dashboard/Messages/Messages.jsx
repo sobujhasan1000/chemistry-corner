@@ -66,7 +66,6 @@ const Messages = () => {
       <div className="md:w-2/3">
         <ChatArea
           chat={currentChat}
-          currentUser={singleUser._id}
           setSendMessage={setSendMessage}
           receiveMessage={receiveMessage}
         ></ChatArea>

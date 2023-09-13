@@ -12,14 +12,15 @@ import { format } from "timeago.js";
 import InputEmoji from "react-input-emoji";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useRef } from "react";
+import useSingleUser from "../../../Hooks/useSingleUser";
 
-const ChatArea = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
+const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
   const { user } = useContext(AuthContext);
+  const [singleUser] = useSingleUser(user.email);
   const [userData, setUserData] = useState([]);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const scroll = useRef();
-  console.log(currentUser);
   // console.log(messages);
   useEffect(() => {
     if (receiveMessage !== null && receiveMessage.chatId === chat._id) {
@@ -27,19 +28,24 @@ const ChatArea = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [receiveMessage]);
-
+  // console.log(userData);
+  const userId = chat?.members?.find((id) => id !== singleUser._id);
+  // console.log(userId);
   useEffect(() => {
-    const userId = chat?.members?.find((id) => id !== currentUser);
-    const getUserData = async () => {
+    const getMember = async () => {
       try {
         await fetchMemberById(userId).then((data) => setUserData(data));
       } catch (error) {
         console.log(error);
       }
     };
-    if (chat !== null) getUserData();
+    if (chat !== null && (userId !== null || undefined)) {
+      getMember();
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chat, currentUser]);
+  }, [chat, userId]);
+
   useEffect(() => {
     const fetchMessages = async () => {
       try {
@@ -58,7 +64,7 @@ const ChatArea = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
   const handleSend = async (e) => {
     e.preventDefault();
     const message = {
-      senderId: currentUser,
+      senderId: singleUser._id,
       text: newMessage,
       chatId: chat._id,
     };
@@ -73,7 +79,7 @@ const ChatArea = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
     }
 
     //send message to socket server
-    const receiverId = chat?.members?.find((id) => id !== currentUser);
+    const receiverId = chat?.members?.find((id) => id !== singleUser._id);
     setSendMessage({ ...message, receiverId });
   };
 
@@ -90,7 +96,7 @@ const ChatArea = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
             <div className="flex justify-between mb-3">
               <div className="flex space-x-3">
                 <img
-                  src={userData.image}
+                  src={userData?.image}
                   alt="profile"
                   className="rounded-full w-10 h-9 object-cover"
                 />
@@ -116,14 +122,14 @@ const ChatArea = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
                     <div
                       key={message._id}
                       className={`${
-                        message.senderId === currentUser
+                        message.senderId === singleUser._id
                           ? "ms-auto justify-end flex-row-reverse items-end"
                           : "items-start"
                       } flex gap-1 space-x-1 mt-3`}
                     >
                       <img
                         src={
-                          message.senderId === currentUser
+                          message.senderId === singleUser._id
                             ? user?.photoURL
                             : userData?.image
                         }
@@ -133,7 +139,7 @@ const ChatArea = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
                       <div
                         ref={scroll}
                         className={`flex flex-col justify-start text-base px-2 rounded-tr-xl rounded-bl-xl py-2.5 ${
-                          message.senderId === currentUser
+                          message.senderId === singleUser._id
                             ? "bg-pink-600 text-slate-100 rounded-tl-xl"
                             : "bg-gray-200 text-slate-700 rounded-br-xl"
                         } `}
