@@ -11,7 +11,7 @@ import { TfiWrite } from "react-icons/tfi";
 import { VscFeedback } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
 import { BiHomeHeart, BiMessageRounded } from "react-icons/bi";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillBell, AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { MdOutlineManageAccounts, MdOutlineFeedback } from "react-icons/md";
 import { useContext } from "react";
@@ -36,10 +36,11 @@ const Sidebar = () => {
       });
   };
   let sidebarUserItems = [
-    { label: "Profile", icon: CgProfile, path: "/dashboard/profile" },
     { label: "Home", icon: BiHomeHeart, path: "/dashboard/user-home" },
+    { label: "Profile", icon: CgProfile, path: "/dashboard/profile" },
     // { label: "Search", icon: FaSearch, path: "/dashboard/search" },
     { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
+    { label: "Notifications", icon: AiFillBell, path: "/dashboard/notifications" },
     { label: "Likes", icon: AiOutlineHeart, path: "/dashboard/likes" },
     { label: "Favorites", icon: FaRegStar, path: "/dashboard/favorite" },
     {
@@ -123,7 +124,7 @@ const Sidebar = () => {
           <Link
             to={path}
             key={i}
-            className="flex justify-center items-center gap-1 px-3 py-1 ml-8 hover:bg-[#ff5492]"
+            className="flex justify-center items-center gap-1 px-3 py-0.5 ml-8 hover:bg-[#ff5492]"
           >
             <Icon size={30} />
             <h4 className="text-xl">{label}</h4>

@@ -115,9 +115,9 @@ const Navbar = () => {
           </label>
           <div
             tabIndex={0}
-            className="dropdown-content z-[1] card card-compact p-2 shadow"
+            className="dropdown-content bg-pink-200 z-[1] card card-compact py-2 shadow"
           >
-            <div className="card-body w-96">
+            <div className="card-body w-96 p-0 m-0">
               <Notification></Notification>
             </div>
           </div>
