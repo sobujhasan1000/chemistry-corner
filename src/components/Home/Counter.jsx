@@ -15,6 +15,10 @@ const Counter = () => {
     getAllMembers().then((data) => setUsers(data));
   }, []);
 
+  const men = users.filter((user) => user.gender === "male").length;
+  const women = users.filter((user) => user.gender === "female").length;
+  const nonBinary = users.filter((user) => user.gender === "non-binary").length;
+
   return (
     <div
       className="grid items-center justify-center text-center"
@@ -44,22 +48,32 @@ const Counter = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200">
             <img src={status_01} alt="" />
-            <CountUp className="text-3xl" start={-1} end={users.length} duration={4} />
+            <CountUp
+              className="text-3xl"
+              start={-1}
+              end={users.length}
+              duration={4}
+            />
             <p className="pt-3 text-lg">Members in total</p>
           </div>
           <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200">
             <img src={status_04} alt="" />
-            <CountUp className="text-3xl" start={-1} end={21} duration={4} />
+            <CountUp className="text-3xl" start={-1} end={men} duration={4} />
             <p className="pt-3 text-lg">Men</p>
           </div>
           <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200">
             <img src={status_03} alt="" />
-            <CountUp className="text-3xl" start={-1} end={10} duration={4} />
+            <CountUp className="text-3xl" start={-1} end={women} duration={4} />
             <p className="pt-3 text-lg">Women</p>
           </div>
           <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200">
             <img src={status_02} alt="" />
-            <CountUp className="text-3xl" start={-1} end={5} duration={4} />
+            <CountUp
+              className="text-3xl"
+              start={-1}
+              end={nonBinary}
+              duration={4}
+            />
             <p className="pt-3 text-lg">Non-Binary</p>
           </div>
         </div>
