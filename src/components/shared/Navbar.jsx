@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import logo from "/ccLogo.png";
 import {
+  AiFillBell,
   AiOutlineMenu,
   // AiFillBell
 } from "react-icons/ai";
@@ -9,9 +10,8 @@ import userImage from "/user.png";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
-// import Notification from "../../pages/Notification/Notification";
 import useSingleUser from "../../Hooks/useSingleUser";
-
+import Notification from "../../pages/Notification/Notification";
 const Navbar = () => {
   const { user, setLoading, logOut } = useContext(AuthContext);
   const [singleUser] = useSingleUser(user?.email);
@@ -95,15 +95,36 @@ const Navbar = () => {
           About Us
         </NavLink>
       </li>
-      {/* {user? <li>
-        <Notification to="/notification"
+      <li>
+        <NavLink
+          to="/contact-us"
           className={({ isActive }) =>
             isActive ? "activeNavLink" : "navClasses"
           }
         >
-         <AiFillBell className="text-2xl"/>
-        </Notification>
-      </li>:<></>} */}
+          Contact Us
+        </NavLink>
+      </li>
+      {user ? (
+        <div className="dropdown dropdown-bottom dropdown-end z-50">
+          <label
+            tabIndex={0}
+            className="p-0 btn bg-transparent text-white border-none hover:bg-transparent"
+          >
+            <AiFillBell className="w-7 h-7" />
+          </label>
+          <div
+            tabIndex={0}
+            className="dropdown-content z-[1] card card-compact p-2 shadow"
+          >
+            <div className="card-body w-96">
+              <Notification></Notification>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
     </>
   );
   const userMenuItems = (
