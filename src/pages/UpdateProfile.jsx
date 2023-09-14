@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { AuthContext } from "../providers/AuthProvider";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import useSingleUser from "../Hooks/useSingleUser";
 import { Helmet } from "react-helmet-async";
 import { imageUpload } from "../api/utils";
@@ -9,7 +9,7 @@ import { modifyUser } from "../api/auth";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { toast } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
-import Multiselect from "multiselect-react-dropdown";
+import CreatableSelect from "react-select/creatable";
 
 const UpdateProfile = () => {
   const [loading, setLoading] = useState(false);
@@ -33,14 +33,50 @@ const UpdateProfile = () => {
     dob,
     profession,
   } = singleUser;
-  const { register, handleSubmit, reset } = useForm();
+  const { control, register, handleSubmit, reset } = useForm();
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/dashboard/profile";
 
+  const options = [
+    { value: "travel-and-exploration", label: "Travel and exploration" },
+    { value: "hiking", label: "Hiking" },
+    { value: "biking", label: "Biking" },
+    { value: "camping", label: "Camping" },
+    { value: "painting", label: "Painting" },
+    { value: "drawing", label: "Drawing" },
+    { value: "photography", label: "Photography" },
+    { value: "cooking", label: "Cooking" },
+    { value: "yoga", label: "Yoga" },
+    { value: "cooking", label: "Cooking" },
+    { value: "running", label: "Running" },
+    { value: "weightlifting", label: "Weightlifting" },
+    { value: "cricket", label: "Cricket" },
+    { value: "football", label: "Football" },
+    { value: "reading", label: "Reading" },
+    { value: "dancing", label: "Dancing" },
+    { value: "watching-movies", label: "Watching Movies" },
+    { value: "food", label: "Food" },
+    { value: "concerts", label: "Concerts" },
+    { value: "live-music-events", label: "Live Music Events" },
+    { value: "meditation", label: "Meditation" },
+    { value: "volunteer", label: "Volunteer" },
+    { value: "charity-work", label: "Charity Work" },
+    { value: "casual-dating", label: "Casual Dating" },
+    { value: "long-term-commitment", label: "Long Term Commitment" },
+    { value: "family-values", label: "Family Values" },
+    { value: "parenting-interests", label: "Parenting Interests" },
+    { value: "cultural", label: "Cultural" },
+    { value: "religious-beliefs", label: "Religious Beliefs" },
+    { value: "political-interests", label: "Political Interests" },
+    { value: "astronomy", label: "Astronomy" },
+    { value: "pet-lovers", label: "Pet Lovers" },
+    { value: "volunteer", label: "Volunteer" },
+  ];
+
   const onSubmit = (data) => {
-    // console.log(data);
+    console.log(data);
     setLoading(true);
     const image = data.photo[0];
     imageUpload(image).then((imageData) => {
@@ -68,7 +104,7 @@ const UpdateProfile = () => {
           education: data.education.toLowerCase(),
           dob: data.dob,
           maritalStatus: data.maritalStatus.toLowerCase(),
-          interests: data.interests.toLowerCase(),
+          interests: data.interests,
         };
         modifyUser(userInfo, user.email).then((modifiedData) => {
           if (modifiedData.modifiedCount > 0) {
@@ -323,34 +359,35 @@ const UpdateProfile = () => {
                           required
                         />
                       </div>
-                      <div className="grid grid-cols-2">
-                        <div className="px-4 py-2 font-semibold">
-                          Add your interests
-                        </div>
-                        <div>
-                          <Multiselect
-                            isObject={false}
-                            onKeyPressFn={function noRefCheck() {}}
-                            onRemove={function noRefCheck() {}}
-                            onSearch={function noRefCheck() {}}
-                            onSelect={function noRefCheck() {}}
-                            name="interests"
-                            {...register("interests")}
-                            required
-                            className=" py-1 bg-white border-none"
-                            options={[
-                              "Travel and exploration",
-                              "Art and creativity",
-                              "Fitness and sports",
-                              "Music",
-                              "Reading and literature",
-                              "Gaming",
-                              "Dancing",
-                              "Pet lovers",
-                            ]}
-                          />
-                        </div>
+                    </div>
+                    <div className="grid grid-cols-4 items-center mt-2">
+                      <div className="px-4 py-2 font-semibold text-gray-700 text-sm">
+                        Add your interests
                       </div>
+                      <Controller
+                        name="interests"
+                        control={control}
+                        render={({ field }) => (
+                          <CreatableSelect
+                            {...field}
+                            options={options}
+                            isMulti
+                            isSearchable
+                            placeholder="Select your interests..."
+                            className="py-1 bg-white w-full col-span-3 placeholder:text-black"
+                            styles={{
+                              control: (baseStyles, state) => ({
+                                ...baseStyles,
+                                borderColor: state.isFocused
+                                  ? "#ee236e"
+                                  : "#ee236e",
+                                borderRadius: state.isFocused ? "0" : "0",
+                                color: state.isFocused ? "black" : "black",
+                              }),
+                            }}
+                          />
+                        )}
+                      />
                     </div>
                   </div>
                 </div>
