@@ -5,7 +5,7 @@ const Feature = () => {
   return (
     <div className="container mx-auto my-20">
       <Container>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4  items-center justify-center gap-14">
           <div className="w-64 md:w-96">
             <FaUser className="text-3xl text-[#ED0058] mb-5" />
             <h1 className="text-2xl font-signature text-black mb-3">

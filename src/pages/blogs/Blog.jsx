@@ -53,6 +53,7 @@ const Blog = () => {
       <Helmet>
         <title>Blogs - Chemistry Corner</title>
       </Helmet>
+      <Container>
       <div className="page-header-bg w-full h-48 md:h-64 bg-no-repeat bg-cover bg-center">
         <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex items-center justify-center">
           <h1 className="text-white text-3xl font-bold">Blogs</h1>
@@ -60,11 +61,11 @@ const Blog = () => {
       </div>
       <Container>
         <div className="lg:flex gap-8">
-          <div className="my-4 text-black text-center grid lg:grid-cols-2 w-full justify-items-center lg:w-2/3 gap-2 ">
+          <div className="my-4 text-black text-center grid md:grid-cols-2 lg:grid-cols-2  w-full justify-items-center lg:w-2/3 gap-2 ">
             {currentBlogs.map((blog, i) => (
               <div
                 key={i}
-                className="my-8 gap-4 hover:shadow-2xl duration-300 border border-gray-200"
+                className="my-8 w-full sm:w-3/4 md:w-full lg:w-full gap-4 hover:shadow-2xl duration-300 border border-gray-200"
               >
                 <div className="p-6">
                   <img
@@ -125,6 +126,8 @@ const Blog = () => {
           </button>
         </div>
       </Container>
+      </Container>
+     
     </div>
   );
 };
