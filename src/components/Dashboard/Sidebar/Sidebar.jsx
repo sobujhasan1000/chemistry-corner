@@ -55,7 +55,7 @@ const Sidebar = () => {
     { label: "Create a Blog", icon: TfiWrite, path: "/dashboard/create-blog" },
   ];
   if (
-    (!loading && singleUser.role && singleUser.role === "super-admin") ||
+    (!loading && singleUser.role && singleUser.role === "super-admin") || 
     singleUser.role === "admin"
   ) {
     sidebarUserItems = [
