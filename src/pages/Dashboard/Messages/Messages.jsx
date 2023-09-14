@@ -47,7 +47,7 @@ const Messages = () => {
   }, [singleUser]);
 
   return (
-    <div className="md:flex">
+    <div className="md:flex overflow-hidden gap-3 bg-pink-200 p-4">
       <div className="md:w-1/3">
         <UserArea
           userChats={userChats}
