@@ -263,7 +263,7 @@ const Countries = () => {
                 <Tab
                   key={i}
                   onClick={() => handleMembers(item?.value)}
-                  className="bg-[#ED0058] hover:bg-[#ed0057b0] text-white capitalize font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl"
+                  className="bg-[#ED0058] hover:bg-[#ed0057b0] text-white capitalize font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl cursor-pointer"
                 >
                   {item?.label}
                 </Tab>
@@ -287,16 +287,20 @@ const Countries = () => {
                               alt="avatar"
                             />
                             <div className="flex flex-row items-center justify-center gap-5 mt-5">
-                            {likes.some(
+                              {likes.some(
                                 (member) => member.userId === item._id
                               ) ? (
-                                <button className="p-2"
+                                <button
+                                  className="p-2"
                                   onClick={() => handleRemoveLike(item._id)}
                                 >
                                   <FaHeart className="text-2xl text-[#ED0058]" />
                                 </button>
                               ) : (
-                                <button className="p-2" onClick={() => handleAddLike(item._id)}>
+                                <button
+                                  className="p-2"
+                                  onClick={() => handleAddLike(item._id)}
+                                >
                                   <FaRegHeart className="text-2xl text-black hover:text-[#ED0058]" />
                                 </button>
                               )}
@@ -304,7 +308,8 @@ const Countries = () => {
                               {favorites.some(
                                 (member) => member.userId === item._id
                               ) ? (
-                                <button className="p-2"
+                                <button
+                                  className="p-2"
                                   onClick={() =>
                                     handleRemoveFromFavorite(item._id)
                                   }
@@ -312,7 +317,8 @@ const Countries = () => {
                                   <FaStar className="text-2xl text-[#ED0058]"></FaStar>
                                 </button>
                               ) : (
-                                <button className="p-2"
+                                <button
+                                  className="p-2"
                                   onClick={() => handleFavorite(item._id)}
                                 >
                                   <FaRegStar className="text-2xl text-black hover:text-[#ED0058]" />
