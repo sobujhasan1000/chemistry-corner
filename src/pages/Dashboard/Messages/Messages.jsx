@@ -11,7 +11,7 @@ const Messages = () => {
   const [singleUser] = useSingleUser(user.email);
   const [userChats, setUserChats] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
-  const [onlineUsers, setOnlineUsers] = useState([]);
+  // const [onlineUsers, setOnlineUsers] = useState([]);
   const [sendMessage, setSendMessage] = useState(null);
   const [receiveMessage, setReceiveMessage] = useState(null);
   const socket = useRef();
@@ -26,33 +26,26 @@ const Messages = () => {
   useEffect(() => {
     socket.current = io(`${import.meta.env.VITE_SOCKET_URL}`);
     socket.current.emit("new-user-add", singleUser._id);
-    socket.current.on("get-users", (users) => {
-      setOnlineUsers(users);
+    socket.current.on("get-users", () => {
+      // setOnlineUsers(users);
     });
   }, [singleUser]);
 
   // receive message from socket server
   useEffect(() => {
+    console.log("socket curr", socket);
     socket.current.on("receive-message", (data) => {
       console.log("Data received in parent div", data);
       setReceiveMessage(data);
     });
   }, []);
 
-  console.log("Online: ", onlineUsers);
-  // console.log(currentChat);
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/chat/${singleUser._id}`)
       .then((res) => res.json())
       .then((data) => setUserChats(data));
   }, [singleUser]);
 
-  console.log(userChats);
-  const checkOnlineStatus = (chat) => {
-    const chatMember = chat.members.find((member) => member !== singleUser._id);
-    const online = onlineUsers.find((user) => user.userId === chatMember);
-    return online ? true : false;
-  };
   return (
     <div className="md:flex">
       <div className="md:w-1/3">
@@ -60,7 +53,7 @@ const Messages = () => {
           userChats={userChats}
           setCurrentChat={setCurrentChat}
           userId={singleUser._id}
-          checkOnlineStatus={checkOnlineStatus}
+          // checkOnlineStatus={checkOnlineStatus}
         ></UserArea>
       </div>
       <div className="md:w-2/3">

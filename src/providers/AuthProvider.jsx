@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { app } from "../firebase/firebase.config";
 import {
   FacebookAuthProvider,
@@ -6,11 +6,15 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
+import { io } from "socket.io-client";
+import { useRef } from "react";
+import useSingleUser from "../Hooks/useSingleUser";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -18,7 +22,10 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  const [onlineUsers, setOnlineUsers] = useState([]);
+  const [singleUser] = useSingleUser(user?.email);
+  const socket = useRef();
+  console.log(onlineUsers);
   const googleProvider = new GoogleAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
 
@@ -57,6 +64,7 @@ const AuthProvider = ({ children }) => {
 
   const logOut = () => {
     setLoading(true);
+
     return signOut(auth);
   };
 
@@ -65,11 +73,24 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       console.log("current user: ", currentUser);
       setLoading(false);
+      if (!loading && singleUser._id) {
+        socket.current = io(`${import.meta.env.VITE_SOCKET_URL}`);
+        socket.current.emit("new-user-add", singleUser._id);
+        socket.current.on("get-users", (users) => {
+          setOnlineUsers(users);
+        });
+      }
     });
     return () => {
       return unsubscribe();
     };
-  }, []);
+  }, [singleUser, user, loading]);
+
+  const checkOnlineStatus = (chat) => {
+    const chatMember = chat.members.find((member) => member !== singleUser._id);
+    const online = onlineUsers.find((user) => user.userId === chatMember);
+    return online ? true : false;
+  };
 
   const authInfo = {
     user,
@@ -83,6 +104,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     googleSignIn,
     facebookSignIn,
+    checkOnlineStatus,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
