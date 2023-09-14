@@ -217,6 +217,19 @@ export const getContractUs = async () => {
   return data;
 };
 
+// ========create chat=========
+export const createChatConversation = async (chatInfo) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/chat`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(chatInfo),
+  });
+  const data = response.json();
+  return data;
+};
+
 // =====get messages======
 export const getMessages = async (id) => {
   const res = await fetch(`${import.meta.env.VITE_API_URL}/message/${id}`);

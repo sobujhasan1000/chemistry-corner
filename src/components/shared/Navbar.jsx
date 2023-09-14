@@ -13,7 +13,8 @@ import { toast } from "react-hot-toast";
 import useSingleUser from "../../Hooks/useSingleUser";
 import Notification from "../../pages/Notification/Notification";
 const Navbar = () => {
-  const { user, setLoading, logOut } = useContext(AuthContext);
+  const { user, setLoading, logOut, checkOnlineStatus } =
+    useContext(AuthContext);
   const [singleUser] = useSingleUser(user?.email);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -65,16 +66,6 @@ const Navbar = () => {
           Countries
         </NavLink>
       </li>
-      {/* <li>
-        <NavLink
-          to="/all-world"
-          className={({ isActive }) =>
-            isActive ? "activeNavLink" : "navClasses"
-          }
-        >
-          All World
-        </NavLink>
-      </li> */}
       <li>
         <NavLink
           to="/blog"
@@ -214,13 +205,16 @@ const Navbar = () => {
                 {user && (
                   <div
                     ref={userMenuRef}
-                    className="w-10 h-10 cursor-pointer rounded-full"
+                    className={`w-10 h-10 cursor-pointer rounded-full avatar ${
+                      checkOnlineStatus ? "online" : ""
+                    }`}
+                    // className="w-10 h-10 cursor-pointer rounded-full"
                     onClick={handleUserImageClick}
                   >
                     <img
                       src={user.photoURL}
                       alt="User Image"
-                      className="w-full h-full rounded-full"
+                      className="w-full h-full rounded-full ring ring-primary ring-offset-base-100"
                     />
                   </div>
                 )}
