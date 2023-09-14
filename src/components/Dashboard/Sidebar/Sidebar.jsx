@@ -40,7 +40,11 @@ const Sidebar = () => {
     { label: "Profile", icon: CgProfile, path: "/dashboard/profile" },
     // { label: "Search", icon: FaSearch, path: "/dashboard/search" },
     { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
-    { label: "Notifications", icon: AiFillBell, path: "/dashboard/notifications" },
+    {
+      label: "Notifications",
+      icon: AiFillBell,
+      path: "/dashboard/notifications",
+    },
     { label: "Likes", icon: AiOutlineHeart, path: "/dashboard/likes" },
     { label: "Favorites", icon: FaRegStar, path: "/dashboard/favorite" },
     {
@@ -57,7 +61,6 @@ const Sidebar = () => {
     sidebarUserItems = [
       { label: "Profile", icon: CgProfile, path: "/dashboard/profile" },
       { label: "Admin", icon: FaRegUser, path: "/dashboard/admin-home" },
-      { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
       {
         label: "Messages",
         icon: BiMessageRounded,
