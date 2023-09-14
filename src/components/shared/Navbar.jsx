@@ -126,7 +126,7 @@ const Navbar = () => {
             singleUser?.role &&
             (singleUser.role === "admin" || singleUser.role === "super-admin")
               ? "/dashboard/admin-home"
-              : "/dashboard/profile"
+              : "/dashboard/user-home"
           }
           className={({ isActive }) =>
             isActive ? "activeNavLink " : " navClasses"
