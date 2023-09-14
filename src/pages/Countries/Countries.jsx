@@ -1,7 +1,11 @@
 // import { useEffect, useState } from "react";
 // import { Helmet } from "react-helmet-async";
 // import { FaMapMarkerAlt } from "react-icons/fa";
-import { getAllMembers, membersSearchByLocation } from "../../api/fetch";
+import {
+  createChatConversation,
+  getAllMembers,
+  membersSearchByLocation,
+} from "../../api/fetch";
 // import useGetLikes from "../../Hooks/useGetLikes";
 // import useGetFavorite from "../../Hooks/useGetFavorite";
 
@@ -29,12 +33,13 @@ import {
   removeFromFavorite,
   removeLike,
 } from "../../api/fetch";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
 import useGetLikes from "../../Hooks/useGetLikes";
 import useGetFavorite from "../../Hooks/useGetFavorite";
 import Container from "../../components/shared/Container";
+import useSingleUser from "../../Hooks/useSingleUser";
 
 const Countries = () => {
   // const [members, setMembers] = useState([]);
@@ -45,11 +50,14 @@ const Countries = () => {
   // const [favorites, favRefetch, favLoading] = useGetFavorite();
 
   const { user } = useContext(AuthContext);
+  const [singleUser] = useSingleUser(user.email);
   const [members, setMembers] = useState([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [likes, likeRefetch, likesLoading] = useGetLikes();
   const [favorites, favRefetch, favLoading] = useGetFavorite();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getAllMembers().then((data) => setMembers(data));
@@ -126,6 +134,27 @@ const Countries = () => {
         console.log(error.message);
         toast.error(error.message);
       });
+  };
+
+  // ====handle chat functionality=====
+  const handleChat = (receiverId) => {
+    setLoading(true);
+    const chatInfo = {
+      senderId: singleUser._id,
+      receiverId: receiverId,
+    };
+    createChatConversation(chatInfo)
+      .then(() => {
+        setLoading(false);
+        navigate("/dashboard/messages");
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+    if (loading) {
+      navigate("/dashboard/messages");
+    }
   };
 
   // const totalMembers = members.length;
@@ -324,8 +353,12 @@ const Countries = () => {
                                   <FaRegStar className="text-2xl text-black hover:text-[#ED0058]" />
                                 </button>
                               )}
-
-                              <FaRegComment className="text-2xl text-black hover:text-[#ED0058] duration-300" />
+                              <button
+                                className="p-2"
+                                onClick={() => handleChat(item._id)}
+                              >
+                                <FaRegComment className="text-2xl text-black hover:text-[#ED0058] duration-300" />
+                              </button>
                             </div>
                           </div>
 

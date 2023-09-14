@@ -15,6 +15,7 @@ import membersBg from "../../assets/membersBg.jpg";
 import { Helmet } from "react-helmet-async";
 import {
   addToFavorite,
+  createChatConversation,
   getAllMembers,
   getGenderWiseMembers,
   giveLike,
@@ -22,19 +23,23 @@ import {
   removeFromFavorite,
   removeLike,
 } from "../../api/fetch";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
 import useGetLikes from "../../Hooks/useGetLikes";
 import useGetFavorite from "../../Hooks/useGetFavorite";
+import useSingleUser from "../../Hooks/useSingleUser";
 
 const Members = () => {
   const { user } = useContext(AuthContext);
+  const [singleUser] = useSingleUser(user.email);
   const [members, setMembers] = useState([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [likes, likeRefetch, likesLoading] = useGetLikes();
   const [favorites, favRefetch, favLoading] = useGetFavorite();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getAllMembers().then((data) => setMembers(data));
@@ -107,6 +112,27 @@ const Members = () => {
         console.log(error.message);
         toast.error(error.message);
       });
+  };
+
+  // ====handle chat functionality=====
+  const handleChat = (receiverId) => {
+    setLoading(true);
+    const chatInfo = {
+      senderId: singleUser._id,
+      receiverId: receiverId,
+    };
+    createChatConversation(chatInfo)
+      .then(() => {
+        setLoading(false);
+        navigate("/dashboard/messages");
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+    if (loading) {
+      navigate("/dashboard/messages");
+    }
   };
 
   const membersPerPage = 6;
@@ -265,7 +291,12 @@ const Members = () => {
                                 </button>
                               )}
 
-                              <FaRegComment className="text-2xl text-black hover:text-[#ED0058]" />
+                              <button
+                                className="p-2"
+                                onClick={() => handleChat(item._id)}
+                              >
+                                <FaRegComment className="text-2xl text-black hover:text-[#ED0058]" />
+                              </button>
                             </div>
                           </div>
 
