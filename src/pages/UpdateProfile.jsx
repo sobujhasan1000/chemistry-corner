@@ -9,6 +9,7 @@ import { modifyUser } from "../api/auth";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { toast } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
+import Multiselect from "multiselect-react-dropdown";
 
 const UpdateProfile = () => {
   const [loading, setLoading] = useState(false);
@@ -67,6 +68,7 @@ const UpdateProfile = () => {
           education: data.education.toLowerCase(),
           dob: data.dob,
           maritalStatus: data.maritalStatus.toLowerCase(),
+          interests: data.interests.toLowerCase(),
         };
         modifyUser(userInfo, user.email).then((modifiedData) => {
           if (modifiedData.modifiedCount > 0) {
@@ -79,6 +81,7 @@ const UpdateProfile = () => {
       });
     });
   };
+
   return (
     <>
       <Helmet>
@@ -320,19 +323,47 @@ const UpdateProfile = () => {
                           required
                         />
                       </div>
+                      <div className="grid grid-cols-2">
+                        <div className="px-4 py-2 font-semibold">
+                          Add your interests
+                        </div>
+                        <div>
+                          <Multiselect
+                            isObject={false}
+                            onKeyPressFn={function noRefCheck() {}}
+                            onRemove={function noRefCheck() {}}
+                            onSearch={function noRefCheck() {}}
+                            onSelect={function noRefCheck() {}}
+                            name="interests"
+                            {...register("interests")}
+                            required
+                            className=" py-1 bg-white border-none"
+                            options={[
+                              "Travel and exploration",
+                              "Art and creativity",
+                              "Fitness and sports",
+                              "Music",
+                              "Reading and literature",
+                              "Gaming",
+                              "Dancing",
+                              "Pet lovers",
+                            ]}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
                 {loading ? (
                   <TbFidgetSpinner className="m-auto animate-spin" size={24} />
                 ) : (
-                  <>
+                  <div className="flex items-center justify-center">
                     <input
                       type="submit"
-                      className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 cursor-pointer "
+                      className="block text-white hover:text-[#ED0058] text-sm font-semibold rounded-lg hover:bg-white focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 cursor-pointer bg-[#ED0058] border border-[#ED0058] transition-all ease-in-out duration-300"
                       value="Update Profile"
                     />
-                  </>
+                  </div>
                 )}
               </div>
             </div>

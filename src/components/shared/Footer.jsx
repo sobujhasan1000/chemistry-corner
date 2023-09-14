@@ -14,7 +14,6 @@ import moment from "moment";
 import { FaArrowUp } from "react-icons/fa";
 
 const Footer = () => {
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -185,7 +184,11 @@ const Footer = () => {
         </div>
         {/*=============== scroll button ======================*/}
         <div className="text-right lg:-mr-16">
-        <button className="btn"  onClick={scrollToTop}> <span className="text-2xl text-red-500"><FaArrowUp/></span></button>
+          <button className="btn" onClick={scrollToTop}>
+            <span className="text-2xl text-red-500 hover:text-white transition-all ease-in-out duration-300">
+              <FaArrowUp />
+            </span>
+          </button>
         </div>
 
         <div className="w-2/3 mx-auto">
@@ -196,7 +199,6 @@ const Footer = () => {
                 Copyright &copy; 2023 Chemistry Corner. An Online Dating
                 Platform{" "}
               </h1>
-              
             </div>
           </div>
         </div>
