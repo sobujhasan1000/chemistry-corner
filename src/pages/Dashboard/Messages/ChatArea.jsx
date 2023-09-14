@@ -23,7 +23,7 @@ const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
   const scroll = useRef();
   // console.log(messages);
   useEffect(() => {
-    if (receiveMessage !== null && receiveMessage.chatId === chat._id) {
+    if (receiveMessage !== null && receiveMessage.chatId === chat?._id) {
       setMessages([...messages, receiveMessage]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

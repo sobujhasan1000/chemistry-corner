@@ -1,7 +1,10 @@
 import { FiSearch } from "react-icons/fi";
 import Conversation from "../../../components/Dashboard/Conversation/Conversation";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
-const UserArea = ({ userChats, setCurrentChat, userId, checkOnlineStatus }) => {
+const UserArea = ({ userChats, setCurrentChat, userId }) => {
+  const { checkOnlineStatus } = useContext(AuthContext);
   return (
     <div>
       <div className="p-4 bg-gray-100" style={{ height: "100vh" }}>
