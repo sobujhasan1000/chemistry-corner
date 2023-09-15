@@ -23,12 +23,18 @@ const Conversation = ({ user, currentUserId, online }) => {
     <Link className="flex space-x-3 my-4">
       <div className={online ? "avatar online" : "avatar"}>
         <div className="w-16 rounded-full">
-          <img src={userData?.image} />
+          <img
+            className="rounded-full w-10 md:w-12 h-10 md:h-10 object-cover"
+            src={userData?.image}
+            alt="profile"
+          />
         </div>
       </div>
-      <div className="flex justify-between w-full">
-        <div className="">
-          <h1 className="text-pink-600 text-sm font-bold">{userData?.name}</h1>
+      <div className="flex justify-between w-full  md:block">
+        <div>
+          <h1 className="text-pink-600 text-sm font-bold capitalize">
+            {userData?.name}
+          </h1>
         </div>
         <div>
           <p className="text-gray-500 mt-0.5" style={{ fontSize: "10px" }}>

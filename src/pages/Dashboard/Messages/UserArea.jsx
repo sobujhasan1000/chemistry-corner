@@ -7,8 +7,8 @@ const UserArea = ({ userChats, setCurrentChat, userId }) => {
   const { checkOnlineStatus } = useContext(AuthContext);
   return (
     <div>
-      <div className="p-4 bg-gray-100" style={{ height: "100vh" }}>
-        <div className="my-4 py-2">
+      <div className="md:px-4 py-2 bg-gray-100 rounded">
+        <div className="md:my-4 md:py-2">
           <div className="relative flex items-center text-gray-400">
             <FiSearch className="w-5 h-5 absolute ml-3" size="0.8rem" />
             <input
@@ -18,10 +18,13 @@ const UserArea = ({ userChats, setCurrentChat, userId }) => {
             />
           </div>
         </div>
+        
+        <div className="flex justify-evenly rounded-full object-cover md:block">
         {userChats &&
           userChats.map((user, i) => (
-            <div key={user.name} onClick={() => setCurrentChat(user)}>
+            <div key={user.name} onClick={() => setCurrentChat(user)} className="capitalize">
               <Conversation
+              
                 key={i}
                 user={user}
                 currentUserId={userId}
@@ -29,6 +32,7 @@ const UserArea = ({ userChats, setCurrentChat, userId }) => {
               ></Conversation>
             </div>
           ))}
+        </div>
       </div>
     </div>
   );

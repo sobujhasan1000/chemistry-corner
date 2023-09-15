@@ -77,9 +77,9 @@ const MembershipOrder = () => {
             <span className="divider"></span>
             <ul>
               {selectedPackage.packInclude.map((feature, i) => (
-                <li className=" text-xl text-black" key={i}>
-                  <FaCheckCircle className="text-blue-400 mb-[-20px] ml-[50px]" />
-                  {feature} <span className="divider px-4"></span>
+                <li className="flex gap-2 text-xl text-black" key={i}>
+                  <p><FaCheckCircle className="text-blue-400 mb-[-20px] ml-[50px]" /></p>
+                  <p>{feature} <span className="divider px-4"></span></p>
                 </li>
               ))}
             </ul>

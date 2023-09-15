@@ -5,7 +5,7 @@ import Footer from "../../components/shared/Footer";
 
 const Main = () => {
   return (
-    <div>
+    <div className="overflow-hidden">
       <Navbar id="navbar"></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>

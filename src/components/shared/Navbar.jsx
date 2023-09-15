@@ -126,7 +126,7 @@ const Navbar = () => {
             singleUser?.role &&
             (singleUser.role === "admin" || singleUser.role === "super-admin")
               ? "/dashboard/admin-home"
-              : "/dashboard/profile"
+              : "/dashboard/user-home"
           }
           className={({ isActive }) =>
             isActive ? "activeNavLink " : " navClasses"
@@ -176,7 +176,7 @@ const Navbar = () => {
 
   return (
     <div onClick={handleOutsideClick}>
-      <div className="bg-[#ED0058]">
+      <div className="bg-[#ff3d6d]">
         <div className="flex items-center justify-between container mx-auto">
           <div>
             <img src={logo} alt="Website Logo" className="w-32 md:w-64" />
