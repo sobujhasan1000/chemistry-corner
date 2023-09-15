@@ -51,11 +51,17 @@ const Like = () => {
               className="flex flex-col md:flex-row items-center px-4 py-6 gap-4 "
             >
               <div className="overflow-hidden relative transition duration-200 transform hover:-translate-y-2 rounded shadow-lg hover:shadow-2xl">
-                <img src={user?.image} alt="" className="w-full h-[310px] md:h-36 rounded-lg" />
+                <img
+                  src={user?.image}
+                  alt=""
+                  className="w-full h-[310px] md:h-36 rounded-lg"
+                />
               </div>
               <div className="bg-pink-100 px-8 py-6 bg-opacity-60 opacity-0 hover:opacity-100 text-gray-800 absolute inset-0 transition-opacity duration-200 flex flex-col justify-between items-center">
                 <div className="flex flex-col gap-1">
-                  <p className="font-bold text-3xl md:text-base text-center md:text-left mt-10 md:mt-1">{user?.name}</p>
+                  <p className="font-bold text-3xl md:text-base text-center md:text-left mt-10 md:mt-1">
+                    {user?.name}
+                  </p>
                 </div>
 
                 <Link

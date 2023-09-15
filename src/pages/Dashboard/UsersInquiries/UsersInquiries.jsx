@@ -5,7 +5,6 @@ import { getContractUs } from "../../../api/fetch";
 import { useEffect, useState } from "react";
 
 const UsersInquiries = () => {
-
   const [inquiries, setInquiries] = useState([]);
   useEffect(() => {
     getContractUs().then((data) => setInquiries(data));

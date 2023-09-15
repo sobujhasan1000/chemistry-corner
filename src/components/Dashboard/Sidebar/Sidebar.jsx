@@ -21,7 +21,7 @@ import { toast } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import { getSinglePayment } from "../../../api/fetch";
 
-const Sidebar = () => {
+const Sidebar = ({ toggleSidebar }) => {
   const { user, setLoading, logOut } = useContext(AuthContext);
   const [singleUser, loading] = useSingleUser(user.email);
   const handleLogOut = () => {
@@ -55,7 +55,7 @@ const Sidebar = () => {
     { label: "Create a Blog", icon: TfiWrite, path: "/dashboard/create-blog" },
   ];
   if (
-    (!loading && singleUser.role && singleUser.role === "super-admin") || 
+    (!loading && singleUser.role && singleUser.role === "super-admin") ||
     singleUser.role === "admin"
   ) {
     sidebarUserItems = [
@@ -127,6 +127,7 @@ const Sidebar = () => {
           <Link
             to={path}
             key={i}
+            onClick={toggleSidebar}
             className="flex justify-center items-center gap-1 px-3 py-0.5 ml-8 hover:bg-[#ff5492]"
           >
             <Icon size={30} />
@@ -138,7 +139,10 @@ const Sidebar = () => {
       <div className="flex flex-col justify-center items-start gap-2">
         {sidebarCommonItems.map(({ icon: Icon, label, path, onClick }, i) => (
           <Link
-            onClick={onClick}
+            onClick={() => {
+              onClick();
+              toggleSidebar(); // Close sidebar on click
+            }}
             to={path}
             key={i}
             className="flex justify-center items-center gap-1 px-3 py-1 ml-8 hover:bg-[#ff5492]"

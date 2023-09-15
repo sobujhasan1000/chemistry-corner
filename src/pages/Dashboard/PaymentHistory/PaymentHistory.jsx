@@ -19,7 +19,7 @@ const PaymentHistory = () => {
     { label: "Email" },
     { label: "Package" },
     { label: "Transaction ID" },
-    { label: "Amount", style: "rounded-tr-lg"},
+    { label: "Amount", style: "rounded-tr-lg" },
     // { label: " "  },
   ];
 
