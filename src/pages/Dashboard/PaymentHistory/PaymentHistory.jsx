@@ -116,10 +116,8 @@ const PaymentHistory = () => {
       <div className="mt-4 flex justify-end">
         <button
           className={`mr-2 ${
-            currentPage === 1
-              ? "cursor-not-allowed bg-gray-300"
-              : "hover:bg-gray-200 bg-white"
-          } py-2 px-4 rounded-md border border-gray-300`}
+            currentPage === 1 ? "cursor-not-allowed bg-gray-300" : ""
+          } py-2 px-4 rounded-md border border-[#ED0058] bg-[#ED0058] hover:bg-white text-white hover:text-black transition-all ease-in-out duration-300`}
           onClick={() => {
             if (currentPage > 1) {
               handlePageChange(currentPage - 1);
@@ -133,8 +131,8 @@ const PaymentHistory = () => {
           className={`${
             currentPage * perPage >= filteredPayments.length
               ? "cursor-not-allowed bg-gray-300"
-              : "hover:bg-gray-200 bg-white"
-          } py-2 px-4 rounded-md border border-gray-300`}
+              : ""
+          } py-2 px-4 rounded-md border border-[#ED0058] bg-[#ED0058] hover:bg-white text-white hover:text-black transition-all ease-in-out duration-300`}
           onClick={() => {
             if (currentPage * perPage < filteredPayments.length) {
               handlePageChange(currentPage + 1);

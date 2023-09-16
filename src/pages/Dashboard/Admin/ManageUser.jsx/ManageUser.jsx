@@ -1,23 +1,18 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { BiUserCircle } from "react-icons/bi";
+import { BiTrash, BiUserCircle } from "react-icons/bi";
 import { getAllMembers } from "../../../../api/fetch";
 import { FaUserShield } from "react-icons/fa";
 import { CiUser } from "react-icons/ci";
 import "./ManageUser.css";
-import { updateUserRole } from "../../../../api/auth";
+import { deleteAUser, updateUserRole } from "../../../../api/auth";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 
 const ManageUser = () => {
-  // const [users, setUsers] = useState([]);
   const [perPage, setPerPage] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchName, setSearchName] = useState("");
-
-  // useEffect(() => {
-  //   getAllMembers().then((data) => setUsers(data));
-  // }, []);
 
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
@@ -47,6 +42,21 @@ const ManageUser = () => {
         refetch();
       }
     });
+  };
+
+  // =======user delete event listener====
+  const handleUserDelete = (id) => {
+    deleteAUser(id)
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          toast.success("User deleted successfully");
+          refetch();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
   };
 
   return (
@@ -87,8 +97,8 @@ const ManageUser = () => {
               <th className="px-6 py-3 rounded-tl-lg">Name</th>
               <th className="px-6 py-3">Email</th>
               <th className="px-6 py-3">Role</th>
-              <th className="px-6 py-3 rounded-tr-lg">Manage Role</th>
-              {/* <th className="px-6 py-3 rounded-tr-lg">Actions</th> */}
+              <th className="px-6 py-3">Manage Role</th>
+              <th className="px-6 py-3 rounded-tr-lg">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -126,14 +136,15 @@ const ManageUser = () => {
                     <FaUserShield />
                   </button>
                 </td>
-                {/* <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                   <button
+                    onClick={() => handleUserDelete(item._id)}
                     title="Delete"
-                    className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+                    className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-[#ED0058] border border-[#ED0058] transition-all ease-in-out duration-300"
                   >
                     <BiTrash />
                   </button>
-                </td> */}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -142,10 +153,8 @@ const ManageUser = () => {
       <div className="mt-4 flex justify-end">
         <button
           className={`mr-2 ${
-            currentPage === 1
-              ? "cursor-not-allowed bg-gray-300"
-              : "hover:bg-gray-200 bg-white"
-          } py-2 px-4 rounded-md border border-gray-300`}
+            currentPage === 1 ? "cursor-not-allowed bg-gray-300" : ""
+          } py-2 px-4 rounded-md border border-[#ED0058] bg-[#ED0058] hover:bg-white text-white hover:text-black transition-all ease-in-out duration-300`}
           onClick={() => {
             if (currentPage > 1) {
               handlePageChange(currentPage - 1);
@@ -159,8 +168,8 @@ const ManageUser = () => {
           className={`${
             currentPage * perPage >= filteredUsers.length
               ? "cursor-not-allowed bg-gray-300"
-              : "hover:bg-gray-200 bg-white"
-          } py-2 px-4 rounded-md border border-gray-300`}
+              : ""
+          } py-2 px-4 rounded-md border border-[#ED0058] bg-[#ED0058] hover:bg-white text-white hover:text-black transition-all ease-in-out duration-300`}
           onClick={() => {
             if (currentPage * perPage < filteredUsers.length) {
               handlePageChange(currentPage + 1);
