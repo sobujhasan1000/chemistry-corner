@@ -174,7 +174,7 @@ const Profile = () => {
                     My Interests
                   </div>
                   <div className="px-4 py-2 capitalize col-span-3 flex flex-row gap-2">
-                    {interests.slice(0, 7).map((interest, i) => (
+                    {interests?.slice(0, 7).map((interest, i) => (
                       <div key={i} className="text-xs">
                         <p className="border border-[#ED0058] p-1 text-black">
                           {interest.label}
