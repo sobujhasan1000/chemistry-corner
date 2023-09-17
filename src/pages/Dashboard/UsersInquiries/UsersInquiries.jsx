@@ -6,9 +6,34 @@ import { useEffect, useState } from "react";
 
 const UsersInquiries = () => {
   const [inquiries, setInquiries] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [feedbacksPerPage, setFeedbacksPerPage] = useState(10);
+  const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     getContractUs().then((data) => setInquiries(data));
   }, []);
+
+  const indexOfLastFeedback = currentPage * feedbacksPerPage;
+  const indexOfFirstFeedback = indexOfLastFeedback - feedbacksPerPage;
+  const currentFeedbacks = inquiries.slice(
+    indexOfFirstFeedback,
+    indexOfLastFeedback
+  );
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleRowsPerPageChange = (e) => {
+    setFeedbacksPerPage(parseInt(e.target.value, 10));
+    setCurrentPage(1);
+  };
+
+  const totalPages = Math.ceil(inquiries.length / feedbacksPerPage);
   // const inquiries = [
   //   {
   //     name: "sobuj",
@@ -29,7 +54,28 @@ const UsersInquiries = () => {
         </div>
       </div>
 
-      <div className="overflow-x-auto mt-12 px-8 text-black">
+      <div className="overflow-x-auto mt-12 px-8 text-black bg-pink-200 p-6 rounded-md">
+
+      <div className="mb-4 flex justify-between items-center">
+          <select
+            className="ml-4 p-2 border border-gray-300 rounded-md"
+            value={feedbacksPerPage}
+            onChange={handleRowsPerPageChange}
+          >
+            <option value={5}>5 rows</option>
+            <option value={10}>10 rows</option>
+            <option value={15}>15 rows</option>
+            <option value={20}>20 rows</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Search by Name"
+            value={searchTerm}
+            onChange={handleSearch}
+            className="p-2 border border-gray-300 rounded-md"
+          />
+        </div>
+
         <table className="table table-zebra">
           {/* head */}
           <thead className="text-xl">
@@ -37,14 +83,18 @@ const UsersInquiries = () => {
               <th>Si No </th>
               <th>Name</th>
               <th>email</th>
-              <th>subject</th>
+              <th>Phone No</th>
               <th>message</th>
               {/* <th>Action</th> */}
             </tr>
           </thead>
 
           <tbody>
-            {inquiries.map((inquiry, index) => (
+            {currentFeedbacks
+              .filter((inquiry) =>
+                inquiry.name.toLowerCase().includes(searchTerm.toLowerCase())
+              )
+            .map((inquiry, index) => (
               <tr key={12}>
                 <td>{index + 1}</td>
                 <td>
@@ -61,8 +111,8 @@ const UsersInquiries = () => {
                 </td>
                 <td>{inquiry.email}</td>
                 <td>
-                  {inquiry.subject}
-                  stars
+                  {inquiry.phone}
+                 
                 </td>
                 <td>{inquiry.message?.slice(0, 20)}...</td>
                 {/* <th>
@@ -85,6 +135,22 @@ const UsersInquiries = () => {
             ))}
           </tbody>
         </table>
+        <div className="pagination mt-4 flex flex-row justify-end">
+          <button
+            onClick={() => paginate(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="mr-2 rounded-md bg-[#ED0058] hover:bg-white p-2 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+          >
+            Previous
+          </button>
+          <button
+            onClick={() => paginate(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="rounded-md bg-[#ED0058] hover:bg-white p-2 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

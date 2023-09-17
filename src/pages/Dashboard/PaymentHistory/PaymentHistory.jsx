@@ -69,7 +69,7 @@ const PaymentHistory = () => {
         />
       </div>
       <div className="overflow-x-auto">
-        <table className="min-w-full">
+        <table className="min-w-full table-zebra">
           <thead className="bg-[#ED0058] text-left text-base leading-4 font-medium text-white capitalize tracking-wider rounded-lg">
             <tr>
               {tableHeadings.map(({ label, style }, i) => (

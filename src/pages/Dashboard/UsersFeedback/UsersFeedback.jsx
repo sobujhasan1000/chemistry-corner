@@ -46,7 +46,7 @@ const UsersFeedback = () => {
           <h1 className="text-white text-3xl font-bold">Users Feedbacks</h1>
         </div>
       </div> */}
-      <div className="overflow-x-auto mt-12 px-8 text-black">
+      <div className="overflow-x-auto mt-12 px-8 text-black bg-pink-200 p-6">
         <div className="mb-4 flex justify-between items-center">
           <select
             className="ml-4 p-2 border border-gray-300 rounded-md"
