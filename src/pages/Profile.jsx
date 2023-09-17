@@ -36,6 +36,7 @@ const Profile = () => {
     education,
     dob,
     profession,
+    interests,
   } = singleUser;
 
   if (loading) {
@@ -101,9 +102,9 @@ const Profile = () => {
 
           <div className="md:w-9/12 md:px-4 relative">
             <div className="bg-white p-3 shadow-xl rounded-xl w-full">
-              <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                <FaUser className="text-2xl font-bold" />
-                <span className="text-2xl font-bold">About</span>
+              <div className="flex items-center gap-2 text-gray-900 leading-8 px-4">
+                <FaUser className="text-xl" />
+                <span className="text-2xl font-semibold">About</span>
               </div>
               <div className="text-gray-700">
                 <div className="grid md:grid-cols-2 text-sm">
@@ -168,6 +169,20 @@ const Profile = () => {
                     <div className="px-4 py-2 capitalize">{profession}</div>
                   </div>
                 </div>
+                <div className="grid grid-cols-4">
+                  <div className="px-4 py-2 font-semibold col-span-1">
+                    My Interests
+                  </div>
+                  <div className="px-4 py-2 capitalize col-span-3 flex flex-row gap-2">
+                    {interests.slice(0, 7).map((interest, i) => (
+                      <div key={i} className="text-xs">
+                        <p className="border border-[#ED0058] p-1 text-black">
+                          {interest.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
               <Link to="/dashboard/update-profile">
                 <button className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
@@ -190,35 +205,59 @@ const Profile = () => {
               )}
             </div>
             <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
-            <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+              <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                 <TfiGallery className="text-2xl font-bold" />
-                <span className="text-2xl font-bold">Photos</span>
+                <span className="text-2xl font-bold"> My Photos</span>
               </div>
               <div className="flex flex-col md:flex-row items-center py-2 gap-4 mt-3">
+                <div className="border border-black px-5 py-10">
+                  <form>
+                    <div className="form-control flex flex-col items-start gap-5">
+                      <label htmlFor="photos" className="text-black text-lg">
+                        Add More Photos
+                      </label>
+                      <input type="file" />
+                    </div>
+                  </form>
+                </div>
                 <Swiper
                   slidesPerView={3}
-                  spaceBetween={30}
+                  spaceBetween={5}
                   autoplay={{
                     delay: 2500,
                     disableOnInteraction: false,
                   }}
-                  navigation={{
-                    clickable: true,
-                  }}
+                  navigation={false}
                   modules={[Navigation, Autoplay]}
                   className="mySwiper"
                 >
                   <SwiperSlide>
-                    <img src={user1} alt="" className="w-36 h-28 rounded-xl" />
+                    <img
+                      src={user1}
+                      alt=""
+                      className="w-full h-44 rounded-xl"
+                    />
                   </SwiperSlide>
                   <SwiperSlide>
-                    <img src={user2} alt="" className="w-36 h-28 rounded-xl" />
+                    <img
+                      src={user2}
+                      alt=""
+                      className="w-full h-44 rounded-xl"
+                    />
                   </SwiperSlide>
                   <SwiperSlide>
-                    <img src={user3} alt="" className="w-36 h-28 rounded-xl" />
+                    <img
+                      src={user3}
+                      alt=""
+                      className="w-full h-44 rounded-xl"
+                    />
                   </SwiperSlide>
                   <SwiperSlide>
-                    <img src={user4} alt="" className="w-36 h-28 rounded-xl" />
+                    <img
+                      src={user4}
+                      alt=""
+                      className="w-full h-44 rounded-xl"
+                    />
                   </SwiperSlide>
                 </Swiper>
               </div>
