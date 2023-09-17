@@ -48,22 +48,25 @@ const UsersFeedback = () => {
       </div> */}
       <div className="overflow-x-auto mt-12 px-8 text-black">
         <div className="mb-4 flex justify-between items-center">
-          <select
-            className="ml-4 p-2 border border-gray-300 rounded-md"
-            value={feedbacksPerPage}
-            onChange={handleRowsPerPageChange}
-          >
-            <option value={5}>5 rows</option>
-            <option value={10}>10 rows</option>
-            <option value={15}>15 rows</option>
-            <option value={20}>20 rows</option>
-          </select>
+          <div>
+            <label className="mr-2">Rows per page:</label>
+            <select
+              className="border border-gray-300 text-[#ED0058] rounded-md px-2 py-1"
+              value={feedbacksPerPage}
+              onChange={handleRowsPerPageChange}
+            >
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={15}>15</option>
+              <option value={20}>20</option>
+            </select>
+          </div>
           <input
             type="text"
             placeholder="Search by Name"
             value={searchTerm}
             onChange={handleSearch}
-            className="p-2 border border-gray-300 rounded-md"
+            className="border border-[#ED0058] rounded-md px-2 py-1 placeholder:text-[#ED0058] focus:outline-pink-800"
           />
         </div>
         <table className="table table-zebra">

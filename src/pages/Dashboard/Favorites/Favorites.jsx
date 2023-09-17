@@ -5,15 +5,17 @@ import siteLoader from "/ccLoader.gif";
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import ConnectionCard from "../../../components/Dashboard/ConnectionCard/ConnectionCard";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Favorites = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { user } = useContext(AuthContext);
 
   const { data: favorites = [], isLoading: loading } = useQuery({
     queryKey: ["favoriteList", user?.email],
     queryFn: async () => {
-      const data = await getFavoriteListByEmail(user?.email);
-      return data;
+      const data = await axiosSecure.get(`/favoriteList/${user.email}`);
+      return data.data;
     },
   });
   if (loading) {
@@ -23,6 +25,7 @@ const Favorites = () => {
       </div>
     );
   }
+  // console.log("fav", favorites);
   return (
     <div>
       <Helmet>
