@@ -13,7 +13,7 @@ import InputEmoji from "react-input-emoji";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useRef } from "react";
 import useSingleUser from "../../../Hooks/useSingleUser";
-import style from "./ChatArea.css";
+import "./ChatArea.css";
 
 const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
   const { user } = useContext(AuthContext);
