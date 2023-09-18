@@ -23,7 +23,7 @@ const Blogs = () => {
             "Here are some of our latest dating articles written by our staff. We hope these tips will help you get more confident and find what you are looking for."
           }
         />
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-4">
           {data.slice(0, 4).map((item, i) => (
             <div className="relative group ease-in-out my-8" key={i}>
               <img
