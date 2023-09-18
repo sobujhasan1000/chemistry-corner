@@ -67,7 +67,7 @@ const UsersFeedback = () => {
           />
         </div>
         <table className="table table-zebra">
-          <thead className="text-xl">
+          <thead className="bg-[#ED0058] text-left text-base text-white font-medium capitalize tracking-wider leading-4 rounded-lg">
             <tr>
               <th>Si No</th>
               <th>Photo & Name</th>
