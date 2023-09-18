@@ -177,18 +177,18 @@ const Members = () => {
   }
 
   return (
-    <div style={{ backgroundImage: `url(${membersBg})` }}>
+    <div style={{ backgroundImage: `url(${membersBg})` }} className="mx-1">
       <Helmet>
         <title>Members - Chemistry Corner</title>
       </Helmet>
       <div>
         <div className="page-header-bg w-full h-64 bg-no-repeat bg-cover bg-center">
           <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex flex-col items-center justify-center">
-            <h1 className="text-white text-3xl font-bold pb-4">
-              Find Your Partner with Name.
+            <h1 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold pb-4">
+              Find Your Partner with Countries.
             </h1>
-            <div className="flex items-center p-2 space-x-4 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
-              <div className="flex bg-gray-100 p-2 w-45 space-x-2 rounded-lg">
+            <div className="flex items-center p-1 md:p-2 md:space-x-4 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
+              <div className="flex bg-gray-100 p-2 w-36 md:w-60 md:space-x-2 rounded-lg">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 opacity-30"
@@ -213,7 +213,7 @@ const Members = () => {
 
               <button
                 onClick={handleSearch}
-                className="bg-[#ED0058] py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer"
+                className="bg-[#ED0058] py-2 md:py-3 px-3 md:px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer"
               >
                 Search
               </button>
@@ -224,7 +224,7 @@ const Members = () => {
       <Container>
         <div className="text-center">
           <Tabs className="mt-10">
-            <TabList className="text-center flex items-center justify-center gap-3 py-3">
+            <TabList className="md:w-1/2 mx-auto whitespace-nowrap text-center grid grid-cols-2 md:grid-cols-4 items-center justify-center gap-3 md:gap-10 py-3">
               {genderLists.map((item, i) => (
                 <Tab
                   key={i}
@@ -240,7 +240,7 @@ const Members = () => {
                 <div className="grid justify-center items-center gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 pt-24">
                   {currentMembers.map((item) => (
                     <div
-                      className="card w-96 rounded-3xl shadow-xl flex justify-center items-center mx-auto mt-16 mb-12"
+                      className="card w-80 md:w-96 rounded-3xl shadow-xl flex justify-center items-center mx-auto mt-16 mb-12"
                       key={item._id}
                     >
                       <div className="p-1 rounded-3xl transform-gpu transition-all selection:bg-sky-100 h-full grid place-items-center bg-gradient-to-tl to-[#FFD3A5] from-[#FD6585] dark:selection:bg-white/10">
