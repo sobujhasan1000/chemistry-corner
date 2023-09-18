@@ -20,7 +20,7 @@ const NewBlogPosts = () => {
 
   return (
     <div className="">
-      <h1 className="text-2xl text-black font-bold mb-5">New Posts</h1>
+      <h1 className="text-2xl text-black font-bold mb-7">New Posts</h1>
       {lastThreeBlogs.map((blog) => (
         <Link
           to={`/view-blog/${blog._id}`}

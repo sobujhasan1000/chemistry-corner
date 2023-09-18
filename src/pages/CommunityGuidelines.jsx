@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 
 const CommunityGuidelines = () => {
   return (
-    <div>
+    <div className="bg-pink-100">
       <Helmet>
         <title>Terms and Conditions - Chemistry Corner</title>
       </Helmet>
