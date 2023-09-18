@@ -53,7 +53,6 @@ const Blog = () => {
       <Helmet>
         <title>Blogs - Chemistry Corner</title>
       </Helmet>
-      <Container>
         <div className="page-header-bg w-full h-48 md:h-64 bg-no-repeat bg-cover bg-center">
           <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex items-center justify-center">
             <h1 className="text-white text-3xl font-bold">Blogs</h1>
@@ -126,7 +125,6 @@ const Blog = () => {
             </button>
           </div>
         </Container>
-      </Container>
     </div>
   );
 };
