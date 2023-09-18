@@ -5,6 +5,7 @@ import { BsPatchCheck } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
 import Favorite from "./Favorite";
 import Like from "./Like";
+import Messages from "./Messages/Messages";
 
 const UserHome = () => {
   const { user } = useContext(AuthContext);
@@ -56,10 +57,10 @@ const UserHome = () => {
           </div>
         </div>
         <div className="md:w-1/3">
-          {/* <div className="bg-gray-100 shadow-xl md:py-2 rounded-xl">
-            <h1 className="text-3xl font-bold">Message</h1>
-            <UserArea></UserArea>
-          </div> */}
+          <div className="bg-gray-100 shadow-xl md:py-2 rounded-xl">
+            <h1 className="mx-3 md:text-xl lg:text-lg pt-4 font-bold text-black">Recent Messages</h1>
+            <Messages></Messages>
+          </div>
           <div className="bg-gray-100 shadow-xl md:py-2 rounded-xl">
             <h1 className="mx-3 md:text-xl lg:text-lg pt-4 font-bold text-black">
               My Favorites Contacts

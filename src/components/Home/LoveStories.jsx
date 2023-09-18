@@ -39,7 +39,7 @@ const LoveStories = () => {
       />
       <Container>
         <Swiper
-          slidesPerView={3}
+          slidesPerView={1}
           spaceBetween={50}
           loop={false}
           pagination={true}
@@ -51,11 +51,11 @@ const LoveStories = () => {
           breakpoints={{
             // When window width is >= 768px (desktop)
             768: {
-              slidesPerView: 3,
+              slidesPerView: 2,
             },
             // When window width is < 768px (mobile)
-            0: {
-              slidesPerView: 1,
+            1024: {
+              slidesPerView: 3,
             },
           }}
           modules={[FreeMode, Pagination, Autoplay, Navigation]}
