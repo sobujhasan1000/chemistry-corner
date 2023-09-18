@@ -1,5 +1,3 @@
-
-
 import { useContext } from "react";
 import useSingleUser from "../../../Hooks/useSingleUser";
 import { AuthContext } from "../../../providers/AuthProvider";
@@ -7,7 +5,7 @@ import { BsPatchCheck } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
 import Favorite from "./Favorite";
 import Like from "./Like";
-
+import Favorites from "../Favorites/Favorites";
 
 const UserHome = () => {
   const { user } = useContext(AuthContext);
@@ -118,10 +116,10 @@ const UserHome = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
             <h1 className="mx-3 text-3xl pt-4 font-bold">
-            People who liked me
+              People who liked me
             </h1>
             <Like></Like>
           </div>
@@ -137,7 +135,6 @@ const UserHome = () => {
             </h1>
             <Favorite></Favorite>
           </div>
-          
         </div>
       </div>
     </div>

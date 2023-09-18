@@ -107,12 +107,7 @@ export const getFavoriteByEmail = async (email) => {
 // ===========get favoriteList by email===========
 export const getFavoriteListByEmail = async (email) => {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/favoriteList/${email}`,
-    {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-    }
+    `${import.meta.env.VITE_API_URL}/favoriteList/${email}`
   );
   const data = res.json();
   return data;

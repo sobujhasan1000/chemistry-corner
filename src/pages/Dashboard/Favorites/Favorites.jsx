@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { getFavoriteListByEmail } from "../../../api/fetch";
+// import { getFavoriteListByEmail } from "../../../api/fetch";
 import { AuthContext } from "../../../providers/AuthProvider";
 import siteLoader from "/ccLoader.gif";
 import { useQuery } from "@tanstack/react-query";
@@ -18,6 +18,7 @@ const Favorites = () => {
       return data.data;
     },
   });
+
   if (loading) {
     return (
       <div className="w-full h-screen flex items-center justify-center">
