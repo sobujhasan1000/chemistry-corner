@@ -17,10 +17,7 @@ const UsersFeedback = () => {
 
   const indexOfLastFeedback = currentPage * feedbacksPerPage;
   const indexOfFirstFeedback = indexOfLastFeedback - feedbacksPerPage;
-  const currentFeedbacks = feedbacks.slice(
-    indexOfFirstFeedback,
-    indexOfLastFeedback
-  );
+  const currentFeedbacks = feedbacks.slice(indexOfFirstFeedback,indexOfLastFeedback);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -131,17 +128,23 @@ const UsersFeedback = () => {
           </tbody>
         </table>
         <div className="pagination mt-4 flex flex-row justify-end">
-          <button
-            onClick={() => paginate(currentPage - 1)}
+          <button className={`mr-2 ${
+            currentPage === 1 ? "cursor-not-allowed bg-gray-300" : ""
+          } py-2 px-4 rounded-md border border-[#ED0058] bg-[#ED0058] hover:bg-white text-white hover:text-black transition-all ease-in-out duration-300`}
+            onClick={() => {if(currentPage>1){paginate(currentPage - 1)}} }
             disabled={currentPage === 1}
-            className="mr-2 rounded-md bg-[#ED0058] hover:bg-white p-2 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+           
           >
             Previous
           </button>
-          <button
-            onClick={() => paginate(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="rounded-md bg-[#ED0058] hover:bg-white p-2 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+          <button className={`${
+            currentPage * feedbacksPerPage>=feedbacks.length
+              ? "cursor-not-allowed bg-gray-300"
+              : ""
+          } py-2 px-4 rounded-md border border-[#ED0058] bg-[#ED0058] hover:bg-white text-white hover:text-black transition-all ease-in-out duration-300`}
+            onClick={() => {if(currentPage * feedbacksPerPage < feedbacks.length){paginate(currentPage + 1)}} }
+            disabled={currentPage * feedbacksPerPage>= feedbacks.length}
+            
           >
             Next
           </button>
