@@ -22,7 +22,7 @@ const Blog = () => {
     getAllBlogs().then((data) => setBlogs(data));
   }, []);
 
-  const blogsPerPage = 6;
+  const blogsPerPage = 4;
   const indexOfLastBlog = currentBlog * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
   const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
@@ -49,7 +49,7 @@ const Blog = () => {
   };
 
   return (
-    <div>
+    <div className="bg-pink-100">
       <Helmet>
         <title>Blogs - Chemistry Corner</title>
       </Helmet>
