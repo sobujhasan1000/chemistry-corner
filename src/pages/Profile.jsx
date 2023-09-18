@@ -169,11 +169,11 @@ const Profile = () => {
                     <div className="px-4 py-2 capitalize">{profession}</div>
                   </div>
                 </div>
-                <div className="grid grid-cols-4">
+                <div className="flex flex-col md:grid md:grid-cols-4 lg:flex lg:flex-col">
                   <div className="px-4 py-2 font-semibold col-span-1">
                     My Interests
                   </div>
-                  <div className="px-4 py-2 capitalize col-span-3 flex flex-row gap-2">
+                  <div className="px-4 py-2 capitalize col-span-3 flex flex-col md:grid md:grid-cols-3 lg:grid lg:grid-cols-3 gap-2">
                     {interests?.slice(0, 7).map((interest, i) => (
                       <div key={i} className="text-xs">
                         <p className="border border-[#ED0058] p-1 text-black">

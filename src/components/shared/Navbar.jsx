@@ -214,7 +214,7 @@ const Navbar = () => {
                     <img
                       src={user.photoURL}
                       alt="User Image"
-                      className="w-full h-full rounded-full ring ring-primary ring-offset-base-100"
+                      className="w-full h-full rounded-full ring ring-primary ring-offset-base-100 mt-1"
                     />
                   </div>
                 )}
