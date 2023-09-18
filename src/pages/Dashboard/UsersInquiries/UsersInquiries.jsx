@@ -35,11 +35,11 @@ const UsersInquiries = () => {
       <Helmet>
         <title>Users Inquiries - Chemistry Corner</title>
       </Helmet>
-      <div className="page-header-bg w-full h-48 md:h-64 bg-no-repeat bg-cover bg-center">
+      {/* <div className="page-header-bg w-full h-48 md:h-64 bg-no-repeat bg-cover bg-center">
         <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex items-center justify-center">
           <h1 className="text-white text-3xl font-bold">Users Inquiries</h1>
         </div>
-      </div>
+      </div> */}
 
       <div className="overflow-x-auto mt-12 px-8 text-black bg-pink-200 p-6 rounded-md">
 
@@ -65,7 +65,7 @@ const UsersInquiries = () => {
 
         <table className="table table-zebra">
           {/* head */}
-          <thead className="text-xl">
+          <thead className="bg-[#ED0058] text-left text-base text-white font-medium capitalize tracking-wider leading-4 rounded-lg">
             <tr>
               <th>Si No </th>
               <th>Name</th>
