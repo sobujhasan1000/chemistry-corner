@@ -177,15 +177,15 @@ const Navbar = () => {
   return (
     <div onClick={handleOutsideClick}>
       <div className="bg-[#ED0058]">
-        <div className="flex items-center justify-between container mx-auto">
+        <div className="flex items-center justify-between sm:gap-0 md:gap-x-12 md:py-1 container mx-auto">
           <div>
-            <img src={logo} alt="Website Logo" className="w-32 md:w-64" />
+            <img src={logo} alt="Website Logo" className="w-24 md:w-52 lg:64" />
           </div>
 
           <div className="flex items-center gap-3 mr-5">
             <div className="hidden md:block">
               <nav>
-                <ul className="text-white text-xl flex items-center gap-5">
+                <ul className="text-white text-xs md:text-base lg:text-xl whitespace-nowrap flex items-center md:gap-4">
                   {navItems}
                 </ul>
               </nav>

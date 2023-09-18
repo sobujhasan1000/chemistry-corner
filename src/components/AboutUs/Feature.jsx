@@ -3,7 +3,7 @@ import { LiaComment } from "react-icons/lia";
 import Container from "../shared/Container";
 const Feature = () => {
   return (
-    <div className="container mx-auto my-20">
+    <div className="container mx-auto my-20 bg-pink-100">
       <Container>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4  items-center justify-center gap-14">
           <div className="w-64 md:w-96">

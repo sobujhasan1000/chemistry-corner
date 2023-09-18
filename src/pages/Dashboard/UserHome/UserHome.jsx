@@ -14,7 +14,7 @@ const UserHome = () => {
       <div className="md:flex gap-5">
         <div className="md:w-2/3">
           <div>
-            <div className="card lg:card-side bg-gray-100 shadow-xl">
+            <div className="card lg:card-side bg-gray-100 shadow-xl md:h-64">
               <figure>
                 <img
                   className="w-full h-full md:w-64 lg:w-96 md:h-64 lg:h-96 md:rounded-2xl"

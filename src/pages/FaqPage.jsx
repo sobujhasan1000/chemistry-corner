@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const FaqPage = () => {
   return (
-    <div>
+    <div className="bg-pink-100">
       <Helmet>
         <title>Helpdesk - Chemistry Corner</title>
       </Helmet>
@@ -20,7 +20,7 @@ const FaqPage = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-3 w-full md:w-2/3 mx-auto my-20">
         <Link to="/faq-details">
-          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 duration-300">
+          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 hover:shadow-xl hover:rounded-xl duration-300">
             <BsGear className="text-5xl text-[#ED0058]" />
             <h1 className="text-gray-500 group-hover:text-black duration-300">
               Getting Started
@@ -28,7 +28,7 @@ const FaqPage = () => {
           </div>
         </Link>
         <Link to="/faq-details">
-          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 duration-300">
+          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 hover:shadow-xl hover:rounded-xl duration-300">
             <CiLogin className="text-5xl text-[#ED0058]" />
             <h1 className="text-gray-500 group-hover:text-black duration-300">
               User Login
@@ -36,7 +36,7 @@ const FaqPage = () => {
           </div>
         </Link>
         <Link to="/faq-details">
-          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 duration-300">
+          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 hover:shadow-xl hover:rounded-xl duration-300">
             <LiaUser className="text-5xl text-[#ED0058]" />
             <h1 className="text-gray-500 group-hover:text-black duration-300">
               My Account
@@ -44,7 +44,7 @@ const FaqPage = () => {
           </div>
         </Link>
         <Link to="/faq-details">
-          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 duration-300">
+          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 hover:shadow-xl hover:rounded-xl duration-300">
             <CiLock className="text-5xl text-[#ED0058]" />
             <h1 className="text-gray-500 group-hover:text-black duration-300">
               Security
@@ -52,7 +52,7 @@ const FaqPage = () => {
           </div>
         </Link>
         <Link to="/faq-details">
-          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 duration-300">
+          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 hover:shadow-xl hover:rounded-xl duration-300">
             <BsChatSquareText className="text-5xl text-[#ED0058]" />
             <h1 className="text-gray-500 group-hover:text-black duration-300">
               Communication
@@ -60,7 +60,7 @@ const FaqPage = () => {
           </div>
         </Link>
         <Link to="/faq-details">
-          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 duration-300">
+          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 hover:shadow-xl hover:rounded-xl duration-300">
             <GiSettingsKnobs className="text-5xl text-[#ED0058]" />
             <h1 className="text-gray-500 group-hover:text-black duration-300">
               Settings Option
@@ -68,7 +68,7 @@ const FaqPage = () => {
           </div>
         </Link>
         <Link to="/faq-details">
-          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 duration-300">
+          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 hover:shadow-xl hover:rounded-xl duration-300">
             <PiCodeSimpleLight className="text-5xl text-[#ED0058]" />
             <h1 className="text-gray-500 group-hover:text-black duration-300">
               Customization
@@ -76,7 +76,7 @@ const FaqPage = () => {
           </div>
         </Link>
         <Link to="/faq-details">
-          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 duration-300">
+          <div className="p-10 w-full flex flex-col items-center gap-8 group hover:bg-gray-100 hover:shadow-xl hover:rounded-xl duration-300">
             <GoCheckbox className="text-5xl text-[#ED0058]" />
             <h1 className="text-gray-500 group-hover:text-black duration-300">
               User Rating
@@ -85,7 +85,7 @@ const FaqPage = () => {
         </Link>
       </div>
       <div className="h-[2px] bg-gray-500 w-2/3 mx-auto opacity-20"></div>
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 md:gap-0 w-2/3 mx-auto my-20">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 md:gap-0 w-2/3 mx-auto py-20">
         <h1 className="text-black text-xl">
           Didn&apos;t find an answer to your question?{" "}
         </h1>

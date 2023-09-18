@@ -79,7 +79,7 @@ const SendANote = () => {
             <input
               type="submit"
               value="Send"
-              className="px-5 py-2 bg-[#ED0058] border hover:bg-white hover:text-black hover:border hover:border-[#ED0058] text-white rounded-full cursor-pointer duration-300"
+              className="px-5 py-2 bg-[#ED0058] border hover:bg-white hover:text-black hover:border hover:border-[#ED0058] text-white rounded-lg cursor-pointer duration-300"
             />
           </div>
         </form>
