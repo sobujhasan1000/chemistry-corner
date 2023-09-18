@@ -13,7 +13,7 @@ import InputEmoji from "react-input-emoji";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useRef } from "react";
 import useSingleUser from "../../../Hooks/useSingleUser";
-import style from "./ChatAreaStyle.css";
+import "./ChatAreaStyle.css";
 
 const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
   const { user } = useContext(AuthContext);
@@ -102,8 +102,7 @@ const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
                   className="rounded-full w-10 h-9 object-cover"
                 />
                 <div className="text-lg text-slate-700 font-sans mt-2 flex space-x-2">
-                  <p>{userData?.name}</p>
-                  <div className="w-1 h-1 p-1 bg-green-500 rounded-full mt-2"></div>
+                  <p className="capitalize">{userData?.name}</p>
                 </div>
               </div>
               <div className="flex space-x-2 mt-3">
@@ -162,8 +161,8 @@ const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
               placeholder="Write Something"
               className="rounded-2xl pl-10 py-1.5 w-full bg-gray-200"
             /> */}
-                <div className="flex items-center space-x-2">
-                  <BsMic className="h-[32px] w-[32px] " />
+                <div className="flex items-center justify-between space-x-2">
+                  {/* <BsMic className="h-[32px] w-[32px] " /> */}
                   {/* <button>
                 <FiPaperclip className="w-4 h-4 ml-2 mt-2" />
               </button>
@@ -175,7 +174,7 @@ const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
                       value={newMessage}
                       onChange={handleChange}
                       cleanOnEnter
-                      className="rounded-2xl pl-10 py-1.5 w-96 bg-gray-200"
+                      className="rounded-2xl pl-10 py-1.5 md:w-96 bg-gray-200"
                       placeholder="Type a message"
                     />
                   </button>

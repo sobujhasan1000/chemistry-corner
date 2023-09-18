@@ -19,16 +19,16 @@ const AboutUsComponent = () => {
             <p className="text-black text-xs md:text-sm max-w-xs md:max-w-md">
               At Chemistry Corner, we believe that meaningful connections are
               the cornerstone of a fulfilling life. Our platform is more than
-              just another online dating website – it&apos;s a community dedicated to
-              helping individuals discover genuine relationships that resonate
-              on a deeper level.
+              just another online dating website – it&apos;s a community
+              dedicated to helping individuals discover genuine relationships
+              that resonate on a deeper level.
             </p>
             <div>
               <Link to="/members">
-              <button className="text-xl font-medium px-3 col-span-full md:col-span-1 py-3 rounded uppercase text-white bg-[#ED0058] hover:bg-[#a33f64] flex justify-center items-center gap-2 md:gap-3">
-                <BsSearchHeart size={25} />
-                <span>Find your partner</span>
-              </button>
+                <button className="text-xl font-medium px-3 col-span-full md:col-span-1 py-3 rounded uppercase text-white bg-[#ED0058] hover:bg-[#a33f64] flex justify-center items-center gap-2 md:gap-3">
+                  <BsSearchHeart size={25} />
+                  <span>Find your partner</span>
+                </button>
               </Link>
             </div>
           </div>

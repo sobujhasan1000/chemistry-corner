@@ -36,3 +36,12 @@ export const updateUserRole = async (id, role) => {
   const data = res.json();
   return data;
 };
+
+// =======delete a user from db========
+export const deleteAUser = async (id) => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/user/${id}`, {
+    method: "DELETE",
+  });
+  const data = res.json();
+  return data;
+};
