@@ -91,7 +91,7 @@ const ManageUser = () => {
         />
       </div>
       <div className="overflow-x-auto">
-        <table className="min-w-full">
+        <table className="min-w-full table-zebra">
           <thead className="bg-[#ED0058] text-left text-base text-white font-medium capitalize tracking-wider leading-4 rounded-lg">
             <tr>
               <th className="px-6 py-3 rounded-tl-lg">Name</th>
