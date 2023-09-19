@@ -35,11 +35,11 @@ const UserHome = () => {
                   {singleUser.city}
                 </p>
                 <p className="text-black">{singleUser.bio}</p>
-                <div className="flex flex-wrap text-center gap-3">
+                <div className="flex flex-wrap text-center gap-2">
                   {singleUser.interests?.map((interest, i) => (
                     <p
                       key={i}
-                      className="bg-[#f8a7c5] text-[#fc4c8c] px-2 py-1 rounded-xl"
+                      className="bg-[#fc4c8c] text-white px-2 rounded-xl"
                     >
                       {interest.label}
                     </p>
@@ -57,11 +57,11 @@ const UserHome = () => {
           </div>
         </div>
         <div className="md:w-1/3">
-          <div className="bg-gray-100 shadow-xl md:py-2 rounded-xl">
+          <div className="bg-gray-100 shadow-xl mb-6 px-4 md:py-2 rounded-xl">
             <h1 className="mx-3 md:text-xl lg:text-lg pt-4 font-bold text-black">Recent Messages</h1>
             <Messages></Messages>
           </div>
-          <div className="bg-gray-100 shadow-xl md:py-2 rounded-xl">
+          <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
             <h1 className="mx-3 md:text-xl lg:text-lg pt-4 font-bold text-black">
               My Favorites Contacts
             </h1>

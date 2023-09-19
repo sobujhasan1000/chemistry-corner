@@ -30,7 +30,7 @@ const Conversation = ({ user, currentUserId, online }) => {
           />
         </div>
       </div>
-      <div className="flex justify-between w-full  md:block">
+      <div className="flex justify-between w-full hidden md:block">
         <div>
           <h1 className="text-pink-600 text-sm font-bold capitalize">
             {userData?.name}

@@ -47,7 +47,7 @@ const Messages = () => {
   }, [singleUser]);
 
   return (
-    <div className="md:flex overflow-hidden gap-3 p-4 w-full bg-green-400">
+    <div className="md:flex overflow-hidden gap-3 p-4">
       <div>
         <UserArea
           userChats={userChats}
@@ -57,7 +57,7 @@ const Messages = () => {
         ></UserArea>
         <div className="mt-2">
           
-        <Link to="/blog">
+        <Link to="/dashboard/messages">
           <button className="bg-[#ED0058] px-10 py-2 text-white border border-[#ED0058] hover:bg-white hover:text-[#ED0058] transition-all ease-in duration-300">
             View More
           </button>
