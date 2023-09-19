@@ -8,7 +8,8 @@ import { useContext } from "react";
 import MyPhotos from "../components/Dashboard/MyPhotos/MyPhotos";
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
+  const { user, checkOnlineStatus } = useContext(AuthContext);
+  console.log("profile user", user);
   const [singleUser, loading] = useSingleUser(user?.email);
 
   const {
@@ -56,6 +57,27 @@ const Profile = () => {
     !weight ||
     !profession;
 
+  const timestampString = user?.metadata?.createdAt;
+  const timestamp = parseFloat(timestampString);
+  const date = new Date(timestamp);
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const day = date.getDate();
+  const month = monthNames[date.getMonth()];
+  const year = date.getFullYear();
+  const formattedDate = `${day} ${month}, ${year}`;
   return (
     <div className="py-4 bg-pink-100 rounded">
       <Helmet>
@@ -79,14 +101,20 @@ const Profile = () => {
                 <li className="flex items-center py-3">
                   <span>Status</span>
                   <span className="ml-auto">
-                    <span className="bg-green-500 py-1 px-2 rounded text-white text-sm">
-                      Active
-                    </span>
+                    {checkOnlineStatus ? (
+                      <span className="bg-green-500 py-1 px-2 rounded text-white text-sm">
+                        Active
+                      </span>
+                    ) : (
+                      <span className="bg-red-700 py-1 px-2 rounded text-white text-sm">
+                        Offline
+                      </span>
+                    )}
                   </span>
                 </li>
                 <li className="flex items-center py-3">
                   <span>Member since</span>
-                  <span className="ml-auto">Nov 07, 2016</span>
+                  <span className="ml-auto">{formattedDate}</span>
                 </li>
               </ul>
             </div>
