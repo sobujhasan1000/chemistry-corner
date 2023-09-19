@@ -6,7 +6,7 @@ import {
   FaFileInvoiceDollar,
   FaRegUser,
 } from "react-icons/fa";
-import { BsQuestionCircle } from "react-icons/bs";
+import { BsQuestionCircle, BsPersonGear } from "react-icons/bs";
 import { TfiWrite } from "react-icons/tfi";
 import { VscFeedback } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
@@ -38,6 +38,7 @@ const Sidebar = ({ toggleSidebar }) => {
   let sidebarUserItems = [
     { label: "Home", icon: BiHomeHeart, path: "/dashboard/user-home" },
     { label: "Profile", icon: CgProfile, path: "/dashboard/profile" },
+    { label: "Settings", icon: BsPersonGear, path: "/dashboard/settings" },
     // { label: "Search", icon: FaSearch, path: "/dashboard/search" },
     { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
     {

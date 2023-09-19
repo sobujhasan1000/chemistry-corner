@@ -38,7 +38,7 @@ const Testimonials = () => {
   };
 
   return (
-    <div>
+    <div className="bg-gray-200">
       <Helmet>
         <title>User Testimonials - Chemistry Corner</title>
       </Helmet>

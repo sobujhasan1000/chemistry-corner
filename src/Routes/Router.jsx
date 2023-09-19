@@ -37,6 +37,7 @@ import Messages from "../pages/Dashboard/Messages/Messages";
 import FaqQuestions from "../pages/FaqQuestions";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import Notifications from "../pages/Dashboard/Notifications/Notifications";
+import Settings from "../pages/Dashboard/Settings/Settings";
 
 const router = createBrowserRouter([
   {
@@ -157,6 +158,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/update-profile",
         element: <UpdateProfile></UpdateProfile>,
+      },
+      {
+        path: "/dashboard/settings",
+        element: <Settings></Settings>,
       },
       {
         path: "/dashboard/notifications",

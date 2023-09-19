@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { getAllFeedbacks } from "../../../api/fetch";
-// import { FaRegEye } from "react-icons/fa";
-// import { BiTrash } from "react-icons/bi";
 import { Rating } from "@smastrom/react-rating";
 
 const UsersFeedback = () => {
@@ -17,10 +15,7 @@ const UsersFeedback = () => {
 
   const indexOfLastFeedback = currentPage * feedbacksPerPage;
   const indexOfFirstFeedback = indexOfLastFeedback - feedbacksPerPage;
-  const currentFeedbacks = feedbacks.slice(
-    indexOfFirstFeedback,
-    indexOfLastFeedback
-  );
+  const currentFeedbacks = feedbacks.slice(indexOfFirstFeedback,indexOfLastFeedback);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -41,40 +36,38 @@ const UsersFeedback = () => {
       <Helmet>
         <title>Users Feedbacks - Chemistry Corner</title>
       </Helmet>
-      {/* <div className="page-header-bg w-full h-48 md:h-64 bg-no-repeat bg-cover bg-center overflow-x-auto">
-        <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex items-center justify-center">
-          <h1 className="text-white text-3xl font-bold">Users Feedbacks</h1>
-        </div>
-      </div> */}
-      <div className="overflow-x-auto mt-12 px-8 text-black">
+      <div className="overflow-x-auto mt-12 px-8 text-black bg-pink-200 p-6 rounded-md">
         <div className="mb-4 flex justify-between items-center">
-          <select
-            className="ml-4 p-2 border border-gray-300 rounded-md"
-            value={feedbacksPerPage}
-            onChange={handleRowsPerPageChange}
-          >
-            <option value={5}>5 rows</option>
-            <option value={10}>10 rows</option>
-            <option value={15}>15 rows</option>
-            <option value={20}>20 rows</option>
-          </select>
+          <div>
+            <label className="mr-2">Rows per page:</label>
+            <select
+              className="border border-gray-300 text-[#ED0058] rounded-md px-2 py-1"
+              value={feedbacksPerPage}
+              onChange={handleRowsPerPageChange}
+            >
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={15}>15</option>
+              <option value={20}>20</option>
+            </select>
+          </div>
           <input
             type="text"
             placeholder="Search by Name"
             value={searchTerm}
             onChange={handleSearch}
-            className="p-2 border border-gray-300 rounded-md"
+            className="border border-[#ED0058] rounded-md px-2 py-1 placeholder:text-[#ED0058] focus:outline-pink-800"
           />
         </div>
-        <table className="table table-zebra">
-          <thead className="text-xl">
+        <div className="overflow-x-auto">
+        <table className="min-w-full table table-zebra">
+          <thead className="bg-[#ED0058] text-left text-base leading-4 font-medium text-white capitalize tracking-wider rounded-lg">
             <tr>
-              <th>Si No</th>
+              <th className="style: rounded-tl-lg">Si No</th>
               <th>Photo & Name</th>
               <th>Feedback Type</th>
               <th>Feedback Rating</th>
-              <th>Feedback Text</th>
-              {/* <th>Actions</th> */}
+              <th className="style: rounded-tr-lg">Feedback Text</th>
             </tr>
           </thead>
           <tbody>
@@ -109,36 +102,30 @@ const UsersFeedback = () => {
                     />
                   </td>
                   <td>{feedback?.feedbackDetails?.slice(0, 20)}...</td>
-                  {/* <td>
-                    <button
-                      title="View"
-                      className="rounded-md bg-[#ED0058] hover:bg-white p-2 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300"
-                    >
-                      <FaRegEye />
-                    </button>
-                    <button
-                      title="Delete"
-                      className="ml-2 rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
-                    >
-                      <BiTrash />
-                    </button>
-                  </td> */}
                 </tr>
               ))}
           </tbody>
         </table>
+        </div>
+        
         <div className="pagination mt-4 flex flex-row justify-end">
-          <button
-            onClick={() => paginate(currentPage - 1)}
+          <button className={`mr-2 ${
+            currentPage === 1 ? "cursor-not-allowed bg-gray-300" : ""
+          } py-2 px-4 rounded-md border border-[#ED0058] bg-[#ED0058] hover:bg-white text-white hover:text-black transition-all ease-in-out duration-300`}
+            onClick={() => {if(currentPage>1){paginate(currentPage - 1)}} }
             disabled={currentPage === 1}
-            className="mr-2 rounded-md bg-[#ED0058] hover:bg-white p-2 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+           
           >
             Previous
           </button>
-          <button
-            onClick={() => paginate(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="rounded-md bg-[#ED0058] hover:bg-white p-2 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+          <button className={`${
+            currentPage * feedbacksPerPage>=feedbacks.length
+              ? "cursor-not-allowed bg-gray-300"
+              : ""
+          } py-2 px-4 rounded-md border border-[#ED0058] bg-[#ED0058] hover:bg-white text-white hover:text-black transition-all ease-in-out duration-300`}
+            onClick={() => {if(currentPage * feedbacksPerPage < feedbacks.length){paginate(currentPage + 1)}} }
+            disabled={currentPage * feedbacksPerPage>= feedbacks.length}
+            
           >
             Next
           </button>
