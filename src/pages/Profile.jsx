@@ -11,7 +11,6 @@ const Profile = () => {
   const { user, checkOnlineStatus } = useContext(AuthContext);
   console.log("profile user", user);
   const [singleUser, loading] = useSingleUser(user?.email);
-
   const {
     image,
     name,
