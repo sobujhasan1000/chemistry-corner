@@ -32,22 +32,22 @@ const Banner = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <div className="md:h-[85vh]">
+          <div className="md:h-[85vh] md:max-lg:h-[40vh] md:max-xl:h-[40vh]">
             <img src={img1} alt="Slider Image" className="h-full w-full" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="md:h-[85vh]">
+          <div className="md:h-[85vh] md:max-lg:h-[40vh] md:max-xl:h-[40vh]">
             <img src={img2} alt="Slider Image" className="h-full w-full" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="md:h-[85vh]">
+          <div className="md:h-[85vh] md:max-lg:h-[40vh] md:max-xl:h-[40vh]">
             <img src={img3} alt="Slider Image" className="h-full w-full" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="md:h-[85vh]">
+          <div className="md:h-[85vh] md:max-lg:h-[40vh] md:max-xl:h-[40vh]">
             <img src={img4} alt="Slider Image" className="h-full w-full" />
           </div>
         </SwiperSlide>

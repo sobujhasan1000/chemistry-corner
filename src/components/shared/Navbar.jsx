@@ -193,11 +193,17 @@ const Navbar = () => {
             {isMenuOpen ? (
               <div>
                 {user && (
-                  <img
-                    src={user.photoURL ? user.photoURL : userImage}
-                    alt="User Image"
-                    className="w-10 h-10 rounded-full"
-                  />
+                  <div
+                    className={`w-10 h-10 cursor-pointer rounded-full avatar ${
+                      checkOnlineStatus ? "online" : ""
+                    }`}
+                  >
+                    <img
+                      src={user.photoURL ? user.photoURL : userImage}
+                      alt="User Image"
+                      className="w-full h-full rounded-full ring ring-primary ring-offset-base-100 mt-1"
+                    />
+                  </div>
                 )}
               </div>
             ) : (
@@ -248,7 +254,7 @@ const Navbar = () => {
         <div
           className={` bg-[#ED0058] w-1/2 md:w-80 py-2 absolute duration-300 z-50 ${
             isUserMenuOpen
-              ? "right-0 top-12 md:top-[6.2rem]"
+              ? "right-0 top-12 md:max-lg:top-14 md:top-[5.5rem]"
               : "right-0 -top-80"
           }`}
         >
