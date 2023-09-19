@@ -1,23 +1,15 @@
-import user1 from "/user1.jpg";
-import user2 from "/user2.jpg";
-import user3 from "/user3.jpg";
-import user4 from "/user4.jpg";
 import { AuthContext } from "../providers/AuthProvider";
 import { FaUser } from "react-icons/fa";
-import { TfiGallery } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import useSingleUser from "../Hooks/useSingleUser";
 import siteLoader from "/ccLoader.gif";
 import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import MyPhotos from "../components/Dashboard/MyPhotos/MyPhotos";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
-
   const [singleUser, loading] = useSingleUser(user?.email);
-  console.log("first 2", singleUser);
 
   const {
     image,
@@ -204,64 +196,7 @@ const Profile = () => {
                 </div>
               )}
             </div>
-            <div className="bg-gray-100 shadow-xl my-6 px-4 py-4 md:py-2 rounded-xl">
-              <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                <TfiGallery className="text-2xl font-bold" />
-                <span className="text-2xl font-bold"> My Photos</span>
-              </div>
-              <div className="flex flex-col md:flex-row items-center py-2 gap-4 my-3">
-                <div className="w-full md:w-2/5 border border-black rounded-lg px-5 py-10">
-                  <form>
-                    <div className="form-control flex flex-col items-start gap-5">
-                      <label htmlFor="photos" className="text-black text-lg">
-                        Add More Photos
-                      </label>
-                      <input type="file" />
-                    </div>
-                  </form>
-                </div>
-                <Swiper
-                  slidesPerView={2}
-                  spaceBetween={5}
-                  autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                  }}
-                  navigation={false}
-                  modules={[Navigation, Autoplay]}
-                  className="mySwiper w-full md:w-3/5"
-                >
-                  <SwiperSlide>
-                    <img
-                      src={user1}
-                      alt=""
-                      className="w-44 md:w-full h-44 rounded-lg"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src={user2}
-                      alt=""
-                      className="w-44 md:w-full h-44 rounded-lg"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src={user3}
-                      alt=""
-                      className="w-44 md:w-full h-44 rounded-lg"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src={user4}
-                      alt=""
-                      className="w-44 md:w-full h-44 rounded-lg"
-                    />
-                  </SwiperSlide>
-                </Swiper>
-              </div>
-            </div>
+            <MyPhotos></MyPhotos>
           </div>
         </div>
       </div>
