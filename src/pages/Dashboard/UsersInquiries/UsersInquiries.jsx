@@ -1,6 +1,4 @@
 import { Helmet } from "react-helmet-async";
-// import { BiTrash } from "react-icons/bi";
-// import { FaRegEye } from "react-icons/fa";
 import { getContractUs } from "../../../api/fetch";
 import { useEffect, useState } from "react";
 
@@ -16,10 +14,7 @@ const UsersInquiries = () => {
 
   const indexOfLastFeedback = currentPage * feedbacksPerPage;
   const indexOfFirstFeedback = indexOfLastFeedback - feedbacksPerPage;
-  const currentFeedbacks = inquiries.slice(
-    indexOfFirstFeedback,
-    indexOfLastFeedback
-  );
+  const currentFeedbacks = inquiries.slice(indexOfFirstFeedback,indexOfLastFeedback );
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -34,26 +29,12 @@ const UsersInquiries = () => {
   };
 
   const totalPages = Math.ceil(inquiries.length / feedbacksPerPage);
-  // const inquiries = [
-  //   {
-  //     name: "sobuj",
-  //     email: "sobuj@gmail.com",
-  //     subject: "help us user",
-  //     message: "I have a question about your website...",
-  //   },
-  // ];
-
+ 
   return (
     <div>
       <Helmet>
         <title>Users Inquiries - Chemistry Corner</title>
       </Helmet>
-      <div className="page-header-bg w-full h-48 md:h-64 bg-no-repeat bg-cover bg-center">
-        <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex items-center justify-center">
-          <h1 className="text-white text-3xl font-bold">Users Inquiries</h1>
-        </div>
-      </div>
-
       <div className="overflow-x-auto mt-12 px-8 text-black bg-pink-200 p-6 rounded-md">
 
       <div className="mb-4 flex justify-between items-center">
@@ -78,14 +59,13 @@ const UsersInquiries = () => {
 
         <table className="table table-zebra">
           {/* head */}
-          <thead className="text-xl">
+          <thead className="bg-[#ED0058] text-left text-base text-white font-medium capitalize tracking-wider leading-4 rounded-lg">
             <tr>
-              <th>Si No </th>
+              <th className="style: rounded-tl-lg">Si No </th>
               <th>Name</th>
               <th>email</th>
               <th>Phone No</th>
-              <th>message</th>
-              {/* <th>Action</th> */}
+              <th className="style: rounded-tr-lg">message</th>
             </tr>
           </thead>
 
@@ -99,11 +79,6 @@ const UsersInquiries = () => {
                 <td>{index + 1}</td>
                 <td>
                   <div className="flex items-center space-x-3">
-                    {/* <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
-                <img src={inquiry?.image} alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div> */}
                     <div>
                       <div className="font-bold">{inquiry.name}</div>
                     </div>
@@ -115,38 +90,27 @@ const UsersInquiries = () => {
                  
                 </td>
                 <td>{inquiry.message?.slice(0, 20)}...</td>
-                {/* <th>
-                  <button
-                    title="View"
-                    className="rounded-md bg-[#ED0058] hover:bg-white p-2 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300"
-                  >
-                    <FaRegEye />
-                  </button>
-                </th> */}
-                {/* <td>
-                  <button
-                    title="Delete"
-                    className="rounded-md hover:bg-[#ED0058] bg-white p-2 hover:text-white text-black border border-[#ED0058] transition-all ease-in-out duration-300"
-                  >
-                    <BiTrash />
-                  </button>
-                </td> */}
               </tr>
             ))}
           </tbody>
         </table>
         <div className="pagination mt-4 flex flex-row justify-end">
-          <button
-            onClick={() => paginate(currentPage - 1)}
+          <button className={`mr-2 ${
+            currentPage === 1 ? "cursor-not-allowed bg-gray-300" : ""
+          } py-2 px-4 rounded-md border border-[#ED0058] bg-[#ED0058] hover:bg-white text-white hover:text-black transition-all ease-in-out duration-300`}
+            onClick={() => {if(currentPage>1){paginate(currentPage - 1)}} }
             disabled={currentPage === 1}
-            className="mr-2 rounded-md bg-[#ED0058] hover:bg-white p-2 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+           
           >
             Previous
           </button>
-          <button
-            onClick={() => paginate(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="rounded-md bg-[#ED0058] hover:bg-white p-2 text-white hover:text-black border border-[#ED0058] transition-all ease-in-out duration-300"
+          <button className={`${
+            currentPage * feedbacksPerPage>=inquiries.length
+              ? "cursor-not-allowed bg-gray-300"
+              : ""
+          } py-2 px-4 rounded-md border border-[#ED0058] bg-[#ED0058] hover:bg-white text-white hover:text-black transition-all ease-in-out duration-300`}
+            onClick={() => {if(currentPage * feedbacksPerPage < inquiries.length){paginate(currentPage + 1)}} }
+            disabled={currentPage * feedbacksPerPage>= inquiries.length}
           >
             Next
           </button>

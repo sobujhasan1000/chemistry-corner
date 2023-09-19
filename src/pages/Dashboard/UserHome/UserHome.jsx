@@ -5,7 +5,7 @@ import { BsPatchCheck } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
 import Favorite from "./Favorite";
 import Like from "./Like";
-import Favorites from "../Favorites/Favorites";
+import Messages from "./Messages/Messages";
 
 const UserHome = () => {
   const { user } = useContext(AuthContext);
@@ -15,103 +15,35 @@ const UserHome = () => {
       <div className="md:flex gap-5">
         <div className="md:w-2/3">
           <div>
-            <div className="card lg:card-side bg-gray-100 shadow-xl">
+            <div className="card lg:card-side bg-gray-100 shadow-xl md:h-64">
               <figure>
                 <img
-                  className="md:h-full md:w-66 object-center"
+                  className="w-full h-full md:w-64 lg:w-96 md:h-64 lg:h-96 md:rounded-2xl"
                   src={singleUser.image}
                   alt="Album"
                 />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">
+                <h2 className="card-title text-black">
                   {singleUser.name}, {singleUser.age}
                   <span>
                     <BsPatchCheck className="text-green-500"></BsPatchCheck>
                   </span>
                 </h2>
-                <p className="flex items-center gap-2 uppercase text-gray-400">
+                <p className="flex items-center gap-2 uppercase text-[#ED0058]">
                   <GoLocation></GoLocation>
                   {singleUser.city}
                 </p>
-                <p>{singleUser.bio}</p>
-                <div className="flex flex-wrap text-center gap-3">
-                  <p className="bg-[#f8a7c5] text-[#fc4c8c] px-2 py-1 rounded-xl">
-                    Fashion
-                  </p>{" "}
-                  <p className="bg-[#f8a7c5] text-[#fc4c8c] px-2 py-1 rounded-xl">
-                    Traveling
-                  </p>
-                  <p className="bg-[#f8a7c5] text-[#fc4c8c] px-2 py-1 rounded-xl">
-                    Nature
-                  </p>
-                  <p className="bg-[#f8a7c5] text-[#fc4c8c] px-2 py-1 rounded-xl">
-                    Art
-                  </p>
-                  <p className="bg-[#f8a7c5] text-[#fc4c8c] px-2 py-1 rounded-xl">
-                    Anime
-                  </p>
-                  <p className="bg-[#f8a7c5] text-[#fc4c8c] px-2 py-1 rounded-xl">
-                    Movie
-                  </p>
-                  <p className="bg-[#f8a7c5] text-[#fc4c8c] px-2 py-1 rounded-xl">
-                    Music
-                  </p>
-                  <p className="bg-[#f8a7c5] text-[#fc4c8c] px-2 py-1 rounded-xl">
-                    Sports
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
-            <h1 className="text-3xl py-2 font-bold">About</h1>
-            <div className="text-gray-700">
-              <div className="grid md:grid-cols-2 text-sm">
-                <div className="grid grid-cols-2">
-                  <div className="py-2">Live in:</div>
-                  <div className="py-2 capitalize font-bold">
-                    {singleUser.city}
-                  </div>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="py-2">Country:</div>
-                  <div className="py-2 uppercase font-bold">
-                    {singleUser.country}
-                  </div>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="py-2">Work as:</div>
-                  <div className="py-2 capitalize font-bold">
-                    {singleUser.profession}
-                  </div>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="py-2">Education:</div>
-                  <div className="py-2 capitalize font-bold">
-                    {singleUser.education}
-                  </div>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="py-2">Relationship Status:</div>
-                  <div className="py-2 capitalize font-bold">
-                    {singleUser.maritalStatus}
-                  </div>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="py-2">Smoke:</div>
-                  <div className="py-2 capitalize font-bold">Sometimes</div>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="py-2">Drinks:</div>
-                  <div className="py-2 capitalize font-bold">Sometimes</div>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="py-2">Language:</div>
-                  <div className="py-2 capitalize font-bold">
-                    English, Spanish
-                  </div>
+                <p className="text-black">{singleUser.bio}</p>
+                <div className="flex flex-wrap text-center gap-2">
+                  {singleUser.interests?.map((interest, i) => (
+                    <p
+                      key={i}
+                      className="bg-[#fc4c8c] text-white px-2 rounded-xl"
+                    >
+                      {interest.label}
+                    </p>
+                  ))}
                 </div>
               </div>
             </div>
@@ -125,12 +57,12 @@ const UserHome = () => {
           </div>
         </div>
         <div className="md:w-1/3">
-          {/* <div className="bg-gray-100 shadow-xl md:py-2 rounded-xl">
-            <h1 className="text-3xl font-bold">Message</h1>
-            <UserArea></UserArea>
-          </div> */}
-          <div className="bg-gray-100 shadow-xl md:py-2 rounded-xl">
-            <h1 className="mx-3 text-3xl pt-4 font-bold">
+          <div className="bg-gray-100 shadow-xl mb-6 px-4 md:py-2 rounded-xl">
+            <h1 className="mx-3 md:text-xl lg:text-lg pt-4 font-bold text-black">Recent Messages</h1>
+            <Messages></Messages>
+          </div>
+          <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
+            <h1 className="mx-3 md:text-xl lg:text-lg pt-4 font-bold text-black">
               My Favorites Contacts
             </h1>
             <Favorite></Favorite>

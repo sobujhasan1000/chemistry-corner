@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-// import { BiTrash } from "react-icons/bi";
 import { getAllPayments } from "../../../api/fetch";
 
 const PaymentHistory = () => {
@@ -20,7 +19,6 @@ const PaymentHistory = () => {
     { label: "Package" },
     { label: "Transaction ID" },
     { label: "Amount", style: "rounded-tr-lg" },
-    // { label: " "  },
   ];
 
   const startIndex = (currentPage - 1) * perPage;

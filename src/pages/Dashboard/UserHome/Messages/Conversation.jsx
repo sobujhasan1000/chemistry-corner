@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 // import useSingleMember from "../../../Hooks/useSingleMember";
 import { useEffect, useState } from "react";
-import { fetchMemberById } from "../../../api/fetch";
+import { fetchMemberById } from "../../../../api/fetch";
 
 const Conversation = ({ user, currentUserId, online }) => {
   const [userData, setUserData] = useState([]);
@@ -20,7 +20,7 @@ const Conversation = ({ user, currentUserId, online }) => {
   }, [user, currentUserId]);
 
   return (
-    <Link className="flex space-x-3 my-4">
+    <Link to="/dashboard/messages" className="flex space-x-3 my-4 hover:bg-gray-200">
       <div className={online ? "avatar online" : "avatar"}>
         <div className="w-16 rounded-full">
           <img

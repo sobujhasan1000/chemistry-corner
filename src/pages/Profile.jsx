@@ -1,6 +1,5 @@
 import { AuthContext } from "../providers/AuthProvider";
 import { FaUser } from "react-icons/fa";
-import { TfiGallery } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import useSingleUser from "../Hooks/useSingleUser";
 import siteLoader from "/ccLoader.gif";
@@ -11,7 +10,6 @@ import MyPhotos from "../components/Dashboard/MyPhotos/MyPhotos";
 const Profile = () => {
   const { user } = useContext(AuthContext);
   const [singleUser, loading] = useSingleUser(user?.email);
-  // console.log("first 2", singleUser);
 
   const {
     image,
@@ -57,32 +55,6 @@ const Profile = () => {
     !height ||
     !weight ||
     !profession;
-
-  // const handleFileChange = (e) => {
-  //   setSelectedFiles(e.target.files);
-  // };
-
-  // const handleUpload = async (e) => {
-  //   e.preventDefault();
-  //   setUploading(true);
-
-  //   const newUploadedPhotoLinks = [];
-
-  //   for (let i = 0; i < selectedFiles.length; i++) {
-  //     const image = selectedFiles[i];
-  //     const imageData = await imageUpload(image);
-  //     const imageUrl = imageData?.data?.display_url;
-
-  //     if (imageUrl) {
-  //       newUploadedPhotoLinks.push(imageUrl);
-  //     }
-  //   }
-  //   setUploadedPhotoLinks((prevLinks) => [
-  //     ...prevLinks,
-  //     ...newUploadedPhotoLinks,
-  //   ]);
-  //   setUploading(false);
-  // };
 
   return (
     <div className="py-4 bg-pink-100 rounded">
@@ -189,11 +161,11 @@ const Profile = () => {
                     <div className="px-4 py-2 capitalize">{profession}</div>
                   </div>
                 </div>
-                <div className="grid grid-cols-4">
+                <div className="flex flex-col md:grid md:grid-cols-4 lg:flex lg:flex-col">
                   <div className="px-4 py-2 font-semibold col-span-1">
                     My Interests
                   </div>
-                  <div className="px-4 py-2 capitalize col-span-3 flex flex-row gap-2">
+                  <div className="px-4 py-2 capitalize col-span-3 flex flex-col md:grid md:grid-cols-3 lg:grid lg:grid-cols-3 gap-2">
                     {interests?.slice(0, 7).map((interest, i) => (
                       <div key={i} className="text-xs">
                         <p className="border border-[#ED0058] p-1 text-black">
