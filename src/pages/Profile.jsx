@@ -204,13 +204,13 @@ const Profile = () => {
                 </div>
               )}
             </div>
-            <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
+            <div className="bg-gray-100 shadow-xl my-6 px-4 py-4 md:py-2 rounded-xl">
               <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                 <TfiGallery className="text-2xl font-bold" />
                 <span className="text-2xl font-bold"> My Photos</span>
               </div>
-              <div className="flex flex-col md:flex-row items-center py-2 gap-4 mt-3">
-                <div className="border border-black px-5 py-10">
+              <div className="flex flex-col md:flex-row items-center py-2 gap-4 my-3">
+                <div className="w-full md:w-2/5 border border-black rounded-lg px-5 py-10">
                   <form>
                     <div className="form-control flex flex-col items-start gap-5">
                       <label htmlFor="photos" className="text-black text-lg">
@@ -221,7 +221,7 @@ const Profile = () => {
                   </form>
                 </div>
                 <Swiper
-                  slidesPerView={3}
+                  slidesPerView={2}
                   spaceBetween={5}
                   autoplay={{
                     delay: 2500,
@@ -229,34 +229,34 @@ const Profile = () => {
                   }}
                   navigation={false}
                   modules={[Navigation, Autoplay]}
-                  className="mySwiper"
+                  className="mySwiper w-full md:w-3/5"
                 >
                   <SwiperSlide>
                     <img
                       src={user1}
                       alt=""
-                      className="w-full h-44 rounded-xl"
+                      className="w-44 md:w-full h-44 rounded-lg"
                     />
                   </SwiperSlide>
                   <SwiperSlide>
                     <img
                       src={user2}
                       alt=""
-                      className="w-full h-44 rounded-xl"
+                      className="w-44 md:w-full h-44 rounded-lg"
                     />
                   </SwiperSlide>
                   <SwiperSlide>
                     <img
                       src={user3}
                       alt=""
-                      className="w-full h-44 rounded-xl"
+                      className="w-44 md:w-full h-44 rounded-lg"
                     />
                   </SwiperSlide>
                   <SwiperSlide>
                     <img
                       src={user4}
                       alt=""
-                      className="w-full h-44 rounded-xl"
+                      className="w-44 md:w-full h-44 rounded-lg"
                     />
                   </SwiperSlide>
                 </Swiper>
