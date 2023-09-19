@@ -10,7 +10,6 @@ import MyPhotos from "../components/Dashboard/MyPhotos/MyPhotos";
 const Profile = () => {
   const { user } = useContext(AuthContext);
   const [singleUser, loading] = useSingleUser(user?.email);
-
   const {
     image,
     name,

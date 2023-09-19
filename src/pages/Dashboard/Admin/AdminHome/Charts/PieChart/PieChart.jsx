@@ -1,14 +1,28 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
+import { getAllMembers } from "../../../../../../api/fetch";
 
 const PieChart = () => {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    getAllMembers().then((data) => setUsers(data));
+  }, []);
+
+  const usa = users.filter((user) => user.country === "usa").length;
+  const nepal = users.filter((user) => user.country === "nepal").length;
+  const bangladesh = users.filter((user) => user.country === "bangladesh").length;
+  const germany = users.filter((user) => user.country === "germany").length;
+  const india = users.filter((user) => user.country === "india").length;
+
   const state = {
-    series: [44, 55, 13, 43, 22],
+    series: [usa,nepal,bangladesh,germany,india],
     options: {
       chart: {
         width: 380,
         type: "pie",
       },
-      labels: ["America", "Asia", "Europe", "Team D", "Africa"],
+      labels: ["USA", "Nepal", "Bangladesh","Germany","India"],
       responsive: [
         {
           breakpoint: 480,
