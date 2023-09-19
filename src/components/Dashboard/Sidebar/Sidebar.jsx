@@ -12,7 +12,7 @@ import { VscFeedback } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
 import { BiHomeHeart, BiMessageRounded } from "react-icons/bi";
 import { AiFillBell, AiOutlineHeart } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { MdOutlineManageAccounts, MdOutlineFeedback } from "react-icons/md";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
@@ -125,15 +125,19 @@ const Sidebar = ({ toggleSidebar }) => {
           <h1 className="capitalize text-xl">{singleUser.name}</h1>
         </div>
         {sidebarUserItems.map(({ icon: Icon, label, path }, i) => (
-          <Link
+          <NavLink
             to={path}
             key={i}
             onClick={toggleSidebar}
-            className="flex justify-center items-center gap-1 px-3 py-0.5 ml-8 hover:bg-[#ff5492]"
+            className={({ isActive }) =>
+              isActive
+                ? "activeNavLink flex justify-center items-center gap-1 px-3 py-0.5 ml-8"
+                : "navClasses flex justify-center items-center gap-1 px-3 py-0.5 ml-8"
+            }
           >
             <Icon size={30} />
             <h4 className="text-xl">{label}</h4>
-          </Link>
+          </NavLink>
         ))}
       </div>
       <hr />
@@ -146,7 +150,7 @@ const Sidebar = ({ toggleSidebar }) => {
             }}
             to={path}
             key={i}
-            className="flex justify-center items-center gap-1 px-3 py-1 ml-8 hover:bg-[#ff5492]"
+            className="flex justify-center items-center gap-1 px-3 py-1 ml-8 hover:bg-[#ff5492] hover:underline hover:underline-offset-4"
           >
             <Icon size={30} />
             <h4 className="text-xl">{label}</h4>
