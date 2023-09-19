@@ -58,7 +58,7 @@ const Messages = () => {
         <div className="mt-2">
           
         <Link to="/dashboard/messages">
-          <button className="bg-[#ED0058] px-10 py-2 text-white border border-[#ED0058] hover:bg-white hover:text-[#ED0058] transition-all ease-in duration-300">
+          <button className="bg-[#ED0058] px-4 md:px-10 py-2 text-white border border-[#ED0058] hover:bg-white hover:text-[#ED0058] transition-all ease-in duration-300">
             View More
           </button>
         </Link>

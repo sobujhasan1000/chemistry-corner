@@ -66,7 +66,7 @@ const Like = () => {
 
                 <Link
                   to={`/view-profile/${user?._id}`}
-                  className="bg-[#FD6585] hover:bg-[#ED0058] text-white border-4 border-[#FD6585] hover:border-[#ED0058] mt-auto mb-4 rounded-lg"
+                  className="bg-[#FD6585] hover:bg-[#ED0058] text-sm text-white border-4 border-[#FD6585] hover:border-[#ED0058] mt-auto mb-4 rounded-lg"
                 >
                   View Details
                 </Link>
