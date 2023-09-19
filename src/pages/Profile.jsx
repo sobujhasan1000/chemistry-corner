@@ -1,7 +1,3 @@
-import user1 from "/user1.jpg";
-import user2 from "/user2.jpg";
-import user3 from "/user3.jpg";
-import user4 from "/user4.jpg";
 import { AuthContext } from "../providers/AuthProvider";
 import { FaUser } from "react-icons/fa";
 import { TfiGallery } from "react-icons/tfi";
@@ -10,14 +6,12 @@ import useSingleUser from "../Hooks/useSingleUser";
 import siteLoader from "/ccLoader.gif";
 import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import MyPhotos from "../components/Dashboard/MyPhotos/MyPhotos";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
-
   const [singleUser, loading] = useSingleUser(user?.email);
-  console.log("first 2", singleUser);
+  // console.log("first 2", singleUser);
 
   const {
     image,
@@ -63,6 +57,32 @@ const Profile = () => {
     !height ||
     !weight ||
     !profession;
+
+  // const handleFileChange = (e) => {
+  //   setSelectedFiles(e.target.files);
+  // };
+
+  // const handleUpload = async (e) => {
+  //   e.preventDefault();
+  //   setUploading(true);
+
+  //   const newUploadedPhotoLinks = [];
+
+  //   for (let i = 0; i < selectedFiles.length; i++) {
+  //     const image = selectedFiles[i];
+  //     const imageData = await imageUpload(image);
+  //     const imageUrl = imageData?.data?.display_url;
+
+  //     if (imageUrl) {
+  //       newUploadedPhotoLinks.push(imageUrl);
+  //     }
+  //   }
+  //   setUploadedPhotoLinks((prevLinks) => [
+  //     ...prevLinks,
+  //     ...newUploadedPhotoLinks,
+  //   ]);
+  //   setUploading(false);
+  // };
 
   return (
     <div className="py-4 bg-pink-100 rounded">
@@ -204,64 +224,7 @@ const Profile = () => {
                 </div>
               )}
             </div>
-            <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
-              <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                <TfiGallery className="text-2xl font-bold" />
-                <span className="text-2xl font-bold"> My Photos</span>
-              </div>
-              <div className="flex flex-col md:flex-row items-center py-2 gap-4 mt-3">
-                <div className="border border-black px-5 py-10">
-                  <form>
-                    <div className="form-control flex flex-col items-start gap-5">
-                      <label htmlFor="photos" className="text-black text-lg">
-                        Add More Photos
-                      </label>
-                      <input type="file" />
-                    </div>
-                  </form>
-                </div>
-                <Swiper
-                  slidesPerView={3}
-                  spaceBetween={5}
-                  autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                  }}
-                  navigation={false}
-                  modules={[Navigation, Autoplay]}
-                  className="mySwiper"
-                >
-                  <SwiperSlide>
-                    <img
-                      src={user1}
-                      alt=""
-                      className="w-full h-44 rounded-xl"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src={user2}
-                      alt=""
-                      className="w-full h-44 rounded-xl"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src={user3}
-                      alt=""
-                      className="w-full h-44 rounded-xl"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src={user4}
-                      alt=""
-                      className="w-full h-44 rounded-xl"
-                    />
-                  </SwiperSlide>
-                </Swiper>
-              </div>
-            </div>
+            <MyPhotos></MyPhotos>
           </div>
         </div>
       </div>
