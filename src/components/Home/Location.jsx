@@ -33,7 +33,7 @@ const Location = () => {
   return (
     // <Container>
     <div className="flex flex-col-reverse md:flex-row justify-center items-center">
-      <div className="md:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-1 md:pt-24 pt-4 pb-8">
+      <div className="md:w-3/5 grid grid-cols-2 md:grid-cols-2 gap-1 md:pt-24 pt-4 pb-8">
         {countries.map(({ country, image }, i) => (
           <div
             key={i}
@@ -58,7 +58,7 @@ const Location = () => {
         ))}
       </div>
       <div className="md:w-2/5 w-full flex flex-col justify-center items-center">
-        <Heading
+        <Heading 
           title={"Meet Singles in Your Area"}
           subTitle={
             "If you want to meet local singles for dating, companionship, friendship, or even more, you have come to the right place."

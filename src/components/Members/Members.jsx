@@ -237,10 +237,10 @@ const Members = () => {
             </TabList>
             {genderLists.map((i, index) => (
               <TabPanel key={index}>
-                <div className="grid justify-center items-center gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 pt-24">
+                <div className="grid justify-center items-center gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 pt-24">
                   {currentMembers.map((item) => (
                     <div
-                      className="card w-80 md:w-96 rounded-3xl shadow-xl flex justify-center items-center mx-auto mt-16 mb-12"
+                      className="card w-80 md:w-96  rounded-3xl shadow-xl flex justify-center items-center mx-auto mt-16 mb-12"
                       key={item._id}
                     >
                       <div className="p-1 rounded-3xl transform-gpu transition-all selection:bg-sky-100 h-full grid place-items-center bg-gradient-to-tl to-[#FFD3A5] from-[#FD6585] dark:selection:bg-white/10">

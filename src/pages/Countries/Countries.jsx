@@ -300,7 +300,7 @@ const Countries = () => {
             </TabList>
             {genderLists.map((i, index) => (
               <TabPanel key={index}>
-                <div className="grid justify-center items-center gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 pt-24">
+                <div className="grid justify-center items-center gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 pt-24">
                   {currentMembers.map((item) => (
                     <div
                     className="card w-80 md:w-96 rounded-3xl shadow-xl flex justify-center items-center mx-auto mt-16 mb-12"
