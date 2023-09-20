@@ -7,7 +7,7 @@ const AboutUsComponent = () => {
   return (
     <>
       <Container className="bg-pink-100">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-5 md:gap-10 container mx-auto mt-10 md:mt-20">
+        <div className="flex flex-col md:flex-row sm:flex-row items-center justify-center gap-5 md:gap-10 container mx-auto mt-10 md:mt-20">
           <div className="flex flex-col gap-3 md:gap-7 w-80 md:w-full">
             <h1 className="text-black text-xl md:text-3xl font-signature">
               About Us

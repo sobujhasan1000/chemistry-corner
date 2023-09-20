@@ -75,7 +75,7 @@ const CheckoutPartner = () => {
       <Container>
         <form
           onSubmit={handleFormSubmit}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 items-end gap-4"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 items-end gap-4"
         >
           <div>
             <label className="label">
