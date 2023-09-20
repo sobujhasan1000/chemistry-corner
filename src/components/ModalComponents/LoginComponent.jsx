@@ -6,6 +6,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import ForgotPassword from "./ForgotPassword";
 
 const LoginComponent = ({ close }) => {
   const { loading, setLoading, signIn, resetPassword } =
@@ -98,14 +99,17 @@ const LoginComponent = ({ close }) => {
           <div>
             <p className="text-white">
               Forgot Password? Please{" "}
-              <Link to="#" className="text-blue-300 underline">
+              <button 
+              onClick={() => window.my_modal_4.showModal()}
+              className="text-blue-300 underline">
                 Reset.
-              </Link>{" "}
+              </button>{" "}
             </p>
           </div>
+          
         </div>
         <div className="flex items-center justify-start">
-          <div className="flex items-center gap-2 bg-[#e84681]  text-white px-3 md:px-5 py-2 cursor-pointer mt-5">
+          <div className="flex items-center gap-2 bg-[#e84681] text-white px-3 md:px-5 py-2 cursor-pointer mt-5">
             {loading ? (
               <TbFidgetSpinner className="m-auto animate-spin" size={24} />
             ) : (
@@ -122,6 +126,21 @@ const LoginComponent = ({ close }) => {
         </div>
       </form>
       <SocialLogin />
+
+      <dialog id="my_modal_4" className="modal">
+          <div className="modal-box md:w-1/2 bg-[#ED0058]">
+            <button
+              onClick={() => window.my_modal_4.close()}
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            >
+              ✕
+            </button>
+            <h1 className="text-white text-2xl font-bold mb-5">
+            Forgot Your Password?
+            </h1>
+            <ForgotPassword></ForgotPassword>
+          </div>
+        </dialog>
     </div>
   );
 };
