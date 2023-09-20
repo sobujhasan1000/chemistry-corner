@@ -98,7 +98,7 @@ const Sidebar = ({ toggleSidebar }) => {
   const { data: payment = {} } = useQuery({
     queryKey: ["order", user?.email],
     queryFn: async () => {
-      const data = await getSinglePayment(user.email);
+      const data = await getSinglePayment(user?.email);
       return data;
     },
   });
@@ -113,7 +113,7 @@ const Sidebar = ({ toggleSidebar }) => {
               alt="User Image"
               className="rounded-full w-24 h-24 ring ring-primary ring-offset-base-100 ring-offset-2"
             />
-            {payment && payment.package && (
+            {payment && payment?.package && (
               <div className="badge badge-warning text-white absolute bottom-1 left-14 px-3 py-2">
                 {payment.package === "7 Days Free Trial"
                   ? "Free"
