@@ -20,6 +20,7 @@ const ViewSingleBlog = () => {
   const { id } = useParams();
   const [singleBlog, loading] = useSingleBlog(id);
   console.log("single blog", singleBlog);
+  const {image_url, blog_time, author_name, total_likes, blog_heading, description, category} = singleBlog
 
   if (loading) {
     return (
@@ -40,50 +41,46 @@ const ViewSingleBlog = () => {
         <div className="flex flex-col md:flex-row gap-10 container mx-auto my-20 items-start justify-center">
           <div className="w-full md:w-3/5">
             <img
-              src={singleBlog.image_url}
+              src={image_url}
               alt="Blog Photo"
               className="w-full"
             />
             <div className="py-4 flex items-center gap-10 border-b border-black">
               <p className="inline-flex items-center gap-1 text-black font-semibold text-sm md:text-base">
                 <BsCalendarEvent className=" text-gray-400" />
-                {moment(singleBlog.blog_time).format("Do MMM, YYYY- hh:m a")}
+                {moment(blog_time).format("Do MMM, YYYY- hh:m a")}
               </p>
               <p className="inline-flex items-center gap-1 text-black font-semibold text-sm md:text-base">
                 <PiUserCircle className="text-xl text-gray-400" />
-                {singleBlog.author_name}
+                {author_name}
               </p>
               <p className="inline-flex items-center gap-1 text-black font-semibold text-sm md:text-base">
                 <AiOutlineHeart className="text-xl text-gray-400" />
-                {singleBlog.total_likes}
+                {total_likes}
               </p>
             </div>
 
             <div className="my-10">
               <h1 className="text-black text-lg md:text-xl font-signature mb-8">
-                {singleBlog.blog_heading}
+                {blog_heading}
               </h1>
               <p className="text-sm text-gray-500">
-                {convertHtmlToPlainText(singleBlog.description)}
+                {convertHtmlToPlainText(description)}
               </p>
             </div>
             <div className="flex items-center gap-5 border-b border-black pb-10">
               <button className="px-3 py-1 bg-white hover:bg-[#ED0058] text-black hover:text-white border border-black hover:border-[#ED0058] rounded-md transition-all ease-in-out duration-300">
-                News
+               {category}
               </button>
-              <button className="px-3 py-1 bg-white hover:bg-[#ED0058] text-black hover:text-white border border-black hover:border-[#ED0058] rounded-md transition-all ease-in-out duration-300">
-                Blog
-              </button>
-              <button className="px-3 py-1 bg-white hover:bg-[#ED0058] text-black hover:text-white border border-black hover:border-[#ED0058] rounded-md transition-all ease-in-out duration-300">
-                Tips
-              </button>
+              
+             
             </div>
             <div className="mt-10">
               <h1 className="text-black text-lg md:text-xl font-signature mb-10">
                 Related Posts
               </h1>
 
-              <RelatedPost />
+              <RelatedPost category={category} />
             </div>
           </div>
           <div className="md:w-2/5 hidden md:block">

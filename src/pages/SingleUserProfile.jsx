@@ -140,9 +140,14 @@ const SingleUserProfile = () => {
               <div>
                 <h1 className="text-2xl text-black">Photos</h1>
                 <div className="flex flex-col md:flex-row items-center gap-2 mt-5">
-                  <img src={user1} alt="" className="w-56 h-40" />
-                  <img src={user2} alt="" className="w-56 h-40" />
-                  <img src={user3} alt="" className="w-56 h-40" />
+                  {
+                    singleMember?.photos ? <>
+                    {
+                      singleMember?.photos.slice(0, 4).map((sPhoto, i) => <img key={i} src={sPhoto} alt="" className="w-56 h-40" />)
+                    }
+                    </> : <p className="text-[#ED0058]">No Photos Available</p>
+                  }
+                  
                 </div>
               </div>
             </div>
