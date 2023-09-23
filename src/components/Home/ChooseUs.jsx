@@ -5,7 +5,7 @@ import Container from "../shared/Container";
 const ChooseUs = () => {
   return (
     <Container>
-      <div className="flex flex-col md:flex-row justify-center items-center my-4">
+      <div className="flex flex-col md:flex-row space-x-4 justify-center items-center my-4">
         <div className="lg:w-2/3">
           <div className="my-8 text-center">
             <Heading
@@ -13,8 +13,8 @@ const ChooseUs = () => {
               subTitle={"Here’s why lots of people choose our website."}
             />
           </div>
-          <div className="flex flex-col md:flex-row gap-2 justify-center text-center">
-            <div className="py-4">
+          <div className="flex flex-col md:flex-row space-x-4 justify-center text-center">
+            <div className="py-10 rounded-md border-4 border-red-300 p-4">
               <h1 className="text-3xl py-2">
                 <span className="flex items-center justify-center mb-4 text-[#ED0058]">
                   <FaUser size={50} />
@@ -26,7 +26,7 @@ const ChooseUs = () => {
                 gender, age, and location, and you’re all set!
               </p>
             </div>
-            <div className="py-4">
+            <div className="py-10 rounded-md border-4 border-red-300 p-4">
               <h1 className="text-3xl py-2">
                 <span className="flex items-center justify-center mb-4 text-[#ED0058]">
                   <FaBandcamp size={50} />
@@ -38,7 +38,7 @@ const ChooseUs = () => {
                 helps you find the best people to meet or spend time with.
               </p>
             </div>
-            <div className="py-4">
+            <div className="py-10 rounded-md border-4 border-red-300 p-4">
               <h1 className="text-3xl py-2">
                 {" "}
                 <span className="flex items-center justify-center mb-4 text-[#ED0058]">
