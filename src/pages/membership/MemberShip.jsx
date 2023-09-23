@@ -15,10 +15,10 @@ const MemberShip = () => {
       <Container>
         <div className="text-black my-6">
           <div className="text-center py-6">
-            <h1 className="text-[40px] font-bold text-black">
+            <h1 className="text-[40px] font-bold text-black capitalize">
               Membership Levels
             </h1>
-            <p>
+            <p className="text-xl">
               Our dating platform is like a breath of fresh air. Clean and
               trendy design with ready <br /> to use features we are sure you
               will love.

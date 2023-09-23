@@ -7,6 +7,7 @@ import { getAllBlogs } from "../../api/fetch";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import NewBlogPosts from "./NewBlogPosts";
+import membersBg from "../../assets/membersBg.jpg";
 
 function convertHtmlToPlainText(html) {
   const tempElement = document.createElement("div");
@@ -49,7 +50,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="bg-pink-100">
+    <div style={{ backgroundImage: `url(${membersBg})` }} >
       <Helmet>
         <title>Blogs - Chemistry Corner</title>
       </Helmet>
@@ -59,12 +60,12 @@ const Blog = () => {
           </div>
         </div>
         <Container>
-          <div className="lg:flex gap-8">
-            <div className="my-4 text-black text-center grid md:grid-cols-2 lg:grid-cols-2  w-full justify-items-center lg:w-2/3 gap-2 ">
+          <div className="lg:flex gap-8 lg:mt-20">
+            <div className="my-4  text-black text-center grid md:grid-cols-2 lg:grid-cols-2  w-full justify-items-center lg:w-2/3 gap-2 ">
               {currentBlogs.map((blog, i) => (
                 <div
                   key={i}
-                  className="my-8 w-full sm:w-3/4 md:w-full lg:w-full gap-4 hover:shadow-2xl duration-300 border border-gray-200"
+                  className="my-4 p-4 rounded-md hover:bg-emerald-200  sm:w-3/4 md:w-full lg:w-full gap-4 hover:shadow-2xl duration-300 border-2 border-red-400 bg-white"
                 >
                   <div className="p-6">
                     <img
@@ -102,7 +103,7 @@ const Blog = () => {
             </div>
 
             {/* ============== categories section================= */}
-            <div className="lg:w-1/3 my-11">
+            <div className="lg:w-1/3 my-11 ">
               <BlogCategories></BlogCategories>
               <NewBlogPosts />
             </div>
