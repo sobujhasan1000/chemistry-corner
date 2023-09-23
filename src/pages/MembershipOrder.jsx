@@ -62,7 +62,7 @@ const MembershipOrder = () => {
         <title>Membership Order - Chemistry Corner</title>
       </Helmet>
 
-      <div className="flex flex-col md:flex-row items-center justify-center gap-12 container mx-auto my-20 px-2 md:px-0">
+      <div className="flex flex-col lg:flex-row  items-center justify-center gap-12 container mx-auto my-20 px-2 md:px-0">
         <div>
           <div className="gap-2 bg-gradient-to-b from-pink-200 to-lime-100 text-center hover:shadow-2xl rounded-lg px-2  border-2 border-red-400">
             <h1 className="text-2xl font-bold py-8 text-black">

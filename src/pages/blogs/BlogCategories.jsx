@@ -26,13 +26,13 @@ const BlogCategories = () => {
   }, []);
 
   return (
-    <div className=" w-2/3 ">
-      <h1 className=" text-2xl text-black font-bold mb-5">Categories</h1>
+    <div className=" w-2/3 bg-white p-8 rounded-md hover:shadow-xl hover:bg-emerald-200 ">
+      <h1 className=" text-2xl text-black font-bold mb-5 text-center">Categories</h1>
       <div>
         {categoriesData.map((category) => (
           <h2
             key={category.name}
-            className="mb-4 flex items-center justify-between text-gray-500 capitalize"
+            className="mb-4 flex items-center justify-between  capitalize"
           >
             {category.name}{" "}
             <span className="inline-block">{category.count}</span>
