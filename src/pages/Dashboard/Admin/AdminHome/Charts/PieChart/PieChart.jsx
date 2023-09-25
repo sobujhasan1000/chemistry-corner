@@ -42,7 +42,7 @@ const PieChart = () => {
   return (
     <div>
       <div id="chart" className="my-8">
-        <h1 className="text-lg font-bold mb-8">Current Visits</h1>
+        <h1 className="text-2xl font-bold mb-8 text-center ">Current Visits</h1>
         <ReactApexChart
           options={state.options}
           series={state.series}
