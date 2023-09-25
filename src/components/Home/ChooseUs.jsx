@@ -22,7 +22,7 @@ const ChooseUs = () => {
                 Simple to Use
               </h1>
               <p>
-                Loven is very easy to use - just choose your and your partner’s
+                chemistry corner is very easy to use - just choose your and your partner’s
                 gender, age, and location, and you’re all set!
               </p>
             </div>
