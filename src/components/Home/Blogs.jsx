@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const Blogs = () => {
   const { data = [] } = useQuery({
+    queryKey: ["getBlogs"], 
     queryFn: async () => {
       const data = await getBlogs();
       return data;

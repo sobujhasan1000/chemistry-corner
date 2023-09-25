@@ -95,7 +95,7 @@ const Sidebar = ({ toggleSidebar }) => {
     { label: "Log out", icon: FaPowerOff, onClick: handleLogOut },
   ];
 
-  const { data: payment = {} } = useQuery({
+  const { data: payment = [] } = useQuery({
     queryKey: ["order", user?.email],
     queryFn: async () => {
       const data = await getSinglePayment(user.email);
