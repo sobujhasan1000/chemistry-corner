@@ -22,7 +22,7 @@ const UserArea = ({ userChats, setCurrentChat, userId }) => {
         <div className="flex justify-evenly rounded-full object-cover md:block">
         {userChats &&
           userChats.map((user, i) => (
-            <div key={user.name} onClick={() => setCurrentChat(user)} className="capitalize">
+            <div key={user.name} onClick={() => setCurrentChat(user)} className="capitalize hover:bg-pink-200 p-[1px] rounded-md pl-2">
               <Conversation
               
                 key={i}
