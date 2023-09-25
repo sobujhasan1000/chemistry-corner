@@ -11,7 +11,7 @@
 
 /* Handle */
 .chatWindow::-webkit-scrollbar-thumb {
-    background: rgb(136, 0, 255);
+    background: #ED0058;
     border-radius: 10px;
 }
 

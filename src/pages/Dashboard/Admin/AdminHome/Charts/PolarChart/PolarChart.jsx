@@ -1,8 +1,20 @@
+import { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
+import { getAllPayments } from "../../../../../../api/fetch";
 
 const PolarChart = () => {
+
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    getAllPayments().then((data) => setUsers(data));
+  }, []);
+
+  const free= users.filter((user) => user.package === "7 Days Free Trial").length;
+  const Platinum = users.filter((user) => user.package === "Platinum").length;
+  const gold = users.filter((user) => user.package === "Gold").length;
+console.log("reee",gold)
   const state = {
-    series: [45, 25, 30],
+    series: [free, gold, Platinum],
     options: {
       chart: {
         type: "polarArea",
@@ -13,7 +25,7 @@ const PolarChart = () => {
       fill: {
         opacity: 0.8,
       },
-      labels: ["Mobile", "Tablet", "Desktop"],
+      labels: ["Free trial", "Gold", "Platinum"],
       responsive: [
         {
           breakpoint: 480,
@@ -30,7 +42,7 @@ const PolarChart = () => {
         {
           breakpoint: 768,
           options: {
-            labels: ["Mobile", "Tablet", "Desktop"],
+            labels: ["Free trial", "Gold", "Platinum"],
           },
         },
       ],
@@ -40,7 +52,7 @@ const PolarChart = () => {
   return (
     <div>
       <div id="chart">
-        <h1 className="text-lg font-bold mb-8">Used Devices</h1>
+        <h1 className="text-2xl text-center font-bold mb-8">Users package</h1>
         <ReactApexChart
           options={state.options}
           series={state.series}

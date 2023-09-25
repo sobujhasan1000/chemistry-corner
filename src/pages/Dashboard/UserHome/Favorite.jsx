@@ -1,16 +1,19 @@
 import { useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../../providers/AuthProvider";
-import { getFavoriteListByEmail } from "../../../api/fetch";
+// import { getFavoriteListByEmail } from "../../../api/fetch";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Favorite = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { user } = useContext(AuthContext);
-  const { data: favorites = [] } = useQuery({
+
+  const { data: favorites = [], isLoading: loading } = useQuery({
     queryKey: ["favoriteList", user?.email],
     queryFn: async () => {
-      const data = await getFavoriteListByEmail(user?.email);
-      return data;
+      const data = await axiosSecure.get(`/favoriteList/${user.email}`);
+      return data.data;
     },
   });
 
@@ -27,8 +30,11 @@ const Favorite = () => {
                     src={user.image}
                     alt=""
                   />
-                  <Link to={`/view-profile/${user?._id}`} className="hover:underline hover:text-[#fc4c8c]">
-                  {user.name.split(' ')[0]}
+                  <Link
+                    to={`/view-profile/${user?._id}`}
+                    className="hover:underline hover:text-[#fc4c8c]"
+                  >
+                    {user.name.split(" ")[0]}
                   </Link>
                 </div>
               </div>

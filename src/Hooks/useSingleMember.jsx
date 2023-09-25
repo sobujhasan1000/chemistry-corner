@@ -19,7 +19,7 @@ export const memberReducer = memberSlice.reducer;
 const useSingleMember = (id) => {
   const dispatch = useDispatch();
 
-  const { data: singleMember = {}, isLoading: loading } = useQuery({
+  const { data: singleMember = [], isLoading: loading } = useQuery({
     queryKey: ["singleMember", id],
     queryFn: async () => {
       const memberData = await fetchMemberById(id);

@@ -54,7 +54,9 @@ const CreateBlog = () => {
           <h1 className="text-white text-3xl font-bold">Create a Blog</h1>
         </div>
       </div> */}
-      <h1 className="text-black text-3xl text-center font-bold">Create a Blog</h1>
+      <h1 className="text-black text-3xl text-center font-bold">
+        Create a Blog
+      </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="grid grid-cols-1 gap-5 my-20"

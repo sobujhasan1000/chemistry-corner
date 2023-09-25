@@ -1,10 +1,10 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import ChatArea from "./ChatArea";
 // import PartnerProfile from "./PartnerProfile";
 import UserArea from "./UserArea";
-import { AuthContext } from "../../../providers/AuthProvider";
-import useSingleUser from "../../../Hooks/useSingleUser";
+import { AuthContext } from "../../../../providers/AuthProvider";
 import { io } from "socket.io-client";
+import useSingleUser from "../../../../Hooks/useSingleUser";
+import { Link } from "react-router-dom";
 
 const Messages = () => {
   const { user } = useContext(AuthContext);
@@ -47,25 +47,23 @@ const Messages = () => {
   }, [singleUser]);
 
   return (
-    <div className="md:flex overflow-hidden gap-3 bg-pink-200 p-4">
-      <div className="md:w-1/3">
+    <div className="md:flex overflow-hidden gap-3 p-4">
+      <div>
         <UserArea
           userChats={userChats}
           setCurrentChat={setCurrentChat}
           userId={singleUser._id}
           // checkOnlineStatus={checkOnlineStatus}
         ></UserArea>
+        <div className="mt-2">
+          
+        <Link to="/dashboard/messages">
+          <button className="bg-[#ED0058] px-4 md:px-10 py-2 text-white border border-[#ED0058] hover:bg-white hover:text-[#ED0058] transition-all ease-in duration-300">
+            View More
+          </button>
+        </Link>
+        </div>
       </div>
-      <div className="md:w-2/3">
-        <ChatArea
-          chat={currentChat}
-          setSendMessage={setSendMessage}
-          receiveMessage={receiveMessage}
-        ></ChatArea>
-      </div>
-      {/* <div className="md:flex gap-2">
-        <PartnerProfile className="md:w-1/4"></PartnerProfile>
-      </div> */}
     </div>
   );
 };

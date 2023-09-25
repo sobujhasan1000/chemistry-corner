@@ -13,6 +13,7 @@ import InputEmoji from "react-input-emoji";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useRef } from "react";
 import useSingleUser from "../../../Hooks/useSingleUser";
+import "./ChatAreaStyle.css";
 
 const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
   const { user } = useContext(AuthContext);
@@ -89,11 +90,11 @@ const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
   }, [messages]);
   return (
     <div>
-      <div className="p-4 h-screen">
+      <div className="px-4 pt-4 border-2 rounded overflow-hidden">
         {chat ? (
           <>
             {" "}
-            <div className="flex justify-between mb-3">
+            <div className="flex justify-between items-center mb-2">
               <div className="flex space-x-3">
                 <img
                   src={userData?.image}
@@ -101,7 +102,7 @@ const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
                   className="rounded-full w-10 h-9 object-cover"
                 />
                 <div className="text-lg text-slate-700 font-sans mt-2 flex space-x-2">
-                  <p>{userData?.name}</p>
+                  <p className="capitalize">{userData?.name}</p>
                 </div>
               </div>
               <div className="flex space-x-2 mt-3">
@@ -113,10 +114,9 @@ const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
             <hr className="bg-gray-500" />
             <div
               className="chatWindow overflow-auto p-1"
-              style={{ height: "70vh" }}
+              style={{ height: "60vh" }}
             >
               <div className="mt-3">
-                <hr className="bg-gray-500" />
                 <div className="grid justify-self-end">
                   {messages?.map((message) => (
                     <div
@@ -125,7 +125,7 @@ const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
                         message.senderId === singleUser._id
                           ? "ms-auto justify-end flex-row-reverse items-end"
                           : "items-start"
-                      } flex gap-1 space-x-1 mt-3`}
+                      } flex gap-1 space-x-1 mt-2`}
                     >
                       <img
                         src={
@@ -134,14 +134,14 @@ const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
                             : userData?.image
                         }
                         alt="profile"
-                        className="rounded-full w-5 h-5 object-cover"
+                        className="rounded-full w-5 h-5 object-center"
                       />
                       <div
                         ref={scroll}
                         className={`flex flex-col justify-start text-base px-2 rounded-tr-xl rounded-bl-xl py-2.5 ${
                           message.senderId === singleUser._id
                             ? "bg-pink-600 text-slate-100 rounded-tl-xl"
-                            : "bg-gray-200 text-slate-700 rounded-br-xl"
+                            : "bg-pink-600 text-white rounded-br-xl"
                         } `}
                       >
                         <span>{message.text}</span>{" "}
@@ -154,26 +154,27 @@ const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
                 </div>
               </div>
             </div>
-            <div className="my-4 py-2">
-              <div className="relative flex items-center text-gray-500">
-                <BsMic className="w-4 h-4 absolute ml-3" />
+            <div className="mt-3 py-2 w-full">
+              <div className="relative flex text-gray-500">
                 {/* <input
               type="text"
               placeholder="Write Something"
               className="rounded-2xl pl-10 py-1.5 w-full bg-gray-200"
             /> */}
-                <div className="flex space-x-2">
+                <div className="flex items-center justify-between space-x-2">
+                  {/* <BsMic className="h-[32px] w-[32px] " /> */}
                   {/* <button>
                 <FiPaperclip className="w-4 h-4 ml-2 mt-2" />
               </button>
               <button>
                 <AiOutlineCamera className="w-4 h-4 ml-2 mt-2" />
               </button> */}
-                  <button className="w-60">
+                  <button className="w-64 md:w-96">
                     <InputEmoji
                       value={newMessage}
                       onChange={handleChange}
                       cleanOnEnter
+                      className="rounded-2xl pl-10 py-1.5 md:w-96 bg-gray-200"
                       placeholder="Type a message"
                     />
                   </button>
@@ -182,9 +183,9 @@ const ChatArea = ({ chat, setSendMessage, receiveMessage }) => {
               </button> */}
                   <button
                     onClick={handleSend}
-                    className="bg-pink-600 p-2 rounded-full mt-1"
+                    className="bg-pink-600 h-[40px] w-[40px] p-2 rounded-full"
                   >
-                    <AiOutlineSend className="w-4 h-4 text-white" />
+                    <AiOutlineSend className="w-6 h-6 rounded-full text-white" />
                   </button>
                 </div>
               </div>

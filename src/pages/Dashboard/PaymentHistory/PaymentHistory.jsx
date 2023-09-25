@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-// import { BiTrash } from "react-icons/bi";
 import { getAllPayments } from "../../../api/fetch";
 
 const PaymentHistory = () => {
@@ -19,8 +18,7 @@ const PaymentHistory = () => {
     { label: "Email" },
     { label: "Package" },
     { label: "Transaction ID" },
-    { label: "Amount", style: "rounded-tr-lg"},
-    // { label: " "  },
+    { label: "Amount", style: "rounded-tr-lg" },
   ];
 
   const startIndex = (currentPage - 1) * perPage;
@@ -69,7 +67,7 @@ const PaymentHistory = () => {
         />
       </div>
       <div className="overflow-x-auto">
-        <table className="min-w-full">
+        <table className="min-w-full table-zebra">
           <thead className="bg-[#ED0058] text-left text-base leading-4 font-medium text-white capitalize tracking-wider rounded-lg">
             <tr>
               {tableHeadings.map(({ label, style }, i) => (
@@ -116,10 +114,8 @@ const PaymentHistory = () => {
       <div className="mt-4 flex justify-end">
         <button
           className={`mr-2 ${
-            currentPage === 1
-              ? "cursor-not-allowed bg-gray-300"
-              : "hover:bg-gray-200 bg-white"
-          } py-2 px-4 rounded-md border border-gray-300`}
+            currentPage === 1 ? "cursor-not-allowed bg-gray-300" : ""
+          } py-2 px-4 rounded-md border border-[#ED0058] bg-[#ED0058] hover:bg-white text-white hover:text-black transition-all ease-in-out duration-300`}
           onClick={() => {
             if (currentPage > 1) {
               handlePageChange(currentPage - 1);
@@ -133,8 +129,8 @@ const PaymentHistory = () => {
           className={`${
             currentPage * perPage >= filteredPayments.length
               ? "cursor-not-allowed bg-gray-300"
-              : "hover:bg-gray-200 bg-white"
-          } py-2 px-4 rounded-md border border-gray-300`}
+              : ""
+          } py-2 px-4 rounded-md border border-[#ED0058] bg-[#ED0058] hover:bg-white text-white hover:text-black transition-all ease-in-out duration-300`}
           onClick={() => {
             if (currentPage * perPage < filteredPayments.length) {
               handlePageChange(currentPage + 1);

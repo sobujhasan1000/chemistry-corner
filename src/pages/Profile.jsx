@@ -1,24 +1,16 @@
-import user1 from "/user1.jpg";
-import user2 from "/user2.jpg";
-import user3 from "/user3.jpg";
-import user4 from "/user4.jpg";
 import { AuthContext } from "../providers/AuthProvider";
 import { FaUser } from "react-icons/fa";
-import { TfiGallery } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import useSingleUser from "../Hooks/useSingleUser";
 import siteLoader from "/ccLoader.gif";
 import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import MyPhotos from "../components/Dashboard/MyPhotos/MyPhotos";
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
-
+  const { user, checkOnlineStatus } = useContext(AuthContext);
+  console.log("profile user", user);
   const [singleUser, loading] = useSingleUser(user?.email);
-  console.log("first 2", singleUser);
-
   const {
     image,
     name,
@@ -36,6 +28,7 @@ const Profile = () => {
     education,
     dob,
     profession,
+    interests,
   } = singleUser;
 
   if (loading) {
@@ -63,6 +56,27 @@ const Profile = () => {
     !weight ||
     !profession;
 
+  const timestampString = user?.metadata?.createdAt;
+  const timestamp = parseFloat(timestampString);
+  const date = new Date(timestamp);
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const day = date.getDate();
+  const month = monthNames[date.getMonth()];
+  const year = date.getFullYear();
+  const formattedDate = `${day} ${month}, ${year}`;
   return (
     <div className="py-4 bg-pink-100 rounded">
       <Helmet>
@@ -86,14 +100,20 @@ const Profile = () => {
                 <li className="flex items-center py-3">
                   <span>Status</span>
                   <span className="ml-auto">
-                    <span className="bg-green-500 py-1 px-2 rounded text-white text-sm">
-                      Active
-                    </span>
+                    {checkOnlineStatus ? (
+                      <span className="bg-green-500 py-1 px-2 rounded text-white text-sm">
+                        Active
+                      </span>
+                    ) : (
+                      <span className="bg-red-700 py-1 px-2 rounded text-white text-sm">
+                        Offline
+                      </span>
+                    )}
                   </span>
                 </li>
                 <li className="flex items-center py-3">
                   <span>Member since</span>
-                  <span className="ml-auto">Nov 07, 2016</span>
+                  <span className="ml-auto">{formattedDate}</span>
                 </li>
               </ul>
             </div>
@@ -101,9 +121,9 @@ const Profile = () => {
 
           <div className="md:w-9/12 md:px-4 relative">
             <div className="bg-white p-3 shadow-xl rounded-xl w-full">
-              <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                <FaUser className="text-2xl font-bold" />
-                <span className="text-2xl font-bold">About</span>
+              <div className="flex items-center gap-2 text-gray-900 leading-8 px-4">
+                <FaUser className="text-xl" />
+                <span className="text-2xl font-semibold">About</span>
               </div>
               <div className="text-gray-700">
                 <div className="grid md:grid-cols-2 text-sm">
@@ -151,7 +171,7 @@ const Profile = () => {
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Education</div>
-                    <div className="px-4 py-2 capitalize">{education}</div>
+                    <div className="px-4 py-2 uppercase">{education}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Date of Birth</div>
@@ -166,6 +186,20 @@ const Profile = () => {
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Profession</div>
                     <div className="px-4 py-2 capitalize">{profession}</div>
+                  </div>
+                </div>
+                <div className="flex flex-col md:grid md:grid-cols-4 lg:flex lg:flex-col">
+                  <div className="px-4 py-2 font-semibold col-span-1">
+                    My Interests
+                  </div>
+                  <div className="px-4 py-2 capitalize col-span-3 flex flex-col md:grid md:grid-cols-3 lg:grid lg:grid-cols-3 gap-2">
+                    {interests?.slice(0, 7).map((interest, i) => (
+                      <div key={i} className="text-xs">
+                        <p className="border border-[#ED0058] p-1 text-black">
+                          {interest.label}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -189,40 +223,7 @@ const Profile = () => {
                 </div>
               )}
             </div>
-            <div className="bg-gray-100 shadow-xl my-6 px-4 md:py-2 rounded-xl">
-            <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                <TfiGallery className="text-2xl font-bold" />
-                <span className="text-2xl font-bold">Photos</span>
-              </div>
-              <div className="flex flex-col md:flex-row items-center py-2 gap-4 mt-3">
-                <Swiper
-                  slidesPerView={3}
-                  spaceBetween={30}
-                  autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                  }}
-                  navigation={{
-                    clickable: true,
-                  }}
-                  modules={[Navigation, Autoplay]}
-                  className="mySwiper"
-                >
-                  <SwiperSlide>
-                    <img src={user1} alt="" className="w-36 h-28 rounded-xl" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src={user2} alt="" className="w-36 h-28 rounded-xl" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src={user3} alt="" className="w-36 h-28 rounded-xl" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src={user4} alt="" className="w-36 h-28 rounded-xl" />
-                  </SwiperSlide>
-                </Swiper>
-              </div>
-            </div>
+            <MyPhotos></MyPhotos>
           </div>
         </div>
       </div>

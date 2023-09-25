@@ -19,7 +19,7 @@ export const userReducer = userSlice.reducer;
 const useSingleUser = (email) => {
   const dispatch = useDispatch();
 
-  const { data: singleUser = {}, isLoading: loading } = useQuery({
+  const { data: singleUser = [], isLoading: loading } = useQuery({
     queryKey: ["singleUser", email],
     queryFn: async () => {
       const userData = await fetchUserByEmail(email);

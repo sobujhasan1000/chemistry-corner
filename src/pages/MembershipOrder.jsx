@@ -62,33 +62,34 @@ const MembershipOrder = () => {
         <title>Membership Order - Chemistry Corner</title>
       </Helmet>
 
-      <div className="flex flex-col md:flex-row items-center justify-center gap-10 container mx-auto my-20 px-2 md:px-0">
+      <div className="flex flex-col lg:flex-row  items-center justify-center gap-12 container mx-auto my-20 px-2 md:px-0">
         <div>
-          <div className="bg-[#fff] text-center hover:shadow-2xl border border-gray-200">
+          <div className="gap-2 bg-gradient-to-b from-pink-200 to-lime-100 text-center hover:shadow-2xl rounded-lg px-2  border-2 border-red-400">
             <h1 className="text-2xl font-bold py-8 text-black">
               {selectedPackage.packageName}
             </h1>
-            <p className="px-10 py-8 bg-[#eca9c2] text-xl text-black">
-              {selectedPackage.packInfo}
-            </p>
             <h1 className="text-2xl font-bold py-2 text-black">
               ${selectedPackage.price}
             </h1>
             <span className="divider"></span>
             <ul>
               {selectedPackage.packInclude.map((feature, i) => (
-                <li className="flex gap-2 text-xl text-black" key={i}>
-                  <p><FaCheckCircle className="text-blue-400 mb-[-20px] ml-[50px]" /></p>
-                  <p>{feature} <span className="divider px-4"></span></p>
-                </li>
+                <li
+                className="text-xl border-b border-gray-400 flex items-center mx-auto w-84 gap-3 py-6"
+                key={i}
+              >
+                <FaCheckCircle className="text-blue-400 text-center" />
+                <span>{feature}</span>
+              </li>
               ))}
             </ul>
           </div>
         </div>
-        <div className="w-full md:w-1/4">
+        <div className="w-full md:w-1/4 border-2 border-red-400 bg-rose-200 rounded-md"> 
+        <h2 className="text-center py-4 mt-4 font-bold text-xl">Fill up empty area</h2>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-2"
+            className="flex flex-col gap-6 p-8 "
           >
             <div className="form-control">
               <input
@@ -163,7 +164,7 @@ const MembershipOrder = () => {
                   <input
                     type="submit"
                     value="pay"
-                    className="p-2 bg-white text-black capitalize border border-yellow-500 outline-none cursor-pointer"
+                    className="btn bg-[#ED0058] p-2 hover:bg-[#e76b99]  text-black capitalize border border-yellow-500 outline-none cursor-pointer"
                   />
                 </>
               )}

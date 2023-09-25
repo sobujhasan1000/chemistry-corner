@@ -15,6 +15,7 @@ import {
 import { io } from "socket.io-client";
 import { useRef } from "react";
 import useSingleUser from "../Hooks/useSingleUser";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -25,7 +26,7 @@ const AuthProvider = ({ children }) => {
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [singleUser] = useSingleUser(user?.email);
   const socket = useRef();
-  console.log(onlineUsers);
+  // console.log(onlineUsers);
   const googleProvider = new GoogleAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
 
@@ -71,7 +72,20 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("current user: ", currentUser);
+      // console.log("current user: ", currentUser);
+      if (currentUser) {
+        axios
+          .post(`${import.meta.env.VITE_API_URL}/jwt`, {
+            email: currentUser.email,
+          })
+          .then((data) => {
+            // console.log(data.data.token);
+            localStorage.setItem("access-token", data.data.token);
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("access-token");
+      }
       setLoading(false);
       if (!loading && singleUser._id) {
         socket.current = io(`${import.meta.env.VITE_SOCKET_URL}`);

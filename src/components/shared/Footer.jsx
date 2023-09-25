@@ -72,7 +72,7 @@ const Footer = () => {
                   name="email"
                   {...register("email")}
                   placeholder="Your Email..."
-                  className="bg-white pl-5 py-3 border-2 border-white outline-none rounded-s-full w-40 md:w-[50rem] text-black"
+                  className="bg-white pl-5 py-3 border-2 border-white outline-none rounded-s-full w-40 md:w-[25rem] lg:w-[50rem] text-black"
                 />
               </div>
               <input
@@ -84,7 +84,7 @@ const Footer = () => {
           </form>
         </div>
         <div>
-          <div className="flex flex-col md:flex-row items-center md:items-start md:justify-around gap-5 md:gap-0">
+          <div className="flex flex-wrap flex-col md:flex-row items-center md:items-start md:justify-around gap-5 md:gap-0 mx-2">
             <div className="flex flex-col items-center md:items-start gap-3">
               <h1 className="text-xl">About Us</h1>
               <div className="flex flex-col items-center md:items-start gap-2">

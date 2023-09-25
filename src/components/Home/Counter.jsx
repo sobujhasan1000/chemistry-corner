@@ -34,19 +34,8 @@ const Counter = () => {
           <br />
           system. <strong>Joining us today just got easier!</strong>
         </p>
-        {/* <div className="flex mb-4 justify-center">
-          <button className="mr-3 px-4 py-2 bg-[#13A0CA] hover:bg-[#5aabc4] text-white rounded-lg">
-            Join us for FREE
-          </button>
-          <button className="px-6 py-2 bg-[#ED0058] hover:bg-[#a33f64] text-white rounded-lg flex items-center">
-            Our TV Commercial
-            <span className="ml-1">
-              <FaFilm />
-            </span>
-          </button>
-        </div> */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200 border-4 border-red-300 ">
             <img src={status_01} alt="" />
             <CountUp
               className="text-3xl"
@@ -56,17 +45,17 @@ const Counter = () => {
             />
             <p className="pt-3 text-lg">Members in total</p>
           </div>
-          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200">
+          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200 border-4 border-red-300 ">
             <img src={status_04} alt="" />
             <CountUp className="text-3xl" start={-1} end={men} duration={4} />
             <p className="pt-3 text-lg">Men</p>
           </div>
-          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200">
+          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200 border-4 border-red-300 ">
             <img src={status_03} alt="" />
             <CountUp className="text-3xl" start={-1} end={women} duration={4} />
             <p className="pt-3 text-lg">Women</p>
           </div>
-          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200">
+          <div className="bg-white shadow-lg p-4 rounded-lg text-gray-500 hover:scale-105 duration-200 border-4 border-red-300 ">
             <img src={status_02} alt="" />
             <CountUp
               className="text-3xl"

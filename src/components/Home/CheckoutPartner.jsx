@@ -75,7 +75,7 @@ const CheckoutPartner = () => {
       <Container>
         <form
           onSubmit={handleFormSubmit}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 items-end gap-4"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 items-end gap-4"
         >
           <div>
             <label className="label">
@@ -102,7 +102,7 @@ const CheckoutPartner = () => {
                   key={i}
                   className="md:text-[20px]"
                   value={gender.value}
-                  selected={gender.selected}
+                  // selected={gender.selected}
                 >
                   {gender?.label}
                 </option>
@@ -123,7 +123,7 @@ const CheckoutPartner = () => {
                     key={i}
                     className="md:text-[20px]"
                     value={item.value}
-                    selected={item.selected}
+                    // selected={item.selected}
                   >
                     {item?.label}
                   </option>
@@ -139,7 +139,7 @@ const CheckoutPartner = () => {
                     key={i}
                     className="md:text-[20px]"
                     value={item.value}
-                    selected={item.selected}
+                    // selected={item.selected}
                   >
                     {item?.label}
                   </option>
@@ -161,7 +161,7 @@ const CheckoutPartner = () => {
                   className={`text-[20px] ${country.hidden && "hidden"}`}
                   disabled={country?.disabled}
                   value={country?.value}
-                  selected={country.selected}
+                  // selected={country.selected}
                 >
                   {country?.label}
                 </option>

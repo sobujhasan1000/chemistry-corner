@@ -19,12 +19,12 @@ const NewBlogPosts = () => {
   const lastThreeBlogs = sortedBlogs.slice(0, 3);
 
   return (
-    <div className="">
-      <h1 className="text-2xl text-black font-bold mb-5">New Posts</h1>
+    <div className="bg-white p-4 rounded-md mt-8">
+      <h1 className="text-2xl text-black font-bold mb-4 text-center mt-4">New Posts</h1>
       {lastThreeBlogs.map((blog) => (
         <Link
           to={`/view-blog/${blog._id}`}
-          className="flex lg:h-36 p-6 hover:shadow-2xl"
+          className="flex lg:h-36 p-6 hover:shadow-2xl hover:bg-emerald-200 rounded-md"
           key={blog._id}
         >
           <img className="rounded-md w-40" src={blog.image_url} alt="" />

@@ -5,7 +5,7 @@ import MapSection from "../components/ContactUs/MapSection";
 
 const ContactUs = () => {
   return (
-    <div>
+    <div className="bg-pink-100">
       <Helmet>
         <title>Contact Us - Chemistry Corner</title>
       </Helmet>

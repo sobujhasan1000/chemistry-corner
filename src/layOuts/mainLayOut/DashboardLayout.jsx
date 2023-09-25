@@ -11,11 +11,11 @@ const DashboardLayout = () => {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="relative flex min-h-screen">
       {/* Hamburger Menu */}
-      <div className="lg:hidden">
+      <div className="lg:hidden absolute top-0 left-0 z-50">
         <button onClick={toggleSidebar} className="bg-[#ED0058] text-white p-2">
-          {sidebarOpen ? <FaTimes /> : <FaBars />}
+          {!sidebarOpen && <FaBars />}
         </button>
       </div>
 
@@ -39,11 +39,11 @@ const DashboardLayout = () => {
           <h1 className="text-xl font-semibold">Dashboard</h1>
         </div>
         {/* Sidebar content goes here */}
-        <Sidebar />
+        <Sidebar toggleSidebar={toggleSidebar} />
       </aside>
 
       {/* Main Content */}
-      <main className="lg:w-4/5 flex-grow p-4 lg:p-8 overflow-x-auto">
+      <main className="lg:w-4/5 flex-grow p-4 lg:p-8 overflow-x-auto bg-pink-100">
         {/* Main content goes here */}
         <Outlet />
       </main>

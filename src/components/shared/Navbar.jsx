@@ -11,7 +11,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
 import useSingleUser from "../../Hooks/useSingleUser";
-import Notification from "../../pages/Notification/Notification";
+// import Notification from "../../pages/Notification/Notification";
 const Navbar = () => {
   const { user, setLoading, logOut, checkOnlineStatus } =
     useContext(AuthContext);
@@ -96,7 +96,7 @@ const Navbar = () => {
           Contact Us
         </NavLink>
       </li>
-      {user ? (
+      {/* {user ? (
         <div className="dropdown dropdown-bottom dropdown-end z-50">
           <label
             tabIndex={0}
@@ -115,7 +115,7 @@ const Navbar = () => {
         </div>
       ) : (
         <></>
-      )}
+      )} */}
     </>
   );
   const userMenuItems = (
@@ -177,15 +177,15 @@ const Navbar = () => {
   return (
     <div onClick={handleOutsideClick}>
       <div className="bg-[#ED0058]">
-        <div className="flex items-center justify-between container mx-auto">
+        <div className="flex items-center justify-between sm:gap-0 md:gap-x-12 md:py-1 container mx-auto">
           <div>
-            <img src={logo} alt="Website Logo" className="w-32 md:w-64" />
+            <img src={logo} alt="Website Logo" className="w-24 md:w-52 lg:64" />
           </div>
 
           <div className="flex items-center gap-3 mr-5">
             <div className="hidden md:block">
               <nav>
-                <ul className="text-white text-xl flex items-center gap-5">
+                <ul className="text-white text-xs md:text-base lg:text-xl whitespace-nowrap flex items-center md:gap-4">
                   {navItems}
                 </ul>
               </nav>
@@ -193,11 +193,17 @@ const Navbar = () => {
             {isMenuOpen ? (
               <div>
                 {user && (
-                  <img
-                    src={user.photoURL ? user.photoURL : userImage}
-                    alt="User Image"
-                    className="w-10 h-10 rounded-full"
-                  />
+                  <div
+                    className={`w-10 h-10 cursor-pointer rounded-full avatar ${
+                      checkOnlineStatus ? "online" : ""
+                    }`}
+                  >
+                    <img
+                      src={user.photoURL ? user.photoURL : userImage}
+                      alt="User Image"
+                      className="w-full h-full rounded-full ring ring-primary ring-offset-base-100 mt-1"
+                    />
+                  </div>
                 )}
               </div>
             ) : (
@@ -214,7 +220,7 @@ const Navbar = () => {
                     <img
                       src={user.photoURL}
                       alt="User Image"
-                      className="w-full h-full rounded-full ring ring-primary ring-offset-base-100"
+                      className="w-full h-full rounded-full ring ring-primary ring-offset-base-100 mt-1"
                     />
                   </div>
                 )}
@@ -248,7 +254,7 @@ const Navbar = () => {
         <div
           className={` bg-[#ED0058] w-1/2 md:w-80 py-2 absolute duration-300 z-50 ${
             isUserMenuOpen
-              ? "right-0 top-12 md:top-[6.2rem]"
+              ? "right-0 top-12 md:max-lg:top-14 md:top-[5.5rem]"
               : "right-0 -top-80"
           }`}
         >

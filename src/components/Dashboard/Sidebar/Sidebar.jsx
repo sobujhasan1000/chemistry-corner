@@ -6,13 +6,15 @@ import {
   FaFileInvoiceDollar,
   FaRegUser,
 } from "react-icons/fa";
-import { BsQuestionCircle } from "react-icons/bs";
+import { BsQuestionCircle, BsPersonGear } from "react-icons/bs";
 import { TfiWrite } from "react-icons/tfi";
 import { VscFeedback } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
 import { BiHomeHeart, BiMessageRounded } from "react-icons/bi";
-import { AiFillBell, AiOutlineHeart } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import {
+  //  AiFillBell,
+   AiOutlineHeart } from "react-icons/ai";
+import { Link, NavLink } from "react-router-dom";
 import { MdOutlineManageAccounts, MdOutlineFeedback } from "react-icons/md";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
@@ -21,7 +23,7 @@ import { toast } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import { getSinglePayment } from "../../../api/fetch";
 
-const Sidebar = () => {
+const Sidebar = ({ toggleSidebar }) => {
   const { user, setLoading, logOut } = useContext(AuthContext);
   const [singleUser, loading] = useSingleUser(user.email);
   const handleLogOut = () => {
@@ -38,13 +40,14 @@ const Sidebar = () => {
   let sidebarUserItems = [
     { label: "Home", icon: BiHomeHeart, path: "/dashboard/user-home" },
     { label: "Profile", icon: CgProfile, path: "/dashboard/profile" },
+    { label: "Settings", icon: BsPersonGear, path: "/dashboard/settings" },
     // { label: "Search", icon: FaSearch, path: "/dashboard/search" },
     { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
-    {
-      label: "Notifications",
-      icon: AiFillBell,
-      path: "/dashboard/notifications",
-    },
+    // {
+    //   label: "Notifications",
+    //   icon: AiFillBell,
+    //   path: "/dashboard/notifications",
+    // },
     { label: "Likes", icon: AiOutlineHeart, path: "/dashboard/likes" },
     { label: "Favorites", icon: FaRegStar, path: "/dashboard/favorite" },
     {
@@ -94,7 +97,7 @@ const Sidebar = () => {
     { label: "Log out", icon: FaPowerOff, onClick: handleLogOut },
   ];
 
-  const { data: payment = {} } = useQuery({
+  const { data: payment = [] } = useQuery({
     queryKey: ["order", user?.email],
     queryFn: async () => {
       const data = await getSinglePayment(user.email);
@@ -124,24 +127,32 @@ const Sidebar = () => {
           <h1 className="capitalize text-xl">{singleUser.name}</h1>
         </div>
         {sidebarUserItems.map(({ icon: Icon, label, path }, i) => (
-          <Link
+          <NavLink
             to={path}
             key={i}
-            className="flex justify-center items-center gap-1 px-3 py-0.5 ml-8 hover:bg-[#ff5492]"
+            onClick={toggleSidebar}
+            className={({ isActive }) =>
+              isActive
+                ? "activeNavLink flex justify-center items-center gap-1 px-3 py-0.5 ml-8"
+                : "navClasses flex justify-center items-center gap-1 px-3 py-0.5 ml-8"
+            }
           >
             <Icon size={30} />
             <h4 className="text-xl">{label}</h4>
-          </Link>
+          </NavLink>
         ))}
       </div>
       <hr />
       <div className="flex flex-col justify-center items-start gap-2">
         {sidebarCommonItems.map(({ icon: Icon, label, path, onClick }, i) => (
           <Link
-            onClick={onClick}
+            onClick={() => {
+              onClick();
+              toggleSidebar(); // Close sidebar on click
+            }}
             to={path}
             key={i}
-            className="flex justify-center items-center gap-1 px-3 py-1 ml-8 hover:bg-[#ff5492]"
+            className="flex justify-center items-center gap-1 px-3 py-1 ml-8 hover:bg-[#ff5492] hover:underline hover:underline-offset-4"
           >
             <Icon size={30} />
             <h4 className="text-xl">{label}</h4>
