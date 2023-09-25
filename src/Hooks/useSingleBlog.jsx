@@ -19,7 +19,7 @@ export const blogReducer = blogSlice.reducer;
 const useSingleBlog = (id) => {
   const dispatch = useDispatch();
 
-  const { data: singleBlog = {}, isLoading: loading } = useQuery({
+  const { data: singleBlog = [], isLoading: loading } = useQuery({
     queryKey: ["singleBlog", id],
     queryFn: async () => {
       const blogData = await getSingleBlog(id);
