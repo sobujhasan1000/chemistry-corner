@@ -86,8 +86,8 @@ const LineChart = () => {
   });
   return (
     <div>
-      <div id="chart" className="my-8">
-        <h1 className="text-lg font-bold">Website Visits</h1>
+      <div id="chart" className="my-8 text-center">
+        <h1 className="text-2xl font-bold ">Website Visits</h1>
         <p className="text-[#637381] font-normal text-sm mb-8">(+43%) than last year</p>
         <ReactApexChart
           options={chartState.options}

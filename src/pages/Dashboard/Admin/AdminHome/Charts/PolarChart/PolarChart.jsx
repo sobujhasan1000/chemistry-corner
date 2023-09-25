@@ -52,7 +52,7 @@ console.log("reee",gold)
   return (
     <div>
       <div id="chart">
-        <h1 className="text-lg font-bold mb-8">Users package</h1>
+        <h1 className="text-2xl text-center font-bold mb-8">Users package</h1>
         <ReactApexChart
           options={state.options}
           series={state.series}
