@@ -11,7 +11,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
 import useSingleUser from "../../Hooks/useSingleUser";
-import Notification from "../../pages/Notification/Notification";
+// import Notification from "../../pages/Notification/Notification";
 const Navbar = () => {
   const { user, setLoading, logOut, checkOnlineStatus } =
     useContext(AuthContext);
@@ -96,7 +96,7 @@ const Navbar = () => {
           Contact Us
         </NavLink>
       </li>
-      {user ? (
+      {/* {user ? (
         <div className="dropdown dropdown-bottom dropdown-end z-50">
           <label
             tabIndex={0}
@@ -115,7 +115,7 @@ const Navbar = () => {
         </div>
       ) : (
         <></>
-      )}
+      )} */}
     </>
   );
   const userMenuItems = (

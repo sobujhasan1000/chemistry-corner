@@ -11,7 +11,9 @@ import { TfiWrite } from "react-icons/tfi";
 import { VscFeedback } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
 import { BiHomeHeart, BiMessageRounded } from "react-icons/bi";
-import { AiFillBell, AiOutlineHeart } from "react-icons/ai";
+import {
+  //  AiFillBell,
+   AiOutlineHeart } from "react-icons/ai";
 import { Link, NavLink } from "react-router-dom";
 import { MdOutlineManageAccounts, MdOutlineFeedback } from "react-icons/md";
 import { useContext } from "react";
@@ -41,11 +43,11 @@ const Sidebar = ({ toggleSidebar }) => {
     { label: "Settings", icon: BsPersonGear, path: "/dashboard/settings" },
     // { label: "Search", icon: FaSearch, path: "/dashboard/search" },
     { label: "Messages", icon: BiMessageRounded, path: "/dashboard/messages" },
-    {
-      label: "Notifications",
-      icon: AiFillBell,
-      path: "/dashboard/notifications",
-    },
+    // {
+    //   label: "Notifications",
+    //   icon: AiFillBell,
+    //   path: "/dashboard/notifications",
+    // },
     { label: "Likes", icon: AiOutlineHeart, path: "/dashboard/likes" },
     { label: "Favorites", icon: FaRegStar, path: "/dashboard/favorite" },
     {
