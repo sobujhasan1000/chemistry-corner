@@ -185,7 +185,7 @@ const Members = () => {
         <div className="page-header-bg w-full h-64 bg-no-repeat bg-cover bg-center">
           <div className="backdrop-blur-lg md:backdrop-blur-xl w-full h-full flex flex-col items-center justify-center">
             <h1 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold pb-4">
-              Find Your Partner with Countries.
+              Find Your Partner with Names.
             </h1>
             <div className="flex items-center p-1 md:p-2 md:space-x-4 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
               <div className="flex bg-gray-100 p-2 w-36 md:w-60 md:space-x-2 rounded-lg">

@@ -5,16 +5,16 @@ import Container from "../shared/Container";
 const ChooseUs = () => {
   return (
     <Container>
-      <div className="flex flex-col md:flex-row space-x-4 justify-center items-center my-4">
+      <div className="flex flex-col md:flex-row justify-center items-center my-4 gap-4">
         <div className="lg:w-2/3">
-          <div className="my-8 text-center">
+          <div className="text-center">
             <Heading
               title={"Why choose chemistry corner"}
               subTitle={"Here’s why lots of people choose our website."}
             />
           </div>
-          <div className="flex flex-col md:flex-row space-x-4 justify-center text-center">
-            <div className="py-10 rounded-md border-4 border-red-300 p-4">
+          <div className="flex flex-col md:flex-row  justify-center text-center gap-4">
+            <div className=" rounded-md border-4 border-red-300 p-4 ">
               <h1 className="text-3xl py-2">
                 <span className="flex items-center justify-center mb-4 text-[#ED0058]">
                   <FaUser size={50} />

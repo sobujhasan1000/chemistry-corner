@@ -7,27 +7,28 @@ const Location = () => {
   const countries = [
     {
       country: "bangladesh",
-      image: "https://bitly.ws/TVcF",
+      image: "https://i.ibb.co/HKgJqpC/ban.jpg",
     },
     {
       country: "india",
-      image: "https://bitly.ws/TVdb",
+      image:
+        "https://i.ibb.co/tHdGDW2/sylwia-bartyzel-e-U4pip-U-8-HA-unsplash.jpg",
     },
     {
       country: "nepal",
-      image: "https://bitly.ws/TVdz",
+      image: "https://i.ibb.co/jfrc2P2/nepal.jpg",
     },
     {
       country: "usa",
-      image: "https://bitly.ws/TVdS",
+      image: "https://i.ibb.co/QHBHPns/usa.jpg",
     },
     {
       country: "uk",
-      image: "https://bitly.ws/TVex",
+      image: "https://i.ibb.co/tJt58qw/uk.jpg",
     },
     {
       country: "canada",
-      image: "https://bitly.ws/TVf2",
+      image: "https://i.ibb.co/Q9jKbYj/canada.jpg",
     },
   ];
   return (
@@ -58,7 +59,7 @@ const Location = () => {
         ))}
       </div>
       <div className="md:w-2/5 w-full flex flex-col justify-center items-center">
-        <Heading 
+        <Heading
           title={"Meet Singles in Your Area"}
           subTitle={
             "If you want to meet local singles for dating, companionship, friendship, or even more, you have come to the right place."
